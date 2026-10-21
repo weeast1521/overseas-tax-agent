@@ -1,0 +1,63 @@
+# overseas-tax-agent
+
+증권사 상담원용 **해외주식 양도소득세 민원 대응 에이전트**.
+여러 증권사(계좌) 합산, 증권사별 선입선출/이동평균 차이, 대체입고(이체) 취득가액, 결제일 환율처럼 증권사 앱과 신고대행이 답하지 못하는 민원을 다룬다.
+
+- ReAct 에이전트(직접 구현) · Text-to-SQL · 결정론적 세액 계산 · 폐쇄망 RAG
+- FastAPI · PostgreSQL/pgvector → Oracle 23ai · Ollama · K8s(dmz/internal)
+
+## 원칙
+
+1. **숫자는 코드가 계산한다.** 세액은 `app/tools/tax_calc.py`가 결정론적으로 계산하고 LLM은 설명만 한다. 초안의 숫자는 코드가 다시 검증한다.
+2. **실데이터는 로컬에만.** 내 거래(`data/mine/`)는 git에도 퍼블릭 API에도 가지 않는다. 퍼블릭 API에는 합성 데이터만.
+3. **폐쇄망에서 외부 폴백 금지.** 로컬 모델이 실패하면 실패로 끝낸다.
+
+## 계산 단위
+
+계산은 **계좌** 단위다 (`(account_id, ticker)` lot 큐). 각 계좌 결과가 그 증권사의 계산내역서 한 장에 해당하고, 납세자는 계좌 결과를 더해 250만 원 공제 후 22%를 낸다.
+증권사마다 방식이 다르다(미래에셋·키움·KB·카카오페이·신한 = FIFO, 삼성·한투·대신·토스 = 이동평균, NH = 선택). 계좌 사이에 이체된 주식은 `TRANSFER_OUT/IN` 한 쌍으로 원 취득가액을 들고 간다(소득세법 §118의4).
+
+> 처음에는 납세자 단위 단일 큐로 설계했다가, 증권사별 방식 차이와 계좌 단위 산정을 확인하고 전체를 다시 썼다. 근거: 국세청 서면-2022-국제세원-0764, 미래에셋 2025 신고대행 안내.
+
+## 상태
+
+| 모듈 | 상태 |
+| --- | --- |
+| `app/tools/tax_calc.py` | 완성. 계좌 단위 FIFO/AVG, TRANSFER 원가 승계, 결제일 환율, 통산·공제·22%. 테스트 15건 |
+| `app/importers/` | 미래에셋·나무 CSV 매퍼, T+2 결제일 보정, 환율 부착, 중복 제거. 실제 헤더 확인 전 |
+| `app/agent/react.py` | ReAct 루프. MAX_STEPS 8, E-LOOP, E-TOOL-FAIL, E-TOOL-ORDER, E-LLM-FORMAT |
+| `app/llm/`, `app/judge/` | `LLMClient`·`Judge` Protocol. Claude/Ollama, Rule/Claude 구현체. 환경변수로 교체 |
+| `app/tools/registry.py` | tax_calc 연결(요약 우선 응답). sql_query·reg_search는 파일 스텁 |
+| `app/repo.py` | 증권사별 방식 테이블, 계좌별 방식 결정 |
+| `app/main.py` | `POST /v1/inquiries`, `POST /v1/tools/tax_calc`, `/healthz` |
+
+테스트 24건 통과.
+
+## 시작
+
+```bash
+python -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+cp .env.example .env
+make test
+```
+
+## 내 데이터로 검증
+
+```bash
+# 1. 미래에셋·나무 앱에서 해외주식 거래내역 CSV 내보내기 → data/mine/
+python scripts/import_my_trades.py
+# 2. 증권사 계산내역서의 양도소득금액과 대조
+python scripts/my_tax.py --year 2024 --expect MIRAE-001=<금액> --expect NAMUH-001=<금액> [--method NAMUH-001=AVG] [--lots]
+```
+
+## 문서와 계획
+
+- 기획서 · 기능 명세서: Claude Docs
+- 작업 추적: Jira `SCRUM` 보드 — 에픽은 명세서 F번호, 커밋 메시지는 이슈 키로 시작
+- 설계 결정 · 개념 정리: Notion 포트폴리오 페이지
+
+## 로드맵
+
+- S1 (10/21–10/25): ClaudeJudge, Claude 연결, Text-to-SQL 가드, 합성 데이터 300명, RAG 코퍼스·검색, 답변 조립·검증, 평가셋 200건과 구성 A 수치
+- S2 (10/26–11/08): Oracle 전환, Ollama 로컬 구성, K8s NetworkPolicy, Spring 게이트웨이, 관측, 구성 B 평가와 A/B 비교표
