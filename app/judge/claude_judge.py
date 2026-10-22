@@ -11,6 +11,7 @@ from anthropic import AsyncAnthropic
 from app.judge.base import DEFAULT_TOOLS, Judgment
 
 SYSTEM = """너는 증권사 고객센터의 해외주식 양도소득세 민원 분류기다. 민원 문장 하나를 읽고 유형을 고른다.
+- TRANSFER_BASIS: 다른 증권사에서 사서 옮긴(대체입고) 주식의 취득가액·계산서 차이
 - TAX_BASIS: 세금이 얼마인지, 왜 앱 수익률과 다른지 (선입선출·기본공제 설명 필요)
 - MULTI_BROKER: 증권사 여러 곳 거래를 어떻게 합치는지, 계산서가 왜 다른지
 - OFFSET: 이익·손실 상계(손익통산) 여부
@@ -22,7 +23,7 @@ confidence는 네가 고른 유형이 맞을 확률(0~1)이다. 애매하면 낮
 SCHEMA = {
     "type": "object",
     "properties": {
-        "category": {"type": "string", "enum": ["TAX_BASIS", "MULTI_BROKER", "OFFSET", "FX_BASIS", "OUT_OF_SCOPE"]},
+        "category": {"type": "string", "enum": ["TRANSFER_BASIS", "MULTI_BROKER", "TAX_BASIS", "OFFSET", "FX_BASIS", "OUT_OF_SCOPE"]},
         "confidence": {"type": "number", "minimum": 0, "maximum": 1},
         "flags": {"type": "array", "items": {"type": "string", "enum": ["ASKS_INVESTMENT_ADVICE"]}},
     },

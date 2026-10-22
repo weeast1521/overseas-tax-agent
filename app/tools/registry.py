@@ -15,9 +15,10 @@ ToolFn = Callable[[dict[str, Any], "ToolContext"], Awaitable[dict[str, Any]]]
 
 
 class ToolContext:
-    def __init__(self, customer_id: int, tax_year: int):
+    def __init__(self, customer_id: int, tax_year: int, method_override: str | None = None):
         self.customer_id = customer_id
         self.tax_year = tax_year
+        self.method_override = method_override
         self.last_rows: list[dict] | None = None  # sql_query 결과 (tax_calc 입력)
 
 
@@ -33,6 +34,11 @@ SPECS: dict[str, ToolSpec] = {
         name="tax_calc",
         description="sql_query로 조회한 거래로 계좌별 lot 매칭(증권사 방식대로 FIFO/AVG)·이체 lot 원가 복원·결제일 환율·납세자 단위 통산·기본공제·세액을 계산한다. 숫자는 이 툴 출력만 쓴다.",
         input_schema={"type": "object", "properties": {"method_override": {"type": "string", "enum": ["FIFO", "AVG"], "description": "상담원이 특정 계좌 방식을 확정했을 때만"}}},
+    ),
+    "broker_method": ToolSpec(
+        name="broker_method",
+        description="고객 계좌별 증권사 산정 방식(FIFO/AVG/CHOICE)과 확인이 필요한 계좌를 알려준다. 어느 방식이 유리한지는 판단하지 않는다.",
+        input_schema={"type": "object", "properties": {}},
     ),
     "reg_search": ToolSpec(
         name="reg_search",
@@ -60,7 +66,7 @@ async def _tax_calc(args: dict, ctx: ToolContext) -> dict:
         from app.repo import account_methods
         req = tax_calc.CalcRequest(customer_id=ctx.customer_id, tax_year=ctx.tax_year,
                                    trades=[tax_calc.Trade(**r) for r in trades],
-                                   account_methods=account_methods(ctx.customer_id, args.get("method_override")))
+                                   account_methods=account_methods(ctx.customer_id, args.get("method_override") or ctx.method_override))
         res = tax_calc.calculate(req)
         # 요약을 앞에: Observation은 2,000자에서 잘리므로 에이전트가 반드시 봐야 할 숫자를 먼저 둔다
         return {
@@ -77,13 +83,21 @@ async def _tax_calc(args: dict, ctx: ToolContext) -> dict:
         return {"error": e.code, "message": str(e)}
 
 
+async def _broker_method(args: dict, ctx: ToolContext) -> dict:
+    # F11. customer_method 테이블은 SCRUM-47에서. 지금은 증권사 기본 + override.
+    from app.repo import resolve_methods
+    m = resolve_methods(ctx.customer_id, ctx.method_override)
+    return {"accounts": m["brokers"], "applied": m["methods"], "needs_confirmation": m["needs_confirmation"],
+            "as_of": "2025-04", "note": "선택제 계좌는 고객 확인 전까지 FIFO로 계산"}
+
+
 async def _reg_search(args: dict, ctx: ToolContext) -> dict:
     # 2~3일차: pgvector 하이브리드 검색. 지금은 data/corpus/*.json 키워드 매칭 스텁.
     from app.repo import search_corpus
     return {"chunks": search_corpus(args["query"], k=int(args.get("k", 5))), "rewritten_query": None}
 
 
-TOOLS: dict[str, ToolFn] = {"sql_query": _sql_query, "tax_calc": _tax_calc, "reg_search": _reg_search}
+TOOLS: dict[str, ToolFn] = {"sql_query": _sql_query, "broker_method": _broker_method, "tax_calc": _tax_calc, "reg_search": _reg_search}
 
 
 def specs(names: list[str] | None = None) -> list[ToolSpec]:

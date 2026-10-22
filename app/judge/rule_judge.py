@@ -13,7 +13,9 @@ class RuleJudge:
         t = re.sub(r"\s", "", text)
         if re.search(r"추천|사도|매수해|오를|전망|살까", t):
             return Judgment(category="OUT_OF_SCOPE", confidence=0.9, flags=["ASKS_INVESTMENT_ADVICE"])
-        if re.search(r"증권사|두군데|두곳|계산서가다|합산|합쳐", t):
+        if re.search(r"이체|옮겼|옮긴|대체입고|입고|이관|가져왔", t):
+            cat = "TRANSFER_BASIS"
+        elif re.search(r"증권사|두군데|두곳|계산서|합산|합쳐|나무|미래에셋|삼성증권|키움|토스", t):
             cat = "MULTI_BROKER"
         elif re.search(r"환율|원화|달러", t):
             cat = "FX_BASIS"

@@ -10,11 +10,12 @@ from typing import Literal, Protocol
 
 from pydantic import BaseModel, Field
 
-Category = Literal["TAX_BASIS", "MULTI_BROKER", "OFFSET", "FX_BASIS", "OUT_OF_SCOPE"]
+Category = Literal["TRANSFER_BASIS", "MULTI_BROKER", "TAX_BASIS", "OFFSET", "FX_BASIS", "OUT_OF_SCOPE"]
 
 DEFAULT_TOOLS: dict[str, list[str]] = {
-    "TAX_BASIS": ["sql_query", "tax_calc", "reg_search"],
-    "MULTI_BROKER": ["sql_query", "tax_calc", "reg_search"],
+    "TRANSFER_BASIS": ["sql_query", "broker_method", "tax_calc", "reg_search"],  # 이체(대체입고) 취득가액
+    "MULTI_BROKER": ["sql_query", "broker_method", "tax_calc", "reg_search"],
+    "TAX_BASIS": ["sql_query", "broker_method", "tax_calc", "reg_search"],
     "OFFSET": ["sql_query", "tax_calc", "reg_search"],
     "FX_BASIS": ["sql_query", "tax_calc", "reg_search"],
     "OUT_OF_SCOPE": [],
