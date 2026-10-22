@@ -54,6 +54,7 @@ def test_schema_filled_and_transfer_review_for_1077(client):
     assert j["status"] == "REVIEW" and j["review_reason"] == "METHOD_UNCONFIRMED"
     assert j["method"]["needs_confirmation"] == ["NAMUH-1077"]
     assert j["draft"] and j["steps"] == 3
+    assert "tokens_in" in j and "tokens_out" in j
 
 
 def test_override_clears_confirmation_then_transfer_review(client):

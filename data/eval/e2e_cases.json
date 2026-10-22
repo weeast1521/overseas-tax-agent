@@ -1,0 +1,15 @@
+[
+  {"id": "E01", "customer_id": 1077, "expected_category": "TRANSFER_BASIS", "text": "미래에셋에서 산 테슬라를 나무로 옮겨서 팔았는데 나무 계산서 취득가액이 제가 산 가격이랑 달라요"},
+  {"id": "E02", "customer_id": 1077, "expected_category": "TRANSFER_BASIS", "text": "타사 대체입고한 주식을 매도했는데 양도차익이 너무 크게 잡혔어요. 원래 산 가격은 어디로 간 건가요"},
+  {"id": "E03", "customer_id": 1077, "expected_category": "TRANSFER_BASIS", "text": "증권사 옮긴 뒤에 판 주식은 세금 신고할 때 취득일이 언제로 잡히나요? 올해 세금이 얼마인지도 알려주세요"},
+
+  {"id": "E04", "customer_id": 1023, "expected_category": "MULTI_BROKER", "text": "미래에셋이랑 나무 두 군데서 해외주식 팔았는데 계산서가 따로 와요. 합치면 세금이 얼마예요?"},
+  {"id": "E05", "customer_id": 1023, "expected_category": "MULTI_BROKER", "text": "두 증권사 계산서에 기본공제 250만원이 양쪽 다 빠져 있는데 이대로 신고하면 되나요?"},
+  {"id": "E06", "customer_id": 1023, "expected_category": "MULTI_BROKER", "text": "증권사 두 곳 신고대행을 둘 다 신청해도 되나요? 아니면 제가 직접 합산해야 하나요"},
+
+  {"id": "E07", "customer_id": 1042, "expected_category": "TAX_BASIS", "text": "올해 해외주식 양도세가 얼마나 나오는지 계산해 주세요"},
+  {"id": "E08", "customer_id": 1042, "expected_category": "TAX_BASIS", "text": "앱에 찍힌 수익이랑 계산서 양도차익이 왜 달라요? 선입선출이 뭔가요"},
+
+  {"id": "E09", "customer_id": 1042, "expected_category": "FX_BASIS", "text": "달러로는 거의 본전인데 원화로 계산하니 이익이라면서 세금을 내라고 해요. 어느 날 환율을 쓰는 건가요"},
+  {"id": "E10", "customer_id": 1023, "expected_category": "OFFSET", "text": "이익 난 종목이랑 손실 난 종목을 서로 빼고 세금 계산하는 거 맞죠? 그러면 올해 세금은 얼마예요"}
+]

@@ -96,33 +96,27 @@ def decide_status(gate: str, needs_confirmation: list[str], figures: dict | None
     return "AUTO", None, None
 
 
-@app.post("/v1/inquiries", response_model=InquiryResponse, responses={400: {"model": ErrorBody}})
-async def create_inquiry(body: InquiryRequest):
-    if body.tax_year != TAX_YEAR:
-        return _error(400, "E-VALIDATION", f"tax_year must be {TAX_YEAR}")
-    if body.mode == "async":
-        return _error(400, "E-VALIDATION", "mode=async is not available yet (S2)")
-
+async def handle_inquiry(body: InquiryRequest) -> tuple[InquiryResponse, react.AgentResult | None]:
+    """F01 파이프라인 본체. API 핸들러와 e2e 스크립트가 같이 쓴다. 두 번째 값은 에이전트 trace(없으면 None)."""
     trace_id = _trace_id()
     t0 = time.perf_counter()
     ms = lambda: int((time.perf_counter() - t0) * 1000)  # noqa: E731
 
-    # F02 Judge — 실패 시 폴백 없음 (F02-4)
-    # Judge에는 민원 문장만 넘긴다. customer_id·계좌는 넘기지 않는다 (F02-3)
+    # F02 Judge — 민원 문장만 넘긴다. customer_id·계좌는 넘기지 않는다 (F02-3). 실패 시 폴백 없음 (F02-4)
     try:
         judgment: Judgment = await _judge().classify(body.text)
     except Exception as e:  # JudgeError(E-JUDGE) / JudgeFormatError(E-LLM-FORMAT) / 기타
         return InquiryResponse(trace_id=trace_id, status="REVIEW", review_reason="AGENT_ABORTED",
                                category="UNKNOWN", confidence=0, error_code=e.code if isinstance(e, JudgeError) else "E-JUDGE",
-                               latency_ms=ms())
+                               latency_ms=ms()), None
 
     gate = judgment.gate()
     if gate == "REJECTED":
         return InquiryResponse(trace_id=trace_id, status="REJECTED", category=judgment.category,
-                               confidence=judgment.confidence, latency_ms=ms())
+                               confidence=judgment.confidence, latency_ms=ms()), None
     if gate == "REVIEW":
         return InquiryResponse(trace_id=trace_id, status="REVIEW", review_reason="LOW_CONFIDENCE",
-                               category=judgment.category, confidence=judgment.confidence, latency_ms=ms())
+                               category=judgment.category, confidence=judgment.confidence, latency_ms=ms()), None
 
     # F11 방식 결정
     m = repo.resolve_methods(body.customer_id, body.method_override)
@@ -139,5 +133,17 @@ async def create_inquiry(body: InquiryRequest):
     return InquiryResponse(
         trace_id=trace_id, status=status, review_reason=reason, category=judgment.category,
         confidence=judgment.confidence, method=method, draft=result.final, figures=figures,
-        steps=len(result.steps), latency_ms=ms(), error_code=err,
-    )
+        steps=len(result.steps), latency_ms=ms(),
+        tokens_in=sum(st.in_tokens for st in result.steps), tokens_out=sum(st.out_tokens for st in result.steps),
+        error_code=err,
+    ), result
+
+
+@app.post("/v1/inquiries", response_model=InquiryResponse, responses={400: {"model": ErrorBody}})
+async def create_inquiry(body: InquiryRequest):
+    if body.tax_year != TAX_YEAR:
+        return _error(400, "E-VALIDATION", f"tax_year must be {TAX_YEAR}")
+    if body.mode == "async":
+        return _error(400, "E-VALIDATION", "mode=async is not available yet (S2)")
+    resp, _ = await handle_inquiry(body)
+    return resp

@@ -45,6 +45,8 @@ class InquiryResponse(BaseModel):
     sources: list[Source] = []
     steps: int = 0
     latency_ms: int = 0
+    tokens_in: int = 0  # 에이전트 루프 LLM 입력 토큰 합계 (Judge 제외)
+    tokens_out: int = 0
     error_code: str | None = None
 
 

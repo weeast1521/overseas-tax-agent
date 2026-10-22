@@ -68,7 +68,7 @@ class ClaudeJudge:
     name = "claude"
 
     def __init__(self, model: str | None = None, client: Any = None):
-        self.model = model or os.getenv("JUDGE_MODEL") or os.getenv("CLAUDE_MODEL", "claude-sonnet-4-5")
+        self.model = model or os.getenv("JUDGE_MODEL") or "claude-haiku-5-5"  # 분류는 가벼운 모델. 에이전트(CLAUDE_MODEL)와 분리
         if client is None:
             from anthropic import AsyncAnthropic
             client = AsyncAnthropic()  # ANTHROPIC_API_KEY

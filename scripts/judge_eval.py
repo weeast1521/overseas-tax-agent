@@ -1,7 +1,7 @@
 """SCRUM-21: ClaudeJudge를 합성 민원 20건에 돌려 분류 정확도·토큰 사용량을 본다.
 
   export ANTHROPIC_API_KEY=sk-ant-...
-  python scripts/judge_eval.py [--model claude-sonnet-4-5] [--cases data/eval/judge_cases.json] [--limit 5]
+  python scripts/judge_eval.py [--model claude-haiku-5-5] [--cases data/eval/judge_cases.json] [--limit 5]
 
 합성 문장만 보낸다. 실데이터(data/mine)는 읽지 않는다.
 결과 JSON은 results/ (gitignore)에 저장된다. 수용 조건: 20건 중 18건 이상.
