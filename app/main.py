@@ -18,6 +18,7 @@ from fastapi.responses import JSONResponse
 from app import repo
 from app.agent import react
 from app.judge.base import Judgment, get_judge
+from app.judge.claude_judge import JudgeError
 from app.llm.base import get_client
 from app.schemas import ErrorBody, InquiryRequest, InquiryResponse, MethodInfo
 from app.tools import registry, tax_calc
@@ -107,11 +108,13 @@ async def create_inquiry(body: InquiryRequest):
     ms = lambda: int((time.perf_counter() - t0) * 1000)  # noqa: E731
 
     # F02 Judge — 실패 시 폴백 없음 (F02-4)
+    # Judge에는 민원 문장만 넘긴다. customer_id·계좌는 넘기지 않는다 (F02-3)
     try:
         judgment: Judgment = await _judge().classify(body.text)
-    except Exception:
+    except Exception as e:  # JudgeError(E-JUDGE) / JudgeFormatError(E-LLM-FORMAT) / 기타
         return InquiryResponse(trace_id=trace_id, status="REVIEW", review_reason="AGENT_ABORTED",
-                               category="UNKNOWN", confidence=0, error_code="E-JUDGE", latency_ms=ms())
+                               category="UNKNOWN", confidence=0, error_code=e.code if isinstance(e, JudgeError) else "E-JUDGE",
+                               latency_ms=ms())
 
     gate = judgment.gate()
     if gate == "REJECTED":

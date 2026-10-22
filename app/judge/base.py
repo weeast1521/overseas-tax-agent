@@ -17,7 +17,7 @@ DEFAULT_TOOLS: dict[str, list[str]] = {
     "MULTI_BROKER": ["sql_query", "broker_method", "tax_calc", "reg_search"],
     "TAX_BASIS": ["sql_query", "broker_method", "tax_calc", "reg_search"],
     "OFFSET": ["sql_query", "tax_calc", "reg_search"],
-    "FX_BASIS": ["sql_query", "tax_calc", "reg_search"],
+    "FX_BASIS": ["sql_query", "reg_search"],  # 환율 기준일 설명이 중심. 숫자는 figures(직접 계산)로 나간다
     "OUT_OF_SCOPE": [],
 }
 
