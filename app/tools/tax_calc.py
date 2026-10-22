@@ -244,23 +244,36 @@ def calculate(req: CalcRequest) -> CalcResult:
                       total_gain_krw=total, deduction_krw=deduction, taxable_krw=taxable, tax_krw=tax)
 
 
+QTY_EPS = Decimal("1e-9")  # 수량 비교 허용 오차. AVG 비례 배분·이체 분할에서 생기는 Decimal 잔여(1E-26주)를 부족으로 보지 않는다
+
+
 def _consume(q: deque[_Lot], account_id: str, ticker: str, qty: Decimal, method: Method) -> list[_Used]:
     total_qty = sum((l.qty for l in q), Decimal("0"))
-    if qty > total_qty:
+    if qty > total_qty + QTY_EPS:
         raise CalcShortError(account_id, ticker, qty - total_qty)
     used: list[_Used] = []
     if method == "AVG":
+        # 평균법: 모든 lot에서 비례로 뺀다. 마지막 lot은 남은 수량을 정확히 가져가 잔여를 없앤다
         ratio = qty / total_qty
-        for lot in list(q):
-            take, portion = lot.qty * ratio, lot.cost_krw * ratio
+        lots = list(q)
+        remaining = qty
+        for i, lot in enumerate(lots):
+            take = remaining if i == len(lots) - 1 else min(lot.qty, (lot.qty * ratio).quantize(Decimal("0.000001")))
+            take = min(take, lot.qty, remaining)
+            if take <= 0:
+                continue
+            portion = lot.cost_krw * (take / lot.qty)
             used.append(_Used(lot, take, portion))
             lot.qty -= take
             lot.cost_krw -= portion
-        while q and q[0].qty == 0:
-            q.popleft()
+            remaining -= take
+        for lot in lots:
+            if lot.qty <= QTY_EPS:
+                lot.qty = Decimal("0")
+                q.remove(lot)
         return used
     need = qty
-    while need > 0:
+    while need > QTY_EPS:
         lot = q[0]
         take = min(need, lot.qty)
         portion = lot.cost_krw * (take / lot.qty)
@@ -268,6 +281,6 @@ def _consume(q: deque[_Lot], account_id: str, ticker: str, qty: Decimal, method:
         lot.cost_krw -= portion
         lot.qty -= take
         need -= take
-        if lot.qty == 0:
+        if lot.qty <= QTY_EPS:
             q.popleft()
     return used

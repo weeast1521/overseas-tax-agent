@@ -146,3 +146,17 @@ def test_avg_total_equals_fifo_when_fully_sold():
     trades = [t("b1", "BUY", 10, 100, "2025-01-13"), t("b2", "BUY", 10, 200, "2025-03-12"),
               t("s1", "SELL", 10, 180, "2025-05-21"), t("s2", "SELL", 10, 220, "2025-07-16")]
     assert run(trades).total_gain_krw == run(trades, methods={"MIRAE-001": "AVG"}).total_gain_krw
+
+
+def test_avg_partial_sells_leave_no_decimal_residue():
+    """AVG 비례 배분 후 남은 lot을 전량 매도해도 1E-26주 같은 잔여 때문에 SHORT가 나면 안 된다 (SCRUM-38에서 발견)."""
+    from datetime import date
+    from decimal import Decimal
+    from app.tools.tax_calc import CalcRequest, Trade, calculate
+    acc = "SAMSUNG-1"
+    mk = lambda i, side, q, d, p: Trade(trade_id=f"t{i}", account_id=acc, broker_code="SAMSUNG", ticker="X", side=side,  # noqa: E731
+                                        qty=Decimal(q), price_usd=Decimal(p), fee_usd=Decimal("0"), trade_date=d, settle_date=d, fx_settle=Decimal("1400"))
+    trades = [mk(1, "BUY", "7", date(2025, 1, 6), "10"), mk(2, "BUY", "11", date(2025, 2, 3), "12"), mk(3, "BUY", "13", date(2025, 3, 3), "9"),
+              mk(4, "SELL", "10", date(2025, 4, 1), "15"), mk(5, "SELL", "7", date(2025, 5, 1), "15"), mk(6, "SELL", "14", date(2025, 6, 2), "15")]
+    res = calculate(CalcRequest(customer_id=1, tax_year=2025, trades=trades, account_methods={acc: "AVG"}))
+    assert sum(s.sold_qty for s in res.sales) == Decimal("31")

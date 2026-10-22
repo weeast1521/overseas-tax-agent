@@ -5390,6 +5390,31 @@
   "carry_2024_lots": true
  },
  {
+  "customer_id": 2261,
+  "name": "조다은",
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "MIRAE-2261",
+    "broker_code": "MIRAE",
+    "method": "FIFO",
+    "display_no": "260-60-300790"
+   },
+   {
+    "account_id": "SAMSUNG-2261",
+    "broker_code": "SAMSUNG",
+    "method": "AVG",
+    "display_no": "453-18-151288"
+   }
+  ],
+  "tickers": [
+   "RIVN",
+   "COIN",
+   "AMZN"
+  ],
+  "carry_2024_lots": true
+ },
+ {
   "customer_id": 2262,
   "name": "한우진",
   "scenario": "MULTI_BROKER",

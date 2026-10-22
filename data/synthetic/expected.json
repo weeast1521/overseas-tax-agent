@@ -4381,6 +4381,26 @@
    "needs_confirmation": [],
    "n_sales": 6
   },
+  "2261": {
+   "tax_krw": 366335,
+   "total_gain_krw": 4165160,
+   "taxable_krw": 1665160,
+   "by_account": [
+    {
+     "account_id": "MIRAE-2261",
+     "method": "FIFO",
+     "gain_krw": 2119072
+    },
+    {
+     "account_id": "SAMSUNG-2261",
+     "method": "AVG",
+     "gain_krw": 2046088
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [],
+   "n_sales": 6
+  },
   "2262": {
    "tax_krw": 0,
    "total_gain_krw": -2285272,
