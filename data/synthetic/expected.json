@@ -4,13 +4,13 @@
  "customers": {
   "2001": {
    "tax_krw": 0,
-   "total_gain_krw": -1939241,
+   "total_gain_krw": -4308531,
    "taxable_krw": 0,
    "by_account": [
     {
      "account_id": "KIWOOM-2001",
      "method": "FIFO",
-     "gain_krw": -1939241
+     "gain_krw": -4308531
     }
    ],
    "transferred_lot_sales": [],
@@ -19,103 +19,105 @@
   },
   "2002": {
    "tax_krw": 0,
-   "total_gain_krw": 1439472,
+   "total_gain_krw": -2011696,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "KB-2002",
+     "account_id": "KIWOOM-2002",
      "method": "FIFO",
-     "gain_krw": 1439472
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 2
-  },
-  "2003": {
-   "tax_krw": 0,
-   "total_gain_krw": -6598280,
-   "taxable_krw": 0,
-   "by_account": [
-    {
-     "account_id": "KIWOOM-2003",
-     "method": "FIFO",
-     "gain_krw": -6598280
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 2
-  },
-  "2004": {
-   "tax_krw": 0,
-   "total_gain_krw": 1683526,
-   "taxable_krw": 0,
-   "by_account": [
-    {
-     "account_id": "SHINHAN-2004",
-     "method": "FIFO",
-     "gain_krw": 1683526
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 2
-  },
-  "2005": {
-   "tax_krw": 0,
-   "total_gain_krw": 142946,
-   "taxable_krw": 0,
-   "by_account": [
-    {
-     "account_id": "KB-2005",
-     "method": "FIFO",
-     "gain_krw": 142946
+     "gain_krw": -2011696
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
    "n_sales": 3
   },
-  "2006": {
-   "tax_krw": 2344340,
-   "total_gain_krw": 13156095,
-   "taxable_krw": 10656095,
+  "2003": {
+   "tax_krw": 0,
+   "total_gain_krw": -32242,
+   "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "KAKAOPAY-2006",
+     "account_id": "SHINHAN-2003",
      "method": "FIFO",
-     "gain_krw": 13156095
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 2
-  },
-  "2007": {
-   "tax_krw": 3304966,
-   "total_gain_krw": 17522577,
-   "taxable_krw": 15022577,
-   "by_account": [
-    {
-     "account_id": "SHINHAN-2007",
-     "method": "FIFO",
-     "gain_krw": 17522577
+     "gain_krw": -32242
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
    "n_sales": 1
   },
-  "2008": {
+  "2004": {
+   "tax_krw": 808171,
+   "total_gain_krw": 6173508,
+   "taxable_krw": 3673508,
+   "by_account": [
+    {
+     "account_id": "SHINHAN-2004",
+     "method": "FIFO",
+     "gain_krw": 6173508
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [],
+   "n_sales": 3
+  },
+  "2005": {
+   "tax_krw": 1483703,
+   "total_gain_krw": 9244108,
+   "taxable_krw": 6744108,
+   "by_account": [
+    {
+     "account_id": "SHINHAN-2005",
+     "method": "FIFO",
+     "gain_krw": 9244108
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [],
+   "n_sales": 1
+  },
+  "2006": {
+   "tax_krw": 1741335,
+   "total_gain_krw": 10415161,
+   "taxable_krw": 7915161,
+   "by_account": [
+    {
+     "account_id": "NAMUH-2006",
+     "method": "FIFO",
+     "gain_krw": 10415161
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [
+    "NAMUH-2006"
+   ],
+   "n_sales": 2
+  },
+  "2007": {
    "tax_krw": 0,
-   "total_gain_krw": 506944,
+   "total_gain_krw": -201295,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "KB-2008",
+     "account_id": "MIRAE-2007",
      "method": "FIFO",
-     "gain_krw": 506944
+     "gain_krw": -201295
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [],
+   "n_sales": 2
+  },
+  "2008": {
+   "tax_krw": 2127362,
+   "total_gain_krw": 12169830,
+   "taxable_krw": 9669830,
+   "by_account": [
+    {
+     "account_id": "MIRAE-2008",
+     "method": "FIFO",
+     "gain_krw": 12169830
     }
    ],
    "transferred_lot_sales": [],
@@ -123,121 +125,121 @@
    "n_sales": 4
   },
   "2009": {
-   "tax_krw": 0,
-   "total_gain_krw": 624744,
-   "taxable_krw": 0,
+   "tax_krw": 4316530,
+   "total_gain_krw": 22120592,
+   "taxable_krw": 19620592,
    "by_account": [
     {
-     "account_id": "KB-2009",
+     "account_id": "KIWOOM-2009",
      "method": "FIFO",
-     "gain_krw": 624744
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 2
-  },
-  "2010": {
-   "tax_krw": 70396,
-   "total_gain_krw": 2819986,
-   "taxable_krw": 319986,
-   "by_account": [
-    {
-     "account_id": "MIRAE-2010",
-     "method": "FIFO",
-     "gain_krw": 2819986
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 2
-  },
-  "2011": {
-   "tax_krw": 0,
-   "total_gain_krw": 2407631,
-   "taxable_krw": 0,
-   "by_account": [
-    {
-     "account_id": "KB-2011",
-     "method": "FIFO",
-     "gain_krw": 2407631
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 3
-  },
-  "2012": {
-   "tax_krw": 1191421,
-   "total_gain_krw": 7915553,
-   "taxable_krw": 5415553,
-   "by_account": [
-    {
-     "account_id": "MIRAE-2012",
-     "method": "FIFO",
-     "gain_krw": 7915553
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 1
-  },
-  "2013": {
-   "tax_krw": 1829413,
-   "total_gain_krw": 10815514,
-   "taxable_krw": 8315514,
-   "by_account": [
-    {
-     "account_id": "MIRAE-2013",
-     "method": "FIFO",
-     "gain_krw": 10815514
+     "gain_krw": 22120592
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
    "n_sales": 4
   },
-  "2014": {
+  "2010": {
    "tax_krw": 0,
-   "total_gain_krw": 1567271,
+   "total_gain_krw": -8953,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "KAKAOPAY-2014",
+     "account_id": "NAMUH-2010",
      "method": "FIFO",
-     "gain_krw": 1567271
+     "gain_krw": -8953
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [
+    "NAMUH-2010"
+   ],
+   "n_sales": 1
+  },
+  "2011": {
+   "tax_krw": 0,
+   "total_gain_krw": -1560180,
+   "taxable_krw": 0,
+   "by_account": [
+    {
+     "account_id": "KB-2011",
+     "method": "FIFO",
+     "gain_krw": -1560180
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
    "n_sales": 1
   },
-  "2015": {
+  "2012": {
    "tax_krw": 0,
-   "total_gain_krw": -923,
+   "total_gain_krw": -633295,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "NAMUH-2015",
+     "account_id": "KAKAOPAY-2012",
      "method": "FIFO",
-     "gain_krw": -923
+     "gain_krw": -633295
     }
    ],
    "transferred_lot_sales": [],
-   "needs_confirmation": [
-    "NAMUH-2015"
-   ],
-   "n_sales": 1
+   "needs_confirmation": [],
+   "n_sales": 3
   },
-  "2016": {
+  "2013": {
    "tax_krw": 0,
-   "total_gain_krw": 746711,
+   "total_gain_krw": 206993,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "KAKAOPAY-2016",
+     "account_id": "KIWOOM-2013",
      "method": "FIFO",
-     "gain_krw": 746711
+     "gain_krw": 206993
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [],
+   "n_sales": 3
+  },
+  "2014": {
+   "tax_krw": 0,
+   "total_gain_krw": 1871617,
+   "taxable_krw": 0,
+   "by_account": [
+    {
+     "account_id": "KIWOOM-2014",
+     "method": "FIFO",
+     "gain_krw": 1871617
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [],
+   "n_sales": 5
+  },
+  "2015": {
+   "tax_krw": 0,
+   "total_gain_krw": -181260,
+   "taxable_krw": 0,
+   "by_account": [
+    {
+     "account_id": "KIWOOM-2015",
+     "method": "FIFO",
+     "gain_krw": -181260
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [],
+   "n_sales": 2
+  },
+  "2016": {
+   "tax_krw": 0,
+   "total_gain_krw": 520308,
+   "taxable_krw": 0,
+   "by_account": [
+    {
+     "account_id": "MIRAE-2016",
+     "method": "FIFO",
+     "gain_krw": 520308
     }
    ],
    "transferred_lot_sales": [],
@@ -245,89 +247,89 @@
    "n_sales": 4
   },
   "2017": {
-   "tax_krw": 0,
-   "total_gain_krw": 1035603,
-   "taxable_krw": 0,
+   "tax_krw": 13362,
+   "total_gain_krw": 2560738,
+   "taxable_krw": 60738,
    "by_account": [
     {
-     "account_id": "KIWOOM-2017",
+     "account_id": "KB-2017",
      "method": "FIFO",
-     "gain_krw": 1035603
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 3
-  },
-  "2018": {
-   "tax_krw": 176440,
-   "total_gain_krw": 3302004,
-   "taxable_krw": 802004,
-   "by_account": [
-    {
-     "account_id": "SHINHAN-2018",
-     "method": "FIFO",
-     "gain_krw": 3302004
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 4
-  },
-  "2019": {
-   "tax_krw": 1281851,
-   "total_gain_krw": 8326596,
-   "taxable_krw": 5826596,
-   "by_account": [
-    {
-     "account_id": "KIWOOM-2019",
-     "method": "FIFO",
-     "gain_krw": 8326596
+     "gain_krw": 2560738
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
    "n_sales": 2
   },
-  "2020": {
-   "tax_krw": 492216,
-   "total_gain_krw": 4737347,
-   "taxable_krw": 2237347,
+  "2018": {
+   "tax_krw": 0,
+   "total_gain_krw": 688644,
+   "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "KB-2020",
+     "account_id": "KB-2018",
      "method": "FIFO",
-     "gain_krw": 4737347
+     "gain_krw": 688644
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [],
+   "n_sales": 2
+  },
+  "2019": {
+   "tax_krw": 0,
+   "total_gain_krw": -894015,
+   "taxable_krw": 0,
+   "by_account": [
+    {
+     "account_id": "MIRAE-2019",
+     "method": "FIFO",
+     "gain_krw": -894015
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
    "n_sales": 1
   },
-  "2021": {
+  "2020": {
    "tax_krw": 0,
-   "total_gain_krw": -62079,
+   "total_gain_krw": -59767,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "KIWOOM-2021",
+     "account_id": "KAKAOPAY-2020",
      "method": "FIFO",
-     "gain_krw": -62079
+     "gain_krw": -59767
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
    "n_sales": 2
   },
+  "2021": {
+   "tax_krw": 251024,
+   "total_gain_krw": 3641022,
+   "taxable_krw": 1141022,
+   "by_account": [
+    {
+     "account_id": "KIWOOM-2021",
+     "method": "FIFO",
+     "gain_krw": 3641022
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [],
+   "n_sales": 1
+  },
   "2022": {
    "tax_krw": 0,
-   "total_gain_krw": -3781121,
+   "total_gain_krw": -3993636,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "KB-2022",
+     "account_id": "SHINHAN-2022",
      "method": "FIFO",
-     "gain_krw": -3781121
+     "gain_krw": -3993636
     }
    ],
    "transferred_lot_sales": [],
@@ -335,29 +337,31 @@
    "n_sales": 1
   },
   "2023": {
-   "tax_krw": 0,
-   "total_gain_krw": 392591,
-   "taxable_krw": 0,
+   "tax_krw": 713065,
+   "total_gain_krw": 5741208,
+   "taxable_krw": 3241208,
    "by_account": [
     {
-     "account_id": "SHINHAN-2023",
+     "account_id": "NAMUH-2023",
      "method": "FIFO",
-     "gain_krw": 392591
+     "gain_krw": 5741208
     }
    ],
    "transferred_lot_sales": [],
-   "needs_confirmation": [],
+   "needs_confirmation": [
+    "NAMUH-2023"
+   ],
    "n_sales": 1
   },
   "2024": {
-   "tax_krw": 0,
-   "total_gain_krw": -4070556,
-   "taxable_krw": 0,
+   "tax_krw": 5586130,
+   "total_gain_krw": 27891504,
+   "taxable_krw": 25391504,
    "by_account": [
     {
-     "account_id": "MIRAE-2024",
+     "account_id": "KIWOOM-2024",
      "method": "FIFO",
-     "gain_krw": -4070556
+     "gain_krw": 27891504
     }
    ],
    "transferred_lot_sales": [],
@@ -365,151 +369,149 @@
    "n_sales": 3
   },
   "2025": {
-   "tax_krw": 0,
-   "total_gain_krw": -359158,
-   "taxable_krw": 0,
+   "tax_krw": 2164911,
+   "total_gain_krw": 12340505,
+   "taxable_krw": 9840505,
    "by_account": [
     {
-     "account_id": "KAKAOPAY-2025",
+     "account_id": "KB-2025",
      "method": "FIFO",
-     "gain_krw": -359158
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 1
-  },
-  "2026": {
-   "tax_krw": 0,
-   "total_gain_krw": 1211430,
-   "taxable_krw": 0,
-   "by_account": [
-    {
-     "account_id": "KB-2026",
-     "method": "FIFO",
-     "gain_krw": 1211430
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 1
-  },
-  "2027": {
-   "tax_krw": 0,
-   "total_gain_krw": -12430,
-   "taxable_krw": 0,
-   "by_account": [
-    {
-     "account_id": "KIWOOM-2027",
-     "method": "FIFO",
-     "gain_krw": -12430
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 1
-  },
-  "2028": {
-   "tax_krw": 0,
-   "total_gain_krw": 1460010,
-   "taxable_krw": 0,
-   "by_account": [
-    {
-     "account_id": "NAMUH-2028",
-     "method": "FIFO",
-     "gain_krw": 1460010
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [
-    "NAMUH-2028"
-   ],
-   "n_sales": 4
-  },
-  "2029": {
-   "tax_krw": 876961,
-   "total_gain_krw": 6486190,
-   "taxable_krw": 3986190,
-   "by_account": [
-    {
-     "account_id": "KIWOOM-2029",
-     "method": "FIFO",
-     "gain_krw": 6486190
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 4
-  },
-  "2030": {
-   "tax_krw": 0,
-   "total_gain_krw": -876982,
-   "taxable_krw": 0,
-   "by_account": [
-    {
-     "account_id": "KIWOOM-2030",
-     "method": "FIFO",
-     "gain_krw": -876982
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 4
-  },
-  "2031": {
-   "tax_krw": 0,
-   "total_gain_krw": 8833,
-   "taxable_krw": 0,
-   "by_account": [
-    {
-     "account_id": "DAISHIN-2031",
-     "method": "AVG",
-     "gain_krw": 8833
+     "gain_krw": 12340505
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
    "n_sales": 3
   },
-  "2032": {
+  "2026": {
    "tax_krw": 0,
-   "total_gain_krw": 1052361,
+   "total_gain_krw": 1538861,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "DAISHIN-2032",
-     "method": "AVG",
-     "gain_krw": 1052361
+     "account_id": "KIWOOM-2026",
+     "method": "FIFO",
+     "gain_krw": 1538861
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [],
+   "n_sales": 5
+  },
+  "2027": {
+   "tax_krw": 0,
+   "total_gain_krw": 247547,
+   "taxable_krw": 0,
+   "by_account": [
+    {
+     "account_id": "KIWOOM-2027",
+     "method": "FIFO",
+     "gain_krw": 247547
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [],
+   "n_sales": 3
+  },
+  "2028": {
+   "tax_krw": 144492,
+   "total_gain_krw": 3156785,
+   "taxable_krw": 656785,
+   "by_account": [
+    {
+     "account_id": "MIRAE-2028",
+     "method": "FIFO",
+     "gain_krw": 3156785
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [],
+   "n_sales": 4
+  },
+  "2029": {
+   "tax_krw": 614603,
+   "total_gain_krw": 5293650,
+   "taxable_krw": 2793650,
+   "by_account": [
+    {
+     "account_id": "KAKAOPAY-2029",
+     "method": "FIFO",
+     "gain_krw": 5293650
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [],
+   "n_sales": 3
+  },
+  "2030": {
+   "tax_krw": 0,
+   "total_gain_krw": 1893353,
+   "taxable_krw": 0,
+   "by_account": [
+    {
+     "account_id": "MIRAE-2030",
+     "method": "FIFO",
+     "gain_krw": 1893353
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
    "n_sales": 2
   },
-  "2033": {
+  "2031": {
    "tax_krw": 0,
-   "total_gain_krw": -130385,
+   "total_gain_krw": 32820,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "DAISHIN-2033",
+     "account_id": "TOSS-2031",
      "method": "AVG",
-     "gain_krw": -130385
+     "gain_krw": 32820
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
    "n_sales": 1
   },
-  "2034": {
+  "2032": {
    "tax_krw": 0,
-   "total_gain_krw": 1128339,
+   "total_gain_krw": 2080304,
    "taxable_krw": 0,
+   "by_account": [
+    {
+     "account_id": "SAMSUNG-2032",
+     "method": "AVG",
+     "gain_krw": 2080304
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [],
+   "n_sales": 3
+  },
+  "2033": {
+   "tax_krw": 852618,
+   "total_gain_krw": 6375538,
+   "taxable_krw": 3875538,
+   "by_account": [
+    {
+     "account_id": "SAMSUNG-2033",
+     "method": "AVG",
+     "gain_krw": 6375538
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [],
+   "n_sales": 2
+  },
+  "2034": {
+   "tax_krw": 1205986,
+   "total_gain_krw": 7981755,
+   "taxable_krw": 5481755,
    "by_account": [
     {
      "account_id": "KIS-2034",
      "method": "AVG",
-     "gain_krw": 1128339
+     "gain_krw": 7981755
     }
    ],
    "transferred_lot_sales": [],
@@ -518,43 +520,43 @@
   },
   "2035": {
    "tax_krw": 0,
-   "total_gain_krw": 634793,
+   "total_gain_krw": 2206156,
    "taxable_krw": 0,
    "by_account": [
     {
      "account_id": "KIS-2035",
      "method": "AVG",
-     "gain_krw": 634793
+     "gain_krw": 2206156
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
-   "n_sales": 1
+   "n_sales": 4
   },
   "2036": {
-   "tax_krw": 0,
-   "total_gain_krw": -1165601,
-   "taxable_krw": 0,
+   "tax_krw": 3165470,
+   "total_gain_krw": 16888502,
+   "taxable_krw": 14388502,
    "by_account": [
     {
-     "account_id": "TOSS-2036",
+     "account_id": "KIS-2036",
      "method": "AVG",
-     "gain_krw": -1165601
+     "gain_krw": 16888502
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
-   "n_sales": 1
+   "n_sales": 3
   },
   "2037": {
    "tax_krw": 0,
-   "total_gain_krw": -75381,
+   "total_gain_krw": 112508,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "SAMSUNG-2037",
+     "account_id": "KIS-2037",
      "method": "AVG",
-     "gain_krw": -75381
+     "gain_krw": 112508
     }
    ],
    "transferred_lot_sales": [],
@@ -563,43 +565,43 @@
   },
   "2038": {
    "tax_krw": 0,
-   "total_gain_krw": 1323684,
+   "total_gain_krw": -835438,
    "taxable_krw": 0,
    "by_account": [
     {
      "account_id": "SAMSUNG-2038",
      "method": "AVG",
-     "gain_krw": 1323684
+     "gain_krw": -835438
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
-   "n_sales": 3
+   "n_sales": 2
   },
   "2039": {
    "tax_krw": 0,
-   "total_gain_krw": -162244,
+   "total_gain_krw": -4868,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "SAMSUNG-2039",
+     "account_id": "TOSS-2039",
      "method": "AVG",
-     "gain_krw": -162244
+     "gain_krw": -4868
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
-   "n_sales": 3
+   "n_sales": 1
   },
   "2040": {
    "tax_krw": 0,
-   "total_gain_krw": 421109,
+   "total_gain_krw": -2376877,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "SAMSUNG-2040",
+     "account_id": "TOSS-2040",
      "method": "AVG",
-     "gain_krw": 421109
+     "gain_krw": -2376877
     }
    ],
    "transferred_lot_sales": [],
@@ -607,59 +609,59 @@
    "n_sales": 2
   },
   "2041": {
-   "tax_krw": 3475506,
-   "total_gain_krw": 18297759,
-   "taxable_krw": 15797759,
+   "tax_krw": 0,
+   "total_gain_krw": -406707,
+   "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "DAISHIN-2041",
+     "account_id": "SAMSUNG-2041",
      "method": "AVG",
-     "gain_krw": 18297759
+     "gain_krw": -406707
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [],
+   "n_sales": 2
+  },
+  "2042": {
+   "tax_krw": 0,
+   "total_gain_krw": -137864,
+   "taxable_krw": 0,
+   "by_account": [
+    {
+     "account_id": "KIS-2042",
+     "method": "AVG",
+     "gain_krw": -137864
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [],
+   "n_sales": 3
+  },
+  "2043": {
+   "tax_krw": 3522468,
+   "total_gain_krw": 18511222,
+   "taxable_krw": 16011222,
+   "by_account": [
+    {
+     "account_id": "KIS-2043",
+     "method": "AVG",
+     "gain_krw": 18511222
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
    "n_sales": 4
   },
-  "2042": {
-   "tax_krw": 2710788,
-   "total_gain_krw": 14821764,
-   "taxable_krw": 12321764,
-   "by_account": [
-    {
-     "account_id": "DAISHIN-2042",
-     "method": "AVG",
-     "gain_krw": 14821764
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 1
-  },
-  "2043": {
-   "tax_krw": 4193212,
-   "total_gain_krw": 21560059,
-   "taxable_krw": 19060059,
-   "by_account": [
-    {
-     "account_id": "TOSS-2043",
-     "method": "AVG",
-     "gain_krw": 21560059
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 1
-  },
   "2044": {
    "tax_krw": 0,
-   "total_gain_krw": 1300664,
+   "total_gain_krw": 1514610,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "SAMSUNG-2044",
+     "account_id": "DAISHIN-2044",
      "method": "AVG",
-     "gain_krw": 1300664
+     "gain_krw": 1514610
     }
    ],
    "transferred_lot_sales": [],
@@ -667,34 +669,34 @@
    "n_sales": 2
   },
   "2045": {
-   "tax_krw": 592020,
-   "total_gain_krw": 5191004,
-   "taxable_krw": 2691004,
+   "tax_krw": 0,
+   "total_gain_krw": -1015766,
+   "taxable_krw": 0,
    "by_account": [
     {
      "account_id": "KIS-2045",
      "method": "AVG",
-     "gain_krw": 5191004
+     "gain_krw": -1015766
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
-   "n_sales": 4
+   "n_sales": 2
   },
   "2046": {
    "tax_krw": 0,
-   "total_gain_krw": 379118,
+   "total_gain_krw": 631786,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "DAISHIN-2046",
-     "method": "AVG",
-     "gain_krw": -2381389
+     "account_id": "KAKAOPAY-2046",
+     "method": "FIFO",
+     "gain_krw": 886531
     },
     {
-     "account_id": "KB-2046",
+     "account_id": "MIRAE-2046",
      "method": "FIFO",
-     "gain_krw": 2760507
+     "gain_krw": -254745
     }
    ],
    "transferred_lot_sales": [],
@@ -702,163 +704,165 @@
    "n_sales": 4
   },
   "2047": {
-   "tax_krw": 125759,
-   "total_gain_krw": 3071635,
-   "taxable_krw": 571635,
+   "tax_krw": 0,
+   "total_gain_krw": -8172737,
+   "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "KIWOOM-2047",
-     "method": "FIFO",
-     "gain_krw": 1019729
+     "account_id": "DAISHIN-2047",
+     "method": "AVG",
+     "gain_krw": -3611414
     },
     {
      "account_id": "SHINHAN-2047",
      "method": "FIFO",
-     "gain_krw": 2051906
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 4
-  },
-  "2048": {
-   "tax_krw": 0,
-   "total_gain_krw": 2255146,
-   "taxable_krw": 0,
-   "by_account": [
-    {
-     "account_id": "KIWOOM-2048",
-     "method": "FIFO",
-     "gain_krw": 773852
-    },
-    {
-     "account_id": "NAMUH-2048",
-     "method": "FIFO",
-     "gain_krw": 1481294
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [
-    "NAMUH-2048"
-   ],
-   "n_sales": 4
-  },
-  "2049": {
-   "tax_krw": 0,
-   "total_gain_krw": -108519,
-   "taxable_krw": 0,
-   "by_account": [
-    {
-     "account_id": "KIS-2049",
-     "method": "AVG",
-     "gain_krw": 307731
-    },
-    {
-     "account_id": "SAMSUNG-2049",
-     "method": "AVG",
-     "gain_krw": -416250
+     "gain_krw": -4561323
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
    "n_sales": 6
   },
-  "2050": {
-   "tax_krw": 421255,
-   "total_gain_krw": 4414799,
-   "taxable_krw": 1914799,
+  "2048": {
+   "tax_krw": 0,
+   "total_gain_krw": -2638256,
+   "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "KIWOOM-2050",
+     "account_id": "KIS-2048",
+     "method": "AVG",
+     "gain_krw": -3800838
+    },
+    {
+     "account_id": "NAMUH-2048",
      "method": "FIFO",
-     "gain_krw": 4376006
+     "gain_krw": 1162582
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [
+    "NAMUH-2048"
+   ],
+   "n_sales": 6
+  },
+  "2049": {
+   "tax_krw": 3176055,
+   "total_gain_krw": 16936616,
+   "taxable_krw": 14436616,
+   "by_account": [
+    {
+     "account_id": "DAISHIN-2049",
+     "method": "AVG",
+     "gain_krw": 3452444
+    },
+    {
+     "account_id": "KIS-2049",
+     "method": "AVG",
+     "gain_krw": 13484172
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [],
+   "n_sales": 4
+  },
+  "2050": {
+   "tax_krw": 256553,
+   "total_gain_krw": 3666153,
+   "taxable_krw": 1166153,
+   "by_account": [
+    {
+     "account_id": "KAKAOPAY-2050",
+     "method": "FIFO",
+     "gain_krw": 4894309
     },
     {
      "account_id": "NAMUH-2050",
      "method": "FIFO",
-     "gain_krw": 38793
+     "gain_krw": -1228156
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [
     "NAMUH-2050"
    ],
-   "n_sales": 4
+   "n_sales": 6
   },
   "2051": {
-   "tax_krw": 1943613,
-   "total_gain_krw": 11334609,
-   "taxable_krw": 8834609,
+   "tax_krw": 3258850,
+   "total_gain_krw": 17312958,
+   "taxable_krw": 14812958,
    "by_account": [
-    {
-     "account_id": "DAISHIN-2051",
-     "method": "AVG",
-     "gain_krw": -1942379
-    },
     {
      "account_id": "KB-2051",
      "method": "FIFO",
-     "gain_krw": 13276988
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 4
-  },
-  "2052": {
-   "tax_krw": 400779,
-   "total_gain_krw": 4321727,
-   "taxable_krw": 1821727,
-   "by_account": [
-    {
-     "account_id": "KB-2052",
-     "method": "FIFO",
-     "gain_krw": 1075666
+     "gain_krw": 16708812
     },
     {
-     "account_id": "KIS-2052",
+     "account_id": "KIS-2051",
      "method": "AVG",
-     "gain_krw": 3246061
+     "gain_krw": 604146
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
    "n_sales": 2
   },
-  "2053": {
-   "tax_krw": 381726,
-   "total_gain_krw": 4235121,
-   "taxable_krw": 1735121,
+  "2052": {
+   "tax_krw": 0,
+   "total_gain_krw": 662034,
+   "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "KAKAOPAY-2053",
-     "method": "FIFO",
-     "gain_krw": 4039691
+     "account_id": "KIS-2052",
+     "method": "AVG",
+     "gain_krw": -3540000
     },
     {
-     "account_id": "KIS-2053",
+     "account_id": "NAMUH-2052",
+     "method": "FIFO",
+     "gain_krw": 4202034
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [
+    "NAMUH-2052"
+   ],
+   "n_sales": 6
+  },
+  "2053": {
+   "tax_krw": 0,
+   "total_gain_krw": -1141622,
+   "taxable_krw": 0,
+   "by_account": [
+    {
+     "account_id": "DAISHIN-2053",
      "method": "AVG",
-     "gain_krw": 195430
+     "gain_krw": 1909571
+    },
+    {
+     "account_id": "SAMSUNG-2053",
+     "method": "AVG",
+     "gain_krw": -3051193
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
-   "n_sales": 4
+   "n_sales": 2
   },
   "2054": {
    "tax_krw": 0,
-   "total_gain_krw": -611573,
+   "total_gain_krw": 1251187,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "KIS-2054",
-     "method": "AVG",
-     "gain_krw": -278462
+     "account_id": "MIRAE-2054",
+     "method": "FIFO",
+     "gain_krw": 594096
     },
     {
-     "account_id": "SHINHAN-2054",
-     "method": "FIFO",
-     "gain_krw": -333111
+     "account_id": "TOSS-2054",
+     "method": "AVG",
+     "gain_krw": 657091
     }
    ],
    "transferred_lot_sales": [],
@@ -866,141 +870,141 @@
    "n_sales": 2
   },
   "2055": {
-   "tax_krw": 6639067,
-   "total_gain_krw": 32677581,
-   "taxable_krw": 30177581,
+   "tax_krw": 0,
+   "total_gain_krw": 600546,
+   "taxable_krw": 0,
    "by_account": [
+    {
+     "account_id": "DAISHIN-2055",
+     "method": "AVG",
+     "gain_krw": 521090
+    },
     {
      "account_id": "KIS-2055",
      "method": "AVG",
-     "gain_krw": 33205544
+     "gain_krw": 79456
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [],
+   "n_sales": 4
+  },
+  "2056": {
+   "tax_krw": 0,
+   "total_gain_krw": 50646,
+   "taxable_krw": 0,
+   "by_account": [
+    {
+     "account_id": "KIS-2056",
+     "method": "AVG",
+     "gain_krw": 273978
     },
     {
-     "account_id": "SAMSUNG-2055",
+     "account_id": "MIRAE-2056",
+     "method": "FIFO",
+     "gain_krw": -223332
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [],
+   "n_sales": 4
+  },
+  "2057": {
+   "tax_krw": 0,
+   "total_gain_krw": -1922213,
+   "taxable_krw": 0,
+   "by_account": [
+    {
+     "account_id": "KIS-2057",
      "method": "AVG",
-     "gain_krw": -527963
+     "gain_krw": -2146639
+    },
+    {
+     "account_id": "KIWOOM-2057",
+     "method": "FIFO",
+     "gain_krw": 224426
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
    "n_sales": 2
   },
-  "2056": {
+  "2058": {
    "tax_krw": 0,
-   "total_gain_krw": -9003877,
+   "total_gain_krw": 2092578,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "KB-2056",
+     "account_id": "MIRAE-2058",
      "method": "FIFO",
-     "gain_krw": -8147698
+     "gain_krw": 313033
     },
     {
-     "account_id": "KIWOOM-2056",
+     "account_id": "NAMUH-2058",
      "method": "FIFO",
-     "gain_krw": -856179
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 6
-  },
-  "2057": {
-   "tax_krw": 1025226,
-   "total_gain_krw": 7160121,
-   "taxable_krw": 4660121,
-   "by_account": [
-    {
-     "account_id": "NAMUH-2057",
-     "method": "FIFO",
-     "gain_krw": -1503574
-    },
-    {
-     "account_id": "SAMSUNG-2057",
-     "method": "AVG",
-     "gain_krw": 8663695
+     "gain_krw": 1779545
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [
-    "NAMUH-2057"
+    "NAMUH-2058"
    ],
-   "n_sales": 4
-  },
-  "2058": {
-   "tax_krw": 765922,
-   "total_gain_krw": 5981467,
-   "taxable_krw": 3481467,
-   "by_account": [
-    {
-     "account_id": "DAISHIN-2058",
-     "method": "AVG",
-     "gain_krw": 2160757
-    },
-    {
-     "account_id": "TOSS-2058",
-     "method": "AVG",
-     "gain_krw": 3820710
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 6
+   "n_sales": 2
   },
   "2059": {
-   "tax_krw": 4850944,
-   "total_gain_krw": 24549746,
-   "taxable_krw": 22049746,
-   "by_account": [
-    {
-     "account_id": "KAKAOPAY-2059",
-     "method": "FIFO",
-     "gain_krw": 1303562
-    },
-    {
-     "account_id": "KIS-2059",
-     "method": "AVG",
-     "gain_krw": 23246184
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 6
-  },
-  "2060": {
    "tax_krw": 0,
-   "total_gain_krw": -1074250,
+   "total_gain_krw": 1227764,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "KAKAOPAY-2060",
-     "method": "FIFO",
-     "gain_krw": -1147495
+     "account_id": "DAISHIN-2059",
+     "method": "AVG",
+     "gain_krw": 939879
     },
     {
-     "account_id": "SHINHAN-2060",
+     "account_id": "SHINHAN-2059",
      "method": "FIFO",
-     "gain_krw": 73245
+     "gain_krw": 287885
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
    "n_sales": 4
   },
+  "2060": {
+   "tax_krw": 1652095,
+   "total_gain_krw": 10009523,
+   "taxable_krw": 7509523,
+   "by_account": [
+    {
+     "account_id": "DAISHIN-2060",
+     "method": "AVG",
+     "gain_krw": 9918637
+    },
+    {
+     "account_id": "KB-2060",
+     "method": "FIFO",
+     "gain_krw": 90886
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [],
+   "n_sales": 6
+  },
   "2061": {
-   "tax_krw": 2445899,
-   "total_gain_krw": 13617723,
-   "taxable_krw": 11117723,
+   "tax_krw": 0,
+   "total_gain_krw": 250872,
+   "taxable_krw": 0,
    "by_account": [
     {
      "account_id": "DAISHIN-2061",
      "method": "AVG",
-     "gain_krw": 12660731
+     "gain_krw": 174955
     },
     {
-     "account_id": "KIWOOM-2061",
-     "method": "FIFO",
-     "gain_krw": 956992
+     "account_id": "TOSS-2061",
+     "method": "AVG",
+     "gain_krw": 75917
     }
    ],
    "transferred_lot_sales": [],
@@ -1008,19 +1012,19 @@
    "n_sales": 2
   },
   "2062": {
-   "tax_krw": 0,
-   "total_gain_krw": -825276,
-   "taxable_krw": 0,
+   "tax_krw": 1979459,
+   "total_gain_krw": 11497542,
+   "taxable_krw": 8997542,
    "by_account": [
     {
-     "account_id": "KB-2062",
-     "method": "FIFO",
-     "gain_krw": -273777
+     "account_id": "DAISHIN-2062",
+     "method": "AVG",
+     "gain_krw": 5645488
     },
     {
-     "account_id": "MIRAE-2062",
-     "method": "FIFO",
-     "gain_krw": -551499
+     "account_id": "TOSS-2062",
+     "method": "AVG",
+     "gain_krw": 5852054
     }
    ],
    "transferred_lot_sales": [],
@@ -1029,18 +1033,18 @@
   },
   "2063": {
    "tax_krw": 0,
-   "total_gain_krw": -1020487,
+   "total_gain_krw": -43202,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "KIWOOM-2063",
+     "account_id": "SHINHAN-2063",
      "method": "FIFO",
-     "gain_krw": -720123
+     "gain_krw": -346174
     },
     {
-     "account_id": "SAMSUNG-2063",
+     "account_id": "TOSS-2063",
      "method": "AVG",
-     "gain_krw": -300364
+     "gain_krw": 302972
     }
    ],
    "transferred_lot_sales": [],
@@ -1049,18 +1053,18 @@
   },
   "2064": {
    "tax_krw": 0,
-   "total_gain_krw": -1533795,
+   "total_gain_krw": 1163386,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "DAISHIN-2064",
+     "account_id": "KIS-2064",
      "method": "AVG",
-     "gain_krw": -1226087
+     "gain_krw": -933565
     },
     {
-     "account_id": "SHINHAN-2064",
+     "account_id": "KIWOOM-2064",
      "method": "FIFO",
-     "gain_krw": -307708
+     "gain_krw": 2096951
     }
    ],
    "transferred_lot_sales": [],
@@ -1068,59 +1072,59 @@
    "n_sales": 4
   },
   "2065": {
-   "tax_krw": 2370431,
-   "total_gain_krw": 13274689,
-   "taxable_krw": 10774689,
+   "tax_krw": 0,
+   "total_gain_krw": 1643818,
+   "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "DAISHIN-2065",
-     "method": "AVG",
-     "gain_krw": 2251847
+     "account_id": "KB-2065",
+     "method": "FIFO",
+     "gain_krw": -36263
     },
     {
-     "account_id": "KIWOOM-2065",
+     "account_id": "MIRAE-2065",
      "method": "FIFO",
-     "gain_krw": 11022842
+     "gain_krw": 1680081
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
-   "n_sales": 4
+   "n_sales": 2
   },
   "2066": {
-   "tax_krw": 1215450,
-   "total_gain_krw": 8024776,
-   "taxable_krw": 5524776,
+   "tax_krw": 1571856,
+   "total_gain_krw": 9644804,
+   "taxable_krw": 7144804,
    "by_account": [
     {
-     "account_id": "KIWOOM-2066",
-     "method": "FIFO",
-     "gain_krw": 3389664
+     "account_id": "DAISHIN-2066",
+     "method": "AVG",
+     "gain_krw": 6394180
     },
     {
-     "account_id": "TOSS-2066",
+     "account_id": "SAMSUNG-2066",
      "method": "AVG",
-     "gain_krw": 4635112
+     "gain_krw": 3250624
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
-   "n_sales": 6
+   "n_sales": 2
   },
   "2067": {
-   "tax_krw": 3269618,
-   "total_gain_krw": 17361900,
-   "taxable_krw": 14861900,
+   "tax_krw": 0,
+   "total_gain_krw": -185038,
+   "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "DAISHIN-2067",
-     "method": "AVG",
-     "gain_krw": 2486906
+     "account_id": "KAKAOPAY-2067",
+     "method": "FIFO",
+     "gain_krw": 2849362
     },
     {
-     "account_id": "KIWOOM-2067",
-     "method": "FIFO",
-     "gain_krw": 14874994
+     "account_id": "KIS-2067",
+     "method": "AVG",
+     "gain_krw": -3034400
     }
    ],
    "transferred_lot_sales": [],
@@ -1128,18 +1132,18 @@
    "n_sales": 2
   },
   "2068": {
-   "tax_krw": 0,
-   "total_gain_krw": -186368,
-   "taxable_krw": 0,
+   "tax_krw": 673462,
+   "total_gain_krw": 5561193,
+   "taxable_krw": 3061193,
    "by_account": [
     {
-     "account_id": "NAMUH-2068",
+     "account_id": "KIWOOM-2068",
      "method": "FIFO",
-     "gain_krw": -186368
+     "gain_krw": 5561193
     }
    ],
    "transferred_lot_sales": [
-    "NAMUH-20251124-00488"
+    "KIWOOM-20251013-00459"
    ],
    "needs_confirmation": [
     "NAMUH-2068"
@@ -1147,35 +1151,42 @@
    "n_sales": 1
   },
   "2069": {
-   "tax_krw": 0,
-   "total_gain_krw": -82942,
-   "taxable_krw": 0,
+   "tax_krw": 996592,
+   "total_gain_krw": 7029964,
+   "taxable_krw": 4529964,
    "by_account": [
     {
-     "account_id": "TOSS-2069",
+     "account_id": "DAISHIN-2069",
      "method": "AVG",
-     "gain_krw": -82942
+     "gain_krw": -520973
+    },
+    {
+     "account_id": "NAMUH-2069",
+     "method": "FIFO",
+     "gain_krw": 7550937
     }
    ],
    "transferred_lot_sales": [
-    "TOSS-20251027-00493"
+    "NAMUH-20251201-00464"
    ],
-   "needs_confirmation": [],
-   "n_sales": 1
+   "needs_confirmation": [
+    "NAMUH-2069"
+   ],
+   "n_sales": 2
   },
   "2070": {
-   "tax_krw": 0,
-   "total_gain_krw": 492116,
-   "taxable_krw": 0,
+   "tax_krw": 237548,
+   "total_gain_krw": 3579768,
+   "taxable_krw": 1079768,
    "by_account": [
     {
      "account_id": "NAMUH-2070",
      "method": "FIFO",
-     "gain_krw": 492116
+     "gain_krw": 3579768
     }
    ],
    "transferred_lot_sales": [
-    "NAMUH-20251203-00497"
+    "NAMUH-20251203-00471"
    ],
    "needs_confirmation": [
     "NAMUH-2070"
@@ -1183,18 +1194,18 @@
    "n_sales": 1
   },
   "2071": {
-   "tax_krw": 0,
-   "total_gain_krw": 1305636,
-   "taxable_krw": 0,
+   "tax_krw": 1211623,
+   "total_gain_krw": 8007380,
+   "taxable_krw": 5507380,
    "by_account": [
     {
      "account_id": "NAMUH-2071",
      "method": "FIFO",
-     "gain_krw": 1305636
+     "gain_krw": 8007380
     }
    ],
    "transferred_lot_sales": [
-    "NAMUH-20251125-00503"
+    "NAMUH-20251009-00476"
    ],
    "needs_confirmation": [
     "NAMUH-2071"
@@ -1202,283 +1213,302 @@
    "n_sales": 1
   },
   "2072": {
-   "tax_krw": 0,
-   "total_gain_krw": -89141,
-   "taxable_krw": 0,
+   "tax_krw": 5089005,
+   "total_gain_krw": 25631842,
+   "taxable_krw": 23131842,
    "by_account": [
     {
-     "account_id": "NAMUH-2072",
+     "account_id": "MIRAE-2072",
      "method": "FIFO",
-     "gain_krw": -89141
+     "gain_krw": 25659416
+    },
+    {
+     "account_id": "TOSS-2072",
+     "method": "AVG",
+     "gain_krw": -27574
     }
    ],
    "transferred_lot_sales": [
-    "NAMUH-20251002-00508"
+    "MIRAE-20251112-00480"
    ],
-   "needs_confirmation": [
-    "NAMUH-2072"
-   ],
-   "n_sales": 1
+   "needs_confirmation": [],
+   "n_sales": 2
   },
   "2073": {
    "tax_krw": 0,
-   "total_gain_krw": 871146,
+   "total_gain_krw": 470556,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "DAISHIN-2073",
-     "method": "AVG",
-     "gain_krw": -6840
+     "account_id": "MIRAE-2073",
+     "method": "FIFO",
+     "gain_krw": 503466
     },
     {
-     "account_id": "SHINHAN-2073",
+     "account_id": "NAMUH-2073",
      "method": "FIFO",
-     "gain_krw": 877986
+     "gain_krw": -32910
     }
    ],
    "transferred_lot_sales": [
-    "DAISHIN-20251120-00513"
+    "NAMUH-20250515-00487"
    ],
-   "needs_confirmation": [],
-   "n_sales": 3
+   "needs_confirmation": [
+    "NAMUH-2073"
+   ],
+   "n_sales": 2
   },
   "2074": {
-   "tax_krw": 530945,
-   "total_gain_krw": 4913389,
-   "taxable_krw": 2413389,
+   "tax_krw": 0,
+   "total_gain_krw": 976206,
+   "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "DAISHIN-2074",
-     "method": "AVG",
-     "gain_krw": 5074774
-    },
-    {
-     "account_id": "KIWOOM-2074",
+     "account_id": "NAMUH-2074",
      "method": "FIFO",
-     "gain_krw": -161385
+     "gain_krw": 976206
     }
    ],
    "transferred_lot_sales": [
-    "KIWOOM-20250912-00522"
+    "NAMUH-20250925-00493"
    ],
-   "needs_confirmation": [],
-   "n_sales": 3
+   "needs_confirmation": [
+    "NAMUH-2074"
+   ],
+   "n_sales": 1
   },
   "2075": {
    "tax_krw": 0,
-   "total_gain_krw": 2118782,
+   "total_gain_krw": 2445231,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "NAMUH-2075",
-     "method": "FIFO",
-     "gain_krw": 1026372
-    },
-    {
      "account_id": "SHINHAN-2075",
      "method": "FIFO",
-     "gain_krw": 1092410
+     "gain_krw": 1972994
+    },
+    {
+     "account_id": "TOSS-2075",
+     "method": "AVG",
+     "gain_krw": 472237
     }
    ],
    "transferred_lot_sales": [
-    "NAMUH-20251120-00532"
+    "SHINHAN-20250722-00497"
    ],
-   "needs_confirmation": [
-    "NAMUH-2075"
-   ],
-   "n_sales": 3
+   "needs_confirmation": [],
+   "n_sales": 2
   },
   "2076": {
    "tax_krw": 0,
-   "total_gain_krw": 946899,
+   "total_gain_krw": -1627577,
    "taxable_krw": 0,
    "by_account": [
     {
      "account_id": "NAMUH-2076",
      "method": "FIFO",
-     "gain_krw": 946899
+     "gain_krw": -53035
+    },
+    {
+     "account_id": "SAMSUNG-2076",
+     "method": "AVG",
+     "gain_krw": -1574542
     }
    ],
    "transferred_lot_sales": [
-    "NAMUH-20251008-00541"
+    "NAMUH-20251106-00504"
    ],
    "needs_confirmation": [
     "NAMUH-2076"
    ],
-   "n_sales": 1
+   "n_sales": 2
   },
   "2077": {
-   "tax_krw": 0,
-   "total_gain_krw": -329104,
-   "taxable_krw": 0,
+   "tax_krw": 769563,
+   "total_gain_krw": 5998014,
+   "taxable_krw": 3498014,
    "by_account": [
     {
-     "account_id": "SAMSUNG-2077",
+     "account_id": "NAMUH-2077",
+     "method": "FIFO",
+     "gain_krw": 6079671
+    },
+    {
+     "account_id": "TOSS-2077",
      "method": "AVG",
-     "gain_krw": -329104
+     "gain_krw": -81657
     }
    ],
    "transferred_lot_sales": [
-    "SAMSUNG-20251111-00546"
+    "NAMUH-20250723-00510"
    ],
-   "needs_confirmation": [],
-   "n_sales": 1
+   "needs_confirmation": [
+    "NAMUH-2077"
+   ],
+   "n_sales": 2
   },
   "2078": {
-   "tax_krw": 0,
-   "total_gain_krw": 2338189,
-   "taxable_krw": 0,
+   "tax_krw": 668691,
+   "total_gain_krw": 5539505,
+   "taxable_krw": 3039505,
    "by_account": [
     {
      "account_id": "NAMUH-2078",
      "method": "FIFO",
-     "gain_krw": 2338189
+     "gain_krw": 7202
+    },
+    {
+     "account_id": "TOSS-2078",
+     "method": "AVG",
+     "gain_krw": 5532303
     }
    ],
    "transferred_lot_sales": [
-    "NAMUH-20250908-00552"
+    "TOSS-20250623-00517"
    ],
    "needs_confirmation": [
     "NAMUH-2078"
    ],
-   "n_sales": 1
+   "n_sales": 2
   },
   "2079": {
    "tax_krw": 0,
-   "total_gain_krw": 506362,
+   "total_gain_krw": -1131961,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "DAISHIN-2079",
+     "account_id": "KIS-2079",
      "method": "AVG",
-     "gain_krw": 506362
+     "gain_krw": -1131961
     }
    ],
    "transferred_lot_sales": [
-    "DAISHIN-20250806-00557"
+    "KIS-20250811-00523"
    ],
    "needs_confirmation": [],
    "n_sales": 1
   },
   "2080": {
-   "tax_krw": 0,
-   "total_gain_krw": -1042353,
-   "taxable_krw": 0,
+   "tax_krw": 3949969,
+   "total_gain_krw": 20454405,
+   "taxable_krw": 17954405,
    "by_account": [
+    {
+     "account_id": "KAKAOPAY-2080",
+     "method": "FIFO",
+     "gain_krw": 720749
+    },
     {
      "account_id": "NAMUH-2080",
      "method": "FIFO",
-     "gain_krw": -1042353
+     "gain_krw": 19733656
     }
    ],
    "transferred_lot_sales": [
-    "NAMUH-20251106-00563"
+    "NAMUH-20251007-00528"
    ],
    "needs_confirmation": [
     "NAMUH-2080"
    ],
-   "n_sales": 1
+   "n_sales": 2
   },
   "2081": {
+   "tax_krw": 616960,
+   "total_gain_krw": 5304364,
+   "taxable_krw": 2804364,
+   "by_account": [
+    {
+     "account_id": "KB-2081",
+     "method": "FIFO",
+     "gain_krw": 1630392
+    },
+    {
+     "account_id": "TOSS-2081",
+     "method": "AVG",
+     "gain_krw": 3673972
+    }
+   ],
+   "transferred_lot_sales": [
+    "TOSS-20251107-00536"
+   ],
+   "needs_confirmation": [],
+   "n_sales": 2
+  },
+  "2082": {
    "tax_krw": 0,
-   "total_gain_krw": -127547,
+   "total_gain_krw": -203684,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "DAISHIN-2081",
-     "method": "AVG",
-     "gain_krw": 351815
-    },
-    {
-     "account_id": "NAMUH-2081",
+     "account_id": "NAMUH-2082",
      "method": "FIFO",
-     "gain_krw": -479362
+     "gain_krw": -203684
     }
    ],
    "transferred_lot_sales": [
-    "NAMUH-20250912-00568"
+    "NAMUH-20251126-00542"
    ],
    "needs_confirmation": [
-    "NAMUH-2081"
+    "NAMUH-2082"
    ],
-   "n_sales": 3
-  },
-  "2082": {
-   "tax_krw": 129029,
-   "total_gain_krw": 3086497,
-   "taxable_krw": 586497,
-   "by_account": [
-    {
-     "account_id": "KB-2082",
-     "method": "FIFO",
-     "gain_krw": 1654820
-    },
-    {
-     "account_id": "SHINHAN-2082",
-     "method": "FIFO",
-     "gain_krw": 1431677
-    }
-   ],
-   "transferred_lot_sales": [
-    "SHINHAN-20251031-00578"
-   ],
-   "needs_confirmation": [],
-   "n_sales": 3
+   "n_sales": 1
   },
   "2083": {
    "tax_krw": 0,
-   "total_gain_krw": -529331,
+   "total_gain_krw": 541567,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "DAISHIN-2083",
-     "method": "AVG",
-     "gain_krw": -529331
+     "account_id": "SHINHAN-2083",
+     "method": "FIFO",
+     "gain_krw": 541567
     }
    ],
    "transferred_lot_sales": [
-    "DAISHIN-20250717-00587"
+    "SHINHAN-20251114-00547"
    ],
    "needs_confirmation": [],
    "n_sales": 1
   },
   "2084": {
    "tax_krw": 0,
-   "total_gain_krw": 1682585,
+   "total_gain_krw": -319360,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "KIWOOM-2084",
-     "method": "FIFO",
-     "gain_krw": 1625672
+     "account_id": "KIS-2084",
+     "method": "AVG",
+     "gain_krw": -74224
     },
     {
-     "account_id": "MIRAE-2084",
+     "account_id": "KIWOOM-2084",
      "method": "FIFO",
-     "gain_krw": 56913
+     "gain_krw": -245136
     }
    ],
    "transferred_lot_sales": [
-    "MIRAE-20251201-00592"
+    "KIS-20251021-00551"
    ],
    "needs_confirmation": [],
-   "n_sales": 2
+   "n_sales": 3
   },
   "2085": {
-   "tax_krw": 1235092,
-   "total_gain_krw": 8114059,
-   "taxable_krw": 5614059,
+   "tax_krw": 0,
+   "total_gain_krw": 1354808,
+   "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "MIRAE-2085",
+     "account_id": "NAMUH-2085",
      "method": "FIFO",
-     "gain_krw": 8114059
+     "gain_krw": 1354808
     }
    ],
    "transferred_lot_sales": [
-    "MIRAE-20251003-00599"
+    "NAMUH-20250811-00561"
    ],
-   "needs_confirmation": [],
+   "needs_confirmation": [
+    "NAMUH-2085"
+   ],
    "n_sales": 1
   },
   "2086": {
@@ -1532,9 +1562,7 @@
    "taxable_krw": 0,
    "by_account": [],
    "transferred_lot_sales": [],
-   "needs_confirmation": [
-    "NAMUH-2091"
-   ],
+   "needs_confirmation": [],
    "n_sales": 0
   },
   "2092": {
@@ -1557,118 +1585,120 @@
   },
   "2094": {
    "tax_krw": 0,
-   "total_gain_krw": -53154,
+   "total_gain_krw": 59728,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "MIRAE-2094",
+     "account_id": "KAKAOPAY-2094",
      "method": "FIFO",
-     "gain_krw": -53154
+     "gain_krw": 59728
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
-   "n_sales": 1
+   "n_sales": 3
   },
   "2095": {
    "tax_krw": 0,
-   "total_gain_krw": -4721974,
+   "total_gain_krw": -166818,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "SHINHAN-2095",
+     "account_id": "NAMUH-2095",
      "method": "FIFO",
-     "gain_krw": -4721974
+     "gain_krw": -166818
     }
    ],
    "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 3
+   "needs_confirmation": [
+    "NAMUH-2095"
+   ],
+   "n_sales": 1
   },
   "2096": {
    "tax_krw": 0,
-   "total_gain_krw": -186005,
+   "total_gain_krw": -346297,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "MIRAE-2096",
+     "account_id": "SHINHAN-2096",
      "method": "FIFO",
-     "gain_krw": -186005
+     "gain_krw": -346297
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
-   "n_sales": 3
+   "n_sales": 2
   },
   "2097": {
    "tax_krw": 0,
-   "total_gain_krw": -783489,
+   "total_gain_krw": -5231149,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "KIWOOM-2097",
+     "account_id": "KB-2097",
      "method": "FIFO",
-     "gain_krw": -783489
+     "gain_krw": -5231149
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
-   "n_sales": 3
+   "n_sales": 2
   },
   "2098": {
    "tax_krw": 0,
-   "total_gain_krw": -315429,
+   "total_gain_krw": -95616,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "KAKAOPAY-2098",
+     "account_id": "MIRAE-2098",
      "method": "FIFO",
-     "gain_krw": -315429
+     "gain_krw": -95616
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
-   "n_sales": 3
+   "n_sales": 2
   },
   "2099": {
-   "tax_krw": 0,
-   "total_gain_krw": -138168,
-   "taxable_krw": 0,
+   "tax_krw": 141148,
+   "total_gain_krw": 3141586,
+   "taxable_krw": 641586,
    "by_account": [
     {
-     "account_id": "KIWOOM-2099",
+     "account_id": "MIRAE-2099",
      "method": "FIFO",
-     "gain_krw": -138168
+     "gain_krw": 3141586
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
-   "n_sales": 3
+   "n_sales": 4
   },
   "2100": {
    "tax_krw": 0,
-   "total_gain_krw": -470196,
+   "total_gain_krw": -957028,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "KAKAOPAY-2100",
+     "account_id": "KIWOOM-2100",
      "method": "FIFO",
-     "gain_krw": -470196
+     "gain_krw": -957028
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
-   "n_sales": 3
+   "n_sales": 2
   },
   "2101": {
-   "tax_krw": 0,
-   "total_gain_krw": 496524,
-   "taxable_krw": 0,
+   "tax_krw": 4357249,
+   "total_gain_krw": 22305681,
+   "taxable_krw": 19805681,
    "by_account": [
     {
-     "account_id": "KB-2101",
+     "account_id": "MIRAE-2101",
      "method": "FIFO",
-     "gain_krw": 496524
+     "gain_krw": 22305681
     }
    ],
    "transferred_lot_sales": [],
@@ -1676,14 +1706,14 @@
    "n_sales": 3
   },
   "2102": {
-   "tax_krw": 0,
-   "total_gain_krw": 64652,
-   "taxable_krw": 0,
+   "tax_krw": 380716,
+   "total_gain_krw": 4230530,
+   "taxable_krw": 1730530,
    "by_account": [
     {
-     "account_id": "MIRAE-2102",
+     "account_id": "KIWOOM-2102",
      "method": "FIFO",
-     "gain_krw": 64652
+     "gain_krw": 4230530
     }
    ],
    "transferred_lot_sales": [],
@@ -1691,44 +1721,44 @@
    "n_sales": 3
   },
   "2103": {
-   "tax_krw": 2693489,
-   "total_gain_krw": 14743132,
-   "taxable_krw": 12243132,
+   "tax_krw": 0,
+   "total_gain_krw": -408074,
+   "taxable_krw": 0,
    "by_account": [
     {
      "account_id": "SHINHAN-2103",
      "method": "FIFO",
-     "gain_krw": 14743132
+     "gain_krw": -408074
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
-   "n_sales": 3
+   "n_sales": 1
   },
   "2104": {
-   "tax_krw": 0,
-   "total_gain_krw": -38288,
-   "taxable_krw": 0,
+   "tax_krw": 198871,
+   "total_gain_krw": 3403961,
+   "taxable_krw": 903961,
    "by_account": [
     {
-     "account_id": "KAKAOPAY-2104",
+     "account_id": "KIWOOM-2104",
      "method": "FIFO",
-     "gain_krw": -38288
+     "gain_krw": 3403961
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
-   "n_sales": 4
+   "n_sales": 1
   },
   "2105": {
    "tax_krw": 0,
-   "total_gain_krw": 715762,
+   "total_gain_krw": 681945,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "KAKAOPAY-2105",
+     "account_id": "MIRAE-2105",
      "method": "FIFO",
-     "gain_krw": 715762
+     "gain_krw": 681945
     }
    ],
    "transferred_lot_sales": [],
@@ -1736,14 +1766,14 @@
    "n_sales": 1
   },
   "2106": {
-   "tax_krw": 0,
-   "total_gain_krw": -2804940,
-   "taxable_krw": 0,
+   "tax_krw": 2579895,
+   "total_gain_krw": 14226798,
+   "taxable_krw": 11726798,
    "by_account": [
     {
-     "account_id": "MIRAE-2106",
+     "account_id": "KAKAOPAY-2106",
      "method": "FIFO",
-     "gain_krw": -2804940
+     "gain_krw": 14226798
     }
    ],
    "transferred_lot_sales": [],
@@ -1751,44 +1781,44 @@
    "n_sales": 3
   },
   "2107": {
-   "tax_krw": 614969,
-   "total_gain_krw": 5295314,
-   "taxable_krw": 2795314,
+   "tax_krw": 3172694,
+   "total_gain_krw": 16921337,
+   "taxable_krw": 14421337,
    "by_account": [
     {
-     "account_id": "KIWOOM-2107",
+     "account_id": "SHINHAN-2107",
      "method": "FIFO",
-     "gain_krw": 5295314
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 1
-  },
-  "2108": {
-   "tax_krw": 1812480,
-   "total_gain_krw": 10738548,
-   "taxable_krw": 8238548,
-   "by_account": [
-    {
-     "account_id": "MIRAE-2108",
-     "method": "FIFO",
-     "gain_krw": 10738548
+     "gain_krw": 16921337
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
    "n_sales": 3
   },
-  "2109": {
-   "tax_krw": 0,
-   "total_gain_krw": 75883,
-   "taxable_krw": 0,
+  "2108": {
+   "tax_krw": 2889150,
+   "total_gain_krw": 15632501,
+   "taxable_krw": 13132501,
    "by_account": [
     {
-     "account_id": "MIRAE-2109",
+     "account_id": "KAKAOPAY-2108",
      "method": "FIFO",
-     "gain_krw": 75883
+     "gain_krw": 15632501
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [],
+   "n_sales": 2
+  },
+  "2109": {
+   "tax_krw": 3902045,
+   "total_gain_krw": 20236572,
+   "taxable_krw": 17736572,
+   "by_account": [
+    {
+     "account_id": "KB-2109",
+     "method": "FIFO",
+     "gain_krw": 20236572
     }
    ],
    "transferred_lot_sales": [],
@@ -1796,14 +1826,14 @@
    "n_sales": 2
   },
   "2110": {
-   "tax_krw": 1400126,
-   "total_gain_krw": 8864213,
-   "taxable_krw": 6364213,
+   "tax_krw": 0,
+   "total_gain_krw": 150763,
+   "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "MIRAE-2110",
+     "account_id": "KAKAOPAY-2110",
      "method": "FIFO",
-     "gain_krw": 8864213
+     "gain_krw": 150763
     }
    ],
    "transferred_lot_sales": [],
@@ -1812,13 +1842,13 @@
   },
   "2111": {
    "tax_krw": 0,
-   "total_gain_krw": -222869,
+   "total_gain_krw": 1760084,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "MIRAE-2111",
+     "account_id": "SHINHAN-2111",
      "method": "FIFO",
-     "gain_krw": -222869
+     "gain_krw": 1760084
     }
    ],
    "transferred_lot_sales": [],
@@ -1827,133 +1857,133 @@
   },
   "2112": {
    "tax_krw": 0,
-   "total_gain_krw": -701444,
+   "total_gain_krw": -197406,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "SHINHAN-2112",
+     "account_id": "KIWOOM-2112",
      "method": "FIFO",
-     "gain_krw": -701444
+     "gain_krw": -197406
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
-   "n_sales": 4
+   "n_sales": 2
   },
   "2113": {
-   "tax_krw": 0,
-   "total_gain_krw": 2094331,
-   "taxable_krw": 0,
+   "tax_krw": 48256,
+   "total_gain_krw": 2719347,
+   "taxable_krw": 219347,
    "by_account": [
     {
-     "account_id": "SHINHAN-2113",
+     "account_id": "KAKAOPAY-2113",
      "method": "FIFO",
-     "gain_krw": 2094331
+     "gain_krw": 2719347
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
-   "n_sales": 4
+   "n_sales": 1
   },
   "2114": {
-   "tax_krw": 2353670,
-   "total_gain_krw": 13198501,
-   "taxable_krw": 10698501,
+   "tax_krw": 2067460,
+   "total_gain_krw": 11897547,
+   "taxable_krw": 9397547,
    "by_account": [
     {
-     "account_id": "MIRAE-2114",
+     "account_id": "KAKAOPAY-2114",
      "method": "FIFO",
-     "gain_krw": 13198501
+     "gain_krw": 11897547
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
-   "n_sales": 4
+   "n_sales": 3
   },
   "2115": {
    "tax_krw": 0,
-   "total_gain_krw": 1189774,
+   "total_gain_krw": 75666,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "KIWOOM-2115",
+     "account_id": "KAKAOPAY-2115",
      "method": "FIFO",
-     "gain_krw": 1189774
+     "gain_krw": 75666
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
-   "n_sales": 2
+   "n_sales": 1
   },
   "2116": {
    "tax_krw": 0,
-   "total_gain_krw": 769417,
+   "total_gain_krw": 52261,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "KB-2116",
+     "account_id": "KIWOOM-2116",
      "method": "FIFO",
-     "gain_krw": 769417
+     "gain_krw": 52261
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
-   "n_sales": 2
+   "n_sales": 1
   },
   "2117": {
-   "tax_krw": 1910982,
-   "total_gain_krw": 11186284,
-   "taxable_krw": 8686284,
+   "tax_krw": 0,
+   "total_gain_krw": 178742,
+   "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "KB-2117",
+     "account_id": "MIRAE-2117",
      "method": "FIFO",
-     "gain_krw": 11186284
+     "gain_krw": 178742
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
-   "n_sales": 2
+   "n_sales": 1
   },
   "2118": {
-   "tax_krw": 1592684,
-   "total_gain_krw": 9739473,
-   "taxable_krw": 7239473,
+   "tax_krw": 1042898,
+   "total_gain_krw": 7240447,
+   "taxable_krw": 4740447,
    "by_account": [
     {
      "account_id": "KIWOOM-2118",
      "method": "FIFO",
-     "gain_krw": 9739473
+     "gain_krw": 7240447
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
-   "n_sales": 1
+   "n_sales": 2
   },
   "2119": {
-   "tax_krw": 0,
-   "total_gain_krw": 86999,
-   "taxable_krw": 0,
+   "tax_krw": 5254195,
+   "total_gain_krw": 26382707,
+   "taxable_krw": 23882707,
    "by_account": [
     {
-     "account_id": "KIWOOM-2119",
+     "account_id": "SHINHAN-2119",
      "method": "FIFO",
-     "gain_krw": 86999
+     "gain_krw": 26382707
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
-   "n_sales": 1
+   "n_sales": 3
   },
   "2120": {
-   "tax_krw": 6777257,
-   "total_gain_krw": 33305714,
-   "taxable_krw": 30805714,
+   "tax_krw": 1218015,
+   "total_gain_krw": 8036432,
+   "taxable_krw": 5536432,
    "by_account": [
     {
-     "account_id": "KB-2120",
+     "account_id": "MIRAE-2120",
      "method": "FIFO",
-     "gain_krw": 33305714
+     "gain_krw": 8036432
     }
    ],
    "transferred_lot_sales": [],
@@ -1961,29 +1991,29 @@
    "n_sales": 2
   },
   "2121": {
-   "tax_krw": 2685243,
-   "total_gain_krw": 14705653,
-   "taxable_krw": 12205653,
+   "tax_krw": 1557017,
+   "total_gain_krw": 9577352,
+   "taxable_krw": 7077352,
    "by_account": [
     {
      "account_id": "KAKAOPAY-2121",
      "method": "FIFO",
-     "gain_krw": 14705653
+     "gain_krw": 9577352
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
-   "n_sales": 2
+   "n_sales": 4
   },
   "2122": {
-   "tax_krw": 0,
-   "total_gain_krw": 117209,
-   "taxable_krw": 0,
+   "tax_krw": 100888,
+   "total_gain_krw": 2958585,
+   "taxable_krw": 458585,
    "by_account": [
     {
-     "account_id": "KAKAOPAY-2122",
+     "account_id": "KIWOOM-2122",
      "method": "FIFO",
-     "gain_krw": 117209
+     "gain_krw": 2958585
     }
    ],
    "transferred_lot_sales": [],
@@ -1991,14 +2021,14 @@
    "n_sales": 1
   },
   "2123": {
-   "tax_krw": 535193,
-   "total_gain_krw": 4932697,
-   "taxable_krw": 2432697,
+   "tax_krw": 542737,
+   "total_gain_krw": 4966990,
+   "taxable_krw": 2466990,
    "by_account": [
     {
-     "account_id": "KB-2123",
+     "account_id": "KAKAOPAY-2123",
      "method": "FIFO",
-     "gain_krw": 4932697
+     "gain_krw": 4966990
     }
    ],
    "transferred_lot_sales": [],
@@ -2006,29 +2036,29 @@
    "n_sales": 2
   },
   "2124": {
-   "tax_krw": 864689,
-   "total_gain_krw": 6430408,
-   "taxable_krw": 3930408,
+   "tax_krw": 64708,
+   "total_gain_krw": 2794128,
+   "taxable_krw": 294128,
    "by_account": [
     {
-     "account_id": "SHINHAN-2124",
+     "account_id": "KIWOOM-2124",
      "method": "FIFO",
-     "gain_krw": 6430408
+     "gain_krw": 2794128
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
-   "n_sales": 2
+   "n_sales": 3
   },
   "2125": {
-   "tax_krw": 0,
-   "total_gain_krw": 1110958,
-   "taxable_krw": 0,
+   "tax_krw": 797844,
+   "total_gain_krw": 6126567,
+   "taxable_krw": 3626567,
    "by_account": [
     {
      "account_id": "SHINHAN-2125",
      "method": "FIFO",
-     "gain_krw": 1110958
+     "gain_krw": 6126567
     }
    ],
    "transferred_lot_sales": [],
@@ -2037,118 +2067,120 @@
   },
   "2126": {
    "tax_krw": 0,
-   "total_gain_krw": -487765,
+   "total_gain_krw": 121774,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "KB-2126",
+     "account_id": "KIWOOM-2126",
      "method": "FIFO",
-     "gain_krw": -487765
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 3
-  },
-  "2127": {
-   "tax_krw": 3574300,
-   "total_gain_krw": 18746819,
-   "taxable_krw": 16246819,
-   "by_account": [
-    {
-     "account_id": "KAKAOPAY-2127",
-     "method": "FIFO",
-     "gain_krw": 18746819
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 3
-  },
-  "2128": {
-   "tax_krw": 3311326,
-   "total_gain_krw": 17551482,
-   "taxable_krw": 15051482,
-   "by_account": [
-    {
-     "account_id": "KB-2128",
-     "method": "FIFO",
-     "gain_krw": 17551482
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 3
-  },
-  "2129": {
-   "tax_krw": 0,
-   "total_gain_krw": 2056192,
-   "taxable_krw": 0,
-   "by_account": [
-    {
-     "account_id": "KIWOOM-2129",
-     "method": "FIFO",
-     "gain_krw": 2056192
+     "gain_krw": 121774
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
    "n_sales": 1
   },
-  "2130": {
-   "tax_krw": 3071578,
-   "total_gain_krw": 16461720,
-   "taxable_krw": 13961720,
+  "2127": {
+   "tax_krw": 0,
+   "total_gain_krw": -1977271,
+   "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "SHINHAN-2130",
+     "account_id": "KB-2127",
      "method": "FIFO",
-     "gain_krw": 16461720
+     "gain_krw": -1977271
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
    "n_sales": 2
   },
-  "2131": {
+  "2128": {
    "tax_krw": 0,
-   "total_gain_krw": 1613307,
+   "total_gain_krw": 1114641,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "DAISHIN-2131",
-     "method": "AVG",
-     "gain_krw": 1613307
+     "account_id": "KB-2128",
+     "method": "FIFO",
+     "gain_krw": 1114641
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
-   "n_sales": 3
+   "n_sales": 4
+  },
+  "2129": {
+   "tax_krw": 0,
+   "total_gain_krw": -127904,
+   "taxable_krw": 0,
+   "by_account": [
+    {
+     "account_id": "NAMUH-2129",
+     "method": "FIFO",
+     "gain_krw": -127904
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [
+    "NAMUH-2129"
+   ],
+   "n_sales": 2
+  },
+  "2130": {
+   "tax_krw": 1944229,
+   "total_gain_krw": 11337408,
+   "taxable_krw": 8837408,
+   "by_account": [
+    {
+     "account_id": "KB-2130",
+     "method": "FIFO",
+     "gain_krw": 11337408
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [],
+   "n_sales": 4
+  },
+  "2131": {
+   "tax_krw": 381880,
+   "total_gain_krw": 4235821,
+   "taxable_krw": 1735821,
+   "by_account": [
+    {
+     "account_id": "SAMSUNG-2131",
+     "method": "AVG",
+     "gain_krw": 4235821
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [],
+   "n_sales": 1
   },
   "2132": {
    "tax_krw": 0,
-   "total_gain_krw": 2433174,
+   "total_gain_krw": 1498015,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "TOSS-2132",
+     "account_id": "DAISHIN-2132",
      "method": "AVG",
-     "gain_krw": 2433174
+     "gain_krw": 1498015
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
-   "n_sales": 3
+   "n_sales": 2
   },
   "2133": {
-   "tax_krw": 2218996,
-   "total_gain_krw": 12586348,
-   "taxable_krw": 10086348,
+   "tax_krw": 0,
+   "total_gain_krw": 2119411,
+   "taxable_krw": 0,
    "by_account": [
     {
      "account_id": "DAISHIN-2133",
      "method": "AVG",
-     "gain_krw": 12586348
+     "gain_krw": 2119411
     }
    ],
    "transferred_lot_sales": [],
@@ -2157,218 +2189,220 @@
   },
   "2134": {
    "tax_krw": 0,
-   "total_gain_krw": -479099,
+   "total_gain_krw": -588508,
    "taxable_krw": 0,
    "by_account": [
     {
      "account_id": "DAISHIN-2134",
      "method": "AVG",
-     "gain_krw": -479099
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 2
-  },
-  "2135": {
-   "tax_krw": 0,
-   "total_gain_krw": 54959,
-   "taxable_krw": 0,
-   "by_account": [
-    {
-     "account_id": "KIS-2135",
-     "method": "AVG",
-     "gain_krw": 54959
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 2
-  },
-  "2136": {
-   "tax_krw": 0,
-   "total_gain_krw": -527319,
-   "taxable_krw": 0,
-   "by_account": [
-    {
-     "account_id": "KIS-2136",
-     "method": "AVG",
-     "gain_krw": -527319
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 2
-  },
-  "2137": {
-   "tax_krw": 9428131,
-   "total_gain_krw": 45355141,
-   "taxable_krw": 42855141,
-   "by_account": [
-    {
-     "account_id": "TOSS-2137",
-     "method": "AVG",
-     "gain_krw": 45355141
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 4
-  },
-  "2138": {
-   "tax_krw": 0,
-   "total_gain_krw": 916980,
-   "taxable_krw": 0,
-   "by_account": [
-    {
-     "account_id": "TOSS-2138",
-     "method": "AVG",
-     "gain_krw": 916980
+     "gain_krw": -588508
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
    "n_sales": 3
   },
-  "2139": {
+  "2135": {
    "tax_krw": 0,
-   "total_gain_krw": 2401528,
+   "total_gain_krw": 234789,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "TOSS-2139",
+     "account_id": "NAMUH-2135",
+     "method": "FIFO",
+     "gain_krw": 234789
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [
+    "NAMUH-2135"
+   ],
+   "n_sales": 2
+  },
+  "2136": {
+   "tax_krw": 0,
+   "total_gain_krw": 2266564,
+   "taxable_krw": 0,
+   "by_account": [
+    {
+     "account_id": "SAMSUNG-2136",
      "method": "AVG",
-     "gain_krw": 2401528
+     "gain_krw": 2266564
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
-   "n_sales": 2
+   "n_sales": 4
   },
-  "2140": {
+  "2137": {
    "tax_krw": 0,
-   "total_gain_krw": 33039,
+   "total_gain_krw": 1705767,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "TOSS-2140",
+     "account_id": "DAISHIN-2137",
      "method": "AVG",
-     "gain_krw": 33039
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 2
-  },
-  "2141": {
-   "tax_krw": 0,
-   "total_gain_krw": 17435,
-   "taxable_krw": 0,
-   "by_account": [
-    {
-     "account_id": "KIS-2141",
-     "method": "AVG",
-     "gain_krw": 17435
+     "gain_krw": 1705767
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
    "n_sales": 1
   },
-  "2142": {
-   "tax_krw": 205033,
-   "total_gain_krw": 3431969,
-   "taxable_krw": 931969,
+  "2138": {
+   "tax_krw": 1280875,
+   "total_gain_krw": 8322161,
+   "taxable_krw": 5822161,
    "by_account": [
     {
-     "account_id": "TOSS-2142",
+     "account_id": "SAMSUNG-2138",
      "method": "AVG",
-     "gain_krw": 3431969
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 4
-  },
-  "2143": {
-   "tax_krw": 437121,
-   "total_gain_krw": 4486915,
-   "taxable_krw": 1986915,
-   "by_account": [
-    {
-     "account_id": "KIS-2143",
-     "method": "AVG",
-     "gain_krw": 4486915
+     "gain_krw": 8322161
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
    "n_sales": 2
   },
-  "2144": {
-   "tax_krw": 0,
-   "total_gain_krw": 270265,
-   "taxable_krw": 0,
+  "2139": {
+   "tax_krw": 657711,
+   "total_gain_krw": 5489599,
+   "taxable_krw": 2989599,
    "by_account": [
     {
-     "account_id": "KIS-2144",
+     "account_id": "TOSS-2139",
      "method": "AVG",
-     "gain_krw": 270265
+     "gain_krw": 5489599
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [],
+   "n_sales": 1
+  },
+  "2140": {
+   "tax_krw": 400476,
+   "total_gain_krw": 4320347,
+   "taxable_krw": 1820347,
+   "by_account": [
+    {
+     "account_id": "TOSS-2140",
+     "method": "AVG",
+     "gain_krw": 4320347
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
    "n_sales": 4
+  },
+  "2141": {
+   "tax_krw": 0,
+   "total_gain_krw": -416446,
+   "taxable_krw": 0,
+   "by_account": [
+    {
+     "account_id": "SAMSUNG-2141",
+     "method": "AVG",
+     "gain_krw": -416446
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [],
+   "n_sales": 2
+  },
+  "2142": {
+   "tax_krw": 0,
+   "total_gain_krw": 1033173,
+   "taxable_krw": 0,
+   "by_account": [
+    {
+     "account_id": "DAISHIN-2142",
+     "method": "AVG",
+     "gain_krw": 1033173
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [],
+   "n_sales": 2
+  },
+  "2143": {
+   "tax_krw": 0,
+   "total_gain_krw": 93397,
+   "taxable_krw": 0,
+   "by_account": [
+    {
+     "account_id": "TOSS-2143",
+     "method": "AVG",
+     "gain_krw": 93397
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [],
+   "n_sales": 4
+  },
+  "2144": {
+   "tax_krw": 842717,
+   "total_gain_krw": 6330536,
+   "taxable_krw": 3830536,
+   "by_account": [
+    {
+     "account_id": "TOSS-2144",
+     "method": "AVG",
+     "gain_krw": 6330536
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [],
+   "n_sales": 2
   },
   "2145": {
    "tax_krw": 0,
-   "total_gain_krw": 2217177,
+   "total_gain_krw": -489796,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "TOSS-2145",
+     "account_id": "DAISHIN-2145",
      "method": "AVG",
-     "gain_krw": 2217177
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 4
-  },
-  "2146": {
-   "tax_krw": 0,
-   "total_gain_krw": 2099531,
-   "taxable_krw": 0,
-   "by_account": [
-    {
-     "account_id": "KIS-2146",
-     "method": "AVG",
-     "gain_krw": 191052
-    },
-    {
-     "account_id": "TOSS-2146",
-     "method": "AVG",
-     "gain_krw": 1908479
+     "gain_krw": -489796
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
    "n_sales": 2
   },
-  "2147": {
-   "tax_krw": 0,
-   "total_gain_krw": -1916676,
-   "taxable_krw": 0,
+  "2146": {
+   "tax_krw": 9019726,
+   "total_gain_krw": 43498757,
+   "taxable_krw": 40998757,
    "by_account": [
     {
-     "account_id": "KIWOOM-2147",
+     "account_id": "KAKAOPAY-2146",
      "method": "FIFO",
-     "gain_krw": -1060905
+     "gain_krw": 18372656
     },
     {
-     "account_id": "SHINHAN-2147",
+     "account_id": "KIS-2146",
+     "method": "AVG",
+     "gain_krw": 25126101
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [],
+   "n_sales": 6
+  },
+  "2147": {
+   "tax_krw": 9804470,
+   "total_gain_krw": 47065777,
+   "taxable_krw": 44565777,
+   "by_account": [
+    {
+     "account_id": "MIRAE-2147",
      "method": "FIFO",
-     "gain_krw": -855771
+     "gain_krw": 3857655
+    },
+    {
+     "account_id": "SAMSUNG-2147",
+     "method": "AVG",
+     "gain_krw": 43208122
     }
    ],
    "transferred_lot_sales": [],
@@ -2376,83 +2410,81 @@
    "n_sales": 6
   },
   "2148": {
-   "tax_krw": 759010,
-   "total_gain_krw": 5950048,
-   "taxable_krw": 3450048,
-   "by_account": [
-    {
-     "account_id": "MIRAE-2148",
-     "method": "FIFO",
-     "gain_krw": 5505547
-    },
-    {
-     "account_id": "NAMUH-2148",
-     "method": "FIFO",
-     "gain_krw": 444501
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [
-    "NAMUH-2148"
-   ],
-   "n_sales": 4
-  },
-  "2149": {
    "tax_krw": 0,
-   "total_gain_krw": 760572,
+   "total_gain_krw": 835204,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "MIRAE-2149",
-     "method": "FIFO",
-     "gain_krw": 3763717
-    },
-    {
-     "account_id": "NAMUH-2149",
-     "method": "FIFO",
-     "gain_krw": -3003145
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [
-    "NAMUH-2149"
-   ],
-   "n_sales": 4
-  },
-  "2150": {
-   "tax_krw": 0,
-   "total_gain_krw": 247001,
-   "taxable_krw": 0,
-   "by_account": [
-    {
-     "account_id": "DAISHIN-2150",
+     "account_id": "DAISHIN-2148",
      "method": "AVG",
-     "gain_krw": 361577
+     "gain_krw": 172543
     },
     {
-     "account_id": "KIWOOM-2150",
-     "method": "FIFO",
-     "gain_krw": -114576
+     "account_id": "TOSS-2148",
+     "method": "AVG",
+     "gain_krw": 662661
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
    "n_sales": 2
   },
-  "2151": {
-   "tax_krw": 4871910,
-   "total_gain_krw": 24645049,
-   "taxable_krw": 22145049,
+  "2149": {
+   "tax_krw": 541973,
+   "total_gain_krw": 4963516,
+   "taxable_krw": 2463516,
    "by_account": [
     {
-     "account_id": "KAKAOPAY-2151",
+     "account_id": "KB-2149",
      "method": "FIFO",
-     "gain_krw": -31875
+     "gain_krw": 4237765
     },
     {
-     "account_id": "SHINHAN-2151",
+     "account_id": "KIWOOM-2149",
      "method": "FIFO",
-     "gain_krw": 24676924
+     "gain_krw": 725751
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [],
+   "n_sales": 6
+  },
+  "2150": {
+   "tax_krw": 0,
+   "total_gain_krw": -1229433,
+   "taxable_krw": 0,
+   "by_account": [
+    {
+     "account_id": "KB-2150",
+     "method": "FIFO",
+     "gain_krw": 229135
+    },
+    {
+     "account_id": "NAMUH-2150",
+     "method": "FIFO",
+     "gain_krw": -1458568
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [
+    "NAMUH-2150"
+   ],
+   "n_sales": 4
+  },
+  "2151": {
+   "tax_krw": 0,
+   "total_gain_krw": 1089786,
+   "taxable_krw": 0,
+   "by_account": [
+    {
+     "account_id": "KIWOOM-2151",
+     "method": "FIFO",
+     "gain_krw": 454715
+    },
+    {
+     "account_id": "SAMSUNG-2151",
+     "method": "AVG",
+     "gain_krw": 635071
     }
    ],
    "transferred_lot_sales": [],
@@ -2460,79 +2492,79 @@
    "n_sales": 4
   },
   "2152": {
-   "tax_krw": 2240554,
-   "total_gain_krw": 12684337,
-   "taxable_krw": 10184337,
+   "tax_krw": 0,
+   "total_gain_krw": -444880,
+   "taxable_krw": 0,
    "by_account": [
     {
      "account_id": "DAISHIN-2152",
      "method": "AVG",
-     "gain_krw": -1713699
+     "gain_krw": -26504
     },
     {
-     "account_id": "TOSS-2152",
-     "method": "AVG",
-     "gain_krw": 14398036
+     "account_id": "KB-2152",
+     "method": "FIFO",
+     "gain_krw": -418376
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
-   "n_sales": 4
+   "n_sales": 2
   },
   "2153": {
-   "tax_krw": 101562,
-   "total_gain_krw": 2961646,
-   "taxable_krw": 461646,
-   "by_account": [
-    {
-     "account_id": "KIS-2153",
-     "method": "AVG",
-     "gain_krw": 589922
-    },
-    {
-     "account_id": "SAMSUNG-2153",
-     "method": "AVG",
-     "gain_krw": 2371724
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 4
-  },
-  "2154": {
-   "tax_krw": 221887,
-   "total_gain_krw": 3508578,
-   "taxable_krw": 1008578,
-   "by_account": [
-    {
-     "account_id": "DAISHIN-2154",
-     "method": "AVG",
-     "gain_krw": 2468572
-    },
-    {
-     "account_id": "KAKAOPAY-2154",
-     "method": "FIFO",
-     "gain_krw": 1040006
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 4
-  },
-  "2155": {
    "tax_krw": 0,
-   "total_gain_krw": -1968352,
+   "total_gain_krw": -2847127,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "KIWOOM-2155",
-     "method": "FIFO",
-     "gain_krw": -425069
+     "account_id": "DAISHIN-2153",
+     "method": "AVG",
+     "gain_krw": -550170
     },
     {
-     "account_id": "SHINHAN-2155",
+     "account_id": "KAKAOPAY-2153",
      "method": "FIFO",
-     "gain_krw": -1543283
+     "gain_krw": -2296957
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [],
+   "n_sales": 6
+  },
+  "2154": {
+   "tax_krw": 0,
+   "total_gain_krw": 871928,
+   "taxable_krw": 0,
+   "by_account": [
+    {
+     "account_id": "KIS-2154",
+     "method": "AVG",
+     "gain_krw": 2419966
+    },
+    {
+     "account_id": "SHINHAN-2154",
+     "method": "FIFO",
+     "gain_krw": -1548038
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [],
+   "n_sales": 6
+  },
+  "2155": {
+   "tax_krw": 5565017,
+   "total_gain_krw": 27795535,
+   "taxable_krw": 25295535,
+   "by_account": [
+    {
+     "account_id": "KIS-2155",
+     "method": "AVG",
+     "gain_krw": 14376885
+    },
+    {
+     "account_id": "MIRAE-2155",
+     "method": "FIFO",
+     "gain_krw": 13418650
     }
    ],
    "transferred_lot_sales": [],
@@ -2540,39 +2572,39 @@
    "n_sales": 4
   },
   "2156": {
-   "tax_krw": 3338215,
-   "total_gain_krw": 17673709,
-   "taxable_krw": 15173709,
+   "tax_krw": 0,
+   "total_gain_krw": -622910,
+   "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "DAISHIN-2156",
-     "method": "AVG",
-     "gain_krw": 7818834
+     "account_id": "KAKAOPAY-2156",
+     "method": "FIFO",
+     "gain_krw": -681313
     },
     {
-     "account_id": "KIWOOM-2156",
+     "account_id": "SHINHAN-2156",
      "method": "FIFO",
-     "gain_krw": 9854875
+     "gain_krw": 58403
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
-   "n_sales": 2
+   "n_sales": 6
   },
   "2157": {
-   "tax_krw": 1283619,
-   "total_gain_krw": 8334635,
-   "taxable_krw": 5834635,
+   "tax_krw": 0,
+   "total_gain_krw": -372145,
+   "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "KIWOOM-2157",
+     "account_id": "MIRAE-2157",
      "method": "FIFO",
-     "gain_krw": 4585285
+     "gain_krw": -1074053
     },
     {
      "account_id": "TOSS-2157",
      "method": "AVG",
-     "gain_krw": 3749350
+     "gain_krw": 701908
     }
    ],
    "transferred_lot_sales": [],
@@ -2580,139 +2612,139 @@
    "n_sales": 4
   },
   "2158": {
-   "tax_krw": 4021744,
-   "total_gain_krw": 20780658,
-   "taxable_krw": 18280658,
+   "tax_krw": 1748133,
+   "total_gain_krw": 10446060,
+   "taxable_krw": 7946060,
    "by_account": [
     {
-     "account_id": "KB-2158",
-     "method": "FIFO",
-     "gain_krw": 19610916
+     "account_id": "KIS-2158",
+     "method": "AVG",
+     "gain_krw": 3405021
     },
     {
      "account_id": "SHINHAN-2158",
      "method": "FIFO",
-     "gain_krw": 1169742
+     "gain_krw": 7041039
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
-   "n_sales": 2
+   "n_sales": 6
   },
   "2159": {
-   "tax_krw": 66665,
-   "total_gain_krw": 2803023,
-   "taxable_krw": 303023,
+   "tax_krw": 0,
+   "total_gain_krw": -1956314,
+   "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "KIS-2159",
+     "account_id": "DAISHIN-2159",
      "method": "AVG",
-     "gain_krw": -26442
+     "gain_krw": -1564109
     },
     {
      "account_id": "MIRAE-2159",
      "method": "FIFO",
-     "gain_krw": 2829465
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 2
-  },
-  "2160": {
-   "tax_krw": 608788,
-   "total_gain_krw": 5267222,
-   "taxable_krw": 2767222,
-   "by_account": [
-    {
-     "account_id": "DAISHIN-2160",
-     "method": "AVG",
-     "gain_krw": -519436
-    },
-    {
-     "account_id": "TOSS-2160",
-     "method": "AVG",
-     "gain_krw": 5786658
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 2
-  },
-  "2161": {
-   "tax_krw": 0,
-   "total_gain_krw": 1722845,
-   "taxable_krw": 0,
-   "by_account": [
-    {
-     "account_id": "KIS-2161",
-     "method": "AVG",
-     "gain_krw": 1931468
-    },
-    {
-     "account_id": "MIRAE-2161",
-     "method": "FIFO",
-     "gain_krw": -208623
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 6
-  },
-  "2162": {
-   "tax_krw": 648680,
-   "total_gain_krw": 5448548,
-   "taxable_krw": 2948548,
-   "by_account": [
-    {
-     "account_id": "KIWOOM-2162",
-     "method": "FIFO",
-     "gain_krw": 2828894
-    },
-    {
-     "account_id": "SAMSUNG-2162",
-     "method": "AVG",
-     "gain_krw": 2619654
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 6
-  },
-  "2163": {
-   "tax_krw": 730833,
-   "total_gain_krw": 5821971,
-   "taxable_krw": 3321971,
-   "by_account": [
-    {
-     "account_id": "KB-2163",
-     "method": "FIFO",
-     "gain_krw": 5150526
-    },
-    {
-     "account_id": "KIS-2163",
-     "method": "AVG",
-     "gain_krw": 671445
+     "gain_krw": -392205
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
    "n_sales": 4
   },
+  "2160": {
+   "tax_krw": 271184,
+   "total_gain_krw": 3732657,
+   "taxable_krw": 1232657,
+   "by_account": [
+    {
+     "account_id": "KIWOOM-2160",
+     "method": "FIFO",
+     "gain_krw": -680775
+    },
+    {
+     "account_id": "SHINHAN-2160",
+     "method": "FIFO",
+     "gain_krw": 4413432
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [],
+   "n_sales": 4
+  },
+  "2161": {
+   "tax_krw": 0,
+   "total_gain_krw": 1885421,
+   "taxable_krw": 0,
+   "by_account": [
+    {
+     "account_id": "KB-2161",
+     "method": "FIFO",
+     "gain_krw": 2632226
+    },
+    {
+     "account_id": "SAMSUNG-2161",
+     "method": "AVG",
+     "gain_krw": -746805
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [],
+   "n_sales": 4
+  },
+  "2162": {
+   "tax_krw": 0,
+   "total_gain_krw": 74910,
+   "taxable_krw": 0,
+   "by_account": [
+    {
+     "account_id": "DAISHIN-2162",
+     "method": "AVG",
+     "gain_krw": -61633
+    },
+    {
+     "account_id": "TOSS-2162",
+     "method": "AVG",
+     "gain_krw": 136543
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [],
+   "n_sales": 2
+  },
+  "2163": {
+   "tax_krw": 0,
+   "total_gain_krw": -5329950,
+   "taxable_krw": 0,
+   "by_account": [
+    {
+     "account_id": "KIS-2163",
+     "method": "AVG",
+     "gain_krw": -7268709
+    },
+    {
+     "account_id": "KIWOOM-2163",
+     "method": "FIFO",
+     "gain_krw": 1938759
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [],
+   "n_sales": 6
+  },
   "2164": {
    "tax_krw": 0,
-   "total_gain_krw": -3559984,
+   "total_gain_krw": -4311958,
    "taxable_krw": 0,
    "by_account": [
     {
      "account_id": "KB-2164",
      "method": "FIFO",
-     "gain_krw": -12436752
+     "gain_krw": -2211888
     },
     {
-     "account_id": "KIS-2164",
+     "account_id": "SAMSUNG-2164",
      "method": "AVG",
-     "gain_krw": 8876768
+     "gain_krw": -2100070
     }
    ],
    "transferred_lot_sales": [],
@@ -2721,162 +2753,178 @@
   },
   "2165": {
    "tax_krw": 0,
-   "total_gain_krw": -2021102,
+   "total_gain_krw": 34020,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "KB-2165",
-     "method": "FIFO",
-     "gain_krw": -1424543
+     "account_id": "SAMSUNG-2165",
+     "method": "AVG",
+     "gain_krw": -187446
     },
     {
-     "account_id": "KIS-2165",
+     "account_id": "TOSS-2165",
      "method": "AVG",
-     "gain_krw": -596559
+     "gain_krw": 221466
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
-   "n_sales": 4
+   "n_sales": 2
   },
   "2166": {
    "tax_krw": 0,
-   "total_gain_krw": -2280377,
+   "total_gain_krw": -1967343,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "DAISHIN-2166",
+     "account_id": "KIS-2166",
      "method": "AVG",
-     "gain_krw": -1912759
+     "gain_krw": -1417986
     },
     {
-     "account_id": "SHINHAN-2166",
+     "account_id": "NAMUH-2166",
      "method": "FIFO",
-     "gain_krw": -367618
+     "gain_krw": -549357
     }
    ],
    "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 4
+   "needs_confirmation": [
+    "NAMUH-2166"
+   ],
+   "n_sales": 6
   },
   "2167": {
    "tax_krw": 0,
-   "total_gain_krw": -2184289,
+   "total_gain_krw": 1286873,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "DAISHIN-2167",
+     "account_id": "SAMSUNG-2167",
      "method": "AVG",
-     "gain_krw": -1018234
+     "gain_krw": 2491312
     },
     {
-     "account_id": "KB-2167",
+     "account_id": "SHINHAN-2167",
      "method": "FIFO",
-     "gain_krw": -1166055
+     "gain_krw": -1204439
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
-   "n_sales": 4
+   "n_sales": 6
   },
   "2168": {
    "tax_krw": 0,
-   "total_gain_krw": -2956530,
+   "total_gain_krw": -108483,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "DAISHIN-2168",
+     "account_id": "SAMSUNG-2168",
      "method": "AVG",
-     "gain_krw": -2356903
+     "gain_krw": -83788
     },
     {
-     "account_id": "KB-2168",
-     "method": "FIFO",
-     "gain_krw": -599627
-    }
-   ],
-   "transferred_lot_sales": [
-    "DAISHIN-20251006-01185"
-   ],
-   "needs_confirmation": [],
-   "n_sales": 3
-  },
-  "2169": {
-   "tax_krw": 0,
-   "total_gain_krw": -460934,
-   "taxable_krw": 0,
-   "by_account": [
-    {
-     "account_id": "SHINHAN-2169",
-     "method": "FIFO",
-     "gain_krw": -460934
-    }
-   ],
-   "transferred_lot_sales": [
-    "SHINHAN-20251015-01193"
-   ],
-   "needs_confirmation": [],
-   "n_sales": 1
-  },
-  "2170": {
-   "tax_krw": 0,
-   "total_gain_krw": 634658,
-   "taxable_krw": 0,
-   "by_account": [
-    {
-     "account_id": "NAMUH-2170",
-     "method": "FIFO",
-     "gain_krw": 634658
-    }
-   ],
-   "transferred_lot_sales": [
-    "NAMUH-20251201-01198"
-   ],
-   "needs_confirmation": [
-    "NAMUH-2170"
-   ],
-   "n_sales": 1
-  },
-  "2171": {
-   "tax_krw": 0,
-   "total_gain_krw": 284794,
-   "taxable_krw": 0,
-   "by_account": [
-    {
-     "account_id": "KB-2171",
-     "method": "FIFO",
-     "gain_krw": 317174
-    },
-    {
-     "account_id": "SAMSUNG-2171",
+     "account_id": "TOSS-2168",
      "method": "AVG",
-     "gain_krw": -32380
+     "gain_krw": -24695
     }
    ],
    "transferred_lot_sales": [
-    "KB-20250611-01203"
+    "SAMSUNG-20251211-01146"
    ],
    "needs_confirmation": [],
    "n_sales": 2
   },
+  "2169": {
+   "tax_krw": 0,
+   "total_gain_krw": -289674,
+   "taxable_krw": 0,
+   "by_account": [
+    {
+     "account_id": "KIWOOM-2169",
+     "method": "FIFO",
+     "gain_krw": -108919
+    },
+    {
+     "account_id": "NAMUH-2169",
+     "method": "FIFO",
+     "gain_krw": -180755
+    }
+   ],
+   "transferred_lot_sales": [
+    "NAMUH-20251111-01153"
+   ],
+   "needs_confirmation": [
+    "NAMUH-2169"
+   ],
+   "n_sales": 3
+  },
+  "2170": {
+   "tax_krw": 1088206,
+   "total_gain_krw": 7446394,
+   "taxable_krw": 4946394,
+   "by_account": [
+    {
+     "account_id": "DAISHIN-2170",
+     "method": "AVG",
+     "gain_krw": 1777333
+    },
+    {
+     "account_id": "NAMUH-2170",
+     "method": "FIFO",
+     "gain_krw": 5669061
+    }
+   ],
+   "transferred_lot_sales": [
+    "NAMUH-20251106-01162"
+   ],
+   "needs_confirmation": [
+    "NAMUH-2170"
+   ],
+   "n_sales": 2
+  },
+  "2171": {
+   "tax_krw": 0,
+   "total_gain_krw": 1816139,
+   "taxable_krw": 0,
+   "by_account": [
+    {
+     "account_id": "NAMUH-2171",
+     "method": "FIFO",
+     "gain_krw": 2022270
+    },
+    {
+     "account_id": "SAMSUNG-2171",
+     "method": "AVG",
+     "gain_krw": -206131
+    }
+   ],
+   "transferred_lot_sales": [
+    "NAMUH-20250916-01170"
+   ],
+   "needs_confirmation": [
+    "NAMUH-2171"
+   ],
+   "n_sales": 2
+  },
   "2172": {
    "tax_krw": 0,
-   "total_gain_krw": -287329,
+   "total_gain_krw": -3727295,
    "taxable_krw": 0,
    "by_account": [
     {
      "account_id": "NAMUH-2172",
      "method": "FIFO",
-     "gain_krw": 657959
+     "gain_krw": -3887146
     },
     {
-     "account_id": "SHINHAN-2172",
-     "method": "FIFO",
-     "gain_krw": -945288
+     "account_id": "TOSS-2172",
+     "method": "AVG",
+     "gain_krw": 159851
     }
    ],
    "transferred_lot_sales": [
-    "SHINHAN-20251202-01209"
+    "NAMUH-20250709-01177"
    ],
    "needs_confirmation": [
     "NAMUH-2172"
@@ -2885,22 +2933,22 @@
   },
   "2173": {
    "tax_krw": 0,
-   "total_gain_krw": -355149,
+   "total_gain_krw": 2153153,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "DAISHIN-2173",
-     "method": "AVG",
-     "gain_krw": 10898
+     "account_id": "KB-2173",
+     "method": "FIFO",
+     "gain_krw": 2021798
     },
     {
      "account_id": "NAMUH-2173",
      "method": "FIFO",
-     "gain_krw": -366047
+     "gain_krw": 131355
     }
    ],
    "transferred_lot_sales": [
-    "NAMUH-20251208-01216"
+    "NAMUH-20251203-01184"
    ],
    "needs_confirmation": [
     "NAMUH-2173"
@@ -2908,171 +2956,172 @@
    "n_sales": 2
   },
   "2174": {
-   "tax_krw": 0,
-   "total_gain_krw": 824846,
-   "taxable_krw": 0,
+   "tax_krw": 2488326,
+   "total_gain_krw": 13810575,
+   "taxable_krw": 11310575,
    "by_account": [
     {
-     "account_id": "DAISHIN-2174",
+     "account_id": "SAMSUNG-2174",
      "method": "AVG",
-     "gain_krw": -59280
+     "gain_krw": 8036199
     },
     {
-     "account_id": "KIS-2174",
-     "method": "AVG",
-     "gain_krw": 884126
+     "account_id": "SHINHAN-2174",
+     "method": "FIFO",
+     "gain_krw": 5774376
     }
    ],
    "transferred_lot_sales": [
-    "DAISHIN-20251210-01223"
+    "SAMSUNG-20251106-01192"
    ],
    "needs_confirmation": [],
    "n_sales": 3
   },
   "2175": {
    "tax_krw": 0,
-   "total_gain_krw": 1197592,
+   "total_gain_krw": -1031677,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "KB-2175",
+     "account_id": "NAMUH-2175",
      "method": "FIFO",
-     "gain_krw": 40094
-    },
-    {
-     "account_id": "SHINHAN-2175",
-     "method": "FIFO",
-     "gain_krw": 1157498
+     "gain_krw": -1031677
     }
    ],
    "transferred_lot_sales": [
-    "SHINHAN-20250728-01231"
+    "NAMUH-20250812-01201"
    ],
-   "needs_confirmation": [],
-   "n_sales": 2
+   "needs_confirmation": [
+    "NAMUH-2175"
+   ],
+   "n_sales": 1
   },
   "2176": {
-   "tax_krw": 1260169,
-   "total_gain_krw": 8228043,
-   "taxable_krw": 5728043,
+   "tax_krw": 0,
+   "total_gain_krw": 1564349,
+   "taxable_krw": 0,
    "by_account": [
+    {
+     "account_id": "KAKAOPAY-2176",
+     "method": "FIFO",
+     "gain_krw": 8532
+    },
     {
      "account_id": "NAMUH-2176",
      "method": "FIFO",
-     "gain_krw": 8228043
+     "gain_krw": 1555817
     }
    ],
    "transferred_lot_sales": [
-    "NAMUH-20251013-01238"
+    "NAMUH-20250618-01206"
    ],
    "needs_confirmation": [
     "NAMUH-2176"
    ],
-   "n_sales": 1
+   "n_sales": 2
   },
   "2177": {
-   "tax_krw": 135292,
-   "total_gain_krw": 3114964,
-   "taxable_krw": 614964,
+   "tax_krw": 0,
+   "total_gain_krw": -190778,
+   "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "NAMUH-2177",
+     "account_id": "KB-2177",
      "method": "FIFO",
-     "gain_krw": 435734
-    },
-    {
-     "account_id": "SHINHAN-2177",
-     "method": "FIFO",
-     "gain_krw": 2679230
+     "gain_krw": -190778
     }
    ],
    "transferred_lot_sales": [
-    "SHINHAN-20251124-01243"
+    "KB-20251113-01212"
    ],
    "needs_confirmation": [
     "NAMUH-2177"
    ],
-   "n_sales": 2
+   "n_sales": 1
   },
   "2178": {
-   "tax_krw": 1414865,
-   "total_gain_krw": 8931208,
-   "taxable_krw": 6431208,
+   "tax_krw": 0,
+   "total_gain_krw": -431612,
+   "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "KIWOOM-2178",
+     "account_id": "NAMUH-2178",
      "method": "FIFO",
-     "gain_krw": 8931208
+     "gain_krw": -431612
     }
    ],
    "transferred_lot_sales": [
-    "KIWOOM-20250922-01251"
+    "NAMUH-20251009-01217"
    ],
-   "needs_confirmation": [],
+   "needs_confirmation": [
+    "NAMUH-2178"
+   ],
    "n_sales": 1
   },
   "2179": {
    "tax_krw": 0,
-   "total_gain_krw": -1533983,
+   "total_gain_krw": 1547633,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "DAISHIN-2179",
-     "method": "AVG",
-     "gain_krw": -1536037
+     "account_id": "KB-2179",
+     "method": "FIFO",
+     "gain_krw": 2990546
     },
     {
-     "account_id": "KAKAOPAY-2179",
+     "account_id": "MIRAE-2179",
      "method": "FIFO",
-     "gain_krw": 2054
+     "gain_krw": -1442913
     }
    ],
    "transferred_lot_sales": [
-    "DAISHIN-20251008-01257"
-   ],
-   "needs_confirmation": [],
-   "n_sales": 2
-  },
-  "2180": {
-   "tax_krw": 0,
-   "total_gain_krw": 1255250,
-   "taxable_krw": 0,
-   "by_account": [
-    {
-     "account_id": "DAISHIN-2180",
-     "method": "AVG",
-     "gain_krw": 1208502
-    },
-    {
-     "account_id": "KIWOOM-2180",
-     "method": "FIFO",
-     "gain_krw": 46748
-    }
-   ],
-   "transferred_lot_sales": [
-    "KIWOOM-20251117-01263"
+    "MIRAE-20250826-01221"
    ],
    "needs_confirmation": [],
    "n_sales": 3
   },
-  "2181": {
+  "2180": {
    "tax_krw": 0,
-   "total_gain_krw": 469534,
+   "total_gain_krw": -1642311,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "KIWOOM-2181",
+     "account_id": "KB-2180",
      "method": "FIFO",
-     "gain_krw": 436615
+     "gain_krw": -1448721
+    },
+    {
+     "account_id": "NAMUH-2180",
+     "method": "FIFO",
+     "gain_krw": -193590
+    }
+   ],
+   "transferred_lot_sales": [
+    "NAMUH-20251009-01230"
+   ],
+   "needs_confirmation": [
+    "NAMUH-2180"
+   ],
+   "n_sales": 2
+  },
+  "2181": {
+   "tax_krw": 361665,
+   "total_gain_krw": 4143936,
+   "taxable_krw": 1643936,
+   "by_account": [
+    {
+     "account_id": "KAKAOPAY-2181",
+     "method": "FIFO",
+     "gain_krw": -2124955
     },
     {
      "account_id": "NAMUH-2181",
      "method": "FIFO",
-     "gain_krw": 32919
+     "gain_krw": 6268891
     }
    ],
    "transferred_lot_sales": [
-    "NAMUH-20250724-01273"
+    "NAMUH-20251114-01237"
    ],
    "needs_confirmation": [
     "NAMUH-2181"
@@ -3080,91 +3129,89 @@
    "n_sales": 3
   },
   "2182": {
-   "tax_krw": 0,
-   "total_gain_krw": -827609,
-   "taxable_krw": 0,
+   "tax_krw": 2900208,
+   "total_gain_krw": 15682765,
+   "taxable_krw": 13182765,
    "by_account": [
     {
-     "account_id": "KAKAOPAY-2182",
-     "method": "FIFO",
-     "gain_krw": -411328
+     "account_id": "DAISHIN-2182",
+     "method": "AVG",
+     "gain_krw": 165248
     },
     {
-     "account_id": "SHINHAN-2182",
+     "account_id": "MIRAE-2182",
      "method": "FIFO",
-     "gain_krw": -416281
+     "gain_krw": 15517517
     }
    ],
    "transferred_lot_sales": [
-    "KAKAOPAY-20250909-01282"
+    "MIRAE-20251031-01247"
    ],
    "needs_confirmation": [],
    "n_sales": 2
   },
   "2183": {
-   "tax_krw": 0,
-   "total_gain_krw": -516011,
-   "taxable_krw": 0,
+   "tax_krw": 100380,
+   "total_gain_krw": 2956273,
+   "taxable_krw": 456273,
    "by_account": [
+    {
+     "account_id": "KIS-2183",
+     "method": "AVG",
+     "gain_krw": 2768491
+    },
     {
      "account_id": "MIRAE-2183",
      "method": "FIFO",
-     "gain_krw": -516011
+     "gain_krw": 187782
     }
    ],
    "transferred_lot_sales": [
-    "MIRAE-20251002-01289"
+    "KIS-20251117-01253"
    ],
    "needs_confirmation": [],
-   "n_sales": 1
+   "n_sales": 2
   },
   "2184": {
-   "tax_krw": 0,
-   "total_gain_krw": 1771206,
-   "taxable_krw": 0,
+   "tax_krw": 211559,
+   "total_gain_krw": 3461635,
+   "taxable_krw": 961635,
    "by_account": [
     {
-     "account_id": "NAMUH-2184",
+     "account_id": "MIRAE-2184",
      "method": "FIFO",
-     "gain_krw": 2278894
+     "gain_krw": -3772925
     },
     {
-     "account_id": "SAMSUNG-2184",
-     "method": "AVG",
-     "gain_krw": -507688
+     "account_id": "SHINHAN-2184",
+     "method": "FIFO",
+     "gain_krw": 7234560
     }
    ],
    "transferred_lot_sales": [
-    "NAMUH-20250807-01295"
+    "MIRAE-20251107-01261"
    ],
-   "needs_confirmation": [
-    "NAMUH-2184"
-   ],
-   "n_sales": 2
+   "needs_confirmation": [],
+   "n_sales": 3
   },
   "2185": {
    "tax_krw": 0,
-   "total_gain_krw": -1418477,
+   "total_gain_krw": 86648,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "KIS-2185",
-     "method": "AVG",
-     "gain_krw": -1026750
-    },
-    {
-     "account_id": "NAMUH-2185",
+     "account_id": "MIRAE-2185",
      "method": "FIFO",
-     "gain_krw": -391727
+     "gain_krw": 86648
     }
    ],
    "transferred_lot_sales": [
-    "NAMUH-20250930-01303"
+    "MIRAE-20250404-01269"
    ],
    "needs_confirmation": [
     "NAMUH-2185"
    ],
-   "n_sales": 3
+   "n_sales": 1
   },
   "2186": {
    "tax_krw": 0,
@@ -3208,9 +3255,7 @@
    "taxable_krw": 0,
    "by_account": [],
    "transferred_lot_sales": [],
-   "needs_confirmation": [
-    "NAMUH-2190"
-   ],
+   "needs_confirmation": [],
    "n_sales": 0
   },
   "2191": {
@@ -3242,28 +3287,28 @@
   },
   "2194": {
    "tax_krw": 0,
-   "total_gain_krw": -84860,
+   "total_gain_krw": -724721,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "KB-2194",
+     "account_id": "KAKAOPAY-2194",
      "method": "FIFO",
-     "gain_krw": -84860
+     "gain_krw": -724721
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
-   "n_sales": 2
+   "n_sales": 3
   },
   "2195": {
    "tax_krw": 0,
-   "total_gain_krw": -64277,
+   "total_gain_krw": 99936,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "KAKAOPAY-2195",
+     "account_id": "KIWOOM-2195",
      "method": "FIFO",
-     "gain_krw": -64277
+     "gain_krw": 99936
     }
    ],
    "transferred_lot_sales": [],
@@ -3272,88 +3317,88 @@
   },
   "2196": {
    "tax_krw": 0,
-   "total_gain_krw": -61324,
+   "total_gain_krw": -492994,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "KIWOOM-2196",
+     "account_id": "KAKAOPAY-2196",
      "method": "FIFO",
-     "gain_krw": -61324
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 1
-  },
-  "2197": {
-   "tax_krw": 0,
-   "total_gain_krw": -298102,
-   "taxable_krw": 0,
-   "by_account": [
-    {
-     "account_id": "SHINHAN-2197",
-     "method": "FIFO",
-     "gain_krw": -298102
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 1
-  },
-  "2198": {
-   "tax_krw": 0,
-   "total_gain_krw": -1038124,
-   "taxable_krw": 0,
-   "by_account": [
-    {
-     "account_id": "MIRAE-2198",
-     "method": "FIFO",
-     "gain_krw": -1038124
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 2
-  },
-  "2199": {
-   "tax_krw": 0,
-   "total_gain_krw": -217407,
-   "taxable_krw": 0,
-   "by_account": [
-    {
-     "account_id": "KIWOOM-2199",
-     "method": "FIFO",
-     "gain_krw": -217407
+     "gain_krw": -492994
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
    "n_sales": 3
   },
-  "2200": {
+  "2197": {
    "tax_krw": 0,
-   "total_gain_krw": -138939,
+   "total_gain_krw": -270657,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "KIWOOM-2200",
+     "account_id": "KB-2197",
      "method": "FIFO",
-     "gain_krw": -138939
+     "gain_krw": -270657
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [],
+   "n_sales": 3
+  },
+  "2198": {
+   "tax_krw": 0,
+   "total_gain_krw": -818372,
+   "taxable_krw": 0,
+   "by_account": [
+    {
+     "account_id": "KAKAOPAY-2198",
+     "method": "FIFO",
+     "gain_krw": -818372
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
    "n_sales": 1
   },
-  "2201": {
-   "tax_krw": 725279,
-   "total_gain_krw": 5796725,
-   "taxable_krw": 3296725,
+  "2199": {
+   "tax_krw": 0,
+   "total_gain_krw": -163054,
+   "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "KIWOOM-2201",
+     "account_id": "KB-2199",
      "method": "FIFO",
-     "gain_krw": 5796725
+     "gain_krw": -163054
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [],
+   "n_sales": 2
+  },
+  "2200": {
+   "tax_krw": 0,
+   "total_gain_krw": -726786,
+   "taxable_krw": 0,
+   "by_account": [
+    {
+     "account_id": "KIWOOM-2200",
+     "method": "FIFO",
+     "gain_krw": -726786
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [],
+   "n_sales": 2
+  },
+  "2201": {
+   "tax_krw": 0,
+   "total_gain_krw": -2417097,
+   "taxable_krw": 0,
+   "by_account": [
+    {
+     "account_id": "SHINHAN-2201",
+     "method": "FIFO",
+     "gain_krw": -2417097
     }
    ],
    "transferred_lot_sales": [],
@@ -3362,150 +3407,148 @@
   },
   "2202": {
    "tax_krw": 0,
-   "total_gain_krw": 84809,
+   "total_gain_krw": -187750,
    "taxable_krw": 0,
    "by_account": [
     {
      "account_id": "KAKAOPAY-2202",
      "method": "FIFO",
-     "gain_krw": 84809
+     "gain_krw": -187750
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [],
+   "n_sales": 2
+  },
+  "2203": {
+   "tax_krw": 0,
+   "total_gain_krw": -341432,
+   "taxable_krw": 0,
+   "by_account": [
+    {
+     "account_id": "MIRAE-2203",
+     "method": "FIFO",
+     "gain_krw": -341432
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
    "n_sales": 1
   },
-  "2203": {
-   "tax_krw": 2377164,
-   "total_gain_krw": 13305294,
-   "taxable_krw": 10805294,
+  "2204": {
+   "tax_krw": 0,
+   "total_gain_krw": 320943,
+   "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "KAKAOPAY-2203",
+     "account_id": "KIWOOM-2204",
      "method": "FIFO",
-     "gain_krw": 13305294
+     "gain_krw": 320943
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [],
+   "n_sales": 2
+  },
+  "2205": {
+   "tax_krw": 2805195,
+   "total_gain_krw": 15250888,
+   "taxable_krw": 12750888,
+   "by_account": [
+    {
+     "account_id": "KIWOOM-2205",
+     "method": "FIFO",
+     "gain_krw": 15250888
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [],
+   "n_sales": 1
+  },
+  "2206": {
+   "tax_krw": 0,
+   "total_gain_krw": 2031486,
+   "taxable_krw": 0,
+   "by_account": [
+    {
+     "account_id": "KIWOOM-2206",
+     "method": "FIFO",
+     "gain_krw": 2031486
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [],
+   "n_sales": 1
+  },
+  "2207": {
+   "tax_krw": 4229076,
+   "total_gain_krw": 21723075,
+   "taxable_krw": 19223075,
+   "by_account": [
+    {
+     "account_id": "KB-2207",
+     "method": "FIFO",
+     "gain_krw": 21723075
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
    "n_sales": 4
   },
-  "2204": {
-   "tax_krw": 1143639,
-   "total_gain_krw": 7698362,
-   "taxable_krw": 5198362,
-   "by_account": [
-    {
-     "account_id": "KIWOOM-2204",
-     "method": "FIFO",
-     "gain_krw": 7698362
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 3
-  },
-  "2205": {
-   "tax_krw": 2813199,
-   "total_gain_krw": 15287271,
-   "taxable_krw": 12787271,
-   "by_account": [
-    {
-     "account_id": "KB-2205",
-     "method": "FIFO",
-     "gain_krw": 15287271
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 3
-  },
-  "2206": {
-   "tax_krw": 407175,
-   "total_gain_krw": 4350797,
-   "taxable_krw": 1850797,
-   "by_account": [
-    {
-     "account_id": "NAMUH-2206",
-     "method": "FIFO",
-     "gain_krw": 4350797
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [
-    "NAMUH-2206"
-   ],
-   "n_sales": 2
-  },
-  "2207": {
-   "tax_krw": 145878,
-   "total_gain_krw": 3163085,
-   "taxable_krw": 663085,
-   "by_account": [
-    {
-     "account_id": "SHINHAN-2207",
-     "method": "FIFO",
-     "gain_krw": 3163085
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 2
-  },
   "2208": {
-   "tax_krw": 0,
-   "total_gain_krw": -145611,
-   "taxable_krw": 0,
+   "tax_krw": 2808793,
+   "total_gain_krw": 15267244,
+   "taxable_krw": 12767244,
    "by_account": [
     {
-     "account_id": "SHINHAN-2208",
+     "account_id": "KAKAOPAY-2208",
      "method": "FIFO",
-     "gain_krw": -145611
+     "gain_krw": 15267244
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
-   "n_sales": 2
+   "n_sales": 3
   },
   "2209": {
-   "tax_krw": 5196656,
-   "total_gain_krw": 26121167,
-   "taxable_krw": 23621167,
+   "tax_krw": 0,
+   "total_gain_krw": -7452,
+   "taxable_krw": 0,
    "by_account": [
     {
      "account_id": "KAKAOPAY-2209",
      "method": "FIFO",
-     "gain_krw": 26121167
+     "gain_krw": -7452
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
-   "n_sales": 3
+   "n_sales": 2
   },
   "2210": {
    "tax_krw": 0,
-   "total_gain_krw": -143212,
+   "total_gain_krw": -660901,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "KIWOOM-2210",
+     "account_id": "KAKAOPAY-2210",
      "method": "FIFO",
-     "gain_krw": -143212
+     "gain_krw": -660901
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
-   "n_sales": 1
+   "n_sales": 2
   },
   "2211": {
-   "tax_krw": 0,
-   "total_gain_krw": -4461279,
-   "taxable_krw": 0,
+   "tax_krw": 1739153,
+   "total_gain_krw": 10405242,
+   "taxable_krw": 7905242,
    "by_account": [
     {
-     "account_id": "KB-2211",
+     "account_id": "SHINHAN-2211",
      "method": "FIFO",
-     "gain_krw": -4461279
+     "gain_krw": 10405242
     }
    ],
    "transferred_lot_sales": [],
@@ -3513,14 +3556,14 @@
    "n_sales": 1
   },
   "2212": {
-   "tax_krw": 0,
-   "total_gain_krw": -157472,
-   "taxable_krw": 0,
+   "tax_krw": 2998602,
+   "total_gain_krw": 16130012,
+   "taxable_krw": 13630012,
    "by_account": [
     {
-     "account_id": "KB-2212",
+     "account_id": "KIWOOM-2212",
      "method": "FIFO",
-     "gain_krw": -157472
+     "gain_krw": 16130012
     }
    ],
    "transferred_lot_sales": [],
@@ -3528,168 +3571,166 @@
    "n_sales": 2
   },
   "2213": {
-   "tax_krw": 457596,
-   "total_gain_krw": 4579982,
-   "taxable_krw": 2079982,
+   "tax_krw": 0,
+   "total_gain_krw": -80127,
+   "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "NAMUH-2213",
+     "account_id": "KB-2213",
      "method": "FIFO",
-     "gain_krw": 4579982
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [
-    "NAMUH-2213"
-   ],
-   "n_sales": 2
-  },
-  "2214": {
-   "tax_krw": 3803014,
-   "total_gain_krw": 19786428,
-   "taxable_krw": 17286428,
-   "by_account": [
-    {
-     "account_id": "SHINHAN-2214",
-     "method": "FIFO",
-     "gain_krw": 19786428
+     "gain_krw": -80127
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
    "n_sales": 1
   },
-  "2215": {
-   "tax_krw": 878533,
-   "total_gain_krw": 6493332,
-   "taxable_krw": 3993332,
+  "2214": {
+   "tax_krw": 0,
+   "total_gain_krw": -2085457,
+   "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "KB-2215",
+     "account_id": "MIRAE-2214",
      "method": "FIFO",
-     "gain_krw": 6493332
+     "gain_krw": -2085457
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
    "n_sales": 2
   },
-  "2216": {
+  "2215": {
    "tax_krw": 0,
-   "total_gain_krw": 1988975,
+   "total_gain_krw": 103663,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "NAMUH-2216",
+     "account_id": "KB-2215",
      "method": "FIFO",
-     "gain_krw": 1988975
+     "gain_krw": 103663
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [],
+   "n_sales": 1
+  },
+  "2216": {
+   "tax_krw": 674351,
+   "total_gain_krw": 5565233,
+   "taxable_krw": 3065233,
+   "by_account": [
+    {
+     "account_id": "SHINHAN-2216",
+     "method": "FIFO",
+     "gain_krw": 5565233
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [],
+   "n_sales": 2
+  },
+  "2217": {
+   "tax_krw": 0,
+   "total_gain_krw": 952916,
+   "taxable_krw": 0,
+   "by_account": [
+    {
+     "account_id": "KB-2217",
+     "method": "FIFO",
+     "gain_krw": 952916
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [],
+   "n_sales": 2
+  },
+  "2218": {
+   "tax_krw": 1622151,
+   "total_gain_krw": 9873416,
+   "taxable_krw": 7373416,
+   "by_account": [
+    {
+     "account_id": "KAKAOPAY-2218",
+     "method": "FIFO",
+     "gain_krw": 9873416
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [],
+   "n_sales": 2
+  },
+  "2219": {
+   "tax_krw": 0,
+   "total_gain_krw": -53044,
+   "taxable_krw": 0,
+   "by_account": [
+    {
+     "account_id": "NAMUH-2219",
+     "method": "FIFO",
+     "gain_krw": -53044
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [
-    "NAMUH-2216"
+    "NAMUH-2219"
    ],
-   "n_sales": 4
+   "n_sales": 2
   },
-  "2217": {
+  "2220": {
    "tax_krw": 0,
-   "total_gain_krw": -1334964,
+   "total_gain_krw": -467700,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "KIWOOM-2217",
+     "account_id": "KAKAOPAY-2220",
      "method": "FIFO",
-     "gain_krw": -1334964
+     "gain_krw": -467700
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [],
+   "n_sales": 1
+  },
+  "2221": {
+   "tax_krw": 0,
+   "total_gain_krw": -3697921,
+   "taxable_krw": 0,
+   "by_account": [
+    {
+     "account_id": "SHINHAN-2221",
+     "method": "FIFO",
+     "gain_krw": -3697921
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [],
+   "n_sales": 1
+  },
+  "2222": {
+   "tax_krw": 92205,
+   "total_gain_krw": 2919115,
+   "taxable_krw": 419115,
+   "by_account": [
+    {
+     "account_id": "KIWOOM-2222",
+     "method": "FIFO",
+     "gain_krw": 2919115
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
    "n_sales": 3
   },
-  "2218": {
-   "tax_krw": 60447,
-   "total_gain_krw": 2774763,
-   "taxable_krw": 274763,
-   "by_account": [
-    {
-     "account_id": "KB-2218",
-     "method": "FIFO",
-     "gain_krw": 2774763
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 1
-  },
-  "2219": {
-   "tax_krw": 0,
-   "total_gain_krw": -612385,
-   "taxable_krw": 0,
-   "by_account": [
-    {
-     "account_id": "KAKAOPAY-2219",
-     "method": "FIFO",
-     "gain_krw": -612385
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 2
-  },
-  "2220": {
-   "tax_krw": 0,
-   "total_gain_krw": 1876544,
-   "taxable_krw": 0,
-   "by_account": [
-    {
-     "account_id": "KAKAOPAY-2220",
-     "method": "FIFO",
-     "gain_krw": 1876544
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 2
-  },
-  "2221": {
-   "tax_krw": 4692396,
-   "total_gain_krw": 23829074,
-   "taxable_krw": 21329074,
-   "by_account": [
-    {
-     "account_id": "KIWOOM-2221",
-     "method": "FIFO",
-     "gain_krw": 23829074
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 5
-  },
-  "2222": {
-   "tax_krw": 0,
-   "total_gain_krw": 82898,
-   "taxable_krw": 0,
-   "by_account": [
-    {
-     "account_id": "KB-2222",
-     "method": "FIFO",
-     "gain_krw": 82898
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 1
-  },
   "2223": {
-   "tax_krw": 501502,
-   "total_gain_krw": 4779558,
-   "taxable_krw": 2279558,
+   "tax_krw": 0,
+   "total_gain_krw": -473286,
+   "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "KIWOOM-2223",
+     "account_id": "KB-2223",
      "method": "FIFO",
-     "gain_krw": 4779558
+     "gain_krw": -473286
     }
    ],
    "transferred_lot_sales": [],
@@ -3697,44 +3738,44 @@
    "n_sales": 2
   },
   "2224": {
-   "tax_krw": 4232251,
-   "total_gain_krw": 21737508,
-   "taxable_krw": 19237508,
+   "tax_krw": 0,
+   "total_gain_krw": 156516,
+   "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "KAKAOPAY-2224",
+     "account_id": "KIWOOM-2224",
      "method": "FIFO",
-     "gain_krw": 21737508
+     "gain_krw": 156516
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
-   "n_sales": 4
+   "n_sales": 3
   },
   "2225": {
-   "tax_krw": 0,
-   "total_gain_krw": 1416079,
-   "taxable_krw": 0,
+   "tax_krw": 508996,
+   "total_gain_krw": 4813620,
+   "taxable_krw": 2313620,
    "by_account": [
     {
      "account_id": "KAKAOPAY-2225",
      "method": "FIFO",
-     "gain_krw": 1416079
+     "gain_krw": 4813620
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
-   "n_sales": 1
+   "n_sales": 3
   },
   "2226": {
-   "tax_krw": 0,
-   "total_gain_krw": -906860,
-   "taxable_krw": 0,
+   "tax_krw": 4108835,
+   "total_gain_krw": 21176527,
+   "taxable_krw": 18676527,
    "by_account": [
     {
      "account_id": "NAMUH-2226",
      "method": "FIFO",
-     "gain_krw": -906860
+     "gain_krw": 21176527
     }
    ],
    "transferred_lot_sales": [],
@@ -3744,14 +3785,14 @@
    "n_sales": 3
   },
   "2227": {
-   "tax_krw": 1121728,
-   "total_gain_krw": 7598765,
-   "taxable_krw": 5098765,
+   "tax_krw": 0,
+   "total_gain_krw": -767937,
+   "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "SHINHAN-2227",
+     "account_id": "MIRAE-2227",
      "method": "FIFO",
-     "gain_krw": 7598765
+     "gain_krw": -767937
     }
    ],
    "transferred_lot_sales": [],
@@ -3760,118 +3801,118 @@
   },
   "2228": {
    "tax_krw": 0,
-   "total_gain_krw": 563359,
+   "total_gain_krw": 1780176,
    "taxable_krw": 0,
    "by_account": [
     {
      "account_id": "KAKAOPAY-2228",
      "method": "FIFO",
-     "gain_krw": 563359
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 2
-  },
-  "2229": {
-   "tax_krw": 0,
-   "total_gain_krw": -75376,
-   "taxable_krw": 0,
-   "by_account": [
-    {
-     "account_id": "MIRAE-2229",
-     "method": "FIFO",
-     "gain_krw": -75376
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 2
-  },
-  "2230": {
-   "tax_krw": 0,
-   "total_gain_krw": -7959099,
-   "taxable_krw": 0,
-   "by_account": [
-    {
-     "account_id": "SHINHAN-2230",
-     "method": "FIFO",
-     "gain_krw": -7959099
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 2
-  },
-  "2231": {
-   "tax_krw": 0,
-   "total_gain_krw": 669264,
-   "taxable_krw": 0,
-   "by_account": [
-    {
-     "account_id": "TOSS-2231",
-     "method": "AVG",
-     "gain_krw": 669264
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 2
-  },
-  "2232": {
-   "tax_krw": 0,
-   "total_gain_krw": -25442,
-   "taxable_krw": 0,
-   "by_account": [
-    {
-     "account_id": "KIS-2232",
-     "method": "AVG",
-     "gain_krw": -25442
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 1
-  },
-  "2233": {
-   "tax_krw": 1018036,
-   "total_gain_krw": 7127438,
-   "taxable_krw": 4627438,
-   "by_account": [
-    {
-     "account_id": "SAMSUNG-2233",
-     "method": "AVG",
-     "gain_krw": 7127438
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 4
-  },
-  "2234": {
-   "tax_krw": 0,
-   "total_gain_krw": -3371000,
-   "taxable_krw": 0,
-   "by_account": [
-    {
-     "account_id": "TOSS-2234",
-     "method": "AVG",
-     "gain_krw": -3371000
+     "gain_krw": 1780176
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
    "n_sales": 3
   },
-  "2235": {
+  "2229": {
    "tax_krw": 0,
-   "total_gain_krw": 1457313,
+   "total_gain_krw": 664147,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "KIS-2235",
+     "account_id": "KAKAOPAY-2229",
+     "method": "FIFO",
+     "gain_krw": 664147
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [],
+   "n_sales": 4
+  },
+  "2230": {
+   "tax_krw": 180379,
+   "total_gain_krw": 3319907,
+   "taxable_krw": 819907,
+   "by_account": [
+    {
+     "account_id": "KB-2230",
+     "method": "FIFO",
+     "gain_krw": 3319907
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [],
+   "n_sales": 4
+  },
+  "2231": {
+   "tax_krw": 809632,
+   "total_gain_krw": 6180149,
+   "taxable_krw": 3680149,
+   "by_account": [
+    {
+     "account_id": "TOSS-2231",
      "method": "AVG",
-     "gain_krw": 1457313
+     "gain_krw": 6180149
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [],
+   "n_sales": 4
+  },
+  "2232": {
+   "tax_krw": 0,
+   "total_gain_krw": -3996892,
+   "taxable_krw": 0,
+   "by_account": [
+    {
+     "account_id": "SAMSUNG-2232",
+     "method": "AVG",
+     "gain_krw": -3996892
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [],
+   "n_sales": 4
+  },
+  "2233": {
+   "tax_krw": 0,
+   "total_gain_krw": -357834,
+   "taxable_krw": 0,
+   "by_account": [
+    {
+     "account_id": "KIS-2233",
+     "method": "AVG",
+     "gain_krw": -357834
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [],
+   "n_sales": 1
+  },
+  "2234": {
+   "tax_krw": 115353,
+   "total_gain_krw": 3024336,
+   "taxable_krw": 524336,
+   "by_account": [
+    {
+     "account_id": "DAISHIN-2234",
+     "method": "AVG",
+     "gain_krw": 3024336
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [],
+   "n_sales": 2
+  },
+  "2235": {
+   "tax_krw": 0,
+   "total_gain_krw": 988626,
+   "taxable_krw": 0,
+   "by_account": [
+    {
+     "account_id": "TOSS-2235",
+     "method": "AVG",
+     "gain_krw": 988626
     }
    ],
    "transferred_lot_sales": [],
@@ -3880,73 +3921,75 @@
   },
   "2236": {
    "tax_krw": 0,
-   "total_gain_krw": -475110,
+   "total_gain_krw": -4995826,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "KIS-2236",
+     "account_id": "DAISHIN-2236",
      "method": "AVG",
-     "gain_krw": -475110
+     "gain_krw": -4995826
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
-   "n_sales": 3
+   "n_sales": 2
   },
   "2237": {
-   "tax_krw": 0,
-   "total_gain_krw": 186779,
-   "taxable_krw": 0,
+   "tax_krw": 371563,
+   "total_gain_krw": 4188924,
+   "taxable_krw": 1688924,
    "by_account": [
     {
-     "account_id": "TOSS-2237",
-     "method": "AVG",
-     "gain_krw": 186779
+     "account_id": "NAMUH-2237",
+     "method": "FIFO",
+     "gain_krw": 4188924
     }
    ],
    "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 3
+   "needs_confirmation": [
+    "NAMUH-2237"
+   ],
+   "n_sales": 6
   },
   "2238": {
-   "tax_krw": 0,
-   "total_gain_krw": 2312249,
-   "taxable_krw": 0,
+   "tax_krw": 1222429,
+   "total_gain_krw": 8056496,
+   "taxable_krw": 5556496,
    "by_account": [
     {
-     "account_id": "TOSS-2238",
+     "account_id": "KIS-2238",
      "method": "AVG",
-     "gain_krw": 2312249
+     "gain_krw": 8056496
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
-   "n_sales": 3
+   "n_sales": 1
   },
   "2239": {
    "tax_krw": 0,
-   "total_gain_krw": -425756,
+   "total_gain_krw": -187391,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "TOSS-2239",
+     "account_id": "SAMSUNG-2239",
      "method": "AVG",
-     "gain_krw": -425756
+     "gain_krw": -187391
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
-   "n_sales": 3
+   "n_sales": 1
   },
   "2240": {
    "tax_krw": 0,
-   "total_gain_krw": 171108,
+   "total_gain_krw": 18339,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "SAMSUNG-2240",
+     "account_id": "DAISHIN-2240",
      "method": "AVG",
-     "gain_krw": 171108
+     "gain_krw": 18339
     }
    ],
    "transferred_lot_sales": [],
@@ -3955,197 +3998,199 @@
   },
   "2241": {
    "tax_krw": 0,
-   "total_gain_krw": -6218911,
+   "total_gain_krw": 113871,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "DAISHIN-2241",
+     "account_id": "TOSS-2241",
      "method": "AVG",
-     "gain_krw": -6218911
+     "gain_krw": 113871
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
-   "n_sales": 2
+   "n_sales": 3
   },
   "2242": {
-   "tax_krw": 0,
-   "total_gain_krw": -482307,
-   "taxable_krw": 0,
+   "tax_krw": 3229610,
+   "total_gain_krw": 17180046,
+   "taxable_krw": 14680046,
    "by_account": [
     {
-     "account_id": "KIS-2242",
+     "account_id": "DAISHIN-2242",
      "method": "AVG",
-     "gain_krw": -482307
+     "gain_krw": 17180046
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
-   "n_sales": 1
+   "n_sales": 3
   },
   "2243": {
-   "tax_krw": 514307,
-   "total_gain_krw": 4837762,
-   "taxable_krw": 2337762,
+   "tax_krw": 497514,
+   "total_gain_krw": 4761428,
+   "taxable_krw": 2261428,
    "by_account": [
     {
-     "account_id": "KIS-2243",
+     "account_id": "TOSS-2243",
      "method": "AVG",
-     "gain_krw": 4837762
+     "gain_krw": 4761428
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
-   "n_sales": 1
+   "n_sales": 3
   },
   "2244": {
+   "tax_krw": 6623021,
+   "total_gain_krw": 32604644,
+   "taxable_krw": 30104644,
+   "by_account": [
+    {
+     "account_id": "SAMSUNG-2244",
+     "method": "AVG",
+     "gain_krw": 32604644
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [],
+   "n_sales": 3
+  },
+  "2245": {
    "tax_krw": 0,
-   "total_gain_krw": 566279,
+   "total_gain_krw": 736061,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "NAMUH-2244",
+     "account_id": "NAMUH-2245",
      "method": "FIFO",
-     "gain_krw": 566279
+     "gain_krw": 736061
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [
-    "NAMUH-2244"
+    "NAMUH-2245"
    ],
    "n_sales": 2
-  },
-  "2245": {
-   "tax_krw": 0,
-   "total_gain_krw": 1273132,
-   "taxable_krw": 0,
-   "by_account": [
-    {
-     "account_id": "DAISHIN-2245",
-     "method": "AVG",
-     "gain_krw": 1273132
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 1
   },
   "2246": {
-   "tax_krw": 0,
-   "total_gain_krw": -474149,
-   "taxable_krw": 0,
+   "tax_krw": 972694,
+   "total_gain_krw": 6921340,
+   "taxable_krw": 4421340,
    "by_account": [
     {
-     "account_id": "KIS-2246",
-     "method": "AVG",
-     "gain_krw": -42961
+     "account_id": "KAKAOPAY-2246",
+     "method": "FIFO",
+     "gain_krw": 3320176
     },
     {
-     "account_id": "KIWOOM-2246",
+     "account_id": "NAMUH-2246",
      "method": "FIFO",
-     "gain_krw": -431188
+     "gain_krw": 3601164
     }
    ],
    "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 2
+   "needs_confirmation": [
+    "NAMUH-2246"
+   ],
+   "n_sales": 6
   },
   "2247": {
-   "tax_krw": 0,
-   "total_gain_krw": -151835,
-   "taxable_krw": 0,
+   "tax_krw": 3508411,
+   "total_gain_krw": 18447327,
+   "taxable_krw": 15947327,
    "by_account": [
-    {
-     "account_id": "DAISHIN-2247",
-     "method": "AVG",
-     "gain_krw": -103896
-    },
     {
      "account_id": "SHINHAN-2247",
      "method": "FIFO",
-     "gain_krw": -47939
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 2
-  },
-  "2248": {
-   "tax_krw": 3684011,
-   "total_gain_krw": 19245508,
-   "taxable_krw": 16745508,
-   "by_account": [
-    {
-     "account_id": "KB-2248",
-     "method": "FIFO",
-     "gain_krw": 10848366
+     "gain_krw": 9852423
     },
     {
-     "account_id": "SHINHAN-2248",
-     "method": "FIFO",
-     "gain_krw": 8397142
+     "account_id": "TOSS-2247",
+     "method": "AVG",
+     "gain_krw": 8594904
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
+   "n_sales": 4
+  },
+  "2248": {
+   "tax_krw": 0,
+   "total_gain_krw": 1704390,
+   "taxable_krw": 0,
+   "by_account": [
+    {
+     "account_id": "NAMUH-2248",
+     "method": "FIFO",
+     "gain_krw": 831824
+    },
+    {
+     "account_id": "SAMSUNG-2248",
+     "method": "AVG",
+     "gain_krw": 872566
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [
+    "NAMUH-2248"
+   ],
    "n_sales": 2
   },
   "2249": {
-   "tax_krw": 231009,
-   "total_gain_krw": 3550045,
-   "taxable_krw": 1050045,
+   "tax_krw": 0,
+   "total_gain_krw": 2450989,
+   "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "NAMUH-2249",
-     "method": "FIFO",
-     "gain_krw": 1968368
+     "account_id": "KIS-2249",
+     "method": "AVG",
+     "gain_krw": 657166
     },
     {
      "account_id": "SAMSUNG-2249",
      "method": "AVG",
-     "gain_krw": 1581677
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [
-    "NAMUH-2249"
-   ],
-   "n_sales": 4
-  },
-  "2250": {
-   "tax_krw": 0,
-   "total_gain_krw": -42029,
-   "taxable_krw": 0,
-   "by_account": [
-    {
-     "account_id": "KIS-2250",
-     "method": "AVG",
-     "gain_krw": -6600
-    },
-    {
-     "account_id": "TOSS-2250",
-     "method": "AVG",
-     "gain_krw": -35429
+     "gain_krw": 1793823
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
-   "n_sales": 2
+   "n_sales": 6
+  },
+  "2250": {
+   "tax_krw": 0,
+   "total_gain_krw": -468701,
+   "taxable_krw": 0,
+   "by_account": [
+    {
+     "account_id": "KB-2250",
+     "method": "FIFO",
+     "gain_krw": -447514
+    },
+    {
+     "account_id": "TOSS-2250",
+     "method": "AVG",
+     "gain_krw": -21187
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [],
+   "n_sales": 4
   },
   "2251": {
-   "tax_krw": 0,
-   "total_gain_krw": -6421564,
-   "taxable_krw": 0,
+   "tax_krw": 3123393,
+   "total_gain_krw": 16697244,
+   "taxable_krw": 14197244,
    "by_account": [
     {
      "account_id": "DAISHIN-2251",
      "method": "AVG",
-     "gain_krw": -6277280
+     "gain_krw": 3984924
     },
     {
-     "account_id": "KB-2251",
-     "method": "FIFO",
-     "gain_krw": -144284
+     "account_id": "TOSS-2251",
+     "method": "AVG",
+     "gain_krw": 12712320
     }
    ],
    "transferred_lot_sales": [],
@@ -4154,18 +4199,18 @@
   },
   "2252": {
    "tax_krw": 0,
-   "total_gain_krw": -2229411,
+   "total_gain_krw": -5233101,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "KB-2252",
-     "method": "FIFO",
-     "gain_krw": -546671
+     "account_id": "DAISHIN-2252",
+     "method": "AVG",
+     "gain_krw": -2431675
     },
     {
-     "account_id": "TOSS-2252",
-     "method": "AVG",
-     "gain_krw": -1682740
+     "account_id": "KB-2252",
+     "method": "FIFO",
+     "gain_krw": -2801426
     }
    ],
    "transferred_lot_sales": [],
@@ -4173,19 +4218,19 @@
    "n_sales": 2
   },
   "2253": {
-   "tax_krw": 919443,
-   "total_gain_krw": 6679288,
-   "taxable_krw": 4179288,
+   "tax_krw": 26851,
+   "total_gain_krw": 2622054,
+   "taxable_krw": 122054,
    "by_account": [
     {
-     "account_id": "DAISHIN-2253",
-     "method": "AVG",
-     "gain_krw": 448313
+     "account_id": "MIRAE-2253",
+     "method": "FIFO",
+     "gain_krw": -161339
     },
     {
-     "account_id": "KIS-2253",
+     "account_id": "SAMSUNG-2253",
      "method": "AVG",
-     "gain_krw": 6230975
+     "gain_krw": 2783393
     }
    ],
    "transferred_lot_sales": [],
@@ -4193,39 +4238,41 @@
    "n_sales": 2
   },
   "2254": {
-   "tax_krw": 0,
-   "total_gain_krw": -1835831,
-   "taxable_krw": 0,
+   "tax_krw": 1919781,
+   "total_gain_krw": 11226281,
+   "taxable_krw": 8726281,
    "by_account": [
     {
-     "account_id": "KIWOOM-2254",
+     "account_id": "MIRAE-2254",
      "method": "FIFO",
-     "gain_krw": 435450
+     "gain_krw": 9273560
     },
     {
-     "account_id": "SAMSUNG-2254",
-     "method": "AVG",
-     "gain_krw": -2271281
+     "account_id": "NAMUH-2254",
+     "method": "FIFO",
+     "gain_krw": 1952721
     }
    ],
    "transferred_lot_sales": [],
-   "needs_confirmation": [],
+   "needs_confirmation": [
+    "NAMUH-2254"
+   ],
    "n_sales": 2
   },
   "2255": {
-   "tax_krw": 202519,
-   "total_gain_krw": 3420544,
-   "taxable_krw": 920544,
+   "tax_krw": 0,
+   "total_gain_krw": 17013,
+   "taxable_krw": 0,
    "by_account": [
-    {
-     "account_id": "KIS-2255",
-     "method": "AVG",
-     "gain_krw": 2977396
-    },
     {
      "account_id": "NAMUH-2255",
      "method": "FIFO",
-     "gain_krw": 443148
+     "gain_krw": 138343
+    },
+    {
+     "account_id": "TOSS-2255",
+     "method": "AVG",
+     "gain_krw": -121330
     }
    ],
    "transferred_lot_sales": [],
@@ -4235,187 +4282,159 @@
    "n_sales": 4
   },
   "2256": {
-   "tax_krw": 435088,
-   "total_gain_krw": 4477675,
-   "taxable_krw": 1977675,
+   "tax_krw": 0,
+   "total_gain_krw": -220878,
+   "taxable_krw": 0,
    "by_account": [
     {
      "account_id": "MIRAE-2256",
      "method": "FIFO",
-     "gain_krw": 1149475
+     "gain_krw": -38453
     },
     {
-     "account_id": "NAMUH-2256",
+     "account_id": "SHINHAN-2256",
      "method": "FIFO",
-     "gain_krw": 3328200
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [
-    "NAMUH-2256"
-   ],
-   "n_sales": 2
-  },
-  "2257": {
-   "tax_krw": 4443399,
-   "total_gain_krw": 22697271,
-   "taxable_krw": 20197271,
-   "by_account": [
-    {
-     "account_id": "KIS-2257",
-     "method": "AVG",
-     "gain_krw": 912659
-    },
-    {
-     "account_id": "SAMSUNG-2257",
-     "method": "AVG",
-     "gain_krw": 21784612
+     "gain_krw": -182425
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
-   "n_sales": 6
+   "n_sales": 2
   },
-  "2258": {
+  "2257": {
    "tax_krw": 0,
-   "total_gain_krw": -5633763,
+   "total_gain_krw": 1198499,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "KIWOOM-2258",
+     "account_id": "KAKAOPAY-2257",
      "method": "FIFO",
-     "gain_krw": -27225
+     "gain_krw": 455823
     },
     {
-     "account_id": "NAMUH-2258",
+     "account_id": "SHINHAN-2257",
      "method": "FIFO",
-     "gain_krw": -5606538
+     "gain_krw": 742676
     }
    ],
    "transferred_lot_sales": [],
-   "needs_confirmation": [
-    "NAMUH-2258"
+   "needs_confirmation": [],
+   "n_sales": 4
+  },
+  "2258": {
+   "tax_krw": 723992,
+   "total_gain_krw": 5790874,
+   "taxable_krw": 3290874,
+   "by_account": [
+    {
+     "account_id": "KIS-2258",
+     "method": "AVG",
+     "gain_krw": 7341578
+    },
+    {
+     "account_id": "MIRAE-2258",
+     "method": "FIFO",
+     "gain_krw": -1550704
+    }
    ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [],
    "n_sales": 4
   },
   "2259": {
-   "tax_krw": 1545217,
-   "total_gain_krw": 9523715,
-   "taxable_krw": 7023715,
+   "tax_krw": 5843173,
+   "total_gain_krw": 29059881,
+   "taxable_krw": 26559881,
    "by_account": [
     {
      "account_id": "DAISHIN-2259",
      "method": "AVG",
-     "gain_krw": 66062
+     "gain_krw": 14789596
     },
     {
-     "account_id": "KB-2259",
+     "account_id": "MIRAE-2259",
      "method": "FIFO",
-     "gain_krw": 9457653
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 6
-  },
-  "2260": {
-   "tax_krw": 108992,
-   "total_gain_krw": 2995419,
-   "taxable_krw": 495419,
-   "by_account": [
-    {
-     "account_id": "KIS-2260",
-     "method": "AVG",
-     "gain_krw": 2368181
-    },
-    {
-     "account_id": "KIWOOM-2260",
-     "method": "FIFO",
-     "gain_krw": 627238
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 2
-  },
-  "2261": {
-   "tax_krw": 5586365,
-   "total_gain_krw": 27892570,
-   "taxable_krw": 25392570,
-   "by_account": [
-    {
-     "account_id": "DAISHIN-2261",
-     "method": "AVG",
-     "gain_krw": 26005829
-    },
-    {
-     "account_id": "SHINHAN-2261",
-     "method": "FIFO",
-     "gain_krw": 1886741
+     "gain_krw": 14270285
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
    "n_sales": 4
   },
-  "2262": {
-   "tax_krw": 293930,
-   "total_gain_krw": 3836048,
-   "taxable_krw": 1336048,
+  "2260": {
+   "tax_krw": 1586075,
+   "total_gain_krw": 9709433,
+   "taxable_krw": 7209433,
    "by_account": [
     {
-     "account_id": "KB-2262",
-     "method": "FIFO",
-     "gain_krw": 3266129
-    },
-    {
-     "account_id": "NAMUH-2262",
-     "method": "FIFO",
-     "gain_krw": 569919
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [
-    "NAMUH-2262"
-   ],
-   "n_sales": 2
-  },
-  "2263": {
-   "tax_krw": 4325047,
-   "total_gain_krw": 22159309,
-   "taxable_krw": 19659309,
-   "by_account": [
-    {
-     "account_id": "DAISHIN-2263",
+     "account_id": "DAISHIN-2260",
      "method": "AVG",
-     "gain_krw": 379025
+     "gain_krw": 8113116
     },
     {
-     "account_id": "NAMUH-2263",
+     "account_id": "KAKAOPAY-2260",
      "method": "FIFO",
-     "gain_krw": 21780284
+     "gain_krw": 1596317
     }
    ],
    "transferred_lot_sales": [],
-   "needs_confirmation": [
-    "NAMUH-2263"
-   ],
+   "needs_confirmation": [],
    "n_sales": 6
   },
-  "2264": {
+  "2262": {
    "tax_krw": 0,
-   "total_gain_krw": 1833712,
+   "total_gain_krw": -2285272,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "SHINHAN-2264",
+     "account_id": "SHINHAN-2262",
      "method": "FIFO",
-     "gain_krw": -419637
+     "gain_krw": 5275361
     },
     {
-     "account_id": "TOSS-2264",
+     "account_id": "TOSS-2262",
      "method": "AVG",
-     "gain_krw": 2253349
+     "gain_krw": -7560633
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [],
+   "n_sales": 6
+  },
+  "2263": {
+   "tax_krw": 0,
+   "total_gain_krw": -892153,
+   "taxable_krw": 0,
+   "by_account": [
+    {
+     "account_id": "MIRAE-2263",
+     "method": "FIFO",
+     "gain_krw": -849559
+    },
+    {
+     "account_id": "TOSS-2263",
+     "method": "AVG",
+     "gain_krw": -42594
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [],
+   "n_sales": 4
+  },
+  "2264": {
+   "tax_krw": 0,
+   "total_gain_krw": 1098243,
+   "taxable_krw": 0,
+   "by_account": [
+    {
+     "account_id": "KB-2264",
+     "method": "FIFO",
+     "gain_krw": -473179
+    },
+    {
+     "account_id": "KIS-2264",
+     "method": "AVG",
+     "gain_krw": 1571422
     }
    ],
    "transferred_lot_sales": [],
@@ -4423,39 +4442,39 @@
    "n_sales": 4
   },
   "2265": {
-   "tax_krw": 1158855,
-   "total_gain_krw": 7767523,
-   "taxable_krw": 5267523,
+   "tax_krw": 2088101,
+   "total_gain_krw": 11991369,
+   "taxable_krw": 9491369,
    "by_account": [
     {
      "account_id": "KAKAOPAY-2265",
      "method": "FIFO",
-     "gain_krw": 3661328
+     "gain_krw": 2964020
     },
     {
-     "account_id": "KIS-2265",
+     "account_id": "TOSS-2265",
      "method": "AVG",
-     "gain_krw": 4106195
+     "gain_krw": 9027349
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
-   "n_sales": 4
+   "n_sales": 2
   },
   "2266": {
-   "tax_krw": 0,
-   "total_gain_krw": -11851,
-   "taxable_krw": 0,
+   "tax_krw": 574101,
+   "total_gain_krw": 5109550,
+   "taxable_krw": 2609550,
    "by_account": [
     {
-     "account_id": "SHINHAN-2266",
+     "account_id": "KAKAOPAY-2266",
      "method": "FIFO",
-     "gain_krw": 77146
+     "gain_krw": 3502929
     },
     {
-     "account_id": "TOSS-2266",
-     "method": "AVG",
-     "gain_krw": -88997
+     "account_id": "KIWOOM-2266",
+     "method": "FIFO",
+     "gain_krw": 1606621
     }
    ],
    "transferred_lot_sales": [],
@@ -4463,19 +4482,19 @@
    "n_sales": 2
   },
   "2267": {
-   "tax_krw": 5447451,
-   "total_gain_krw": 27261143,
-   "taxable_krw": 24761143,
+   "tax_krw": 0,
+   "total_gain_krw": 1601023,
+   "taxable_krw": 0,
    "by_account": [
     {
      "account_id": "DAISHIN-2267",
      "method": "AVG",
-     "gain_krw": 10347750
+     "gain_krw": 415696
     },
     {
-     "account_id": "KB-2267",
-     "method": "FIFO",
-     "gain_krw": 16913393
+     "account_id": "SAMSUNG-2267",
+     "method": "AVG",
+     "gain_krw": 1185327
     }
    ],
    "transferred_lot_sales": [],
@@ -4484,22 +4503,22 @@
   },
   "2268": {
    "tax_krw": 0,
-   "total_gain_krw": -172046,
+   "total_gain_krw": 702267,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "KIS-2268",
-     "method": "AVG",
-     "gain_krw": -145913
+     "account_id": "MIRAE-2268",
+     "method": "FIFO",
+     "gain_krw": 701670
     },
     {
      "account_id": "NAMUH-2268",
      "method": "FIFO",
-     "gain_krw": -26133
+     "gain_krw": 597
     }
    ],
    "transferred_lot_sales": [
-    "NAMUH-20251125-01800"
+    "NAMUH-20250620-01816"
    ],
    "needs_confirmation": [
     "NAMUH-2268"
@@ -4507,59 +4526,62 @@
    "n_sales": 2
   },
   "2269": {
-   "tax_krw": 9367,
-   "total_gain_krw": 2542580,
-   "taxable_krw": 42580,
-   "by_account": [
-    {
-     "account_id": "NAMUH-2269",
-     "method": "FIFO",
-     "gain_krw": 2542580
-    }
-   ],
-   "transferred_lot_sales": [
-    "NAMUH-20250904-01807"
-   ],
-   "needs_confirmation": [
-    "NAMUH-2269"
-   ],
-   "n_sales": 1
-  },
-  "2270": {
    "tax_krw": 0,
-   "total_gain_krw": 499441,
+   "total_gain_krw": 2145781,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "KIWOOM-2270",
+     "account_id": "KIWOOM-2269",
      "method": "FIFO",
-     "gain_krw": -54195
+     "gain_krw": 11563
+    },
+    {
+     "account_id": "TOSS-2269",
+     "method": "AVG",
+     "gain_krw": 2134218
+    }
+   ],
+   "transferred_lot_sales": [
+    "TOSS-20250717-01824"
+   ],
+   "needs_confirmation": [],
+   "n_sales": 2
+  },
+  "2270": {
+   "tax_krw": 619854,
+   "total_gain_krw": 5317521,
+   "taxable_krw": 2817521,
+   "by_account": [
+    {
+     "account_id": "KB-2270",
+     "method": "FIFO",
+     "gain_krw": 160855
     },
     {
      "account_id": "TOSS-2270",
      "method": "AVG",
-     "gain_krw": 553636
+     "gain_krw": 5156666
     }
    ],
    "transferred_lot_sales": [
-    "KIWOOM-20250513-01812"
+    "TOSS-20251128-01831"
    ],
    "needs_confirmation": [],
    "n_sales": 2
   },
   "2271": {
-   "tax_krw": 1649333,
-   "total_gain_krw": 9996969,
-   "taxable_krw": 7496969,
+   "tax_krw": 160893,
+   "total_gain_krw": 3231333,
+   "taxable_krw": 731333,
    "by_account": [
     {
      "account_id": "NAMUH-2271",
      "method": "FIFO",
-     "gain_krw": 9996969
+     "gain_krw": 3231333
     }
    ],
    "transferred_lot_sales": [
-    "NAMUH-20251008-01819"
+    "NAMUH-20250730-01838"
    ],
    "needs_confirmation": [
     "NAMUH-2271"
@@ -4568,85 +4590,75 @@
   },
   "2272": {
    "tax_krw": 0,
-   "total_gain_krw": -2345286,
+   "total_gain_krw": -182859,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "NAMUH-2272",
+     "account_id": "KAKAOPAY-2272",
      "method": "FIFO",
-     "gain_krw": -1560112
+     "gain_krw": -1610
     },
     {
-     "account_id": "TOSS-2272",
-     "method": "AVG",
-     "gain_krw": -785174
+     "account_id": "SHINHAN-2272",
+     "method": "FIFO",
+     "gain_krw": -181249
     }
    ],
    "transferred_lot_sales": [
-    "TOSS-20250829-01824"
+    "SHINHAN-20250513-01842"
    ],
-   "needs_confirmation": [
-    "NAMUH-2272"
-   ],
+   "needs_confirmation": [],
    "n_sales": 3
   },
   "2273": {
-   "tax_krw": 507769,
-   "total_gain_krw": 4808042,
-   "taxable_krw": 2308042,
+   "tax_krw": 775437,
+   "total_gain_krw": 6024718,
+   "taxable_krw": 3524718,
    "by_account": [
     {
-     "account_id": "KIS-2273",
-     "method": "AVG",
-     "gain_krw": 1202569
-    },
-    {
-     "account_id": "KIWOOM-2273",
+     "account_id": "NAMUH-2273",
      "method": "FIFO",
-     "gain_krw": 3605473
+     "gain_krw": 6024718
     }
    ],
    "transferred_lot_sales": [
-    "KIWOOM-20251008-01834"
+    "NAMUH-20250807-01851"
    ],
-   "needs_confirmation": [],
-   "n_sales": 2
+   "needs_confirmation": [
+    "NAMUH-2273"
+   ],
+   "n_sales": 1
   },
   "2274": {
    "tax_krw": 0,
-   "total_gain_krw": 1509051,
+   "total_gain_krw": -357277,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "KAKAOPAY-2274",
+     "account_id": "SHINHAN-2274",
      "method": "FIFO",
-     "gain_krw": 2383870
-    },
-    {
-     "account_id": "MIRAE-2274",
-     "method": "FIFO",
-     "gain_krw": -874819
+     "gain_krw": -357277
     }
    ],
    "transferred_lot_sales": [
-    "KAKAOPAY-20251015-01842"
+    "SHINHAN-20250820-01856"
    ],
    "needs_confirmation": [],
-   "n_sales": 2
+   "n_sales": 1
   },
   "2275": {
    "tax_krw": 0,
-   "total_gain_krw": 878551,
+   "total_gain_krw": -3142723,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "NAMUH-2275",
-     "method": "FIFO",
-     "gain_krw": 878551
+     "account_id": "TOSS-2275",
+     "method": "AVG",
+     "gain_krw": -3142723
     }
    ],
    "transferred_lot_sales": [
-    "NAMUH-20250808-01850"
+    "TOSS-20251202-01862"
    ],
    "needs_confirmation": [
     "NAMUH-2275"
@@ -4654,59 +4666,64 @@
    "n_sales": 1
   },
   "2276": {
-   "tax_krw": 0,
-   "total_gain_krw": 677543,
-   "taxable_krw": 0,
+   "tax_krw": 1180484,
+   "total_gain_krw": 7865840,
+   "taxable_krw": 5365840,
    "by_account": [
     {
-     "account_id": "KIS-2276",
+     "account_id": "NAMUH-2276",
+     "method": "FIFO",
+     "gain_krw": 3680443
+    },
+    {
+     "account_id": "SAMSUNG-2276",
      "method": "AVG",
-     "gain_krw": 677543
+     "gain_krw": 4185397
     }
    ],
    "transferred_lot_sales": [
-    "KIS-20251110-01855"
+    "NAMUH-20250811-01868"
+   ],
+   "needs_confirmation": [
+    "NAMUH-2276"
+   ],
+   "n_sales": 3
+  },
+  "2277": {
+   "tax_krw": 2027200,
+   "total_gain_krw": 11714549,
+   "taxable_krw": 9214549,
+   "by_account": [
+    {
+     "account_id": "SHINHAN-2277",
+     "method": "FIFO",
+     "gain_krw": 11714549
+    }
+   ],
+   "transferred_lot_sales": [
+    "SHINHAN-20251112-01878"
    ],
    "needs_confirmation": [],
    "n_sales": 1
   },
-  "2277": {
-   "tax_krw": 207258,
-   "total_gain_krw": 3442084,
-   "taxable_krw": 942084,
-   "by_account": [
-    {
-     "account_id": "NAMUH-2277",
-     "method": "FIFO",
-     "gain_krw": 3442084
-    }
-   ],
-   "transferred_lot_sales": [
-    "NAMUH-20251031-01861"
-   ],
-   "needs_confirmation": [
-    "NAMUH-2277"
-   ],
-   "n_sales": 1
-  },
   "2278": {
    "tax_krw": 0,
-   "total_gain_krw": 619926,
+   "total_gain_krw": -1211649,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "KB-2278",
+     "account_id": "MIRAE-2278",
      "method": "FIFO",
-     "gain_krw": 491937
+     "gain_krw": -1553373
     },
     {
      "account_id": "NAMUH-2278",
      "method": "FIFO",
-     "gain_krw": 127989
+     "gain_krw": 341724
     }
    ],
    "transferred_lot_sales": [
-    "NAMUH-20251024-01866"
+    "NAMUH-20251106-01884"
    ],
    "needs_confirmation": [
     "NAMUH-2278"
@@ -4714,64 +4731,56 @@
    "n_sales": 3
   },
   "2279": {
-   "tax_krw": 0,
-   "total_gain_krw": -838380,
-   "taxable_krw": 0,
+   "tax_krw": 373369,
+   "total_gain_krw": 4197135,
+   "taxable_krw": 1697135,
    "by_account": [
     {
-     "account_id": "DAISHIN-2279",
-     "method": "AVG",
-     "gain_krw": -347190
-    },
-    {
-     "account_id": "KAKAOPAY-2279",
+     "account_id": "NAMUH-2279",
      "method": "FIFO",
-     "gain_krw": -491190
+     "gain_krw": 4197135
     }
    ],
    "transferred_lot_sales": [
-    "DAISHIN-20250910-01874"
+    "NAMUH-20250508-01892"
    ],
-   "needs_confirmation": [],
-   "n_sales": 2
+   "needs_confirmation": [
+    "NAMUH-2279"
+   ],
+   "n_sales": 1
   },
   "2280": {
-   "tax_krw": 43419,
-   "total_gain_krw": 2697363,
-   "taxable_krw": 197363,
+   "tax_krw": 0,
+   "total_gain_krw": -1128340,
+   "taxable_krw": 0,
    "by_account": [
     {
      "account_id": "NAMUH-2280",
      "method": "FIFO",
-     "gain_krw": 267666
-    },
-    {
-     "account_id": "SAMSUNG-2280",
-     "method": "AVG",
-     "gain_krw": 2429697
+     "gain_krw": -1128340
     }
    ],
    "transferred_lot_sales": [
-    "NAMUH-20251024-01881"
+    "NAMUH-20251208-01897"
    ],
    "needs_confirmation": [
     "NAMUH-2280"
    ],
-   "n_sales": 2
+   "n_sales": 1
   },
   "2281": {
    "tax_krw": 0,
-   "total_gain_krw": 1113009,
+   "total_gain_krw": 1829835,
    "taxable_krw": 0,
    "by_account": [
     {
      "account_id": "NAMUH-2281",
      "method": "FIFO",
-     "gain_krw": 1113009
+     "gain_krw": 1829835
     }
    ],
    "transferred_lot_sales": [
-    "NAMUH-20251030-01888"
+    "NAMUH-20250825-01902"
    ],
    "needs_confirmation": [
     "NAMUH-2281"
@@ -4779,98 +4788,83 @@
    "n_sales": 1
   },
   "2282": {
-   "tax_krw": 0,
-   "total_gain_krw": -305074,
-   "taxable_krw": 0,
+   "tax_krw": 788045,
+   "total_gain_krw": 6082025,
+   "taxable_krw": 3582025,
    "by_account": [
     {
-     "account_id": "KB-2282",
-     "method": "FIFO",
-     "gain_krw": -280658
+     "account_id": "DAISHIN-2282",
+     "method": "AVG",
+     "gain_krw": -267674
     },
     {
      "account_id": "NAMUH-2282",
      "method": "FIFO",
-     "gain_krw": -24416
+     "gain_krw": 6349699
     }
    ],
    "transferred_lot_sales": [
-    "NAMUH-20251022-01892"
+    "NAMUH-20250724-01908"
    ],
    "needs_confirmation": [
     "NAMUH-2282"
    ],
-   "n_sales": 3
+   "n_sales": 2
   },
   "2283": {
    "tax_krw": 0,
-   "total_gain_krw": -1554739,
+   "total_gain_krw": -283513,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "NAMUH-2283",
+     "account_id": "KAKAOPAY-2283",
      "method": "FIFO",
-     "gain_krw": -3007035
-    },
-    {
-     "account_id": "SAMSUNG-2283",
-     "method": "AVG",
-     "gain_krw": 1452296
+     "gain_krw": -283513
     }
    ],
    "transferred_lot_sales": [
-    "NAMUH-20251008-01902"
+    "KAKAOPAY-20250819-01916"
    ],
    "needs_confirmation": [
     "NAMUH-2283"
    ],
-   "n_sales": 2
+   "n_sales": 1
   },
   "2284": {
    "tax_krw": 0,
-   "total_gain_krw": -1010757,
+   "total_gain_krw": 604932,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "KB-2284",
-     "method": "FIFO",
-     "gain_krw": 95142
-    },
-    {
      "account_id": "KIWOOM-2284",
      "method": "FIFO",
-     "gain_krw": -1105899
+     "gain_krw": 604932
     }
    ],
    "transferred_lot_sales": [
-    "KIWOOM-20251006-01909"
+    "KIWOOM-20250903-01921"
    ],
    "needs_confirmation": [],
-   "n_sales": 3
+   "n_sales": 1
   },
   "2285": {
-   "tax_krw": 1418636,
-   "total_gain_krw": 8948346,
-   "taxable_krw": 6448346,
+   "tax_krw": 0,
+   "total_gain_krw": 646714,
+   "taxable_krw": 0,
    "by_account": [
     {
      "account_id": "NAMUH-2285",
      "method": "FIFO",
-     "gain_krw": 8866330
-    },
-    {
-     "account_id": "SAMSUNG-2285",
-     "method": "AVG",
-     "gain_krw": 82016
+     "gain_krw": 646714
     }
    ],
    "transferred_lot_sales": [
-    "NAMUH-20251104-01918"
+    "NAMUH-20250922-01926"
    ],
    "needs_confirmation": [
     "NAMUH-2285"
    ],
-   "n_sales": 2
+   "n_sales": 1
   },
   "2286": {
    "tax_krw": 0,
@@ -4896,7 +4890,9 @@
    "taxable_krw": 0,
    "by_account": [],
    "transferred_lot_sales": [],
-   "needs_confirmation": [],
+   "needs_confirmation": [
+    "NAMUH-2288"
+   ],
    "n_sales": 0
   },
   "2289": {
@@ -4946,58 +4942,58 @@
   },
   "2294": {
    "tax_krw": 0,
-   "total_gain_krw": -132501,
+   "total_gain_krw": -689749,
    "taxable_krw": 0,
    "by_account": [
     {
      "account_id": "KIWOOM-2294",
      "method": "FIFO",
-     "gain_krw": -132501
+     "gain_krw": -689749
+    }
+   ],
+   "transferred_lot_sales": [],
+   "needs_confirmation": [],
+   "n_sales": 4
+  },
+  "2295": {
+   "tax_krw": 2422412,
+   "total_gain_krw": 13510965,
+   "taxable_krw": 11010965,
+   "by_account": [
+    {
+     "account_id": "KAKAOPAY-2295",
+     "method": "FIFO",
+     "gain_krw": 13510965
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
    "n_sales": 3
   },
-  "2295": {
-   "tax_krw": 0,
-   "total_gain_krw": -147979,
-   "taxable_krw": 0,
-   "by_account": [
-    {
-     "account_id": "KAKAOPAY-2295",
-     "method": "FIFO",
-     "gain_krw": -147979
-    }
-   ],
-   "transferred_lot_sales": [],
-   "needs_confirmation": [],
-   "n_sales": 1
-  },
   "2296": {
    "tax_krw": 0,
-   "total_gain_krw": -257369,
+   "total_gain_krw": -320943,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "KIWOOM-2296",
+     "account_id": "KB-2296",
      "method": "FIFO",
-     "gain_krw": -257369
+     "gain_krw": -320943
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
-   "n_sales": 2
+   "n_sales": 3
   },
   "2297": {
    "tax_krw": 0,
-   "total_gain_krw": -330463,
+   "total_gain_krw": -508019,
    "taxable_krw": 0,
    "by_account": [
     {
      "account_id": "MIRAE-2297",
      "method": "FIFO",
-     "gain_krw": -330463
+     "gain_krw": -508019
     }
    ],
    "transferred_lot_sales": [],
@@ -5006,48 +5002,48 @@
   },
   "2298": {
    "tax_krw": 0,
-   "total_gain_krw": -603162,
+   "total_gain_krw": -127346,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "KAKAOPAY-2298",
+     "account_id": "MIRAE-2298",
      "method": "FIFO",
-     "gain_krw": -603162
+     "gain_krw": -127346
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
-   "n_sales": 2
+   "n_sales": 1
   },
   "2299": {
    "tax_krw": 0,
-   "total_gain_krw": -146911,
+   "total_gain_krw": -430009,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "MIRAE-2299",
+     "account_id": "KB-2299",
      "method": "FIFO",
-     "gain_krw": -146911
+     "gain_krw": -430009
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
-   "n_sales": 2
+   "n_sales": 1
   },
   "2300": {
    "tax_krw": 0,
-   "total_gain_krw": -1455546,
+   "total_gain_krw": -410695,
    "taxable_krw": 0,
    "by_account": [
     {
-     "account_id": "SHINHAN-2300",
+     "account_id": "KIWOOM-2300",
      "method": "FIFO",
-     "gain_krw": -1455546
+     "gain_krw": -410695
     }
    ],
    "transferred_lot_sales": [],
    "needs_confirmation": [],
-   "n_sales": 2
+   "n_sales": 1
   }
  }
 }

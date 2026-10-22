@@ -1,12 +1,14 @@
 [
  {
   "customer_id": 2001,
+  "name": "한하준",
   "scenario": "SINGLE_FIFO",
   "accounts": [
    {
     "account_id": "KIWOOM-2001",
     "broker_code": "KIWOOM",
-    "method": "FIFO"
+    "method": "FIFO",
+    "display_no": "968-38-834430"
    }
   ],
   "tickers": [
@@ -17,12 +19,14 @@
  },
  {
   "customer_id": 2002,
+  "name": "임수아",
   "scenario": "SINGLE_FIFO",
   "accounts": [
    {
-    "account_id": "KB-2002",
-    "broker_code": "KB",
-    "method": "FIFO"
+    "account_id": "KIWOOM-2002",
+    "broker_code": "KIWOOM",
+    "method": "FIFO",
+    "display_no": "817-80-512900"
    }
   ],
   "tickers": [
@@ -33,27 +37,31 @@
  },
  {
   "customer_id": 2003,
+  "name": "김지민",
   "scenario": "SINGLE_FIFO",
   "accounts": [
    {
-    "account_id": "KIWOOM-2003",
-    "broker_code": "KIWOOM",
-    "method": "FIFO"
+    "account_id": "SHINHAN-2003",
+    "broker_code": "SHINHAN",
+    "method": "FIFO",
+    "display_no": "204-96-923655"
    }
   ],
   "tickers": [
-   "TSLA"
+   "RIVN"
   ],
-  "carry_2024_lots": false
+  "carry_2024_lots": true
  },
  {
   "customer_id": 2004,
+  "name": "최우진",
   "scenario": "SINGLE_FIFO",
   "accounts": [
    {
     "account_id": "SHINHAN-2004",
     "broker_code": "SHINHAN",
-    "method": "FIFO"
+    "method": "FIFO",
+    "display_no": "544-29-757428"
    }
   ],
   "tickers": [
@@ -64,981 +72,1782 @@
  },
  {
   "customer_id": 2005,
+  "name": "황우진",
   "scenario": "SINGLE_FIFO",
   "accounts": [
    {
-    "account_id": "KB-2005",
-    "broker_code": "KB",
-    "method": "FIFO"
+    "account_id": "SHINHAN-2005",
+    "broker_code": "SHINHAN",
+    "method": "FIFO",
+    "display_no": "686-83-602790"
    }
   ],
   "tickers": [
-   "AMZN",
-   "LCID"
+   "MSFT"
   ],
-  "carry_2024_lots": false
+  "carry_2024_lots": true
  },
  {
   "customer_id": 2006,
+  "name": "박채원",
   "scenario": "SINGLE_FIFO",
   "accounts": [
    {
-    "account_id": "KAKAOPAY-2006",
-    "broker_code": "KAKAOPAY",
-    "method": "FIFO"
+    "account_id": "NAMUH-2006",
+    "broker_code": "NAMUH",
+    "method": "CHOICE",
+    "display_no": "120-60-683071"
    }
   ],
   "tickers": [
-   "META"
+   "GOOGL"
   ],
   "carry_2024_lots": false
  },
  {
   "customer_id": 2007,
+  "name": "송건우",
   "scenario": "SINGLE_FIFO",
   "accounts": [
    {
-    "account_id": "SHINHAN-2007",
-    "broker_code": "SHINHAN",
-    "method": "FIFO"
+    "account_id": "MIRAE-2007",
+    "broker_code": "MIRAE",
+    "method": "FIFO",
+    "display_no": "140-26-703016"
    }
   ],
   "tickers": [
-   "META"
+   "AAPL"
   ],
   "carry_2024_lots": false
  },
  {
   "customer_id": 2008,
+  "name": "강지아",
   "scenario": "SINGLE_FIFO",
   "accounts": [
    {
-    "account_id": "KB-2008",
-    "broker_code": "KB",
-    "method": "FIFO"
+    "account_id": "MIRAE-2008",
+    "broker_code": "MIRAE",
+    "method": "FIFO",
+    "display_no": "354-48-148408"
    }
   ],
   "tickers": [
-   "RIVN",
-   "NVDA",
-   "AAPL"
+   "AMZN",
+   "GOOGL",
+   "PLTR"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2009,
+  "name": "장지호",
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2009",
+    "broker_code": "KIWOOM",
+    "method": "FIFO",
+    "display_no": "509-68-187298"
+   }
+  ],
+  "tickers": [
+   "META",
+   "MSFT",
+   "PLTR"
   ],
   "carry_2024_lots": true
  },
  {
-  "customer_id": 2009,
-  "scenario": "SINGLE_FIFO",
-  "accounts": [
-   {
-    "account_id": "KB-2009",
-    "broker_code": "KB",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "NVDA",
-   "COIN"
-  ],
-  "carry_2024_lots": false
- },
- {
   "customer_id": 2010,
+  "name": "송지아",
   "scenario": "SINGLE_FIFO",
   "accounts": [
    {
-    "account_id": "MIRAE-2010",
-    "broker_code": "MIRAE",
-    "method": "FIFO"
+    "account_id": "NAMUH-2010",
+    "broker_code": "NAMUH",
+    "method": "CHOICE",
+    "display_no": "191-56-449718"
    }
   ],
   "tickers": [
-   "NVDA",
-   "RIVN"
+   "LCID"
   ],
-  "carry_2024_lots": false
+  "carry_2024_lots": true
  },
  {
   "customer_id": 2011,
+  "name": "최서현",
   "scenario": "SINGLE_FIFO",
   "accounts": [
    {
     "account_id": "KB-2011",
     "broker_code": "KB",
-    "method": "FIFO"
+    "method": "FIFO",
+    "display_no": "702-72-200181"
    }
   ],
   "tickers": [
-   "COIN",
-   "NVDA",
-   "META"
+   "INTC"
   ],
-  "carry_2024_lots": false
+  "carry_2024_lots": true
  },
  {
   "customer_id": 2012,
+  "name": "송채원",
   "scenario": "SINGLE_FIFO",
   "accounts": [
    {
-    "account_id": "MIRAE-2012",
-    "broker_code": "MIRAE",
-    "method": "FIFO"
+    "account_id": "KAKAOPAY-2012",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO",
+    "display_no": "588-85-233769"
    }
   ],
   "tickers": [
-   "META"
+   "NVDA",
+   "GOOGL"
   ],
   "carry_2024_lots": true
  },
  {
   "customer_id": 2013,
+  "name": "장지아",
   "scenario": "SINGLE_FIFO",
   "accounts": [
    {
-    "account_id": "MIRAE-2013",
-    "broker_code": "MIRAE",
-    "method": "FIFO"
+    "account_id": "KIWOOM-2013",
+    "broker_code": "KIWOOM",
+    "method": "FIFO",
+    "display_no": "412-91-999595"
    }
   ],
   "tickers": [
-   "SOXL",
-   "AMZN",
-   "PLTR"
+   "PLTR",
+   "AMZN"
   ],
   "carry_2024_lots": false
  },
  {
   "customer_id": 2014,
+  "name": "김지아",
   "scenario": "SINGLE_FIFO",
   "accounts": [
    {
-    "account_id": "KAKAOPAY-2014",
-    "broker_code": "KAKAOPAY",
-    "method": "FIFO"
+    "account_id": "KIWOOM-2014",
+    "broker_code": "KIWOOM",
+    "method": "FIFO",
+    "display_no": "591-73-640028"
    }
   ],
   "tickers": [
-   "AMD"
+   "SCHD",
+   "AMD",
+   "INTC"
   ],
   "carry_2024_lots": false
  },
  {
   "customer_id": 2015,
+  "name": "최준서",
   "scenario": "SINGLE_FIFO",
   "accounts": [
    {
-    "account_id": "NAMUH-2015",
-    "broker_code": "NAMUH",
-    "method": "CHOICE"
+    "account_id": "KIWOOM-2015",
+    "broker_code": "KIWOOM",
+    "method": "FIFO",
+    "display_no": "951-79-992104"
    }
   ],
   "tickers": [
-   "LCID"
+   "NVDA",
+   "GOOGL"
   ],
-  "carry_2024_lots": false
+  "carry_2024_lots": true
  },
  {
   "customer_id": 2016,
+  "name": "홍다은",
   "scenario": "SINGLE_FIFO",
   "accounts": [
    {
-    "account_id": "KAKAOPAY-2016",
-    "broker_code": "KAKAOPAY",
-    "method": "FIFO"
+    "account_id": "MIRAE-2016",
+    "broker_code": "MIRAE",
+    "method": "FIFO",
+    "display_no": "730-68-444511"
    }
   ],
   "tickers": [
-   "SCHD",
-   "AMD",
-   "INTC"
+   "SOXL",
+   "AAPL",
+   "AMD"
   ],
   "carry_2024_lots": false
  },
  {
   "customer_id": 2017,
+  "name": "신서현",
   "scenario": "SINGLE_FIFO",
   "accounts": [
    {
-    "account_id": "KIWOOM-2017",
-    "broker_code": "KIWOOM",
-    "method": "FIFO"
+    "account_id": "KB-2017",
+    "broker_code": "KB",
+    "method": "FIFO",
+    "display_no": "211-66-788159"
    }
   ],
   "tickers": [
-   "GOOGL",
-   "AAPL",
-   "META"
+   "AMZN",
+   "GOOGL"
   ],
   "carry_2024_lots": false
  },
  {
   "customer_id": 2018,
+  "name": "강예준",
   "scenario": "SINGLE_FIFO",
   "accounts": [
    {
-    "account_id": "SHINHAN-2018",
-    "broker_code": "SHINHAN",
-    "method": "FIFO"
+    "account_id": "KB-2018",
+    "broker_code": "KB",
+    "method": "FIFO",
+    "display_no": "221-63-612824"
    }
   ],
   "tickers": [
-   "SOXL",
-   "AMD",
+   "SCHD",
    "AAPL"
   ],
-  "carry_2024_lots": false
+  "carry_2024_lots": true
  },
  {
   "customer_id": 2019,
+  "name": "한지아",
   "scenario": "SINGLE_FIFO",
   "accounts": [
    {
-    "account_id": "KIWOOM-2019",
-    "broker_code": "KIWOOM",
-    "method": "FIFO"
+    "account_id": "MIRAE-2019",
+    "broker_code": "MIRAE",
+    "method": "FIFO",
+    "display_no": "544-71-403527"
    }
   ],
   "tickers": [
-   "AMZN",
-   "GOOGL"
+   "AAPL"
   ],
   "carry_2024_lots": false
  },
  {
   "customer_id": 2020,
+  "name": "장하은",
   "scenario": "SINGLE_FIFO",
   "accounts": [
    {
-    "account_id": "KB-2020",
-    "broker_code": "KB",
-    "method": "FIFO"
+    "account_id": "KAKAOPAY-2020",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO",
+    "display_no": "303-70-840777"
    }
   ],
   "tickers": [
-   "META"
+   "SOXL"
   ],
   "carry_2024_lots": true
  },
  {
   "customer_id": 2021,
+  "name": "이지호",
   "scenario": "SINGLE_FIFO",
   "accounts": [
    {
     "account_id": "KIWOOM-2021",
     "broker_code": "KIWOOM",
-    "method": "FIFO"
+    "method": "FIFO",
+    "display_no": "536-12-746412"
    }
   ],
   "tickers": [
-   "PLTR",
-   "AMD"
+   "META"
   ],
   "carry_2024_lots": true
  },
  {
   "customer_id": 2022,
+  "name": "한지아",
   "scenario": "SINGLE_FIFO",
   "accounts": [
    {
-    "account_id": "KB-2022",
-    "broker_code": "KB",
-    "method": "FIFO"
+    "account_id": "SHINHAN-2022",
+    "broker_code": "SHINHAN",
+    "method": "FIFO",
+    "display_no": "537-92-154164"
    }
   ],
   "tickers": [
-   "AAPL"
+   "TSLA"
   ],
   "carry_2024_lots": false
  },
  {
   "customer_id": 2023,
+  "name": "이민준",
   "scenario": "SINGLE_FIFO",
   "accounts": [
    {
-    "account_id": "SHINHAN-2023",
-    "broker_code": "SHINHAN",
-    "method": "FIFO"
+    "account_id": "NAMUH-2023",
+    "broker_code": "NAMUH",
+    "method": "CHOICE",
+    "display_no": "429-37-399176"
    }
   ],
   "tickers": [
-   "COIN"
+   "NVDA"
   ],
-  "carry_2024_lots": false
+  "carry_2024_lots": true
  },
  {
   "customer_id": 2024,
+  "name": "김채원",
   "scenario": "SINGLE_FIFO",
   "accounts": [
    {
-    "account_id": "MIRAE-2024",
-    "broker_code": "MIRAE",
-    "method": "FIFO"
+    "account_id": "KIWOOM-2024",
+    "broker_code": "KIWOOM",
+    "method": "FIFO",
+    "display_no": "439-56-877301"
    }
   ],
   "tickers": [
-   "TSLA",
-   "AMD"
+   "MSFT",
+   "SCHD"
   ],
-  "carry_2024_lots": false
+  "carry_2024_lots": true
  },
  {
   "customer_id": 2025,
+  "name": "박채원",
   "scenario": "SINGLE_FIFO",
   "accounts": [
    {
-    "account_id": "KAKAOPAY-2025",
-    "broker_code": "KAKAOPAY",
-    "method": "FIFO"
+    "account_id": "KB-2025",
+    "broker_code": "KB",
+    "method": "FIFO",
+    "display_no": "842-70-897953"
    }
   ],
   "tickers": [
-   "SOXL"
+   "SCHD",
+   "MSFT"
   ],
-  "carry_2024_lots": false
+  "carry_2024_lots": true
  },
  {
   "customer_id": 2026,
+  "name": "홍지호",
   "scenario": "SINGLE_FIFO",
   "accounts": [
    {
-    "account_id": "KB-2026",
-    "broker_code": "KB",
-    "method": "FIFO"
+    "account_id": "KIWOOM-2026",
+    "broker_code": "KIWOOM",
+    "method": "FIFO",
+    "display_no": "396-15-693677"
    }
   ],
   "tickers": [
-   "AMZN"
+   "INTC",
+   "AAPL",
+   "NVDA"
   ],
   "carry_2024_lots": false
  },
  {
   "customer_id": 2027,
+  "name": "안지호",
   "scenario": "SINGLE_FIFO",
   "accounts": [
    {
     "account_id": "KIWOOM-2027",
     "broker_code": "KIWOOM",
-    "method": "FIFO"
+    "method": "FIFO",
+    "display_no": "403-44-678972"
    }
   ],
   "tickers": [
-   "LCID"
-  ],
-  "carry_2024_lots": true
- },
- {
-  "customer_id": 2028,
-  "scenario": "SINGLE_FIFO",
-  "accounts": [
-   {
-    "account_id": "NAMUH-2028",
-    "broker_code": "NAMUH",
-    "method": "CHOICE"
-   }
-  ],
-  "tickers": [
-   "GOOGL",
-   "AMZN"
+   "AMD",
+   "PLTR",
+   "RIVN"
   ],
   "carry_2024_lots": false
  },
  {
-  "customer_id": 2029,
+  "customer_id": 2028,
+  "name": "신유나",
   "scenario": "SINGLE_FIFO",
   "accounts": [
    {
-    "account_id": "KIWOOM-2029",
-    "broker_code": "KIWOOM",
-    "method": "FIFO"
+    "account_id": "MIRAE-2028",
+    "broker_code": "MIRAE",
+    "method": "FIFO",
+    "display_no": "740-11-963955"
    }
   ],
   "tickers": [
-   "MSFT",
-   "AAPL",
-   "COIN"
+   "AMZN",
+   "RIVN",
+   "NVDA"
   ],
   "carry_2024_lots": true
  },
  {
-  "customer_id": 2030,
+  "customer_id": 2029,
+  "name": "황도윤",
   "scenario": "SINGLE_FIFO",
   "accounts": [
    {
-    "account_id": "KIWOOM-2030",
-    "broker_code": "KIWOOM",
-    "method": "FIFO"
+    "account_id": "KAKAOPAY-2029",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO",
+    "display_no": "289-32-298033"
    }
   ],
   "tickers": [
-   "INTC",
-   "AAPL",
+   "GOOGL",
    "NVDA"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2030,
+  "name": "안하준",
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "MIRAE-2030",
+    "broker_code": "MIRAE",
+    "method": "FIFO",
+    "display_no": "717-22-496230"
+   }
+  ],
+  "tickers": [
+   "MSFT",
+   "RIVN"
   ],
   "carry_2024_lots": false
  },
  {
   "customer_id": 2031,
+  "name": "한도윤",
   "scenario": "SINGLE_AVG",
   "accounts": [
    {
-    "account_id": "DAISHIN-2031",
-    "broker_code": "DAISHIN",
-    "method": "AVG"
+    "account_id": "TOSS-2031",
+    "broker_code": "TOSS",
+    "method": "AVG",
+    "display_no": "877-82-565909"
    }
   ],
   "tickers": [
-   "AMD",
-   "PLTR",
-   "RIVN"
+   "PLTR"
   ],
   "carry_2024_lots": false
  },
  {
   "customer_id": 2032,
+  "name": "최민준",
   "scenario": "SINGLE_AVG",
   "accounts": [
    {
-    "account_id": "DAISHIN-2032",
-    "broker_code": "DAISHIN",
-    "method": "AVG"
+    "account_id": "SAMSUNG-2032",
+    "broker_code": "SAMSUNG",
+    "method": "AVG",
+    "display_no": "657-47-207548"
    }
   ],
   "tickers": [
+   "LCID",
    "PLTR"
   ],
-  "carry_2024_lots": false
+  "carry_2024_lots": true
  },
  {
   "customer_id": 2033,
+  "name": "홍준서",
   "scenario": "SINGLE_AVG",
   "accounts": [
    {
-    "account_id": "DAISHIN-2033",
-    "broker_code": "DAISHIN",
-    "method": "AVG"
+    "account_id": "SAMSUNG-2033",
+    "broker_code": "SAMSUNG",
+    "method": "AVG",
+    "display_no": "144-87-258442"
    }
   ],
   "tickers": [
-   "SOXL"
+   "GOOGL",
+   "MSFT"
   ],
-  "carry_2024_lots": false
+  "carry_2024_lots": true
  },
  {
   "customer_id": 2034,
+  "name": "장도윤",
   "scenario": "SINGLE_AVG",
   "accounts": [
    {
     "account_id": "KIS-2034",
     "broker_code": "KIS",
-    "method": "AVG"
+    "method": "AVG",
+    "display_no": "896-93-253709"
    }
   ],
   "tickers": [
    "LCID",
-   "AMZN"
+   "GOOGL"
   ],
-  "carry_2024_lots": false
+  "carry_2024_lots": true
  },
  {
   "customer_id": 2035,
+  "name": "홍준서",
   "scenario": "SINGLE_AVG",
   "accounts": [
    {
     "account_id": "KIS-2035",
     "broker_code": "KIS",
-    "method": "AVG"
+    "method": "AVG",
+    "display_no": "492-63-676023"
    }
   ],
   "tickers": [
-   "AMD"
+   "RIVN",
+   "META"
   ],
   "carry_2024_lots": false
  },
  {
   "customer_id": 2036,
+  "name": "이지민",
   "scenario": "SINGLE_AVG",
   "accounts": [
    {
-    "account_id": "TOSS-2036",
-    "broker_code": "TOSS",
-    "method": "AVG"
+    "account_id": "KIS-2036",
+    "broker_code": "KIS",
+    "method": "AVG",
+    "display_no": "401-68-251141"
    }
   ],
   "tickers": [
-   "SCHD"
+   "NVDA",
+   "MSFT"
   ],
   "carry_2024_lots": true
  },
  {
   "customer_id": 2037,
+  "name": "정지민",
   "scenario": "SINGLE_AVG",
   "accounts": [
    {
-    "account_id": "SAMSUNG-2037",
-    "broker_code": "SAMSUNG",
-    "method": "AVG"
+    "account_id": "KIS-2037",
+    "broker_code": "KIS",
+    "method": "AVG",
+    "display_no": "178-11-696831"
    }
   ],
   "tickers": [
-   "RIVN"
+   "AAPL"
   ],
   "carry_2024_lots": false
  },
  {
   "customer_id": 2038,
+  "name": "김수아",
   "scenario": "SINGLE_AVG",
   "accounts": [
    {
     "account_id": "SAMSUNG-2038",
     "broker_code": "SAMSUNG",
-    "method": "AVG"
+    "method": "AVG",
+    "display_no": "757-14-733521"
    }
   ],
   "tickers": [
-   "NVDA",
-   "LCID"
+   "AMD",
+   "INTC"
   ],
   "carry_2024_lots": false
  },
  {
   "customer_id": 2039,
+  "name": "서하준",
   "scenario": "SINGLE_AVG",
   "accounts": [
    {
-    "account_id": "SAMSUNG-2039",
-    "broker_code": "SAMSUNG",
-    "method": "AVG"
+    "account_id": "TOSS-2039",
+    "broker_code": "TOSS",
+    "method": "AVG",
+    "display_no": "733-17-329540"
    }
   ],
   "tickers": [
-   "LCID",
    "PLTR"
   ],
-  "carry_2024_lots": false
+  "carry_2024_lots": true
  },
  {
   "customer_id": 2040,
+  "name": "강서연",
   "scenario": "SINGLE_AVG",
   "accounts": [
    {
-    "account_id": "SAMSUNG-2040",
-    "broker_code": "SAMSUNG",
-    "method": "AVG"
+    "account_id": "TOSS-2040",
+    "broker_code": "TOSS",
+    "method": "AVG",
+    "display_no": "299-44-213666"
    }
   ],
   "tickers": [
-   "TSLA",
-   "LCID"
-  ],
-  "carry_2024_lots": true
- },
- {
-  "customer_id": 2041,
-  "scenario": "SINGLE_AVG",
-  "accounts": [
-   {
-    "account_id": "DAISHIN-2041",
-    "broker_code": "DAISHIN",
-    "method": "AVG"
-   }
-  ],
-  "tickers": [
-   "NVDA",
-   "LCID",
+   "SOXL",
    "META"
   ],
   "carry_2024_lots": false
  },
  {
-  "customer_id": 2042,
+  "customer_id": 2041,
+  "name": "임예준",
   "scenario": "SINGLE_AVG",
   "accounts": [
    {
-    "account_id": "DAISHIN-2042",
-    "broker_code": "DAISHIN",
-    "method": "AVG"
+    "account_id": "SAMSUNG-2041",
+    "broker_code": "SAMSUNG",
+    "method": "AVG",
+    "display_no": "346-44-189170"
    }
   ],
   "tickers": [
-   "NVDA"
+   "INTC"
   ],
   "carry_2024_lots": true
  },
  {
-  "customer_id": 2043,
+  "customer_id": 2042,
+  "name": "한현우",
   "scenario": "SINGLE_AVG",
   "accounts": [
    {
-    "account_id": "TOSS-2043",
-    "broker_code": "TOSS",
-    "method": "AVG"
+    "account_id": "KIS-2042",
+    "broker_code": "KIS",
+    "method": "AVG",
+    "display_no": "819-96-202110"
    }
   ],
   "tickers": [
-   "META"
+   "PLTR",
+   "TSLA"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2043,
+  "name": "박하은",
+  "scenario": "SINGLE_AVG",
+  "accounts": [
+   {
+    "account_id": "KIS-2043",
+    "broker_code": "KIS",
+    "method": "AVG",
+    "display_no": "887-30-625986"
+   }
+  ],
+  "tickers": [
+   "MSFT",
+   "LCID"
   ],
   "carry_2024_lots": true
  },
  {
   "customer_id": 2044,
+  "name": "김하준",
   "scenario": "SINGLE_AVG",
   "accounts": [
    {
-    "account_id": "SAMSUNG-2044",
-    "broker_code": "SAMSUNG",
-    "method": "AVG"
+    "account_id": "DAISHIN-2044",
+    "broker_code": "DAISHIN",
+    "method": "AVG",
+    "display_no": "660-21-623147"
    }
   ],
   "tickers": [
-   "GOOGL"
+   "MSFT",
+   "INTC"
   ],
   "carry_2024_lots": false
  },
  {
   "customer_id": 2045,
+  "name": "장건우",
   "scenario": "SINGLE_AVG",
   "accounts": [
    {
     "account_id": "KIS-2045",
     "broker_code": "KIS",
-    "method": "AVG"
+    "method": "AVG",
+    "display_no": "226-82-611976"
+   }
+  ],
+  "tickers": [
+   "AMZN",
+   "AMD"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2046,
+  "name": "이유나",
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "MIRAE-2046",
+    "broker_code": "MIRAE",
+    "method": "FIFO",
+    "display_no": "816-81-108328"
+   },
+   {
+    "account_id": "KAKAOPAY-2046",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO",
+    "display_no": "258-23-404779"
    }
   ],
   "tickers": [
    "SCHD",
-   "META",
-   "TSLA"
-  ],
-  "carry_2024_lots": false
- },
- {
-  "customer_id": 2046,
-  "scenario": "MULTI_BROKER",
-  "accounts": [
-   {
-    "account_id": "KB-2046",
-    "broker_code": "KB",
-    "method": "FIFO"
-   },
-   {
-    "account_id": "DAISHIN-2046",
-    "broker_code": "DAISHIN",
-    "method": "AVG"
-   }
-  ],
-  "tickers": [
-   "NVDA",
-   "INTC"
+   "LCID"
   ],
   "carry_2024_lots": false
  },
  {
   "customer_id": 2047,
+  "name": "황지우",
   "scenario": "MULTI_BROKER",
   "accounts": [
    {
     "account_id": "SHINHAN-2047",
     "broker_code": "SHINHAN",
-    "method": "FIFO"
+    "method": "FIFO",
+    "display_no": "139-79-263306"
    },
    {
-    "account_id": "KIWOOM-2047",
-    "broker_code": "KIWOOM",
-    "method": "FIFO"
+    "account_id": "DAISHIN-2047",
+    "broker_code": "DAISHIN",
+    "method": "AVG",
+    "display_no": "581-28-771315"
    }
   ],
   "tickers": [
-   "SCHD",
+   "AMD",
+   "TSLA",
+   "RIVN"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2048,
+  "name": "신지민",
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "NAMUH-2048",
+    "broker_code": "NAMUH",
+    "method": "CHOICE",
+    "display_no": "942-11-688155"
+   },
+   {
+    "account_id": "KIS-2048",
+    "broker_code": "KIS",
+    "method": "AVG",
+    "display_no": "901-86-308205"
+   }
+  ],
+  "tickers": [
+   "RIVN",
+   "INTC",
    "NVDA"
   ],
   "carry_2024_lots": false
  },
  {
-  "customer_id": 2048,
+  "customer_id": 2049,
+  "name": "최다은",
   "scenario": "MULTI_BROKER",
   "accounts": [
    {
-    "account_id": "KIWOOM-2048",
-    "broker_code": "KIWOOM",
-    "method": "FIFO"
+    "account_id": "DAISHIN-2049",
+    "broker_code": "DAISHIN",
+    "method": "AVG",
+    "display_no": "520-55-469320"
    },
    {
-    "account_id": "NAMUH-2048",
-    "broker_code": "NAMUH",
-    "method": "CHOICE"
+    "account_id": "KIS-2049",
+    "broker_code": "KIS",
+    "method": "AVG",
+    "display_no": "948-79-546535"
    }
   ],
   "tickers": [
-   "NVDA",
-   "PLTR"
+   "PLTR",
+   "SOXL"
   ],
   "carry_2024_lots": true
  },
  {
-  "customer_id": 2049,
+  "customer_id": 2050,
+  "name": "임지아",
   "scenario": "MULTI_BROKER",
   "accounts": [
    {
-    "account_id": "KIS-2049",
-    "broker_code": "KIS",
-    "method": "AVG"
+    "account_id": "KAKAOPAY-2050",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO",
+    "display_no": "895-68-678381"
    },
    {
-    "account_id": "SAMSUNG-2049",
-    "broker_code": "SAMSUNG",
-    "method": "AVG"
+    "account_id": "NAMUH-2050",
+    "broker_code": "NAMUH",
+    "method": "CHOICE",
+    "display_no": "490-24-305059"
    }
   ],
   "tickers": [
-   "TSLA",
-   "GOOGL",
-   "INTC"
+   "COIN",
+   "INTC",
+   "AAPL"
   ],
   "carry_2024_lots": false
  },
  {
-  "customer_id": 2050,
-  "scenario": "MULTI_BROKER",
-  "accounts": [
-   {
-    "account_id": "NAMUH-2050",
-    "broker_code": "NAMUH",
-    "method": "CHOICE"
-   },
-   {
-    "account_id": "KIWOOM-2050",
-    "broker_code": "KIWOOM",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "TSLA",
-   "SCHD"
-  ],
-  "carry_2024_lots": true
- },
- {
   "customer_id": 2051,
+  "name": "한우진",
   "scenario": "MULTI_BROKER",
   "accounts": [
-   {
-    "account_id": "DAISHIN-2051",
-    "broker_code": "DAISHIN",
-    "method": "AVG"
-   },
    {
     "account_id": "KB-2051",
     "broker_code": "KB",
-    "method": "FIFO"
+    "method": "FIFO",
+    "display_no": "336-22-844515"
+   },
+   {
+    "account_id": "KIS-2051",
+    "broker_code": "KIS",
+    "method": "AVG",
+    "display_no": "920-26-628751"
    }
   ],
   "tickers": [
-   "AMZN",
-   "INTC"
+   "META"
   ],
-  "carry_2024_lots": true
+  "carry_2024_lots": false
  },
  {
   "customer_id": 2052,
+  "name": "송도윤",
   "scenario": "MULTI_BROKER",
   "accounts": [
+   {
+    "account_id": "NAMUH-2052",
+    "broker_code": "NAMUH",
+    "method": "CHOICE",
+    "display_no": "125-26-575745"
+   },
    {
     "account_id": "KIS-2052",
     "broker_code": "KIS",
-    "method": "AVG"
-   },
-   {
-    "account_id": "KB-2052",
-    "broker_code": "KB",
-    "method": "FIFO"
+    "method": "AVG",
+    "display_no": "749-90-915361"
    }
   ],
   "tickers": [
-   "AMZN"
+   "NVDA",
+   "AAPL",
+   "COIN"
   ],
-  "carry_2024_lots": true
+  "carry_2024_lots": false
  },
  {
   "customer_id": 2053,
+  "name": "신현우",
   "scenario": "MULTI_BROKER",
   "accounts": [
    {
-    "account_id": "KAKAOPAY-2053",
-    "broker_code": "KAKAOPAY",
-    "method": "FIFO"
+    "account_id": "SAMSUNG-2053",
+    "broker_code": "SAMSUNG",
+    "method": "AVG",
+    "display_no": "927-30-288540"
    },
    {
-    "account_id": "KIS-2053",
-    "broker_code": "KIS",
-    "method": "AVG"
+    "account_id": "DAISHIN-2053",
+    "broker_code": "DAISHIN",
+    "method": "AVG",
+    "display_no": "405-11-287356"
    }
   ],
   "tickers": [
-   "INTC",
-   "META"
+   "TSLA"
   ],
   "carry_2024_lots": false
  },
  {
   "customer_id": 2054,
+  "name": "김채원",
   "scenario": "MULTI_BROKER",
   "accounts": [
    {
-    "account_id": "KIS-2054",
-    "broker_code": "KIS",
-    "method": "AVG"
+    "account_id": "MIRAE-2054",
+    "broker_code": "MIRAE",
+    "method": "FIFO",
+    "display_no": "624-29-326813"
    },
    {
-    "account_id": "SHINHAN-2054",
-    "broker_code": "SHINHAN",
-    "method": "FIFO"
+    "account_id": "TOSS-2054",
+    "broker_code": "TOSS",
+    "method": "AVG",
+    "display_no": "987-56-220364"
    }
   ],
   "tickers": [
-   "INTC"
+   "COIN"
   ],
-  "carry_2024_lots": true
+  "carry_2024_lots": false
  },
  {
   "customer_id": 2055,
+  "name": "임건우",
   "scenario": "MULTI_BROKER",
   "accounts": [
+   {
+    "account_id": "DAISHIN-2055",
+    "broker_code": "DAISHIN",
+    "method": "AVG",
+    "display_no": "624-61-302432"
+   },
    {
     "account_id": "KIS-2055",
     "broker_code": "KIS",
-    "method": "AVG"
-   },
-   {
-    "account_id": "SAMSUNG-2055",
-    "broker_code": "SAMSUNG",
-    "method": "AVG"
+    "method": "AVG",
+    "display_no": "356-32-307488"
    }
   ],
   "tickers": [
-   "MSFT"
+   "RIVN",
+   "PLTR"
   ],
-  "carry_2024_lots": true
+  "carry_2024_lots": false
  },
  {
   "customer_id": 2056,
+  "name": "안지민",
   "scenario": "MULTI_BROKER",
   "accounts": [
    {
-    "account_id": "KIWOOM-2056",
-    "broker_code": "KIWOOM",
-    "method": "FIFO"
+    "account_id": "KIS-2056",
+    "broker_code": "KIS",
+    "method": "AVG",
+    "display_no": "217-33-948340"
    },
    {
-    "account_id": "KB-2056",
-    "broker_code": "KB",
-    "method": "FIFO"
+    "account_id": "MIRAE-2056",
+    "broker_code": "MIRAE",
+    "method": "FIFO",
+    "display_no": "430-64-929314"
    }
   ],
   "tickers": [
-   "INTC",
    "COIN",
-   "TSLA"
+   "SOXL"
   ],
   "carry_2024_lots": false
  },
  {
   "customer_id": 2057,
+  "name": "장유나",
   "scenario": "MULTI_BROKER",
   "accounts": [
    {
-    "account_id": "SAMSUNG-2057",
-    "broker_code": "SAMSUNG",
-    "method": "AVG"
+    "account_id": "KIWOOM-2057",
+    "broker_code": "KIWOOM",
+    "method": "FIFO",
+    "display_no": "798-65-433219"
    },
    {
-    "account_id": "NAMUH-2057",
-    "broker_code": "NAMUH",
-    "method": "CHOICE"
+    "account_id": "KIS-2057",
+    "broker_code": "KIS",
+    "method": "AVG",
+    "display_no": "932-50-307775"
    }
   ],
   "tickers": [
-   "META",
-   "SCHD"
+   "PLTR"
   ],
   "carry_2024_lots": false
  },
  {
   "customer_id": 2058,
+  "name": "김수아",
   "scenario": "MULTI_BROKER",
   "accounts": [
    {
-    "account_id": "DAISHIN-2058",
-    "broker_code": "DAISHIN",
-    "method": "AVG"
+    "account_id": "MIRAE-2058",
+    "broker_code": "MIRAE",
+    "method": "FIFO",
+    "display_no": "572-46-237424"
    },
    {
-    "account_id": "TOSS-2058",
-    "broker_code": "TOSS",
-    "method": "AVG"
+    "account_id": "NAMUH-2058",
+    "broker_code": "NAMUH",
+    "method": "CHOICE",
+    "display_no": "961-61-138805"
    }
   ],
   "tickers": [
-   "SCHD",
-   "PLTR",
-   "MSFT"
+   "COIN"
   ],
   "carry_2024_lots": false
  },
  {
   "customer_id": 2059,
+  "name": "이현우",
   "scenario": "MULTI_BROKER",
   "accounts": [
    {
-    "account_id": "KIS-2059",
-    "broker_code": "KIS",
-    "method": "AVG"
+    "account_id": "SHINHAN-2059",
+    "broker_code": "SHINHAN",
+    "method": "FIFO",
+    "display_no": "605-92-227310"
    },
    {
-    "account_id": "KAKAOPAY-2059",
-    "broker_code": "KAKAOPAY",
-    "method": "FIFO"
+    "account_id": "DAISHIN-2059",
+    "broker_code": "DAISHIN",
+    "method": "AVG",
+    "display_no": "963-57-747995"
    }
   ],
   "tickers": [
-   "META",
-   "TSLA",
-   "PLTR"
+   "AMD",
+   "COIN"
   ],
   "carry_2024_lots": true
  },
  {
   "customer_id": 2060,
+  "name": "장서현",
   "scenario": "MULTI_BROKER",
   "accounts": [
    {
-    "account_id": "KAKAOPAY-2060",
-    "broker_code": "KAKAOPAY",
-    "method": "FIFO"
+    "account_id": "KB-2060",
+    "broker_code": "KB",
+    "method": "FIFO",
+    "display_no": "222-26-434844"
    },
    {
-    "account_id": "SHINHAN-2060",
-    "broker_code": "SHINHAN",
-    "method": "FIFO"
+    "account_id": "DAISHIN-2060",
+    "broker_code": "DAISHIN",
+    "method": "AVG",
+    "display_no": "982-28-889614"
    }
   ],
   "tickers": [
-   "NVDA",
-   "TSLA"
+   "INTC",
+   "SCHD",
+   "META"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2061,
+  "name": "오현우",
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "DAISHIN-2061",
+    "broker_code": "DAISHIN",
+    "method": "AVG",
+    "display_no": "307-61-297083"
+   },
+   {
+    "account_id": "TOSS-2061",
+    "broker_code": "TOSS",
+    "method": "AVG",
+    "display_no": "170-45-543646"
+   }
+  ],
+  "tickers": [
+   "SCHD"
   ],
   "carry_2024_lots": false
  },
  {
-  "customer_id": 2061,
+  "customer_id": 2062,
+  "name": "김다은",
   "scenario": "MULTI_BROKER",
   "accounts": [
    {
-    "account_id": "KIWOOM-2061",
-    "broker_code": "KIWOOM",
-    "method": "FIFO"
+    "account_id": "TOSS-2062",
+    "broker_code": "TOSS",
+    "method": "AVG",
+    "display_no": "460-43-224074"
    },
    {
-    "account_id": "DAISHIN-2061",
+    "account_id": "DAISHIN-2062",
     "broker_code": "DAISHIN",
-    "method": "AVG"
+    "method": "AVG",
+    "display_no": "663-20-471643"
+   }
+  ],
+  "tickers": [
+   "AMZN"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2063,
+  "name": "강유나",
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "SHINHAN-2063",
+    "broker_code": "SHINHAN",
+    "method": "FIFO",
+    "display_no": "722-73-643810"
+   },
+   {
+    "account_id": "TOSS-2063",
+    "broker_code": "TOSS",
+    "method": "AVG",
+    "display_no": "543-23-814248"
+   }
+  ],
+  "tickers": [
+   "META"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2064,
+  "name": "서현우",
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "KIS-2064",
+    "broker_code": "KIS",
+    "method": "AVG",
+    "display_no": "325-98-381298"
+   },
+   {
+    "account_id": "KIWOOM-2064",
+    "broker_code": "KIWOOM",
+    "method": "FIFO",
+    "display_no": "607-36-279337"
+   }
+  ],
+  "tickers": [
+   "TSLA",
+   "COIN"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2065,
+  "name": "장도윤",
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "KB-2065",
+    "broker_code": "KB",
+    "method": "FIFO",
+    "display_no": "708-55-596846"
+   },
+   {
+    "account_id": "MIRAE-2065",
+    "broker_code": "MIRAE",
+    "method": "FIFO",
+    "display_no": "697-10-612027"
+   }
+  ],
+  "tickers": [
+   "NVDA"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2066,
+  "name": "한건우",
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "DAISHIN-2066",
+    "broker_code": "DAISHIN",
+    "method": "AVG",
+    "display_no": "658-42-795634"
+   },
+   {
+    "account_id": "SAMSUNG-2066",
+    "broker_code": "SAMSUNG",
+    "method": "AVG",
+    "display_no": "598-42-481985"
+   }
+  ],
+  "tickers": [
+   "AMZN"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2067,
+  "name": "황민준",
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "KAKAOPAY-2067",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO",
+    "display_no": "468-36-880523"
+   },
+   {
+    "account_id": "KIS-2067",
+    "broker_code": "KIS",
+    "method": "AVG",
+    "display_no": "191-34-496129"
+   }
+  ],
+  "tickers": [
+   "GOOGL"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2068,
+  "name": "안준서",
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "NAMUH-2068",
+    "broker_code": "NAMUH",
+    "method": "CHOICE",
+    "display_no": "565-82-931023"
+   },
+   {
+    "account_id": "KIWOOM-2068",
+    "broker_code": "KIWOOM",
+    "method": "FIFO",
+    "display_no": "911-54-402418"
+   }
+  ],
+  "tickers": [
+   "COIN"
+  ],
+  "carry_2024_lots": true,
+  "transfer": {
+   "from": "NAMUH-2068",
+   "to": "KIWOOM-2068",
+   "ticker": "COIN"
+  }
+ },
+ {
+  "customer_id": 2069,
+  "name": "임민준",
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "DAISHIN-2069",
+    "broker_code": "DAISHIN",
+    "method": "AVG",
+    "display_no": "945-85-229431"
+   },
+   {
+    "account_id": "NAMUH-2069",
+    "broker_code": "NAMUH",
+    "method": "CHOICE",
+    "display_no": "154-72-420677"
+   }
+  ],
+  "tickers": [
+   "MSFT",
+   "INTC"
+  ],
+  "carry_2024_lots": true,
+  "transfer": {
+   "from": "DAISHIN-2069",
+   "to": "NAMUH-2069",
+   "ticker": "MSFT"
+  }
+ },
+ {
+  "customer_id": 2070,
+  "name": "윤서연",
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "DAISHIN-2070",
+    "broker_code": "DAISHIN",
+    "method": "AVG",
+    "display_no": "794-91-505002"
+   },
+   {
+    "account_id": "NAMUH-2070",
+    "broker_code": "NAMUH",
+    "method": "CHOICE",
+    "display_no": "532-61-202905"
+   }
+  ],
+  "tickers": [
+   "AMZN"
+  ],
+  "carry_2024_lots": true,
+  "transfer": {
+   "from": "DAISHIN-2070",
+   "to": "NAMUH-2070",
+   "ticker": "AMZN"
+  }
+ },
+ {
+  "customer_id": 2071,
+  "name": "정지아",
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "TOSS-2071",
+    "broker_code": "TOSS",
+    "method": "AVG",
+    "display_no": "187-48-694191"
+   },
+   {
+    "account_id": "NAMUH-2071",
+    "broker_code": "NAMUH",
+    "method": "CHOICE",
+    "display_no": "743-69-672344"
+   }
+  ],
+  "tickers": [
+   "AMZN"
+  ],
+  "carry_2024_lots": false,
+  "transfer": {
+   "from": "TOSS-2071",
+   "to": "NAMUH-2071",
+   "ticker": "AMZN"
+  }
+ },
+ {
+  "customer_id": 2072,
+  "name": "권민준",
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "TOSS-2072",
+    "broker_code": "TOSS",
+    "method": "AVG",
+    "display_no": "531-21-892572"
+   },
+   {
+    "account_id": "MIRAE-2072",
+    "broker_code": "MIRAE",
+    "method": "FIFO",
+    "display_no": "243-88-417078"
+   }
+  ],
+  "tickers": [
+   "META",
+   "SCHD"
+  ],
+  "carry_2024_lots": true,
+  "transfer": {
+   "from": "TOSS-2072",
+   "to": "MIRAE-2072",
+   "ticker": "META"
+  }
+ },
+ {
+  "customer_id": 2073,
+  "name": "안건우",
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "MIRAE-2073",
+    "broker_code": "MIRAE",
+    "method": "FIFO",
+    "display_no": "949-93-212248"
+   },
+   {
+    "account_id": "NAMUH-2073",
+    "broker_code": "NAMUH",
+    "method": "CHOICE",
+    "display_no": "441-86-202130"
+   }
+  ],
+  "tickers": [
+   "INTC",
+   "SCHD"
+  ],
+  "carry_2024_lots": false,
+  "transfer": {
+   "from": "MIRAE-2073",
+   "to": "NAMUH-2073",
+   "ticker": "INTC"
+  }
+ },
+ {
+  "customer_id": 2074,
+  "name": "임민준",
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "DAISHIN-2074",
+    "broker_code": "DAISHIN",
+    "method": "AVG",
+    "display_no": "100-29-733120"
+   },
+   {
+    "account_id": "NAMUH-2074",
+    "broker_code": "NAMUH",
+    "method": "CHOICE",
+    "display_no": "223-76-201568"
+   }
+  ],
+  "tickers": [
+   "AMZN"
+  ],
+  "carry_2024_lots": true,
+  "transfer": {
+   "from": "DAISHIN-2074",
+   "to": "NAMUH-2074",
+   "ticker": "AMZN"
+  }
+ },
+ {
+  "customer_id": 2075,
+  "name": "강하은",
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "TOSS-2075",
+    "broker_code": "TOSS",
+    "method": "AVG",
+    "display_no": "797-66-790130"
+   },
+   {
+    "account_id": "SHINHAN-2075",
+    "broker_code": "SHINHAN",
+    "method": "FIFO",
+    "display_no": "731-25-553355"
+   }
+  ],
+  "tickers": [
+   "META",
+   "AMD"
+  ],
+  "carry_2024_lots": false,
+  "transfer": {
+   "from": "TOSS-2075",
+   "to": "SHINHAN-2075",
+   "ticker": "META"
+  }
+ },
+ {
+  "customer_id": 2076,
+  "name": "류다은",
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "SAMSUNG-2076",
+    "broker_code": "SAMSUNG",
+    "method": "AVG",
+    "display_no": "814-23-586501"
+   },
+   {
+    "account_id": "NAMUH-2076",
+    "broker_code": "NAMUH",
+    "method": "CHOICE",
+    "display_no": "526-64-255363"
+   }
+  ],
+  "tickers": [
+   "LCID",
+   "MSFT"
+  ],
+  "carry_2024_lots": false,
+  "transfer": {
+   "from": "SAMSUNG-2076",
+   "to": "NAMUH-2076",
+   "ticker": "LCID"
+  }
+ },
+ {
+  "customer_id": 2077,
+  "name": "강지민",
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "TOSS-2077",
+    "broker_code": "TOSS",
+    "method": "AVG",
+    "display_no": "823-77-509599"
+   },
+   {
+    "account_id": "NAMUH-2077",
+    "broker_code": "NAMUH",
+    "method": "CHOICE",
+    "display_no": "625-18-282973"
+   }
+  ],
+  "tickers": [
+   "AMZN",
+   "AAPL"
+  ],
+  "carry_2024_lots": false,
+  "transfer": {
+   "from": "TOSS-2077",
+   "to": "NAMUH-2077",
+   "ticker": "AMZN"
+  }
+ },
+ {
+  "customer_id": 2078,
+  "name": "홍서현",
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "NAMUH-2078",
+    "broker_code": "NAMUH",
+    "method": "CHOICE",
+    "display_no": "638-43-235708"
+   },
+   {
+    "account_id": "TOSS-2078",
+    "broker_code": "TOSS",
+    "method": "AVG",
+    "display_no": "814-51-717456"
+   }
+  ],
+  "tickers": [
+   "META",
+   "AMD"
+  ],
+  "carry_2024_lots": false,
+  "transfer": {
+   "from": "NAMUH-2078",
+   "to": "TOSS-2078",
+   "ticker": "META"
+  }
+ },
+ {
+  "customer_id": 2079,
+  "name": "윤지우",
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "KB-2079",
+    "broker_code": "KB",
+    "method": "FIFO",
+    "display_no": "530-18-164934"
+   },
+   {
+    "account_id": "KIS-2079",
+    "broker_code": "KIS",
+    "method": "AVG",
+    "display_no": "726-42-220034"
+   }
+  ],
+  "tickers": [
+   "INTC"
+  ],
+  "carry_2024_lots": true,
+  "transfer": {
+   "from": "KB-2079",
+   "to": "KIS-2079",
+   "ticker": "INTC"
+  }
+ },
+ {
+  "customer_id": 2080,
+  "name": "류채원",
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "KAKAOPAY-2080",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO",
+    "display_no": "548-96-399986"
+   },
+   {
+    "account_id": "NAMUH-2080",
+    "broker_code": "NAMUH",
+    "method": "CHOICE",
+    "display_no": "330-35-878204"
+   }
+  ],
+  "tickers": [
+   "META",
+   "NVDA"
+  ],
+  "carry_2024_lots": true,
+  "transfer": {
+   "from": "KAKAOPAY-2080",
+   "to": "NAMUH-2080",
+   "ticker": "META"
+  }
+ },
+ {
+  "customer_id": 2081,
+  "name": "박준서",
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "KB-2081",
+    "broker_code": "KB",
+    "method": "FIFO",
+    "display_no": "952-36-698076"
+   },
+   {
+    "account_id": "TOSS-2081",
+    "broker_code": "TOSS",
+    "method": "AVG",
+    "display_no": "947-70-625179"
+   }
+  ],
+  "tickers": [
+   "COIN",
+   "PLTR"
+  ],
+  "carry_2024_lots": true,
+  "transfer": {
+   "from": "KB-2081",
+   "to": "TOSS-2081",
+   "ticker": "COIN"
+  }
+ },
+ {
+  "customer_id": 2082,
+  "name": "홍채원",
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "SAMSUNG-2082",
+    "broker_code": "SAMSUNG",
+    "method": "AVG",
+    "display_no": "396-42-509391"
+   },
+   {
+    "account_id": "NAMUH-2082",
+    "broker_code": "NAMUH",
+    "method": "CHOICE",
+    "display_no": "820-55-171253"
+   }
+  ],
+  "tickers": [
+   "AAPL"
+  ],
+  "carry_2024_lots": true,
+  "transfer": {
+   "from": "SAMSUNG-2082",
+   "to": "NAMUH-2082",
+   "ticker": "AAPL"
+  }
+ },
+ {
+  "customer_id": 2083,
+  "name": "최선우",
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "DAISHIN-2083",
+    "broker_code": "DAISHIN",
+    "method": "AVG",
+    "display_no": "133-53-541875"
+   },
+   {
+    "account_id": "SHINHAN-2083",
+    "broker_code": "SHINHAN",
+    "method": "FIFO",
+    "display_no": "367-35-450791"
+   }
+  ],
+  "tickers": [
+   "PLTR"
+  ],
+  "carry_2024_lots": true,
+  "transfer": {
+   "from": "DAISHIN-2083",
+   "to": "SHINHAN-2083",
+   "ticker": "PLTR"
+  }
+ },
+ {
+  "customer_id": 2084,
+  "name": "이지민",
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2084",
+    "broker_code": "KIWOOM",
+    "method": "FIFO",
+    "display_no": "727-20-678211"
+   },
+   {
+    "account_id": "KIS-2084",
+    "broker_code": "KIS",
+    "method": "AVG",
+    "display_no": "590-26-383648"
+   }
+  ],
+  "tickers": [
+   "SCHD",
+   "COIN",
+   "RIVN"
+  ],
+  "carry_2024_lots": false,
+  "transfer": {
+   "from": "KIWOOM-2084",
+   "to": "KIS-2084",
+   "ticker": "SCHD"
+  }
+ },
+ {
+  "customer_id": 2085,
+  "name": "황서연",
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "KIS-2085",
+    "broker_code": "KIS",
+    "method": "AVG",
+    "display_no": "540-99-547567"
+   },
+   {
+    "account_id": "NAMUH-2085",
+    "broker_code": "NAMUH",
+    "method": "CHOICE",
+    "display_no": "662-27-221197"
+   }
+  ],
+  "tickers": [
+   "PLTR"
+  ],
+  "carry_2024_lots": false,
+  "transfer": {
+   "from": "KIS-2085",
+   "to": "NAMUH-2085",
+   "ticker": "PLTR"
+  }
+ },
+ {
+  "customer_id": 2086,
+  "name": "송선우",
+  "scenario": "NO_SALE",
+  "accounts": [
+   {
+    "account_id": "MIRAE-2086",
+    "broker_code": "MIRAE",
+    "method": "FIFO",
+    "display_no": "994-41-952095"
    }
   ],
   "tickers": [
@@ -1047,18 +1856,334 @@
   "carry_2024_lots": false
  },
  {
-  "customer_id": 2062,
-  "scenario": "MULTI_BROKER",
+  "customer_id": 2087,
+  "name": "이준서",
+  "scenario": "NO_SALE",
   "accounts": [
    {
-    "account_id": "KB-2062",
-    "broker_code": "KB",
-    "method": "FIFO"
-   },
+    "account_id": "KIWOOM-2087",
+    "broker_code": "KIWOOM",
+    "method": "FIFO",
+    "display_no": "399-26-735566"
+   }
+  ],
+  "tickers": [
+   "AMZN"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2088,
+  "name": "오하은",
+  "scenario": "NO_SALE",
+  "accounts": [
    {
-    "account_id": "MIRAE-2062",
+    "account_id": "KB-2088",
+    "broker_code": "KB",
+    "method": "FIFO",
+    "display_no": "475-80-406900"
+   }
+  ],
+  "tickers": [
+   "TSLA",
+   "AMD",
+   "RIVN"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2089,
+  "name": "안하은",
+  "scenario": "NO_SALE",
+  "accounts": [
+   {
+    "account_id": "SHINHAN-2089",
+    "broker_code": "SHINHAN",
+    "method": "FIFO",
+    "display_no": "315-25-490479"
+   }
+  ],
+  "tickers": [
+   "SOXL"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2090,
+  "name": "장선우",
+  "scenario": "NO_SALE",
+  "accounts": [
+   {
+    "account_id": "MIRAE-2090",
     "broker_code": "MIRAE",
-    "method": "FIFO"
+    "method": "FIFO",
+    "display_no": "161-45-996086"
+   }
+  ],
+  "tickers": [
+   "AMZN"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2091,
+  "name": "강지아",
+  "scenario": "NO_SALE",
+  "accounts": [
+   {
+    "account_id": "KB-2091",
+    "broker_code": "KB",
+    "method": "FIFO",
+    "display_no": "132-79-900059"
+   }
+  ],
+  "tickers": [
+   "META"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2092,
+  "name": "한유나",
+  "scenario": "NO_SALE",
+  "accounts": [
+   {
+    "account_id": "KAKAOPAY-2092",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO",
+    "display_no": "901-17-946616"
+   }
+  ],
+  "tickers": [
+   "TSLA",
+   "INTC",
+   "AAPL"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2093,
+  "name": "정민준",
+  "scenario": "NO_SALE",
+  "accounts": [
+   {
+    "account_id": "KB-2093",
+    "broker_code": "KB",
+    "method": "FIFO",
+    "display_no": "187-41-908807"
+   }
+  ],
+  "tickers": [
+   "RIVN",
+   "TSLA"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2094,
+  "name": "한지호",
+  "scenario": "LOSS_HEAVY",
+  "accounts": [
+   {
+    "account_id": "KAKAOPAY-2094",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO",
+    "display_no": "109-69-138801"
+   }
+  ],
+  "tickers": [
+   "RIVN",
+   "SOXL"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2095,
+  "name": "강하준",
+  "scenario": "LOSS_HEAVY",
+  "accounts": [
+   {
+    "account_id": "NAMUH-2095",
+    "broker_code": "NAMUH",
+    "method": "CHOICE",
+    "display_no": "139-33-817688"
+   }
+  ],
+  "tickers": [
+   "LCID"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2096,
+  "name": "이유나",
+  "scenario": "LOSS_HEAVY",
+  "accounts": [
+   {
+    "account_id": "SHINHAN-2096",
+    "broker_code": "SHINHAN",
+    "method": "FIFO",
+    "display_no": "554-24-635859"
+   }
+  ],
+  "tickers": [
+   "RIVN",
+   "SOXL"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2097,
+  "name": "오다은",
+  "scenario": "LOSS_HEAVY",
+  "accounts": [
+   {
+    "account_id": "KB-2097",
+    "broker_code": "KB",
+    "method": "FIFO",
+    "display_no": "145-47-257352"
+   }
+  ],
+  "tickers": [
+   "INTC",
+   "SOXL"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2098,
+  "name": "윤선우",
+  "scenario": "LOSS_HEAVY",
+  "accounts": [
+   {
+    "account_id": "MIRAE-2098",
+    "broker_code": "MIRAE",
+    "method": "FIFO",
+    "display_no": "967-77-936979"
+   }
+  ],
+  "tickers": [
+   "SOXL"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2099,
+  "name": "윤지민",
+  "scenario": "LOSS_HEAVY",
+  "accounts": [
+   {
+    "account_id": "MIRAE-2099",
+    "broker_code": "MIRAE",
+    "method": "FIFO",
+    "display_no": "809-40-566624"
+   }
+  ],
+  "tickers": [
+   "RIVN",
+   "SOXL",
+   "AMZN"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2100,
+  "name": "정선우",
+  "scenario": "LOSS_HEAVY",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2100",
+    "broker_code": "KIWOOM",
+    "method": "FIFO",
+    "display_no": "284-68-116265"
+   }
+  ],
+  "tickers": [
+   "SOXL",
+   "INTC"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2101,
+  "name": "송하은",
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "MIRAE-2101",
+    "broker_code": "MIRAE",
+    "method": "FIFO",
+    "display_no": "444-53-720209"
+   }
+  ],
+  "tickers": [
+   "NVDA",
+   "META"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2102,
+  "name": "권현우",
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2102",
+    "broker_code": "KIWOOM",
+    "method": "FIFO",
+    "display_no": "620-85-392866"
+   }
+  ],
+  "tickers": [
+   "LCID",
+   "SCHD"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2103,
+  "name": "조지아",
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "SHINHAN-2103",
+    "broker_code": "SHINHAN",
+    "method": "FIFO",
+    "display_no": "730-50-204298"
+   }
+  ],
+  "tickers": [
+   "SOXL"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2104,
+  "name": "장유나",
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2104",
+    "broker_code": "KIWOOM",
+    "method": "FIFO",
+    "display_no": "782-45-247852"
+   }
+  ],
+  "tickers": [
+   "AMZN"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2105,
+  "name": "송채원",
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "MIRAE-2105",
+    "broker_code": "MIRAE",
+    "method": "FIFO",
+    "display_no": "600-13-487491"
    }
   ],
   "tickers": [
@@ -1067,1832 +2192,602 @@
   "carry_2024_lots": true
  },
  {
-  "customer_id": 2063,
-  "scenario": "MULTI_BROKER",
-  "accounts": [
-   {
-    "account_id": "SAMSUNG-2063",
-    "broker_code": "SAMSUNG",
-    "method": "AVG"
-   },
-   {
-    "account_id": "KIWOOM-2063",
-    "broker_code": "KIWOOM",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "TSLA"
-  ],
-  "carry_2024_lots": false
- },
- {
-  "customer_id": 2064,
-  "scenario": "MULTI_BROKER",
-  "accounts": [
-   {
-    "account_id": "SHINHAN-2064",
-    "broker_code": "SHINHAN",
-    "method": "FIFO"
-   },
-   {
-    "account_id": "DAISHIN-2064",
-    "broker_code": "DAISHIN",
-    "method": "AVG"
-   }
-  ],
-  "tickers": [
-   "RIVN",
-   "PLTR"
-  ],
-  "carry_2024_lots": false
- },
- {
-  "customer_id": 2065,
-  "scenario": "MULTI_BROKER",
-  "accounts": [
-   {
-    "account_id": "KIWOOM-2065",
-    "broker_code": "KIWOOM",
-    "method": "FIFO"
-   },
-   {
-    "account_id": "DAISHIN-2065",
-    "broker_code": "DAISHIN",
-    "method": "AVG"
-   }
-  ],
-  "tickers": [
-   "GOOGL",
-   "LCID"
-  ],
-  "carry_2024_lots": true
- },
- {
-  "customer_id": 2066,
-  "scenario": "MULTI_BROKER",
-  "accounts": [
-   {
-    "account_id": "TOSS-2066",
-    "broker_code": "TOSS",
-    "method": "AVG"
-   },
-   {
-    "account_id": "KIWOOM-2066",
-    "broker_code": "KIWOOM",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "INTC",
-   "GOOGL",
-   "TSLA"
-  ],
-  "carry_2024_lots": true
- },
- {
-  "customer_id": 2067,
-  "scenario": "MULTI_BROKER",
-  "accounts": [
-   {
-    "account_id": "DAISHIN-2067",
-    "broker_code": "DAISHIN",
-    "method": "AVG"
-   },
-   {
-    "account_id": "KIWOOM-2067",
-    "broker_code": "KIWOOM",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "MSFT"
-  ],
-  "carry_2024_lots": true
- },
- {
-  "customer_id": 2068,
-  "scenario": "TRANSFER",
-  "accounts": [
-   {
-    "account_id": "SAMSUNG-2068",
-    "broker_code": "SAMSUNG",
-    "method": "AVG"
-   },
-   {
-    "account_id": "NAMUH-2068",
-    "broker_code": "NAMUH",
-    "method": "CHOICE"
-   }
-  ],
-  "tickers": [
-   "SOXL"
-  ],
-  "carry_2024_lots": false,
-  "transfer": {
-   "from": "SAMSUNG-2068",
-   "to": "NAMUH-2068",
-   "ticker": "SOXL"
-  }
- },
- {
-  "customer_id": 2069,
-  "scenario": "TRANSFER",
-  "accounts": [
-   {
-    "account_id": "SAMSUNG-2069",
-    "broker_code": "SAMSUNG",
-    "method": "AVG"
-   },
-   {
-    "account_id": "TOSS-2069",
-    "broker_code": "TOSS",
-    "method": "AVG"
-   }
-  ],
-  "tickers": [
-   "RIVN"
-  ],
-  "carry_2024_lots": true,
-  "transfer": {
-   "from": "SAMSUNG-2069",
-   "to": "TOSS-2069",
-   "ticker": "RIVN"
-  }
- },
- {
-  "customer_id": 2070,
-  "scenario": "TRANSFER",
-  "accounts": [
-   {
-    "account_id": "DAISHIN-2070",
-    "broker_code": "DAISHIN",
-    "method": "AVG"
-   },
-   {
-    "account_id": "NAMUH-2070",
-    "broker_code": "NAMUH",
-    "method": "CHOICE"
-   }
-  ],
-  "tickers": [
-   "COIN"
-  ],
-  "carry_2024_lots": false,
-  "transfer": {
-   "from": "DAISHIN-2070",
-   "to": "NAMUH-2070",
-   "ticker": "COIN"
-  }
- },
- {
-  "customer_id": 2071,
-  "scenario": "TRANSFER",
-  "accounts": [
-   {
-    "account_id": "DAISHIN-2071",
-    "broker_code": "DAISHIN",
-    "method": "AVG"
-   },
-   {
-    "account_id": "NAMUH-2071",
-    "broker_code": "NAMUH",
-    "method": "CHOICE"
-   }
-  ],
-  "tickers": [
-   "COIN"
-  ],
-  "carry_2024_lots": false,
-  "transfer": {
-   "from": "DAISHIN-2071",
-   "to": "NAMUH-2071",
-   "ticker": "COIN"
-  }
- },
- {
-  "customer_id": 2072,
-  "scenario": "TRANSFER",
-  "accounts": [
-   {
-    "account_id": "KIWOOM-2072",
-    "broker_code": "KIWOOM",
-    "method": "FIFO"
-   },
-   {
-    "account_id": "NAMUH-2072",
-    "broker_code": "NAMUH",
-    "method": "CHOICE"
-   }
-  ],
-  "tickers": [
-   "RIVN"
-  ],
-  "carry_2024_lots": false,
-  "transfer": {
-   "from": "KIWOOM-2072",
-   "to": "NAMUH-2072",
-   "ticker": "RIVN"
-  }
- },
- {
-  "customer_id": 2073,
-  "scenario": "TRANSFER",
-  "accounts": [
-   {
-    "account_id": "SHINHAN-2073",
-    "broker_code": "SHINHAN",
-    "method": "FIFO"
-   },
-   {
-    "account_id": "DAISHIN-2073",
-    "broker_code": "DAISHIN",
-    "method": "AVG"
-   }
-  ],
-  "tickers": [
-   "PLTR",
-   "SOXL",
-   "GOOGL"
-  ],
-  "carry_2024_lots": false,
-  "transfer": {
-   "from": "SHINHAN-2073",
-   "to": "DAISHIN-2073",
-   "ticker": "PLTR"
-  }
- },
- {
-  "customer_id": 2074,
-  "scenario": "TRANSFER",
-  "accounts": [
-   {
-    "account_id": "DAISHIN-2074",
-    "broker_code": "DAISHIN",
-    "method": "AVG"
-   },
-   {
-    "account_id": "KIWOOM-2074",
-    "broker_code": "KIWOOM",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "LCID",
-   "MSFT",
-   "NVDA"
-  ],
-  "carry_2024_lots": false,
-  "transfer": {
-   "from": "DAISHIN-2074",
-   "to": "KIWOOM-2074",
-   "ticker": "LCID"
-  }
- },
- {
-  "customer_id": 2075,
-  "scenario": "TRANSFER",
-  "accounts": [
-   {
-    "account_id": "SHINHAN-2075",
-    "broker_code": "SHINHAN",
-    "method": "FIFO"
-   },
-   {
-    "account_id": "NAMUH-2075",
-    "broker_code": "NAMUH",
-    "method": "CHOICE"
-   }
-  ],
-  "tickers": [
-   "GOOGL",
-   "AAPL",
-   "AMD"
-  ],
-  "carry_2024_lots": false,
-  "transfer": {
-   "from": "SHINHAN-2075",
-   "to": "NAMUH-2075",
-   "ticker": "GOOGL"
-  }
- },
- {
-  "customer_id": 2076,
-  "scenario": "TRANSFER",
-  "accounts": [
-   {
-    "account_id": "SHINHAN-2076",
-    "broker_code": "SHINHAN",
-    "method": "FIFO"
-   },
-   {
-    "account_id": "NAMUH-2076",
-    "broker_code": "NAMUH",
-    "method": "CHOICE"
-   }
-  ],
-  "tickers": [
-   "COIN"
-  ],
-  "carry_2024_lots": true,
-  "transfer": {
-   "from": "SHINHAN-2076",
-   "to": "NAMUH-2076",
-   "ticker": "COIN"
-  }
- },
- {
-  "customer_id": 2077,
-  "scenario": "TRANSFER",
-  "accounts": [
-   {
-    "account_id": "KAKAOPAY-2077",
-    "broker_code": "KAKAOPAY",
-    "method": "FIFO"
-   },
-   {
-    "account_id": "SAMSUNG-2077",
-    "broker_code": "SAMSUNG",
-    "method": "AVG"
-   }
-  ],
-  "tickers": [
-   "INTC"
-  ],
-  "carry_2024_lots": false,
-  "transfer": {
-   "from": "KAKAOPAY-2077",
-   "to": "SAMSUNG-2077",
-   "ticker": "INTC"
-  }
- },
- {
-  "customer_id": 2078,
-  "scenario": "TRANSFER",
-  "accounts": [
-   {
-    "account_id": "SAMSUNG-2078",
-    "broker_code": "SAMSUNG",
-    "method": "AVG"
-   },
-   {
-    "account_id": "NAMUH-2078",
-    "broker_code": "NAMUH",
-    "method": "CHOICE"
-   }
-  ],
-  "tickers": [
-   "NVDA"
-  ],
-  "carry_2024_lots": false,
-  "transfer": {
-   "from": "SAMSUNG-2078",
-   "to": "NAMUH-2078",
-   "ticker": "NVDA"
-  }
- },
- {
-  "customer_id": 2079,
-  "scenario": "TRANSFER",
-  "accounts": [
-   {
-    "account_id": "SAMSUNG-2079",
-    "broker_code": "SAMSUNG",
-    "method": "AVG"
-   },
-   {
-    "account_id": "DAISHIN-2079",
-    "broker_code": "DAISHIN",
-    "method": "AVG"
-   }
-  ],
-  "tickers": [
-   "COIN"
-  ],
-  "carry_2024_lots": false,
-  "transfer": {
-   "from": "SAMSUNG-2079",
-   "to": "DAISHIN-2079",
-   "ticker": "COIN"
-  }
- },
- {
-  "customer_id": 2080,
-  "scenario": "TRANSFER",
-  "accounts": [
-   {
-    "account_id": "KB-2080",
-    "broker_code": "KB",
-    "method": "FIFO"
-   },
-   {
-    "account_id": "NAMUH-2080",
-    "broker_code": "NAMUH",
-    "method": "CHOICE"
-   }
-  ],
-  "tickers": [
-   "INTC"
-  ],
-  "carry_2024_lots": false,
-  "transfer": {
-   "from": "KB-2080",
-   "to": "NAMUH-2080",
-   "ticker": "INTC"
-  }
- },
- {
-  "customer_id": 2081,
-  "scenario": "TRANSFER",
-  "accounts": [
-   {
-    "account_id": "DAISHIN-2081",
-    "broker_code": "DAISHIN",
-    "method": "AVG"
-   },
-   {
-    "account_id": "NAMUH-2081",
-    "broker_code": "NAMUH",
-    "method": "CHOICE"
-   }
-  ],
-  "tickers": [
-   "INTC",
-   "LCID",
-   "COIN"
-  ],
-  "carry_2024_lots": false,
-  "transfer": {
-   "from": "DAISHIN-2081",
-   "to": "NAMUH-2081",
-   "ticker": "INTC"
-  }
- },
- {
-  "customer_id": 2082,
-  "scenario": "TRANSFER",
-  "accounts": [
-   {
-    "account_id": "KB-2082",
-    "broker_code": "KB",
-    "method": "FIFO"
-   },
-   {
-    "account_id": "SHINHAN-2082",
-    "broker_code": "SHINHAN",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "SCHD",
-   "AMD",
-   "PLTR"
-  ],
-  "carry_2024_lots": false,
-  "transfer": {
-   "from": "KB-2082",
-   "to": "SHINHAN-2082",
-   "ticker": "SCHD"
-  }
- },
- {
-  "customer_id": 2083,
-  "scenario": "TRANSFER",
-  "accounts": [
-   {
-    "account_id": "KB-2083",
-    "broker_code": "KB",
-    "method": "FIFO"
-   },
-   {
-    "account_id": "DAISHIN-2083",
-    "broker_code": "DAISHIN",
-    "method": "AVG"
-   }
-  ],
-  "tickers": [
-   "AMD"
-  ],
-  "carry_2024_lots": true,
-  "transfer": {
-   "from": "KB-2083",
-   "to": "DAISHIN-2083",
-   "ticker": "AMD"
-  }
- },
- {
-  "customer_id": 2084,
-  "scenario": "TRANSFER",
-  "accounts": [
-   {
-    "account_id": "KIWOOM-2084",
-    "broker_code": "KIWOOM",
-    "method": "FIFO"
-   },
-   {
-    "account_id": "MIRAE-2084",
-    "broker_code": "MIRAE",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "SOXL",
-   "COIN"
-  ],
-  "carry_2024_lots": true,
-  "transfer": {
-   "from": "KIWOOM-2084",
-   "to": "MIRAE-2084",
-   "ticker": "SOXL"
-  }
- },
- {
-  "customer_id": 2085,
-  "scenario": "TRANSFER",
-  "accounts": [
-   {
-    "account_id": "KAKAOPAY-2085",
-    "broker_code": "KAKAOPAY",
-    "method": "FIFO"
-   },
-   {
-    "account_id": "MIRAE-2085",
-    "broker_code": "MIRAE",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "AMZN"
-  ],
-  "carry_2024_lots": true,
-  "transfer": {
-   "from": "KAKAOPAY-2085",
-   "to": "MIRAE-2085",
-   "ticker": "AMZN"
-  }
- },
- {
-  "customer_id": 2086,
-  "scenario": "NO_SALE",
-  "accounts": [
-   {
-    "account_id": "KIWOOM-2086",
-    "broker_code": "KIWOOM",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "LCID",
-   "GOOGL"
-  ],
-  "carry_2024_lots": true
- },
- {
-  "customer_id": 2087,
-  "scenario": "NO_SALE",
-  "accounts": [
-   {
-    "account_id": "KAKAOPAY-2087",
-    "broker_code": "KAKAOPAY",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "PLTR",
-   "NVDA"
-  ],
-  "carry_2024_lots": false
- },
- {
-  "customer_id": 2088,
-  "scenario": "NO_SALE",
-  "accounts": [
-   {
-    "account_id": "KAKAOPAY-2088",
-    "broker_code": "KAKAOPAY",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "AMD",
-   "META"
-  ],
-  "carry_2024_lots": false
- },
- {
-  "customer_id": 2089,
-  "scenario": "NO_SALE",
-  "accounts": [
-   {
-    "account_id": "KIWOOM-2089",
-    "broker_code": "KIWOOM",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "COIN"
-  ],
-  "carry_2024_lots": true
- },
- {
-  "customer_id": 2090,
-  "scenario": "NO_SALE",
-  "accounts": [
-   {
-    "account_id": "KIWOOM-2090",
-    "broker_code": "KIWOOM",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "INTC"
-  ],
-  "carry_2024_lots": false
- },
- {
-  "customer_id": 2091,
-  "scenario": "NO_SALE",
-  "accounts": [
-   {
-    "account_id": "NAMUH-2091",
-    "broker_code": "NAMUH",
-    "method": "CHOICE"
-   }
-  ],
-  "tickers": [
-   "MSFT"
-  ],
-  "carry_2024_lots": false
- },
- {
-  "customer_id": 2092,
-  "scenario": "NO_SALE",
-  "accounts": [
-   {
-    "account_id": "MIRAE-2092",
-    "broker_code": "MIRAE",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "COIN",
-   "AMD"
-  ],
-  "carry_2024_lots": true
- },
- {
-  "customer_id": 2093,
-  "scenario": "NO_SALE",
-  "accounts": [
-   {
-    "account_id": "KIWOOM-2093",
-    "broker_code": "KIWOOM",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "NVDA",
-   "TSLA"
-  ],
-  "carry_2024_lots": true
- },
- {
-  "customer_id": 2094,
-  "scenario": "LOSS_HEAVY",
-  "accounts": [
-   {
-    "account_id": "MIRAE-2094",
-    "broker_code": "MIRAE",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "LCID"
-  ],
-  "carry_2024_lots": false
- },
- {
-  "customer_id": 2095,
-  "scenario": "LOSS_HEAVY",
-  "accounts": [
-   {
-    "account_id": "SHINHAN-2095",
-    "broker_code": "SHINHAN",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "RIVN",
-   "INTC"
-  ],
-  "carry_2024_lots": true
- },
- {
-  "customer_id": 2096,
-  "scenario": "LOSS_HEAVY",
-  "accounts": [
-   {
-    "account_id": "MIRAE-2096",
-    "broker_code": "MIRAE",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "INTC",
-   "RIVN"
-  ],
-  "carry_2024_lots": false
- },
- {
-  "customer_id": 2097,
-  "scenario": "LOSS_HEAVY",
-  "accounts": [
-   {
-    "account_id": "KIWOOM-2097",
-    "broker_code": "KIWOOM",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "SOXL",
-   "RIVN"
-  ],
-  "carry_2024_lots": true
- },
- {
-  "customer_id": 2098,
-  "scenario": "LOSS_HEAVY",
-  "accounts": [
-   {
-    "account_id": "KAKAOPAY-2098",
-    "broker_code": "KAKAOPAY",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "LCID",
-   "INTC"
-  ],
-  "carry_2024_lots": false
- },
- {
-  "customer_id": 2099,
-  "scenario": "LOSS_HEAVY",
-  "accounts": [
-   {
-    "account_id": "KIWOOM-2099",
-    "broker_code": "KIWOOM",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "SOXL",
-   "RIVN"
-  ],
-  "carry_2024_lots": false
- },
- {
-  "customer_id": 2100,
-  "scenario": "LOSS_HEAVY",
-  "accounts": [
-   {
-    "account_id": "KAKAOPAY-2100",
-    "broker_code": "KAKAOPAY",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "RIVN",
-   "SOXL",
-   "LCID"
-  ],
-  "carry_2024_lots": false
- },
- {
-  "customer_id": 2101,
-  "scenario": "SINGLE_FIFO",
-  "accounts": [
-   {
-    "account_id": "KB-2101",
-    "broker_code": "KB",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "COIN",
-   "PLTR"
-  ],
-  "carry_2024_lots": true
- },
- {
-  "customer_id": 2102,
-  "scenario": "SINGLE_FIFO",
-  "accounts": [
-   {
-    "account_id": "MIRAE-2102",
-    "broker_code": "MIRAE",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "MSFT",
-   "NVDA",
-   "INTC"
-  ],
-  "carry_2024_lots": false
- },
- {
-  "customer_id": 2103,
-  "scenario": "SINGLE_FIFO",
-  "accounts": [
-   {
-    "account_id": "SHINHAN-2103",
-    "broker_code": "SHINHAN",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "PLTR",
-   "AMZN",
-   "META"
-  ],
-  "carry_2024_lots": false
- },
- {
-  "customer_id": 2104,
-  "scenario": "SINGLE_FIFO",
-  "accounts": [
-   {
-    "account_id": "KAKAOPAY-2104",
-    "broker_code": "KAKAOPAY",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "RIVN",
-   "COIN",
-   "MSFT"
-  ],
-  "carry_2024_lots": false
- },
- {
-  "customer_id": 2105,
-  "scenario": "SINGLE_FIFO",
-  "accounts": [
-   {
-    "account_id": "KAKAOPAY-2105",
-    "broker_code": "KAKAOPAY",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "PLTR"
-  ],
-  "carry_2024_lots": false
- },
- {
   "customer_id": 2106,
+  "name": "최건우",
   "scenario": "SINGLE_FIFO",
   "accounts": [
    {
-    "account_id": "MIRAE-2106",
-    "broker_code": "MIRAE",
-    "method": "FIFO"
+    "account_id": "KAKAOPAY-2106",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO",
+    "display_no": "369-21-243464"
    }
   ],
   "tickers": [
-   "GOOGL",
-   "TSLA"
+   "AMZN",
+   "MSFT"
   ],
   "carry_2024_lots": false
  },
  {
   "customer_id": 2107,
+  "name": "이민준",
   "scenario": "SINGLE_FIFO",
   "accounts": [
    {
-    "account_id": "KIWOOM-2107",
-    "broker_code": "KIWOOM",
-    "method": "FIFO"
+    "account_id": "SHINHAN-2107",
+    "broker_code": "SHINHAN",
+    "method": "FIFO",
+    "display_no": "485-38-806056"
    }
   ],
   "tickers": [
-   "AAPL"
+   "GOOGL",
+   "TSLA",
+   "PLTR"
   ],
-  "carry_2024_lots": false
+  "carry_2024_lots": true
  },
  {
   "customer_id": 2108,
+  "name": "류하은",
   "scenario": "SINGLE_FIFO",
   "accounts": [
    {
-    "account_id": "MIRAE-2108",
-    "broker_code": "MIRAE",
-    "method": "FIFO"
+    "account_id": "KAKAOPAY-2108",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO",
+    "display_no": "643-94-288811"
    }
   ],
   "tickers": [
-   "LCID",
-   "MSFT"
+   "COIN",
+   "META"
   ],
-  "carry_2024_lots": false
+  "carry_2024_lots": true
  },
  {
   "customer_id": 2109,
+  "name": "권준서",
   "scenario": "SINGLE_FIFO",
   "accounts": [
    {
-    "account_id": "MIRAE-2109",
-    "broker_code": "MIRAE",
-    "method": "FIFO"
+    "account_id": "KB-2109",
+    "broker_code": "KB",
+    "method": "FIFO",
+    "display_no": "813-60-839056"
    }
   ],
   "tickers": [
-   "RIVN",
-   "COIN"
+   "MSFT",
+   "NVDA"
   ],
   "carry_2024_lots": true
  },
  {
   "customer_id": 2110,
+  "name": "한지아",
   "scenario": "SINGLE_FIFO",
   "accounts": [
    {
-    "account_id": "MIRAE-2110",
-    "broker_code": "MIRAE",
-    "method": "FIFO"
+    "account_id": "KAKAOPAY-2110",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO",
+    "display_no": "535-61-373363"
    }
   ],
   "tickers": [
-   "MSFT",
-   "AAPL"
-  ],
-  "carry_2024_lots": false
- },
- {
-  "customer_id": 2111,
-  "scenario": "SINGLE_FIFO",
-  "accounts": [
-   {
-    "account_id": "MIRAE-2111",
-    "broker_code": "MIRAE",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
+   "AMZN",
    "LCID"
   ],
   "carry_2024_lots": true
  },
  {
-  "customer_id": 2112,
+  "customer_id": 2111,
+  "name": "홍준서",
   "scenario": "SINGLE_FIFO",
   "accounts": [
    {
-    "account_id": "SHINHAN-2112",
+    "account_id": "SHINHAN-2111",
     "broker_code": "SHINHAN",
-    "method": "FIFO"
+    "method": "FIFO",
+    "display_no": "120-12-941390"
    }
   ],
   "tickers": [
-   "TSLA",
-   "INTC",
-   "AAPL"
+   "COIN"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2112,
+  "name": "강채원",
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2112",
+    "broker_code": "KIWOOM",
+    "method": "FIFO",
+    "display_no": "397-30-492041"
+   }
+  ],
+  "tickers": [
+   "PLTR",
+   "TSLA"
   ],
   "carry_2024_lots": false
  },
  {
   "customer_id": 2113,
+  "name": "장지우",
   "scenario": "SINGLE_FIFO",
   "accounts": [
    {
-    "account_id": "SHINHAN-2113",
-    "broker_code": "SHINHAN",
-    "method": "FIFO"
+    "account_id": "KAKAOPAY-2113",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO",
+    "display_no": "771-61-237566"
    }
   ],
   "tickers": [
-   "AMZN",
-   "GOOGL",
-   "COIN"
+   "AAPL"
   ],
-  "carry_2024_lots": false
+  "carry_2024_lots": true
  },
  {
   "customer_id": 2114,
+  "name": "홍수아",
   "scenario": "SINGLE_FIFO",
   "accounts": [
    {
-    "account_id": "MIRAE-2114",
-    "broker_code": "MIRAE",
-    "method": "FIFO"
+    "account_id": "KAKAOPAY-2114",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO",
+    "display_no": "624-12-416831"
    }
   ],
   "tickers": [
-   "MSFT",
-   "AMZN",
-   "COIN"
+   "INTC",
+   "META",
+   "TSLA"
   ],
   "carry_2024_lots": true
  },
  {
   "customer_id": 2115,
+  "name": "윤선우",
   "scenario": "SINGLE_FIFO",
   "accounts": [
    {
-    "account_id": "KIWOOM-2115",
-    "broker_code": "KIWOOM",
-    "method": "FIFO"
+    "account_id": "KAKAOPAY-2115",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO",
+    "display_no": "889-39-568802"
    }
   ],
   "tickers": [
-   "PLTR",
-   "RIVN"
+   "AMD"
   ],
-  "carry_2024_lots": true
+  "carry_2024_lots": false
  },
  {
   "customer_id": 2116,
+  "name": "황선우",
   "scenario": "SINGLE_FIFO",
   "accounts": [
    {
-    "account_id": "KB-2116",
-    "broker_code": "KB",
-    "method": "FIFO"
+    "account_id": "KIWOOM-2116",
+    "broker_code": "KIWOOM",
+    "method": "FIFO",
+    "display_no": "512-88-978780"
    }
   ],
   "tickers": [
-   "SCHD",
-   "AMZN"
+   "TSLA"
   ],
   "carry_2024_lots": true
  },
  {
   "customer_id": 2117,
+  "name": "한선우",
   "scenario": "SINGLE_FIFO",
   "accounts": [
    {
-    "account_id": "KB-2117",
-    "broker_code": "KB",
-    "method": "FIFO"
+    "account_id": "MIRAE-2117",
+    "broker_code": "MIRAE",
+    "method": "FIFO",
+    "display_no": "374-98-319387"
    }
   ],
   "tickers": [
-   "MSFT"
+   "AAPL"
   ],
   "carry_2024_lots": false
  },
  {
   "customer_id": 2118,
+  "name": "서하준",
   "scenario": "SINGLE_FIFO",
   "accounts": [
    {
     "account_id": "KIWOOM-2118",
     "broker_code": "KIWOOM",
-    "method": "FIFO"
+    "method": "FIFO",
+    "display_no": "632-25-274270"
    }
   ],
   "tickers": [
+   "RIVN",
    "MSFT"
   ],
   "carry_2024_lots": false
  },
  {
   "customer_id": 2119,
+  "name": "임지호",
   "scenario": "SINGLE_FIFO",
   "accounts": [
    {
-    "account_id": "KIWOOM-2119",
-    "broker_code": "KIWOOM",
-    "method": "FIFO"
+    "account_id": "SHINHAN-2119",
+    "broker_code": "SHINHAN",
+    "method": "FIFO",
+    "display_no": "480-82-781805"
    }
   ],
   "tickers": [
-   "SOXL"
+   "MSFT",
+   "META"
   ],
   "carry_2024_lots": true
  },
  {
   "customer_id": 2120,
+  "name": "신서현",
   "scenario": "SINGLE_FIFO",
   "accounts": [
    {
-    "account_id": "KB-2120",
-    "broker_code": "KB",
-    "method": "FIFO"
+    "account_id": "MIRAE-2120",
+    "broker_code": "MIRAE",
+    "method": "FIFO",
+    "display_no": "105-49-835538"
    }
   ],
   "tickers": [
-   "RIVN",
-   "META"
+   "AAPL",
+   "GOOGL"
   ],
   "carry_2024_lots": false
  },
  {
   "customer_id": 2121,
+  "name": "김예준",
   "scenario": "SINGLE_FIFO",
   "accounts": [
    {
     "account_id": "KAKAOPAY-2121",
     "broker_code": "KAKAOPAY",
-    "method": "FIFO"
+    "method": "FIFO",
+    "display_no": "698-49-485115"
+   }
+  ],
+  "tickers": [
+   "SCHD",
+   "TSLA",
+   "GOOGL"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2122,
+  "name": "박유나",
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2122",
+    "broker_code": "KIWOOM",
+    "method": "FIFO",
+    "display_no": "586-10-439044"
+   }
+  ],
+  "tickers": [
+   "TSLA"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2123,
+  "name": "안지우",
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KAKAOPAY-2123",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO",
+    "display_no": "486-59-840551"
    }
   ],
   "tickers": [
    "GOOGL",
-   "MSFT"
-  ],
-  "carry_2024_lots": false
- },
- {
-  "customer_id": 2122,
-  "scenario": "SINGLE_FIFO",
-  "accounts": [
-   {
-    "account_id": "KAKAOPAY-2122",
-    "broker_code": "KAKAOPAY",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "SOXL"
-  ],
-  "carry_2024_lots": false
- },
- {
-  "customer_id": 2123,
-  "scenario": "SINGLE_FIFO",
-  "accounts": [
-   {
-    "account_id": "KB-2123",
-    "broker_code": "KB",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "RIVN",
-   "PLTR"
+   "AMZN"
   ],
   "carry_2024_lots": true
  },
  {
   "customer_id": 2124,
+  "name": "송지아",
   "scenario": "SINGLE_FIFO",
   "accounts": [
    {
-    "account_id": "SHINHAN-2124",
-    "broker_code": "SHINHAN",
-    "method": "FIFO"
+    "account_id": "KIWOOM-2124",
+    "broker_code": "KIWOOM",
+    "method": "FIFO",
+    "display_no": "125-56-996922"
    }
   ],
   "tickers": [
-   "RIVN",
-   "NVDA"
+   "LCID",
+   "MSFT"
   ],
-  "carry_2024_lots": true
+  "carry_2024_lots": false
  },
  {
   "customer_id": 2125,
+  "name": "장우진",
   "scenario": "SINGLE_FIFO",
   "accounts": [
    {
     "account_id": "SHINHAN-2125",
     "broker_code": "SHINHAN",
-    "method": "FIFO"
+    "method": "FIFO",
+    "display_no": "379-14-778657"
    }
   ],
   "tickers": [
-   "AAPL",
-   "COIN"
+   "MSFT",
+   "GOOGL"
   ],
-  "carry_2024_lots": true
+  "carry_2024_lots": false
  },
  {
   "customer_id": 2126,
+  "name": "정서현",
   "scenario": "SINGLE_FIFO",
   "accounts": [
    {
-    "account_id": "KB-2126",
-    "broker_code": "KB",
-    "method": "FIFO"
+    "account_id": "KIWOOM-2126",
+    "broker_code": "KIWOOM",
+    "method": "FIFO",
+    "display_no": "184-63-974579"
    }
   ],
   "tickers": [
-   "AMD",
-   "TSLA"
+   "COIN"
   ],
   "carry_2024_lots": true
  },
  {
   "customer_id": 2127,
+  "name": "홍민준",
   "scenario": "SINGLE_FIFO",
   "accounts": [
    {
-    "account_id": "KAKAOPAY-2127",
-    "broker_code": "KAKAOPAY",
-    "method": "FIFO"
+    "account_id": "KB-2127",
+    "broker_code": "KB",
+    "method": "FIFO",
+    "display_no": "826-31-715354"
    }
   ],
   "tickers": [
-   "META",
-   "RIVN",
-   "AMD"
+   "SOXL",
+   "TSLA"
   ],
-  "carry_2024_lots": true
+  "carry_2024_lots": false
  },
  {
   "customer_id": 2128,
+  "name": "김수아",
   "scenario": "SINGLE_FIFO",
   "accounts": [
    {
     "account_id": "KB-2128",
     "broker_code": "KB",
-    "method": "FIFO"
+    "method": "FIFO",
+    "display_no": "220-53-588900"
    }
   ],
   "tickers": [
-   "LCID",
-   "INTC",
-   "MSFT"
+   "NVDA",
+   "LCID"
   ],
   "carry_2024_lots": false
  },
  {
   "customer_id": 2129,
+  "name": "정수아",
   "scenario": "SINGLE_FIFO",
   "accounts": [
    {
-    "account_id": "KIWOOM-2129",
-    "broker_code": "KIWOOM",
-    "method": "FIFO"
+    "account_id": "NAMUH-2129",
+    "broker_code": "NAMUH",
+    "method": "CHOICE",
+    "display_no": "393-32-392514"
    }
   ],
   "tickers": [
-   "PLTR"
+   "RIVN"
   ],
-  "carry_2024_lots": true
+  "carry_2024_lots": false
  },
  {
   "customer_id": 2130,
+  "name": "권지호",
   "scenario": "SINGLE_FIFO",
   "accounts": [
    {
-    "account_id": "SHINHAN-2130",
-    "broker_code": "SHINHAN",
-    "method": "FIFO"
+    "account_id": "KB-2130",
+    "broker_code": "KB",
+    "method": "FIFO",
+    "display_no": "692-56-465805"
    }
   ],
   "tickers": [
-   "META"
-  ],
-  "carry_2024_lots": false
- },
- {
-  "customer_id": 2131,
-  "scenario": "SINGLE_AVG",
-  "accounts": [
-   {
-    "account_id": "DAISHIN-2131",
-    "broker_code": "DAISHIN",
-    "method": "AVG"
-   }
-  ],
-  "tickers": [
-   "AMD",
-   "INTC"
-  ],
-  "carry_2024_lots": false
- },
- {
-  "customer_id": 2132,
-  "scenario": "SINGLE_AVG",
-  "accounts": [
-   {
-    "account_id": "TOSS-2132",
-    "broker_code": "TOSS",
-    "method": "AVG"
-   }
-  ],
-  "tickers": [
-   "RIVN",
-   "NVDA"
+   "AMZN",
+   "RIVN"
   ],
   "carry_2024_lots": true
  },
  {
-  "customer_id": 2133,
+  "customer_id": 2131,
+  "name": "조건우",
   "scenario": "SINGLE_AVG",
   "accounts": [
    {
-    "account_id": "DAISHIN-2133",
-    "broker_code": "DAISHIN",
-    "method": "AVG"
+    "account_id": "SAMSUNG-2131",
+    "broker_code": "SAMSUNG",
+    "method": "AVG",
+    "display_no": "629-94-761770"
    }
   ],
   "tickers": [
-   "META",
    "AMZN"
   ],
   "carry_2024_lots": false
  },
  {
+  "customer_id": 2132,
+  "name": "이준서",
+  "scenario": "SINGLE_AVG",
+  "accounts": [
+   {
+    "account_id": "DAISHIN-2132",
+    "broker_code": "DAISHIN",
+    "method": "AVG",
+    "display_no": "990-11-266461"
+   }
+  ],
+  "tickers": [
+   "LCID",
+   "COIN"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2133,
+  "name": "황하은",
+  "scenario": "SINGLE_AVG",
+  "accounts": [
+   {
+    "account_id": "DAISHIN-2133",
+    "broker_code": "DAISHIN",
+    "method": "AVG",
+    "display_no": "715-53-605998"
+   }
+  ],
+  "tickers": [
+   "RIVN",
+   "META"
+  ],
+  "carry_2024_lots": false
+ },
+ {
   "customer_id": 2134,
+  "name": "한서연",
   "scenario": "SINGLE_AVG",
   "accounts": [
    {
     "account_id": "DAISHIN-2134",
     "broker_code": "DAISHIN",
-    "method": "AVG"
+    "method": "AVG",
+    "display_no": "911-28-940422"
    }
   ],
   "tickers": [
-   "INTC"
+   "INTC",
+   "NVDA",
+   "SOXL"
   ],
   "carry_2024_lots": false
  },
  {
   "customer_id": 2135,
+  "name": "강지민",
   "scenario": "SINGLE_AVG",
   "accounts": [
    {
-    "account_id": "KIS-2135",
-    "broker_code": "KIS",
-    "method": "AVG"
+    "account_id": "NAMUH-2135",
+    "broker_code": "NAMUH",
+    "method": "CHOICE",
+    "display_no": "803-60-832723"
    }
   ],
   "tickers": [
-   "SOXL",
-   "RIVN"
+   "AAPL",
+   "AMD"
   ],
   "carry_2024_lots": false
  },
  {
   "customer_id": 2136,
+  "name": "신유나",
   "scenario": "SINGLE_AVG",
   "accounts": [
    {
-    "account_id": "KIS-2136",
-    "broker_code": "KIS",
-    "method": "AVG"
+    "account_id": "SAMSUNG-2136",
+    "broker_code": "SAMSUNG",
+    "method": "AVG",
+    "display_no": "455-72-802416"
    }
   ],
   "tickers": [
-   "AAPL",
-   "TSLA"
+   "SCHD",
+   "AMZN"
   ],
   "carry_2024_lots": true
  },
  {
   "customer_id": 2137,
+  "name": "서서현",
   "scenario": "SINGLE_AVG",
   "accounts": [
    {
-    "account_id": "TOSS-2137",
-    "broker_code": "TOSS",
-    "method": "AVG"
+    "account_id": "DAISHIN-2137",
+    "broker_code": "DAISHIN",
+    "method": "AVG",
+    "display_no": "418-59-808074"
    }
   ],
   "tickers": [
-   "COIN",
-   "NVDA",
-   "MSFT"
+   "GOOGL"
   ],
   "carry_2024_lots": true
  },
  {
   "customer_id": 2138,
+  "name": "최현우",
   "scenario": "SINGLE_AVG",
   "accounts": [
    {
-    "account_id": "TOSS-2138",
-    "broker_code": "TOSS",
-    "method": "AVG"
+    "account_id": "SAMSUNG-2138",
+    "broker_code": "SAMSUNG",
+    "method": "AVG",
+    "display_no": "264-50-234993"
    }
   ],
   "tickers": [
-   "PLTR",
-   "TSLA",
-   "META"
+   "GOOGL"
   ],
-  "carry_2024_lots": true
+  "carry_2024_lots": false
  },
  {
   "customer_id": 2139,
+  "name": "권우진",
   "scenario": "SINGLE_AVG",
   "accounts": [
    {
     "account_id": "TOSS-2139",
     "broker_code": "TOSS",
-    "method": "AVG"
-   }
-  ],
-  "tickers": [
-   "COIN",
-   "TSLA"
-  ],
-  "carry_2024_lots": false
- },
- {
-  "customer_id": 2140,
-  "scenario": "SINGLE_AVG",
-  "accounts": [
-   {
-    "account_id": "TOSS-2140",
-    "broker_code": "TOSS",
-    "method": "AVG"
-   }
-  ],
-  "tickers": [
-   "RIVN",
-   "TSLA"
-  ],
-  "carry_2024_lots": false
- },
- {
-  "customer_id": 2141,
-  "scenario": "SINGLE_AVG",
-  "accounts": [
-   {
-    "account_id": "KIS-2141",
-    "broker_code": "KIS",
-    "method": "AVG"
-   }
-  ],
-  "tickers": [
-   "PLTR"
-  ],
-  "carry_2024_lots": false
- },
- {
-  "customer_id": 2142,
-  "scenario": "SINGLE_AVG",
-  "accounts": [
-   {
-    "account_id": "TOSS-2142",
-    "broker_code": "TOSS",
-    "method": "AVG"
-   }
-  ],
-  "tickers": [
-   "AMD",
-   "NVDA",
-   "RIVN"
-  ],
-  "carry_2024_lots": false
- },
- {
-  "customer_id": 2143,
-  "scenario": "SINGLE_AVG",
-  "accounts": [
-   {
-    "account_id": "KIS-2143",
-    "broker_code": "KIS",
-    "method": "AVG"
-   }
-  ],
-  "tickers": [
-   "AAPL",
-   "GOOGL"
-  ],
-  "carry_2024_lots": false
- },
- {
-  "customer_id": 2144,
-  "scenario": "SINGLE_AVG",
-  "accounts": [
-   {
-    "account_id": "KIS-2144",
-    "broker_code": "KIS",
-    "method": "AVG"
-   }
-  ],
-  "tickers": [
-   "SCHD",
-   "TSLA",
-   "GOOGL"
-  ],
-  "carry_2024_lots": true
- },
- {
-  "customer_id": 2145,
-  "scenario": "SINGLE_AVG",
-  "accounts": [
-   {
-    "account_id": "TOSS-2145",
-    "broker_code": "TOSS",
-    "method": "AVG"
-   }
-  ],
-  "tickers": [
-   "COIN",
-   "AMZN",
-   "INTC"
-  ],
-  "carry_2024_lots": true
- },
- {
-  "customer_id": 2146,
-  "scenario": "MULTI_BROKER",
-  "accounts": [
-   {
-    "account_id": "TOSS-2146",
-    "broker_code": "TOSS",
-    "method": "AVG"
-   },
-   {
-    "account_id": "KIS-2146",
-    "broker_code": "KIS",
-    "method": "AVG"
-   }
-  ],
-  "tickers": [
-   "TSLA"
-  ],
-  "carry_2024_lots": false
- },
- {
-  "customer_id": 2147,
-  "scenario": "MULTI_BROKER",
-  "accounts": [
-   {
-    "account_id": "SHINHAN-2147",
-    "broker_code": "SHINHAN",
-    "method": "FIFO"
-   },
-   {
-    "account_id": "KIWOOM-2147",
-    "broker_code": "KIWOOM",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "AMD",
-   "SCHD",
-   "RIVN"
-  ],
-  "carry_2024_lots": false
- },
- {
-  "customer_id": 2148,
-  "scenario": "MULTI_BROKER",
-  "accounts": [
-   {
-    "account_id": "MIRAE-2148",
-    "broker_code": "MIRAE",
-    "method": "FIFO"
-   },
-   {
-    "account_id": "NAMUH-2148",
-    "broker_code": "NAMUH",
-    "method": "CHOICE"
-   }
-  ],
-  "tickers": [
-   "AMZN",
-   "LCID"
-  ],
-  "carry_2024_lots": false
- },
- {
-  "customer_id": 2149,
-  "scenario": "MULTI_BROKER",
-  "accounts": [
-   {
-    "account_id": "NAMUH-2149",
-    "broker_code": "NAMUH",
-    "method": "CHOICE"
-   },
-   {
-    "account_id": "MIRAE-2149",
-    "broker_code": "MIRAE",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "SOXL",
-   "TSLA"
-  ],
-  "carry_2024_lots": false
- },
- {
-  "customer_id": 2150,
-  "scenario": "MULTI_BROKER",
-  "accounts": [
-   {
-    "account_id": "DAISHIN-2150",
-    "broker_code": "DAISHIN",
-    "method": "AVG"
-   },
-   {
-    "account_id": "KIWOOM-2150",
-    "broker_code": "KIWOOM",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "GOOGL"
-  ],
-  "carry_2024_lots": false
- },
- {
-  "customer_id": 2151,
-  "scenario": "MULTI_BROKER",
-  "accounts": [
-   {
-    "account_id": "KAKAOPAY-2151",
-    "broker_code": "KAKAOPAY",
-    "method": "FIFO"
-   },
-   {
-    "account_id": "SHINHAN-2151",
-    "broker_code": "SHINHAN",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "MSFT",
-   "RIVN"
-  ],
-  "carry_2024_lots": false
- },
- {
-  "customer_id": 2152,
-  "scenario": "MULTI_BROKER",
-  "accounts": [
-   {
-    "account_id": "TOSS-2152",
-    "broker_code": "TOSS",
-    "method": "AVG"
-   },
-   {
-    "account_id": "DAISHIN-2152",
-    "broker_code": "DAISHIN",
-    "method": "AVG"
-   }
-  ],
-  "tickers": [
-   "GOOGL",
-   "INTC"
-  ],
-  "carry_2024_lots": true
- },
- {
-  "customer_id": 2153,
-  "scenario": "MULTI_BROKER",
-  "accounts": [
-   {
-    "account_id": "SAMSUNG-2153",
-    "broker_code": "SAMSUNG",
-    "method": "AVG"
-   },
-   {
-    "account_id": "KIS-2153",
-    "broker_code": "KIS",
-    "method": "AVG"
-   }
-  ],
-  "tickers": [
-   "COIN",
-   "GOOGL"
-  ],
-  "carry_2024_lots": false
- },
- {
-  "customer_id": 2154,
-  "scenario": "MULTI_BROKER",
-  "accounts": [
-   {
-    "account_id": "DAISHIN-2154",
-    "broker_code": "DAISHIN",
-    "method": "AVG"
-   },
-   {
-    "account_id": "KAKAOPAY-2154",
-    "broker_code": "KAKAOPAY",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "RIVN",
-   "META"
-  ],
-  "carry_2024_lots": false
- },
- {
-  "customer_id": 2155,
-  "scenario": "MULTI_BROKER",
-  "accounts": [
-   {
-    "account_id": "KIWOOM-2155",
-    "broker_code": "KIWOOM",
-    "method": "FIFO"
-   },
-   {
-    "account_id": "SHINHAN-2155",
-    "broker_code": "SHINHAN",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "INTC",
-   "AAPL"
-  ],
-  "carry_2024_lots": true
- },
- {
-  "customer_id": 2156,
-  "scenario": "MULTI_BROKER",
-  "accounts": [
-   {
-    "account_id": "KIWOOM-2156",
-    "broker_code": "KIWOOM",
-    "method": "FIFO"
-   },
-   {
-    "account_id": "DAISHIN-2156",
-    "broker_code": "DAISHIN",
-    "method": "AVG"
-   }
-  ],
-  "tickers": [
-   "GOOGL"
-  ],
-  "carry_2024_lots": true
- },
- {
-  "customer_id": 2157,
-  "scenario": "MULTI_BROKER",
-  "accounts": [
-   {
-    "account_id": "TOSS-2157",
-    "broker_code": "TOSS",
-    "method": "AVG"
-   },
-   {
-    "account_id": "KIWOOM-2157",
-    "broker_code": "KIWOOM",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "COIN",
-   "META"
-  ],
-  "carry_2024_lots": false
- },
- {
-  "customer_id": 2158,
-  "scenario": "MULTI_BROKER",
-  "accounts": [
-   {
-    "account_id": "KB-2158",
-    "broker_code": "KB",
-    "method": "FIFO"
-   },
-   {
-    "account_id": "SHINHAN-2158",
-    "broker_code": "SHINHAN",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "META"
-  ],
-  "carry_2024_lots": true
- },
- {
-  "customer_id": 2159,
-  "scenario": "MULTI_BROKER",
-  "accounts": [
-   {
-    "account_id": "KIS-2159",
-    "broker_code": "KIS",
-    "method": "AVG"
-   },
-   {
-    "account_id": "MIRAE-2159",
-    "broker_code": "MIRAE",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "LCID"
-  ],
-  "carry_2024_lots": false
- },
- {
-  "customer_id": 2160,
-  "scenario": "MULTI_BROKER",
-  "accounts": [
-   {
-    "account_id": "DAISHIN-2160",
-    "broker_code": "DAISHIN",
-    "method": "AVG"
-   },
-   {
-    "account_id": "TOSS-2160",
-    "broker_code": "TOSS",
-    "method": "AVG"
+    "method": "AVG",
+    "display_no": "829-52-985174"
    }
   ],
   "tickers": [
@@ -2901,850 +2796,1696 @@
   "carry_2024_lots": true
  },
  {
-  "customer_id": 2161,
-  "scenario": "MULTI_BROKER",
+  "customer_id": 2140,
+  "name": "홍건우",
+  "scenario": "SINGLE_AVG",
   "accounts": [
    {
-    "account_id": "KIS-2161",
-    "broker_code": "KIS",
-    "method": "AVG"
-   },
+    "account_id": "TOSS-2140",
+    "broker_code": "TOSS",
+    "method": "AVG",
+    "display_no": "388-15-227455"
+   }
+  ],
+  "tickers": [
+   "AMZN",
+   "TSLA",
+   "PLTR"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2141,
+  "name": "송현우",
+  "scenario": "SINGLE_AVG",
+  "accounts": [
    {
-    "account_id": "MIRAE-2161",
-    "broker_code": "MIRAE",
-    "method": "FIFO"
+    "account_id": "SAMSUNG-2141",
+    "broker_code": "SAMSUNG",
+    "method": "AVG",
+    "display_no": "647-22-232177"
    }
   ],
   "tickers": [
    "RIVN",
-   "SOXL",
+   "AAPL"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2142,
+  "name": "안도윤",
+  "scenario": "SINGLE_AVG",
+  "accounts": [
+   {
+    "account_id": "DAISHIN-2142",
+    "broker_code": "DAISHIN",
+    "method": "AVG",
+    "display_no": "532-61-123470"
+   }
+  ],
+  "tickers": [
+   "META"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2143,
+  "name": "윤서연",
+  "scenario": "SINGLE_AVG",
+  "accounts": [
+   {
+    "account_id": "TOSS-2143",
+    "broker_code": "TOSS",
+    "method": "AVG",
+    "display_no": "320-65-388134"
+   }
+  ],
+  "tickers": [
+   "PLTR",
+   "SCHD",
+   "INTC"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2144,
+  "name": "홍수아",
+  "scenario": "SINGLE_AVG",
+  "accounts": [
+   {
+    "account_id": "TOSS-2144",
+    "broker_code": "TOSS",
+    "method": "AVG",
+    "display_no": "702-63-765607"
+   }
+  ],
+  "tickers": [
+   "TSLA",
+   "MSFT"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2145,
+  "name": "류도윤",
+  "scenario": "SINGLE_AVG",
+  "accounts": [
+   {
+    "account_id": "DAISHIN-2145",
+    "broker_code": "DAISHIN",
+    "method": "AVG",
+    "display_no": "185-36-884346"
+   }
+  ],
+  "tickers": [
+   "META",
+   "AAPL"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2146,
+  "name": "최지우",
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "KIS-2146",
+    "broker_code": "KIS",
+    "method": "AVG",
+    "display_no": "316-24-698469"
+   },
+   {
+    "account_id": "KAKAOPAY-2146",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO",
+    "display_no": "396-32-266846"
+   }
+  ],
+  "tickers": [
+   "NVDA",
+   "META",
+   "COIN"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2147,
+  "name": "류지아",
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "MIRAE-2147",
+    "broker_code": "MIRAE",
+    "method": "FIFO",
+    "display_no": "724-41-274544"
+   },
+   {
+    "account_id": "SAMSUNG-2147",
+    "broker_code": "SAMSUNG",
+    "method": "AVG",
+    "display_no": "682-90-594837"
+   }
+  ],
+  "tickers": [
+   "PLTR",
+   "MSFT",
+   "COIN"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2148,
+  "name": "이지아",
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "TOSS-2148",
+    "broker_code": "TOSS",
+    "method": "AVG",
+    "display_no": "982-59-173783"
+   },
+   {
+    "account_id": "DAISHIN-2148",
+    "broker_code": "DAISHIN",
+    "method": "AVG",
+    "display_no": "901-63-372660"
+   }
+  ],
+  "tickers": [
+   "AAPL"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2149,
+  "name": "신지우",
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2149",
+    "broker_code": "KIWOOM",
+    "method": "FIFO",
+    "display_no": "967-43-894758"
+   },
+   {
+    "account_id": "KB-2149",
+    "broker_code": "KB",
+    "method": "FIFO",
+    "display_no": "945-84-890183"
+   }
+  ],
+  "tickers": [
+   "LCID",
+   "SCHD",
    "AMD"
   ],
   "carry_2024_lots": true
  },
  {
-  "customer_id": 2162,
+  "customer_id": 2150,
+  "name": "권수아",
   "scenario": "MULTI_BROKER",
   "accounts": [
    {
-    "account_id": "KIWOOM-2162",
-    "broker_code": "KIWOOM",
-    "method": "FIFO"
+    "account_id": "KB-2150",
+    "broker_code": "KB",
+    "method": "FIFO",
+    "display_no": "250-87-406533"
    },
    {
-    "account_id": "SAMSUNG-2162",
-    "broker_code": "SAMSUNG",
-    "method": "AVG"
+    "account_id": "NAMUH-2150",
+    "broker_code": "NAMUH",
+    "method": "CHOICE",
+    "display_no": "979-59-369804"
    }
   ],
   "tickers": [
-   "COIN",
    "AMD",
+   "RIVN"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2151,
+  "name": "서민준",
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2151",
+    "broker_code": "KIWOOM",
+    "method": "FIFO",
+    "display_no": "330-49-316456"
+   },
+   {
+    "account_id": "SAMSUNG-2151",
+    "broker_code": "SAMSUNG",
+    "method": "AVG",
+    "display_no": "329-29-391835"
+   }
+  ],
+  "tickers": [
+   "NVDA",
+   "AMD"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2152,
+  "name": "윤하은",
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "DAISHIN-2152",
+    "broker_code": "DAISHIN",
+    "method": "AVG",
+    "display_no": "141-87-378673"
+   },
+   {
+    "account_id": "KB-2152",
+    "broker_code": "KB",
+    "method": "FIFO",
+    "display_no": "665-45-195797"
+   }
+  ],
+  "tickers": [
+   "RIVN"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2153,
+  "name": "한도윤",
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "KAKAOPAY-2153",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO",
+    "display_no": "219-66-187436"
+   },
+   {
+    "account_id": "DAISHIN-2153",
+    "broker_code": "DAISHIN",
+    "method": "AVG",
+    "display_no": "587-35-204727"
+   }
+  ],
+  "tickers": [
+   "SCHD",
+   "INTC",
    "AAPL"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2154,
+  "name": "강도윤",
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "KIS-2154",
+    "broker_code": "KIS",
+    "method": "AVG",
+    "display_no": "196-66-459065"
+   },
+   {
+    "account_id": "SHINHAN-2154",
+    "broker_code": "SHINHAN",
+    "method": "FIFO",
+    "display_no": "753-97-664752"
+   }
+  ],
+  "tickers": [
+   "AMD",
+   "SCHD",
+   "NVDA"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2155,
+  "name": "김현우",
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "MIRAE-2155",
+    "broker_code": "MIRAE",
+    "method": "FIFO",
+    "display_no": "462-92-944492"
+   },
+   {
+    "account_id": "KIS-2155",
+    "broker_code": "KIS",
+    "method": "AVG",
+    "display_no": "243-68-904308"
+   }
+  ],
+  "tickers": [
+   "INTC",
+   "META"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2156,
+  "name": "서다은",
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "KAKAOPAY-2156",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO",
+    "display_no": "721-85-493235"
+   },
+   {
+    "account_id": "SHINHAN-2156",
+    "broker_code": "SHINHAN",
+    "method": "FIFO",
+    "display_no": "160-22-158840"
+   }
+  ],
+  "tickers": [
+   "AMD",
+   "AAPL",
+   "INTC"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2157,
+  "name": "황서연",
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "TOSS-2157",
+    "broker_code": "TOSS",
+    "method": "AVG",
+    "display_no": "624-57-116988"
+   },
+   {
+    "account_id": "MIRAE-2157",
+    "broker_code": "MIRAE",
+    "method": "FIFO",
+    "display_no": "679-65-133642"
+   }
+  ],
+  "tickers": [
+   "META",
+   "SCHD"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2158,
+  "name": "신민준",
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "KIS-2158",
+    "broker_code": "KIS",
+    "method": "AVG",
+    "display_no": "106-89-968454"
+   },
+   {
+    "account_id": "SHINHAN-2158",
+    "broker_code": "SHINHAN",
+    "method": "FIFO",
+    "display_no": "499-12-108952"
+   }
+  ],
+  "tickers": [
+   "GOOGL",
+   "AMD",
+   "PLTR"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2159,
+  "name": "조현우",
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "MIRAE-2159",
+    "broker_code": "MIRAE",
+    "method": "FIFO",
+    "display_no": "549-61-308286"
+   },
+   {
+    "account_id": "DAISHIN-2159",
+    "broker_code": "DAISHIN",
+    "method": "AVG",
+    "display_no": "310-58-718887"
+   }
+  ],
+  "tickers": [
+   "AAPL",
+   "AMD"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2160,
+  "name": "오지민",
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "SHINHAN-2160",
+    "broker_code": "SHINHAN",
+    "method": "FIFO",
+    "display_no": "544-93-415300"
+   },
+   {
+    "account_id": "KIWOOM-2160",
+    "broker_code": "KIWOOM",
+    "method": "FIFO",
+    "display_no": "334-99-188553"
+   }
+  ],
+  "tickers": [
+   "SOXL",
+   "MSFT"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2161,
+  "name": "안하준",
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "KB-2161",
+    "broker_code": "KB",
+    "method": "FIFO",
+    "display_no": "212-30-131436"
+   },
+   {
+    "account_id": "SAMSUNG-2161",
+    "broker_code": "SAMSUNG",
+    "method": "AVG",
+    "display_no": "609-36-420932"
+   }
+  ],
+  "tickers": [
+   "NVDA",
+   "SCHD"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2162,
+  "name": "권지아",
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "TOSS-2162",
+    "broker_code": "TOSS",
+    "method": "AVG",
+    "display_no": "237-87-948743"
+   },
+   {
+    "account_id": "DAISHIN-2162",
+    "broker_code": "DAISHIN",
+    "method": "AVG",
+    "display_no": "752-10-426558"
+   }
+  ],
+  "tickers": [
+   "AMD"
   ],
   "carry_2024_lots": false
  },
  {
   "customer_id": 2163,
+  "name": "윤도윤",
   "scenario": "MULTI_BROKER",
   "accounts": [
    {
-    "account_id": "KIS-2163",
-    "broker_code": "KIS",
-    "method": "AVG"
+    "account_id": "KIWOOM-2163",
+    "broker_code": "KIWOOM",
+    "method": "FIFO",
+    "display_no": "389-88-210339"
    },
    {
-    "account_id": "KB-2163",
-    "broker_code": "KB",
-    "method": "FIFO"
+    "account_id": "KIS-2163",
+    "broker_code": "KIS",
+    "method": "AVG",
+    "display_no": "355-38-362847"
    }
   ],
   "tickers": [
-   "TSLA",
-   "AAPL"
+   "NVDA",
+   "INTC",
+   "SCHD"
   ],
   "carry_2024_lots": true
  },
  {
   "customer_id": 2164,
+  "name": "안준서",
   "scenario": "MULTI_BROKER",
   "accounts": [
+   {
+    "account_id": "SAMSUNG-2164",
+    "broker_code": "SAMSUNG",
+    "method": "AVG",
+    "display_no": "361-53-946188"
+   },
    {
     "account_id": "KB-2164",
     "broker_code": "KB",
-    "method": "FIFO"
-   },
-   {
-    "account_id": "KIS-2164",
-    "broker_code": "KIS",
-    "method": "AVG"
+    "method": "FIFO",
+    "display_no": "992-72-909508"
    }
   ],
   "tickers": [
-   "TSLA",
-   "PLTR"
-  ],
-  "carry_2024_lots": false
- },
- {
-  "customer_id": 2165,
-  "scenario": "MULTI_BROKER",
-  "accounts": [
-   {
-    "account_id": "KB-2165",
-    "broker_code": "KB",
-    "method": "FIFO"
-   },
-   {
-    "account_id": "KIS-2165",
-    "broker_code": "KIS",
-    "method": "AVG"
-   }
-  ],
-  "tickers": [
-   "SCHD",
-   "PLTR"
-  ],
-  "carry_2024_lots": false
- },
- {
-  "customer_id": 2166,
-  "scenario": "MULTI_BROKER",
-  "accounts": [
-   {
-    "account_id": "DAISHIN-2166",
-    "broker_code": "DAISHIN",
-    "method": "AVG"
-   },
-   {
-    "account_id": "SHINHAN-2166",
-    "broker_code": "SHINHAN",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "AMD",
+   "LCID",
    "INTC"
   ],
   "carry_2024_lots": true
  },
  {
-  "customer_id": 2167,
+  "customer_id": 2165,
+  "name": "김예준",
   "scenario": "MULTI_BROKER",
   "accounts": [
    {
-    "account_id": "KB-2167",
-    "broker_code": "KB",
-    "method": "FIFO"
+    "account_id": "SAMSUNG-2165",
+    "broker_code": "SAMSUNG",
+    "method": "AVG",
+    "display_no": "715-29-690225"
    },
    {
-    "account_id": "DAISHIN-2167",
-    "broker_code": "DAISHIN",
-    "method": "AVG"
+    "account_id": "TOSS-2165",
+    "broker_code": "TOSS",
+    "method": "AVG",
+    "display_no": "980-77-650549"
    }
   ],
   "tickers": [
-   "COIN",
+   "INTC"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2166,
+  "name": "정채원",
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "NAMUH-2166",
+    "broker_code": "NAMUH",
+    "method": "CHOICE",
+    "display_no": "978-35-391945"
+   },
+   {
+    "account_id": "KIS-2166",
+    "broker_code": "KIS",
+    "method": "AVG",
+    "display_no": "150-61-410899"
+   }
+  ],
+  "tickers": [
+   "TSLA",
+   "SOXL",
+   "INTC"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2167,
+  "name": "권하준",
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "SHINHAN-2167",
+    "broker_code": "SHINHAN",
+    "method": "FIFO",
+    "display_no": "111-91-222989"
+   },
+   {
+    "account_id": "SAMSUNG-2167",
+    "broker_code": "SAMSUNG",
+    "method": "AVG",
+    "display_no": "633-49-649706"
+   }
+  ],
+  "tickers": [
+   "LCID",
+   "NVDA",
    "TSLA"
   ],
   "carry_2024_lots": false
  },
  {
   "customer_id": 2168,
+  "name": "장지호",
   "scenario": "TRANSFER",
   "accounts": [
    {
-    "account_id": "KB-2168",
-    "broker_code": "KB",
-    "method": "FIFO"
+    "account_id": "TOSS-2168",
+    "broker_code": "TOSS",
+    "method": "AVG",
+    "display_no": "956-42-473986"
    },
    {
-    "account_id": "DAISHIN-2168",
-    "broker_code": "DAISHIN",
-    "method": "AVG"
+    "account_id": "SAMSUNG-2168",
+    "broker_code": "SAMSUNG",
+    "method": "AVG",
+    "display_no": "185-11-206043"
    }
   ],
   "tickers": [
-   "AMD",
-   "TSLA",
-   "INTC"
+   "SOXL",
+   "RIVN"
   ],
   "carry_2024_lots": false,
   "transfer": {
-   "from": "KB-2168",
-   "to": "DAISHIN-2168",
-   "ticker": "AMD"
+   "from": "TOSS-2168",
+   "to": "SAMSUNG-2168",
+   "ticker": "SOXL"
   }
  },
  {
   "customer_id": 2169,
+  "name": "최선우",
   "scenario": "TRANSFER",
   "accounts": [
    {
-    "account_id": "KIS-2169",
-    "broker_code": "KIS",
-    "method": "AVG"
+    "account_id": "KIWOOM-2169",
+    "broker_code": "KIWOOM",
+    "method": "FIFO",
+    "display_no": "344-56-708302"
    },
    {
-    "account_id": "SHINHAN-2169",
-    "broker_code": "SHINHAN",
-    "method": "FIFO"
+    "account_id": "NAMUH-2169",
+    "broker_code": "NAMUH",
+    "method": "CHOICE",
+    "display_no": "788-87-542320"
    }
   ],
   "tickers": [
-   "INTC"
+   "SOXL",
+   "INTC",
+   "LCID"
   ],
   "carry_2024_lots": false,
   "transfer": {
-   "from": "KIS-2169",
-   "to": "SHINHAN-2169",
-   "ticker": "INTC"
+   "from": "KIWOOM-2169",
+   "to": "NAMUH-2169",
+   "ticker": "SOXL"
   }
  },
  {
   "customer_id": 2170,
+  "name": "신민준",
   "scenario": "TRANSFER",
   "accounts": [
    {
-    "account_id": "KIS-2170",
-    "broker_code": "KIS",
-    "method": "AVG"
+    "account_id": "DAISHIN-2170",
+    "broker_code": "DAISHIN",
+    "method": "AVG",
+    "display_no": "799-54-469495"
    },
    {
     "account_id": "NAMUH-2170",
     "broker_code": "NAMUH",
-    "method": "CHOICE"
+    "method": "CHOICE",
+    "display_no": "354-45-567672"
    }
   ],
   "tickers": [
+   "MSFT",
    "AMZN"
   ],
   "carry_2024_lots": false,
   "transfer": {
-   "from": "KIS-2170",
+   "from": "DAISHIN-2170",
    "to": "NAMUH-2170",
-   "ticker": "AMZN"
+   "ticker": "MSFT"
   }
  },
  {
   "customer_id": 2171,
+  "name": "송하은",
   "scenario": "TRANSFER",
   "accounts": [
    {
     "account_id": "SAMSUNG-2171",
     "broker_code": "SAMSUNG",
-    "method": "AVG"
+    "method": "AVG",
+    "display_no": "839-21-770513"
    },
    {
-    "account_id": "KB-2171",
-    "broker_code": "KB",
-    "method": "FIFO"
+    "account_id": "NAMUH-2171",
+    "broker_code": "NAMUH",
+    "method": "CHOICE",
+    "display_no": "515-50-752004"
    }
   ],
   "tickers": [
-   "META",
-   "LCID"
+   "GOOGL",
+   "COIN"
   ],
   "carry_2024_lots": false,
   "transfer": {
    "from": "SAMSUNG-2171",
-   "to": "KB-2171",
-   "ticker": "META"
-  }
- },
- {
-  "customer_id": 2172,
-  "scenario": "TRANSFER",
-  "accounts": [
-   {
-    "account_id": "NAMUH-2172",
-    "broker_code": "NAMUH",
-    "method": "CHOICE"
-   },
-   {
-    "account_id": "SHINHAN-2172",
-    "broker_code": "SHINHAN",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "RIVN",
-   "AMZN"
-  ],
-  "carry_2024_lots": true,
-  "transfer": {
-   "from": "NAMUH-2172",
-   "to": "SHINHAN-2172",
-   "ticker": "RIVN"
-  }
- },
- {
-  "customer_id": 2173,
-  "scenario": "TRANSFER",
-  "accounts": [
-   {
-    "account_id": "DAISHIN-2173",
-    "broker_code": "DAISHIN",
-    "method": "AVG"
-   },
-   {
-    "account_id": "NAMUH-2173",
-    "broker_code": "NAMUH",
-    "method": "CHOICE"
-   }
-  ],
-  "tickers": [
-   "AMD",
-   "RIVN"
-  ],
-  "carry_2024_lots": false,
-  "transfer": {
-   "from": "DAISHIN-2173",
-   "to": "NAMUH-2173",
-   "ticker": "AMD"
-  }
- },
- {
-  "customer_id": 2174,
-  "scenario": "TRANSFER",
-  "accounts": [
-   {
-    "account_id": "KIS-2174",
-    "broker_code": "KIS",
-    "method": "AVG"
-   },
-   {
-    "account_id": "DAISHIN-2174",
-    "broker_code": "DAISHIN",
-    "method": "AVG"
-   }
-  ],
-  "tickers": [
-   "RIVN",
-   "SOXL",
-   "PLTR"
-  ],
-  "carry_2024_lots": true,
-  "transfer": {
-   "from": "KIS-2174",
-   "to": "DAISHIN-2174",
-   "ticker": "RIVN"
-  }
- },
- {
-  "customer_id": 2175,
-  "scenario": "TRANSFER",
-  "accounts": [
-   {
-    "account_id": "KB-2175",
-    "broker_code": "KB",
-    "method": "FIFO"
-   },
-   {
-    "account_id": "SHINHAN-2175",
-    "broker_code": "SHINHAN",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "TSLA",
-   "SCHD"
-  ],
-  "carry_2024_lots": true,
-  "transfer": {
-   "from": "KB-2175",
-   "to": "SHINHAN-2175",
-   "ticker": "TSLA"
-  }
- },
- {
-  "customer_id": 2176,
-  "scenario": "TRANSFER",
-  "accounts": [
-   {
-    "account_id": "TOSS-2176",
-    "broker_code": "TOSS",
-    "method": "AVG"
-   },
-   {
-    "account_id": "NAMUH-2176",
-    "broker_code": "NAMUH",
-    "method": "CHOICE"
-   }
-  ],
-  "tickers": [
-   "GOOGL"
-  ],
-  "carry_2024_lots": true,
-  "transfer": {
-   "from": "TOSS-2176",
-   "to": "NAMUH-2176",
+   "to": "NAMUH-2171",
    "ticker": "GOOGL"
   }
  },
  {
+  "customer_id": 2172,
+  "name": "송수아",
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "TOSS-2172",
+    "broker_code": "TOSS",
+    "method": "AVG",
+    "display_no": "733-99-179623"
+   },
+   {
+    "account_id": "NAMUH-2172",
+    "broker_code": "NAMUH",
+    "method": "CHOICE",
+    "display_no": "303-21-194940"
+   }
+  ],
+  "tickers": [
+   "SCHD",
+   "PLTR"
+  ],
+  "carry_2024_lots": true,
+  "transfer": {
+   "from": "TOSS-2172",
+   "to": "NAMUH-2172",
+   "ticker": "SCHD"
+  }
+ },
+ {
+  "customer_id": 2173,
+  "name": "윤채원",
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "KB-2173",
+    "broker_code": "KB",
+    "method": "FIFO",
+    "display_no": "329-98-329612"
+   },
+   {
+    "account_id": "NAMUH-2173",
+    "broker_code": "NAMUH",
+    "method": "CHOICE",
+    "display_no": "351-38-561746"
+   }
+  ],
+  "tickers": [
+   "SOXL",
+   "AAPL"
+  ],
+  "carry_2024_lots": false,
+  "transfer": {
+   "from": "KB-2173",
+   "to": "NAMUH-2173",
+   "ticker": "SOXL"
+  }
+ },
+ {
+  "customer_id": 2174,
+  "name": "류현우",
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "SHINHAN-2174",
+    "broker_code": "SHINHAN",
+    "method": "FIFO",
+    "display_no": "369-65-488212"
+   },
+   {
+    "account_id": "SAMSUNG-2174",
+    "broker_code": "SAMSUNG",
+    "method": "AVG",
+    "display_no": "473-40-435706"
+   }
+  ],
+  "tickers": [
+   "COIN",
+   "META",
+   "LCID"
+  ],
+  "carry_2024_lots": true,
+  "transfer": {
+   "from": "SHINHAN-2174",
+   "to": "SAMSUNG-2174",
+   "ticker": "COIN"
+  }
+ },
+ {
+  "customer_id": 2175,
+  "name": "홍건우",
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "DAISHIN-2175",
+    "broker_code": "DAISHIN",
+    "method": "AVG",
+    "display_no": "275-12-687159"
+   },
+   {
+    "account_id": "NAMUH-2175",
+    "broker_code": "NAMUH",
+    "method": "CHOICE",
+    "display_no": "559-81-781865"
+   }
+  ],
+  "tickers": [
+   "AMD"
+  ],
+  "carry_2024_lots": true,
+  "transfer": {
+   "from": "DAISHIN-2175",
+   "to": "NAMUH-2175",
+   "ticker": "AMD"
+  }
+ },
+ {
+  "customer_id": 2176,
+  "name": "정현우",
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "KAKAOPAY-2176",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO",
+    "display_no": "813-96-419460"
+   },
+   {
+    "account_id": "NAMUH-2176",
+    "broker_code": "NAMUH",
+    "method": "CHOICE",
+    "display_no": "438-39-697538"
+   }
+  ],
+  "tickers": [
+   "META",
+   "RIVN"
+  ],
+  "carry_2024_lots": false,
+  "transfer": {
+   "from": "KAKAOPAY-2176",
+   "to": "NAMUH-2176",
+   "ticker": "META"
+  }
+ },
+ {
   "customer_id": 2177,
+  "name": "조하은",
   "scenario": "TRANSFER",
   "accounts": [
    {
     "account_id": "NAMUH-2177",
     "broker_code": "NAMUH",
-    "method": "CHOICE"
+    "method": "CHOICE",
+    "display_no": "130-93-619018"
    },
    {
-    "account_id": "SHINHAN-2177",
-    "broker_code": "SHINHAN",
-    "method": "FIFO"
+    "account_id": "KB-2177",
+    "broker_code": "KB",
+    "method": "FIFO",
+    "display_no": "846-25-447907"
    }
   ],
   "tickers": [
-   "NVDA",
-   "AAPL"
-  ],
-  "carry_2024_lots": true,
-  "transfer": {
-   "from": "NAMUH-2177",
-   "to": "SHINHAN-2177",
-   "ticker": "NVDA"
-  }
- },
- {
-  "customer_id": 2178,
-  "scenario": "TRANSFER",
-  "accounts": [
-   {
-    "account_id": "DAISHIN-2178",
-    "broker_code": "DAISHIN",
-    "method": "AVG"
-   },
-   {
-    "account_id": "KIWOOM-2178",
-    "broker_code": "KIWOOM",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "TSLA"
-  ],
-  "carry_2024_lots": true,
-  "transfer": {
-   "from": "DAISHIN-2178",
-   "to": "KIWOOM-2178",
-   "ticker": "TSLA"
-  }
- },
- {
-  "customer_id": 2179,
-  "scenario": "TRANSFER",
-  "accounts": [
-   {
-    "account_id": "KAKAOPAY-2179",
-    "broker_code": "KAKAOPAY",
-    "method": "FIFO"
-   },
-   {
-    "account_id": "DAISHIN-2179",
-    "broker_code": "DAISHIN",
-    "method": "AVG"
-   }
-  ],
-  "tickers": [
-   "INTC",
-   "LCID"
-  ],
-  "carry_2024_lots": false,
-  "transfer": {
-   "from": "KAKAOPAY-2179",
-   "to": "DAISHIN-2179",
-   "ticker": "INTC"
-  }
- },
- {
-  "customer_id": 2180,
-  "scenario": "TRANSFER",
-  "accounts": [
-   {
-    "account_id": "DAISHIN-2180",
-    "broker_code": "DAISHIN",
-    "method": "AVG"
-   },
-   {
-    "account_id": "KIWOOM-2180",
-    "broker_code": "KIWOOM",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "PLTR",
-   "AMZN",
-   "LCID"
-  ],
-  "carry_2024_lots": true,
-  "transfer": {
-   "from": "DAISHIN-2180",
-   "to": "KIWOOM-2180",
-   "ticker": "PLTR"
-  }
- },
- {
-  "customer_id": 2181,
-  "scenario": "TRANSFER",
-  "accounts": [
-   {
-    "account_id": "KIWOOM-2181",
-    "broker_code": "KIWOOM",
-    "method": "FIFO"
-   },
-   {
-    "account_id": "NAMUH-2181",
-    "broker_code": "NAMUH",
-    "method": "CHOICE"
-   }
-  ],
-  "tickers": [
-   "SOXL",
-   "NVDA",
-   "TSLA"
-  ],
-  "carry_2024_lots": true,
-  "transfer": {
-   "from": "KIWOOM-2181",
-   "to": "NAMUH-2181",
-   "ticker": "SOXL"
-  }
- },
- {
-  "customer_id": 2182,
-  "scenario": "TRANSFER",
-  "accounts": [
-   {
-    "account_id": "SHINHAN-2182",
-    "broker_code": "SHINHAN",
-    "method": "FIFO"
-   },
-   {
-    "account_id": "KAKAOPAY-2182",
-    "broker_code": "KAKAOPAY",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "INTC",
    "RIVN"
   ],
   "carry_2024_lots": false,
   "transfer": {
-   "from": "SHINHAN-2182",
-   "to": "KAKAOPAY-2182",
-   "ticker": "INTC"
+   "from": "NAMUH-2177",
+   "to": "KB-2177",
+   "ticker": "RIVN"
   }
  },
  {
-  "customer_id": 2183,
+  "customer_id": 2178,
+  "name": "한서현",
   "scenario": "TRANSFER",
   "accounts": [
    {
-    "account_id": "KIS-2183",
-    "broker_code": "KIS",
-    "method": "AVG"
+    "account_id": "KIWOOM-2178",
+    "broker_code": "KIWOOM",
+    "method": "FIFO",
+    "display_no": "824-65-364255"
    },
    {
-    "account_id": "MIRAE-2183",
-    "broker_code": "MIRAE",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "INTC"
-  ],
-  "carry_2024_lots": false,
-  "transfer": {
-   "from": "KIS-2183",
-   "to": "MIRAE-2183",
-   "ticker": "INTC"
-  }
- },
- {
-  "customer_id": 2184,
-  "scenario": "TRANSFER",
-  "accounts": [
-   {
-    "account_id": "SAMSUNG-2184",
-    "broker_code": "SAMSUNG",
-    "method": "AVG"
-   },
-   {
-    "account_id": "NAMUH-2184",
+    "account_id": "NAMUH-2178",
     "broker_code": "NAMUH",
-    "method": "CHOICE"
+    "method": "CHOICE",
+    "display_no": "611-21-293531"
    }
   ],
   "tickers": [
-   "AMZN",
    "SOXL"
   ],
   "carry_2024_lots": false,
   "transfer": {
-   "from": "SAMSUNG-2184",
-   "to": "NAMUH-2184",
-   "ticker": "AMZN"
+   "from": "KIWOOM-2178",
+   "to": "NAMUH-2178",
+   "ticker": "SOXL"
   }
  },
  {
-  "customer_id": 2185,
+  "customer_id": 2179,
+  "name": "오지우",
   "scenario": "TRANSFER",
   "accounts": [
    {
-    "account_id": "KIS-2185",
-    "broker_code": "KIS",
-    "method": "AVG"
+    "account_id": "KB-2179",
+    "broker_code": "KB",
+    "method": "FIFO",
+    "display_no": "641-11-104887"
    },
    {
-    "account_id": "NAMUH-2185",
-    "broker_code": "NAMUH",
-    "method": "CHOICE"
+    "account_id": "MIRAE-2179",
+    "broker_code": "MIRAE",
+    "method": "FIFO",
+    "display_no": "434-59-421140"
    }
   ],
   "tickers": [
-   "AMD",
    "AAPL",
-   "INTC"
+   "PLTR",
+   "SCHD"
   ],
-  "carry_2024_lots": false,
+  "carry_2024_lots": true,
   "transfer": {
-   "from": "KIS-2185",
-   "to": "NAMUH-2185",
-   "ticker": "AMD"
+   "from": "KB-2179",
+   "to": "MIRAE-2179",
+   "ticker": "AAPL"
   }
  },
  {
-  "customer_id": 2186,
-  "scenario": "NO_SALE",
+  "customer_id": 2180,
+  "name": "강우진",
+  "scenario": "TRANSFER",
   "accounts": [
    {
-    "account_id": "SHINHAN-2186",
-    "broker_code": "SHINHAN",
-    "method": "FIFO"
+    "account_id": "KB-2180",
+    "broker_code": "KB",
+    "method": "FIFO",
+    "display_no": "139-78-932199"
+   },
+   {
+    "account_id": "NAMUH-2180",
+    "broker_code": "NAMUH",
+    "method": "CHOICE",
+    "display_no": "223-49-405587"
+   }
+  ],
+  "tickers": [
+   "RIVN",
+   "SOXL"
+  ],
+  "carry_2024_lots": false,
+  "transfer": {
+   "from": "KB-2180",
+   "to": "NAMUH-2180",
+   "ticker": "RIVN"
+  }
+ },
+ {
+  "customer_id": 2181,
+  "name": "오하준",
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "KAKAOPAY-2181",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO",
+    "display_no": "513-15-475727"
+   },
+   {
+    "account_id": "NAMUH-2181",
+    "broker_code": "NAMUH",
+    "method": "CHOICE",
+    "display_no": "160-71-950297"
    }
   ],
   "tickers": [
    "MSFT",
-   "AMD",
+   "GOOGL",
    "TSLA"
+  ],
+  "carry_2024_lots": false,
+  "transfer": {
+   "from": "KAKAOPAY-2181",
+   "to": "NAMUH-2181",
+   "ticker": "MSFT"
+  }
+ },
+ {
+  "customer_id": 2182,
+  "name": "서도윤",
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "DAISHIN-2182",
+    "broker_code": "DAISHIN",
+    "method": "AVG",
+    "display_no": "429-81-607620"
+   },
+   {
+    "account_id": "MIRAE-2182",
+    "broker_code": "MIRAE",
+    "method": "FIFO",
+    "display_no": "724-59-420756"
+   }
+  ],
+  "tickers": [
+   "META",
+   "SCHD"
+  ],
+  "carry_2024_lots": true,
+  "transfer": {
+   "from": "DAISHIN-2182",
+   "to": "MIRAE-2182",
+   "ticker": "META"
+  }
+ },
+ {
+  "customer_id": 2183,
+  "name": "오채원",
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "MIRAE-2183",
+    "broker_code": "MIRAE",
+    "method": "FIFO",
+    "display_no": "636-32-633458"
+   },
+   {
+    "account_id": "KIS-2183",
+    "broker_code": "KIS",
+    "method": "AVG",
+    "display_no": "479-97-833146"
+   }
+  ],
+  "tickers": [
+   "META",
+   "TSLA"
+  ],
+  "carry_2024_lots": true,
+  "transfer": {
+   "from": "MIRAE-2183",
+   "to": "KIS-2183",
+   "ticker": "META"
+  }
+ },
+ {
+  "customer_id": 2184,
+  "name": "조지우",
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "SHINHAN-2184",
+    "broker_code": "SHINHAN",
+    "method": "FIFO",
+    "display_no": "775-52-285658"
+   },
+   {
+    "account_id": "MIRAE-2184",
+    "broker_code": "MIRAE",
+    "method": "FIFO",
+    "display_no": "499-39-489843"
+   }
+  ],
+  "tickers": [
+   "AAPL",
+   "SCHD",
+   "META"
+  ],
+  "carry_2024_lots": false,
+  "transfer": {
+   "from": "SHINHAN-2184",
+   "to": "MIRAE-2184",
+   "ticker": "AAPL"
+  }
+ },
+ {
+  "customer_id": 2185,
+  "name": "황지호",
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "NAMUH-2185",
+    "broker_code": "NAMUH",
+    "method": "CHOICE",
+    "display_no": "504-15-829810"
+   },
+   {
+    "account_id": "MIRAE-2185",
+    "broker_code": "MIRAE",
+    "method": "FIFO",
+    "display_no": "885-67-235149"
+   }
+  ],
+  "tickers": [
+   "SOXL"
+  ],
+  "carry_2024_lots": false,
+  "transfer": {
+   "from": "NAMUH-2185",
+   "to": "MIRAE-2185",
+   "ticker": "SOXL"
+  }
+ },
+ {
+  "customer_id": 2186,
+  "name": "장현우",
+  "scenario": "NO_SALE",
+  "accounts": [
+   {
+    "account_id": "KB-2186",
+    "broker_code": "KB",
+    "method": "FIFO",
+    "display_no": "391-82-374201"
+   }
+  ],
+  "tickers": [
+   "RIVN"
   ],
   "carry_2024_lots": false
  },
  {
   "customer_id": 2187,
+  "name": "송다은",
   "scenario": "NO_SALE",
   "accounts": [
    {
-    "account_id": "KIWOOM-2187",
-    "broker_code": "KIWOOM",
-    "method": "FIFO"
+    "account_id": "SHINHAN-2187",
+    "broker_code": "SHINHAN",
+    "method": "FIFO",
+    "display_no": "136-70-602078"
    }
   ],
   "tickers": [
-   "TSLA",
-   "AMD"
+   "MSFT"
   ],
   "carry_2024_lots": true
  },
  {
   "customer_id": 2188,
+  "name": "박하은",
   "scenario": "NO_SALE",
   "accounts": [
    {
-    "account_id": "MIRAE-2188",
-    "broker_code": "MIRAE",
-    "method": "FIFO"
+    "account_id": "KB-2188",
+    "broker_code": "KB",
+    "method": "FIFO",
+    "display_no": "548-28-563495"
    }
   ],
   "tickers": [
-   "INTC",
-   "AAPL"
+   "NVDA",
+   "MSFT"
   ],
   "carry_2024_lots": true
  },
  {
   "customer_id": 2189,
+  "name": "강지민",
   "scenario": "NO_SALE",
   "accounts": [
    {
     "account_id": "MIRAE-2189",
     "broker_code": "MIRAE",
-    "method": "FIFO"
+    "method": "FIFO",
+    "display_no": "500-58-260534"
    }
   ],
   "tickers": [
-   "RIVN"
-  ],
-  "carry_2024_lots": true
- },
- {
-  "customer_id": 2190,
-  "scenario": "NO_SALE",
-  "accounts": [
-   {
-    "account_id": "NAMUH-2190",
-    "broker_code": "NAMUH",
-    "method": "CHOICE"
-   }
-  ],
-  "tickers": [
-   "LCID",
-   "TSLA",
-   "INTC"
+   "SOXL",
+   "AMZN"
   ],
   "carry_2024_lots": false
  },
  {
-  "customer_id": 2191,
+  "customer_id": 2190,
+  "name": "안수아",
   "scenario": "NO_SALE",
   "accounts": [
    {
-    "account_id": "MIRAE-2191",
-    "broker_code": "MIRAE",
-    "method": "FIFO"
+    "account_id": "KIWOOM-2190",
+    "broker_code": "KIWOOM",
+    "method": "FIFO",
+    "display_no": "660-50-159468"
+   }
+  ],
+  "tickers": [
+   "COIN"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2191,
+  "name": "강준서",
+  "scenario": "NO_SALE",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2191",
+    "broker_code": "KIWOOM",
+    "method": "FIFO",
+    "display_no": "206-97-345012"
    }
   ],
   "tickers": [
    "AAPL",
-   "COIN"
+   "COIN",
+   "RIVN"
   ],
   "carry_2024_lots": true
  },
  {
   "customer_id": 2192,
+  "name": "윤다은",
   "scenario": "NO_SALE",
   "accounts": [
    {
-    "account_id": "KIWOOM-2192",
-    "broker_code": "KIWOOM",
-    "method": "FIFO"
+    "account_id": "KB-2192",
+    "broker_code": "KB",
+    "method": "FIFO",
+    "display_no": "751-68-602403"
    }
   ],
   "tickers": [
-   "PLTR",
-   "AMD"
+   "META",
+   "AMD",
+   "RIVN"
   ],
-  "carry_2024_lots": false
+  "carry_2024_lots": true
  },
  {
   "customer_id": 2193,
+  "name": "권지아",
   "scenario": "NO_SALE",
   "accounts": [
    {
-    "account_id": "MIRAE-2193",
-    "broker_code": "MIRAE",
-    "method": "FIFO"
+    "account_id": "SHINHAN-2193",
+    "broker_code": "SHINHAN",
+    "method": "FIFO",
+    "display_no": "972-39-521769"
    }
   ],
   "tickers": [
-   "PLTR"
+   "NVDA",
+   "AAPL"
   ],
   "carry_2024_lots": true
  },
  {
   "customer_id": 2194,
+  "name": "권현우",
   "scenario": "LOSS_HEAVY",
   "accounts": [
    {
-    "account_id": "KB-2194",
-    "broker_code": "KB",
-    "method": "FIFO"
+    "account_id": "KAKAOPAY-2194",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO",
+    "display_no": "236-77-315917"
    }
   ],
   "tickers": [
-   "RIVN",
-   "INTC"
+   "SOXL",
+   "RIVN"
   ],
   "carry_2024_lots": false
  },
  {
   "customer_id": 2195,
+  "name": "권수아",
   "scenario": "LOSS_HEAVY",
   "accounts": [
    {
-    "account_id": "KAKAOPAY-2195",
-    "broker_code": "KAKAOPAY",
-    "method": "FIFO"
+    "account_id": "KIWOOM-2195",
+    "broker_code": "KIWOOM",
+    "method": "FIFO",
+    "display_no": "445-80-264332"
    }
   ],
   "tickers": [
-   "LCID"
+   "SOXL"
   ],
   "carry_2024_lots": true
  },
  {
   "customer_id": 2196,
+  "name": "서선우",
   "scenario": "LOSS_HEAVY",
   "accounts": [
    {
-    "account_id": "KIWOOM-2196",
-    "broker_code": "KIWOOM",
-    "method": "FIFO"
+    "account_id": "KAKAOPAY-2196",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO",
+    "display_no": "351-26-899665"
    }
   ],
   "tickers": [
-   "LCID"
+   "RIVN",
+   "LCID",
+   "INTC"
   ],
   "carry_2024_lots": true
  },
  {
   "customer_id": 2197,
+  "name": "류건우",
   "scenario": "LOSS_HEAVY",
   "accounts": [
    {
-    "account_id": "SHINHAN-2197",
-    "broker_code": "SHINHAN",
-    "method": "FIFO"
+    "account_id": "KB-2197",
+    "broker_code": "KB",
+    "method": "FIFO",
+    "display_no": "410-22-941310"
    }
   ],
   "tickers": [
-   "INTC"
+   "SOXL",
+   "RIVN"
   ],
-  "carry_2024_lots": true
+  "carry_2024_lots": false
  },
  {
   "customer_id": 2198,
+  "name": "이하준",
   "scenario": "LOSS_HEAVY",
   "accounts": [
    {
-    "account_id": "MIRAE-2198",
-    "broker_code": "MIRAE",
-    "method": "FIFO"
+    "account_id": "KAKAOPAY-2198",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO",
+    "display_no": "274-12-714649"
    }
   ],
   "tickers": [
-   "INTC"
+   "SOXL"
   ],
-  "carry_2024_lots": true
+  "carry_2024_lots": false
  },
  {
   "customer_id": 2199,
+  "name": "오도윤",
   "scenario": "LOSS_HEAVY",
   "accounts": [
    {
-    "account_id": "KIWOOM-2199",
-    "broker_code": "KIWOOM",
-    "method": "FIFO"
+    "account_id": "KB-2199",
+    "broker_code": "KB",
+    "method": "FIFO",
+    "display_no": "793-60-256747"
    }
   ],
   "tickers": [
-   "RIVN",
-   "LCID"
+   "RIVN"
   ],
   "carry_2024_lots": false
  },
  {
   "customer_id": 2200,
+  "name": "류지아",
   "scenario": "LOSS_HEAVY",
   "accounts": [
    {
     "account_id": "KIWOOM-2200",
     "broker_code": "KIWOOM",
-    "method": "FIFO"
+    "method": "FIFO",
+    "display_no": "625-45-645712"
+   }
+  ],
+  "tickers": [
+   "RIVN",
+   "SOXL"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2201,
+  "name": "정유나",
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "SHINHAN-2201",
+    "broker_code": "SHINHAN",
+    "method": "FIFO",
+    "display_no": "119-48-499162"
+   }
+  ],
+  "tickers": [
+   "PLTR",
+   "AAPL"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2202,
+  "name": "황수아",
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KAKAOPAY-2202",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO",
+    "display_no": "787-20-944601"
+   }
+  ],
+  "tickers": [
+   "PLTR",
+   "TSLA"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2203,
+  "name": "박도윤",
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "MIRAE-2203",
+    "broker_code": "MIRAE",
+    "method": "FIFO",
+    "display_no": "854-53-747454"
+   }
+  ],
+  "tickers": [
+   "INTC"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2204,
+  "name": "최서연",
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2204",
+    "broker_code": "KIWOOM",
+    "method": "FIFO",
+    "display_no": "863-20-294589"
+   }
+  ],
+  "tickers": [
+   "COIN"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2205,
+  "name": "한우진",
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2205",
+    "broker_code": "KIWOOM",
+    "method": "FIFO",
+    "display_no": "825-73-734868"
+   }
+  ],
+  "tickers": [
+   "META"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2206,
+  "name": "정채원",
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2206",
+    "broker_code": "KIWOOM",
+    "method": "FIFO",
+    "display_no": "816-25-837010"
+   }
+  ],
+  "tickers": [
+   "AMZN"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2207,
+  "name": "안수아",
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KB-2207",
+    "broker_code": "KB",
+    "method": "FIFO",
+    "display_no": "944-54-871168"
+   }
+  ],
+  "tickers": [
+   "AMZN",
+   "COIN",
+   "META"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2208,
+  "name": "장준서",
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KAKAOPAY-2208",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO",
+    "display_no": "479-73-414831"
+   }
+  ],
+  "tickers": [
+   "LCID",
+   "MSFT",
+   "COIN"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2209,
+  "name": "정현우",
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KAKAOPAY-2209",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO",
+    "display_no": "910-94-281172"
+   }
+  ],
+  "tickers": [
+   "SOXL",
+   "LCID"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2210,
+  "name": "송지호",
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KAKAOPAY-2210",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO",
+    "display_no": "721-73-553882"
+   }
+  ],
+  "tickers": [
+   "SOXL",
+   "SCHD"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2211,
+  "name": "강준서",
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "SHINHAN-2211",
+    "broker_code": "SHINHAN",
+    "method": "FIFO",
+    "display_no": "539-88-227766"
+   }
+  ],
+  "tickers": [
+   "AMZN"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2212,
+  "name": "윤예준",
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2212",
+    "broker_code": "KIWOOM",
+    "method": "FIFO",
+    "display_no": "992-50-764662"
+   }
+  ],
+  "tickers": [
+   "GOOGL",
+   "META"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2213,
+  "name": "류다은",
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KB-2213",
+    "broker_code": "KB",
+    "method": "FIFO",
+    "display_no": "623-22-502803"
+   }
+  ],
+  "tickers": [
+   "AMD"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2214,
+  "name": "장하준",
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "MIRAE-2214",
+    "broker_code": "MIRAE",
+    "method": "FIFO",
+    "display_no": "585-41-334181"
+   }
+  ],
+  "tickers": [
+   "INTC",
+   "TSLA"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2215,
+  "name": "조우진",
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KB-2215",
+    "broker_code": "KB",
+    "method": "FIFO",
+    "display_no": "354-58-543538"
    }
   ],
   "tickers": [
@@ -3753,172 +4494,102 @@
   "carry_2024_lots": true
  },
  {
-  "customer_id": 2201,
+  "customer_id": 2216,
+  "name": "권현우",
   "scenario": "SINGLE_FIFO",
   "accounts": [
    {
-    "account_id": "KIWOOM-2201",
-    "broker_code": "KIWOOM",
-    "method": "FIFO"
+    "account_id": "SHINHAN-2216",
+    "broker_code": "SHINHAN",
+    "method": "FIFO",
+    "display_no": "554-50-212978"
    }
   ],
   "tickers": [
-   "AAPL",
-   "AMD"
-  ],
-  "carry_2024_lots": false
- },
- {
-  "customer_id": 2202,
-  "scenario": "SINGLE_FIFO",
-  "accounts": [
-   {
-    "account_id": "KAKAOPAY-2202",
-    "broker_code": "KAKAOPAY",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "AMD"
-  ],
-  "carry_2024_lots": false
- },
- {
-  "customer_id": 2203,
-  "scenario": "SINGLE_FIFO",
-  "accounts": [
-   {
-    "account_id": "KAKAOPAY-2203",
-    "broker_code": "KAKAOPAY",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "GOOGL",
-   "COIN",
-   "LCID"
+   "INTC",
+   "NVDA"
   ],
   "carry_2024_lots": true
  },
  {
-  "customer_id": 2204,
+  "customer_id": 2217,
+  "name": "신준서",
   "scenario": "SINGLE_FIFO",
   "accounts": [
    {
-    "account_id": "KIWOOM-2204",
-    "broker_code": "KIWOOM",
-    "method": "FIFO"
+    "account_id": "KB-2217",
+    "broker_code": "KB",
+    "method": "FIFO",
+    "display_no": "727-14-774885"
    }
   ],
   "tickers": [
    "PLTR",
-   "COIN",
-   "AMZN"
+   "AAPL"
   ],
-  "carry_2024_lots": false
+  "carry_2024_lots": true
  },
  {
-  "customer_id": 2205,
+  "customer_id": 2218,
+  "name": "오지민",
   "scenario": "SINGLE_FIFO",
   "accounts": [
    {
-    "account_id": "KB-2205",
-    "broker_code": "KB",
-    "method": "FIFO"
+    "account_id": "KAKAOPAY-2218",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO",
+    "display_no": "451-18-616377"
    }
   ],
   "tickers": [
-   "META",
-   "AMD",
-   "TSLA"
-  ],
-  "carry_2024_lots": false
- },
- {
-  "customer_id": 2206,
-  "scenario": "SINGLE_FIFO",
-  "accounts": [
-   {
-    "account_id": "NAMUH-2206",
-    "broker_code": "NAMUH",
-    "method": "CHOICE"
-   }
-  ],
-  "tickers": [
-   "SOXL",
    "MSFT"
   ],
-  "carry_2024_lots": true
- },
- {
-  "customer_id": 2207,
-  "scenario": "SINGLE_FIFO",
-  "accounts": [
-   {
-    "account_id": "SHINHAN-2207",
-    "broker_code": "SHINHAN",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "COIN"
-  ],
   "carry_2024_lots": false
  },
  {
-  "customer_id": 2208,
+  "customer_id": 2219,
+  "name": "장하은",
   "scenario": "SINGLE_FIFO",
   "accounts": [
    {
-    "account_id": "SHINHAN-2208",
-    "broker_code": "SHINHAN",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "LCID"
-  ],
-  "carry_2024_lots": true
- },
- {
-  "customer_id": 2209,
-  "scenario": "SINGLE_FIFO",
-  "accounts": [
-   {
-    "account_id": "KAKAOPAY-2209",
-    "broker_code": "KAKAOPAY",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "AMZN",
-   "META"
-  ],
-  "carry_2024_lots": true
- },
- {
-  "customer_id": 2210,
-  "scenario": "SINGLE_FIFO",
-  "accounts": [
-   {
-    "account_id": "KIWOOM-2210",
-    "broker_code": "KIWOOM",
-    "method": "FIFO"
+    "account_id": "NAMUH-2219",
+    "broker_code": "NAMUH",
+    "method": "CHOICE",
+    "display_no": "799-81-125401"
    }
   ],
   "tickers": [
    "INTC"
   ],
-  "carry_2024_lots": false
+  "carry_2024_lots": true
  },
  {
-  "customer_id": 2211,
+  "customer_id": 2220,
+  "name": "정우진",
   "scenario": "SINGLE_FIFO",
   "accounts": [
    {
-    "account_id": "KB-2211",
-    "broker_code": "KB",
-    "method": "FIFO"
+    "account_id": "KAKAOPAY-2220",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO",
+    "display_no": "874-91-802821"
+   }
+  ],
+  "tickers": [
+   "SOXL"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2221,
+  "name": "류서연",
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "SHINHAN-2221",
+    "broker_code": "SHINHAN",
+    "method": "FIFO",
+    "display_no": "603-10-466353"
    }
   ],
   "tickers": [
@@ -3927,233 +4598,34 @@
   "carry_2024_lots": false
  },
  {
-  "customer_id": 2212,
+  "customer_id": 2222,
+  "name": "오우진",
   "scenario": "SINGLE_FIFO",
   "accounts": [
    {
-    "account_id": "KB-2212",
-    "broker_code": "KB",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "LCID"
-  ],
-  "carry_2024_lots": true
- },
- {
-  "customer_id": 2213,
-  "scenario": "SINGLE_FIFO",
-  "accounts": [
-   {
-    "account_id": "NAMUH-2213",
-    "broker_code": "NAMUH",
-    "method": "CHOICE"
+    "account_id": "KIWOOM-2222",
+    "broker_code": "KIWOOM",
+    "method": "FIFO",
+    "display_no": "872-87-368727"
    }
   ],
   "tickers": [
    "AMZN",
-   "SOXL"
-  ],
-  "carry_2024_lots": true
- },
- {
-  "customer_id": 2214,
-  "scenario": "SINGLE_FIFO",
-  "accounts": [
-   {
-    "account_id": "SHINHAN-2214",
-    "broker_code": "SHINHAN",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "MSFT"
-  ],
-  "carry_2024_lots": true
- },
- {
-  "customer_id": 2215,
-  "scenario": "SINGLE_FIFO",
-  "accounts": [
-   {
-    "account_id": "KB-2215",
-    "broker_code": "KB",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
    "SCHD",
-   "AMZN"
-  ],
-  "carry_2024_lots": false
- },
- {
-  "customer_id": 2216,
-  "scenario": "SINGLE_FIFO",
-  "accounts": [
-   {
-    "account_id": "NAMUH-2216",
-    "broker_code": "NAMUH",
-    "method": "CHOICE"
-   }
-  ],
-  "tickers": [
-   "AAPL",
-   "COIN"
-  ],
-  "carry_2024_lots": false
- },
- {
-  "customer_id": 2217,
-  "scenario": "SINGLE_FIFO",
-  "accounts": [
-   {
-    "account_id": "KIWOOM-2217",
-    "broker_code": "KIWOOM",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "LCID",
-   "AAPL"
-  ],
-  "carry_2024_lots": false
- },
- {
-  "customer_id": 2218,
-  "scenario": "SINGLE_FIFO",
-  "accounts": [
-   {
-    "account_id": "KB-2218",
-    "broker_code": "KB",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "GOOGL"
-  ],
-  "carry_2024_lots": true
- },
- {
-  "customer_id": 2219,
-  "scenario": "SINGLE_FIFO",
-  "accounts": [
-   {
-    "account_id": "KAKAOPAY-2219",
-    "broker_code": "KAKAOPAY",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "INTC",
-   "SOXL"
-  ],
-  "carry_2024_lots": false
- },
- {
-  "customer_id": 2220,
-  "scenario": "SINGLE_FIFO",
-  "accounts": [
-   {
-    "account_id": "KAKAOPAY-2220",
-    "broker_code": "KAKAOPAY",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "TSLA",
-   "AMZN"
-  ],
-  "carry_2024_lots": false
- },
- {
-  "customer_id": 2221,
-  "scenario": "SINGLE_FIFO",
-  "accounts": [
-   {
-    "account_id": "KIWOOM-2221",
-    "broker_code": "KIWOOM",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "NVDA",
-   "META",
-   "COIN"
-  ],
-  "carry_2024_lots": false
- },
- {
-  "customer_id": 2222,
-  "scenario": "SINGLE_FIFO",
-  "accounts": [
-   {
-    "account_id": "KB-2222",
-    "broker_code": "KB",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
    "PLTR"
   ],
   "carry_2024_lots": false
  },
  {
   "customer_id": 2223,
+  "name": "조선우",
   "scenario": "SINGLE_FIFO",
   "accounts": [
    {
-    "account_id": "KIWOOM-2223",
-    "broker_code": "KIWOOM",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "NVDA"
-  ],
-  "carry_2024_lots": true
- },
- {
-  "customer_id": 2224,
-  "scenario": "SINGLE_FIFO",
-  "accounts": [
-   {
-    "account_id": "KAKAOPAY-2224",
-    "broker_code": "KAKAOPAY",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "COIN",
-   "META",
-   "LCID"
-  ],
-  "carry_2024_lots": true
- },
- {
-  "customer_id": 2225,
-  "scenario": "SINGLE_FIFO",
-  "accounts": [
-   {
-    "account_id": "KAKAOPAY-2225",
-    "broker_code": "KAKAOPAY",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "AMD"
-  ],
-  "carry_2024_lots": true
- },
- {
-  "customer_id": 2226,
-  "scenario": "SINGLE_FIFO",
-  "accounts": [
-   {
-    "account_id": "NAMUH-2226",
-    "broker_code": "NAMUH",
-    "method": "CHOICE"
+    "account_id": "KB-2223",
+    "broker_code": "KB",
+    "method": "FIFO",
+    "display_no": "574-16-779299"
    }
   ],
   "tickers": [
@@ -4163,281 +4635,304 @@
   "carry_2024_lots": false
  },
  {
-  "customer_id": 2227,
+  "customer_id": 2224,
+  "name": "권현우",
   "scenario": "SINGLE_FIFO",
   "accounts": [
    {
-    "account_id": "SHINHAN-2227",
-    "broker_code": "SHINHAN",
-    "method": "FIFO"
+    "account_id": "KIWOOM-2224",
+    "broker_code": "KIWOOM",
+    "method": "FIFO",
+    "display_no": "603-71-688072"
    }
   ],
   "tickers": [
-   "META",
-   "NVDA",
-   "INTC"
-  ],
-  "carry_2024_lots": true
- },
- {
-  "customer_id": 2228,
-  "scenario": "SINGLE_FIFO",
-  "accounts": [
-   {
-    "account_id": "KAKAOPAY-2228",
-    "broker_code": "KAKAOPAY",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "COIN",
-   "RIVN"
-  ],
-  "carry_2024_lots": true
- },
- {
-  "customer_id": 2229,
-  "scenario": "SINGLE_FIFO",
-  "accounts": [
-   {
-    "account_id": "MIRAE-2229",
-    "broker_code": "MIRAE",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "TSLA",
-   "SCHD"
-  ],
-  "carry_2024_lots": true
- },
- {
-  "customer_id": 2230,
-  "scenario": "SINGLE_FIFO",
-  "accounts": [
-   {
-    "account_id": "SHINHAN-2230",
-    "broker_code": "SHINHAN",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "AAPL",
-   "INTC"
-  ],
-  "carry_2024_lots": true
- },
- {
-  "customer_id": 2231,
-  "scenario": "SINGLE_AVG",
-  "accounts": [
-   {
-    "account_id": "TOSS-2231",
-    "broker_code": "TOSS",
-    "method": "AVG"
-   }
-  ],
-  "tickers": [
-   "PLTR"
-  ],
-  "carry_2024_lots": false
- },
- {
-  "customer_id": 2232,
-  "scenario": "SINGLE_AVG",
-  "accounts": [
-   {
-    "account_id": "KIS-2232",
-    "broker_code": "KIS",
-    "method": "AVG"
-   }
-  ],
-  "tickers": [
+   "RIVN",
    "GOOGL"
   ],
   "carry_2024_lots": false
  },
  {
-  "customer_id": 2233,
-  "scenario": "SINGLE_AVG",
+  "customer_id": 2225,
+  "name": "오예준",
+  "scenario": "SINGLE_FIFO",
   "accounts": [
    {
-    "account_id": "SAMSUNG-2233",
-    "broker_code": "SAMSUNG",
-    "method": "AVG"
+    "account_id": "KAKAOPAY-2225",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO",
+    "display_no": "859-57-179796"
    }
   ],
   "tickers": [
+   "NVDA",
+   "MSFT",
+   "AAPL"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2226,
+  "name": "정예준",
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "NAMUH-2226",
+    "broker_code": "NAMUH",
+    "method": "CHOICE",
+    "display_no": "486-13-138966"
+   }
+  ],
+  "tickers": [
+   "AMD",
+   "MSFT",
+   "RIVN"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2227,
+  "name": "황하은",
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "MIRAE-2227",
+    "broker_code": "MIRAE",
+    "method": "FIFO",
+    "display_no": "393-56-192710"
+   }
+  ],
+  "tickers": [
+   "PLTR",
+   "RIVN"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2228,
+  "name": "황채원",
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KAKAOPAY-2228",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO",
+    "display_no": "188-87-365499"
+   }
+  ],
+  "tickers": [
+   "NVDA",
+   "SOXL"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2229,
+  "name": "조현우",
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KAKAOPAY-2229",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO",
+    "display_no": "214-74-670421"
+   }
+  ],
+  "tickers": [
+   "NVDA",
    "SOXL",
-   "META",
    "INTC"
   ],
   "carry_2024_lots": false
  },
  {
-  "customer_id": 2234,
-  "scenario": "SINGLE_AVG",
+  "customer_id": 2230,
+  "name": "정도윤",
+  "scenario": "SINGLE_FIFO",
   "accounts": [
    {
-    "account_id": "TOSS-2234",
-    "broker_code": "TOSS",
-    "method": "AVG"
+    "account_id": "KB-2230",
+    "broker_code": "KB",
+    "method": "FIFO",
+    "display_no": "347-61-417569"
    }
   ],
   "tickers": [
    "INTC",
-   "TSLA"
+   "MSFT",
+   "AMD"
   ],
-  "carry_2024_lots": true
+  "carry_2024_lots": false
  },
  {
-  "customer_id": 2235,
+  "customer_id": 2231,
+  "name": "신유나",
   "scenario": "SINGLE_AVG",
   "accounts": [
    {
-    "account_id": "KIS-2235",
-    "broker_code": "KIS",
-    "method": "AVG"
+    "account_id": "TOSS-2231",
+    "broker_code": "TOSS",
+    "method": "AVG",
+    "display_no": "750-88-722158"
    }
   ],
   "tickers": [
+   "TSLA",
    "AMZN"
   ],
   "carry_2024_lots": true
  },
  {
-  "customer_id": 2236,
+  "customer_id": 2232,
+  "name": "박다은",
   "scenario": "SINGLE_AVG",
   "accounts": [
    {
-    "account_id": "KIS-2236",
-    "broker_code": "KIS",
-    "method": "AVG"
+    "account_id": "SAMSUNG-2232",
+    "broker_code": "SAMSUNG",
+    "method": "AVG",
+    "display_no": "184-41-859461"
    }
   ],
   "tickers": [
    "AAPL",
-   "SOXL",
-   "LCID"
-  ],
-  "carry_2024_lots": true
- },
- {
-  "customer_id": 2237,
-  "scenario": "SINGLE_AVG",
-  "accounts": [
-   {
-    "account_id": "TOSS-2237",
-    "broker_code": "TOSS",
-    "method": "AVG"
-   }
-  ],
-  "tickers": [
-   "SOXL",
-   "TSLA"
+   "AMD"
   ],
   "carry_2024_lots": false
  },
  {
-  "customer_id": 2238,
+  "customer_id": 2233,
+  "name": "안건우",
   "scenario": "SINGLE_AVG",
   "accounts": [
    {
-    "account_id": "TOSS-2238",
-    "broker_code": "TOSS",
-    "method": "AVG"
+    "account_id": "KIS-2233",
+    "broker_code": "KIS",
+    "method": "AVG",
+    "display_no": "574-45-830994"
+   }
+  ],
+  "tickers": [
+   "SCHD"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2234,
+  "name": "강서연",
+  "scenario": "SINGLE_AVG",
+  "accounts": [
+   {
+    "account_id": "DAISHIN-2234",
+    "broker_code": "DAISHIN",
+    "method": "AVG",
+    "display_no": "536-24-820169"
    }
   ],
   "tickers": [
    "AMZN",
    "SOXL"
   ],
-  "carry_2024_lots": false
+  "carry_2024_lots": true
  },
  {
-  "customer_id": 2239,
+  "customer_id": 2235,
+  "name": "류다은",
   "scenario": "SINGLE_AVG",
   "accounts": [
    {
-    "account_id": "TOSS-2239",
+    "account_id": "TOSS-2235",
     "broker_code": "TOSS",
-    "method": "AVG"
+    "method": "AVG",
+    "display_no": "927-99-221728"
    }
   ],
   "tickers": [
-   "LCID",
+   "GOOGL"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2236,
+  "name": "신민준",
+  "scenario": "SINGLE_AVG",
+  "accounts": [
+   {
+    "account_id": "DAISHIN-2236",
+    "broker_code": "DAISHIN",
+    "method": "AVG",
+    "display_no": "750-79-211493"
+   }
+  ],
+  "tickers": [
+   "INTC",
    "RIVN"
   ],
   "carry_2024_lots": true
  },
  {
-  "customer_id": 2240,
+  "customer_id": 2237,
+  "name": "최민준",
   "scenario": "SINGLE_AVG",
   "accounts": [
    {
-    "account_id": "SAMSUNG-2240",
-    "broker_code": "SAMSUNG",
-    "method": "AVG"
+    "account_id": "NAMUH-2237",
+    "broker_code": "NAMUH",
+    "method": "CHOICE",
+    "display_no": "291-95-306063"
    }
   ],
   "tickers": [
-   "AMD"
+   "SCHD",
+   "TSLA",
+   "NVDA"
   ],
   "carry_2024_lots": false
  },
  {
-  "customer_id": 2241,
+  "customer_id": 2238,
+  "name": "윤다은",
   "scenario": "SINGLE_AVG",
   "accounts": [
    {
-    "account_id": "DAISHIN-2241",
-    "broker_code": "DAISHIN",
-    "method": "AVG"
-   }
-  ],
-  "tickers": [
-   "TSLA"
-  ],
-  "carry_2024_lots": false
- },
- {
-  "customer_id": 2242,
-  "scenario": "SINGLE_AVG",
-  "accounts": [
-   {
-    "account_id": "KIS-2242",
+    "account_id": "KIS-2238",
     "broker_code": "KIS",
-    "method": "AVG"
+    "method": "AVG",
+    "display_no": "779-70-601508"
    }
   ],
   "tickers": [
-   "COIN"
-  ],
-  "carry_2024_lots": false
- },
- {
-  "customer_id": 2243,
-  "scenario": "SINGLE_AVG",
-  "accounts": [
-   {
-    "account_id": "KIS-2243",
-    "broker_code": "KIS",
-    "method": "AVG"
-   }
-  ],
-  "tickers": [
-   "AMZN"
+   "GOOGL"
   ],
   "carry_2024_lots": true
  },
  {
-  "customer_id": 2244,
+  "customer_id": 2239,
+  "name": "안하준",
   "scenario": "SINGLE_AVG",
   "accounts": [
    {
-    "account_id": "NAMUH-2244",
-    "broker_code": "NAMUH",
-    "method": "CHOICE"
+    "account_id": "SAMSUNG-2239",
+    "broker_code": "SAMSUNG",
+    "method": "AVG",
+    "display_no": "589-75-176116"
+   }
+  ],
+  "tickers": [
+   "SOXL"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2240,
+  "name": "한현우",
+  "scenario": "SINGLE_AVG",
+  "accounts": [
+   {
+    "account_id": "DAISHIN-2240",
+    "broker_code": "DAISHIN",
+    "method": "AVG",
+    "display_no": "500-67-735894"
    }
   ],
   "tickers": [
@@ -4446,362 +4941,280 @@
   "carry_2024_lots": false
  },
  {
-  "customer_id": 2245,
+  "customer_id": 2241,
+  "name": "박지아",
   "scenario": "SINGLE_AVG",
   "accounts": [
    {
-    "account_id": "DAISHIN-2245",
-    "broker_code": "DAISHIN",
-    "method": "AVG"
+    "account_id": "TOSS-2241",
+    "broker_code": "TOSS",
+    "method": "AVG",
+    "display_no": "167-81-188963"
    }
   ],
   "tickers": [
-   "COIN"
+   "AMZN",
+   "AMD",
+   "INTC"
   ],
-  "carry_2024_lots": false
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2242,
+  "name": "임유나",
+  "scenario": "SINGLE_AVG",
+  "accounts": [
+   {
+    "account_id": "DAISHIN-2242",
+    "broker_code": "DAISHIN",
+    "method": "AVG",
+    "display_no": "431-40-693509"
+   }
+  ],
+  "tickers": [
+   "SCHD",
+   "AMZN"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2243,
+  "name": "송준서",
+  "scenario": "SINGLE_AVG",
+  "accounts": [
+   {
+    "account_id": "TOSS-2243",
+    "broker_code": "TOSS",
+    "method": "AVG",
+    "display_no": "695-76-281839"
+   }
+  ],
+  "tickers": [
+   "RIVN",
+   "PLTR"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2244,
+  "name": "서채원",
+  "scenario": "SINGLE_AVG",
+  "accounts": [
+   {
+    "account_id": "SAMSUNG-2244",
+    "broker_code": "SAMSUNG",
+    "method": "AVG",
+    "display_no": "168-34-951434"
+   }
+  ],
+  "tickers": [
+   "MSFT",
+   "AMZN",
+   "SCHD"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2245,
+  "name": "박지호",
+  "scenario": "SINGLE_AVG",
+  "accounts": [
+   {
+    "account_id": "NAMUH-2245",
+    "broker_code": "NAMUH",
+    "method": "CHOICE",
+    "display_no": "374-26-921947"
+   }
+  ],
+  "tickers": [
+   "AAPL"
+  ],
+  "carry_2024_lots": true
  },
  {
   "customer_id": 2246,
+  "name": "신하은",
   "scenario": "MULTI_BROKER",
   "accounts": [
    {
-    "account_id": "KIS-2246",
-    "broker_code": "KIS",
-    "method": "AVG"
+    "account_id": "KAKAOPAY-2246",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO",
+    "display_no": "733-87-698335"
    },
    {
-    "account_id": "KIWOOM-2246",
-    "broker_code": "KIWOOM",
-    "method": "FIFO"
+    "account_id": "NAMUH-2246",
+    "broker_code": "NAMUH",
+    "method": "CHOICE",
+    "display_no": "869-44-679459"
    }
   ],
   "tickers": [
+   "RIVN",
+   "AMZN",
    "SOXL"
   ],
   "carry_2024_lots": true
  },
  {
   "customer_id": 2247,
+  "name": "서민준",
   "scenario": "MULTI_BROKER",
   "accounts": [
    {
-    "account_id": "DAISHIN-2247",
-    "broker_code": "DAISHIN",
-    "method": "AVG"
+    "account_id": "TOSS-2247",
+    "broker_code": "TOSS",
+    "method": "AVG",
+    "display_no": "310-96-615395"
    },
    {
     "account_id": "SHINHAN-2247",
     "broker_code": "SHINHAN",
-    "method": "FIFO"
+    "method": "FIFO",
+    "display_no": "547-77-458915"
    }
   ],
   "tickers": [
-   "LCID"
+   "SOXL",
+   "COIN"
   ],
   "carry_2024_lots": true
  },
  {
   "customer_id": 2248,
+  "name": "김현우",
   "scenario": "MULTI_BROKER",
   "accounts": [
    {
-    "account_id": "SHINHAN-2248",
-    "broker_code": "SHINHAN",
-    "method": "FIFO"
+    "account_id": "NAMUH-2248",
+    "broker_code": "NAMUH",
+    "method": "CHOICE",
+    "display_no": "468-58-121489"
    },
    {
-    "account_id": "KB-2248",
-    "broker_code": "KB",
-    "method": "FIFO"
+    "account_id": "SAMSUNG-2248",
+    "broker_code": "SAMSUNG",
+    "method": "AVG",
+    "display_no": "602-65-859356"
    }
   ],
   "tickers": [
-   "META"
+   "AMD"
   ],
-  "carry_2024_lots": true
+  "carry_2024_lots": false
  },
  {
   "customer_id": 2249,
+  "name": "조서연",
   "scenario": "MULTI_BROKER",
   "accounts": [
+   {
+    "account_id": "KIS-2249",
+    "broker_code": "KIS",
+    "method": "AVG",
+    "display_no": "149-39-194343"
+   },
    {
     "account_id": "SAMSUNG-2249",
     "broker_code": "SAMSUNG",
-    "method": "AVG"
-   },
-   {
-    "account_id": "NAMUH-2249",
-    "broker_code": "NAMUH",
-    "method": "CHOICE"
+    "method": "AVG",
+    "display_no": "824-30-196864"
    }
   ],
   "tickers": [
-   "AMD",
-   "GOOGL"
+   "COIN",
+   "PLTR",
+   "INTC"
   ],
-  "carry_2024_lots": true
+  "carry_2024_lots": false
  },
  {
   "customer_id": 2250,
+  "name": "오서현",
   "scenario": "MULTI_BROKER",
   "accounts": [
    {
-    "account_id": "KIS-2250",
-    "broker_code": "KIS",
-    "method": "AVG"
+    "account_id": "KB-2250",
+    "broker_code": "KB",
+    "method": "FIFO",
+    "display_no": "291-41-925133"
    },
    {
     "account_id": "TOSS-2250",
     "broker_code": "TOSS",
-    "method": "AVG"
+    "method": "AVG",
+    "display_no": "108-51-996959"
    }
   ],
   "tickers": [
-   "LCID"
+   "PLTR",
+   "INTC"
   ],
-  "carry_2024_lots": true
+  "carry_2024_lots": false
  },
  {
   "customer_id": 2251,
+  "name": "임건우",
   "scenario": "MULTI_BROKER",
   "accounts": [
    {
-    "account_id": "KB-2251",
-    "broker_code": "KB",
-    "method": "FIFO"
+    "account_id": "TOSS-2251",
+    "broker_code": "TOSS",
+    "method": "AVG",
+    "display_no": "793-60-677047"
    },
    {
     "account_id": "DAISHIN-2251",
     "broker_code": "DAISHIN",
-    "method": "AVG"
+    "method": "AVG",
+    "display_no": "654-61-650555"
    }
   ],
   "tickers": [
-   "AMD",
-   "TSLA"
-  ],
-  "carry_2024_lots": true
- },
- {
-  "customer_id": 2252,
-  "scenario": "MULTI_BROKER",
-  "accounts": [
-   {
-    "account_id": "TOSS-2252",
-    "broker_code": "TOSS",
-    "method": "AVG"
-   },
-   {
-    "account_id": "KB-2252",
-    "broker_code": "KB",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "INTC"
-  ],
-  "carry_2024_lots": true
- },
- {
-  "customer_id": 2253,
-  "scenario": "MULTI_BROKER",
-  "accounts": [
-   {
-    "account_id": "KIS-2253",
-    "broker_code": "KIS",
-    "method": "AVG"
-   },
-   {
-    "account_id": "DAISHIN-2253",
-    "broker_code": "DAISHIN",
-    "method": "AVG"
-   }
-  ],
-  "tickers": [
-   "NVDA"
-  ],
-  "carry_2024_lots": true
- },
- {
-  "customer_id": 2254,
-  "scenario": "MULTI_BROKER",
-  "accounts": [
-   {
-    "account_id": "SAMSUNG-2254",
-    "broker_code": "SAMSUNG",
-    "method": "AVG"
-   },
-   {
-    "account_id": "KIWOOM-2254",
-    "broker_code": "KIWOOM",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "SCHD"
-  ],
-  "carry_2024_lots": false
- },
- {
-  "customer_id": 2255,
-  "scenario": "MULTI_BROKER",
-  "accounts": [
-   {
-    "account_id": "NAMUH-2255",
-    "broker_code": "NAMUH",
-    "method": "CHOICE"
-   },
-   {
-    "account_id": "KIS-2255",
-    "broker_code": "KIS",
-    "method": "AVG"
-   }
-  ],
-  "tickers": [
-   "AAPL",
-   "COIN"
-  ],
-  "carry_2024_lots": true
- },
- {
-  "customer_id": 2256,
-  "scenario": "MULTI_BROKER",
-  "accounts": [
-   {
-    "account_id": "NAMUH-2256",
-    "broker_code": "NAMUH",
-    "method": "CHOICE"
-   },
-   {
-    "account_id": "MIRAE-2256",
-    "broker_code": "MIRAE",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "NVDA"
-  ],
-  "carry_2024_lots": true
- },
- {
-  "customer_id": 2257,
-  "scenario": "MULTI_BROKER",
-  "accounts": [
-   {
-    "account_id": "KIS-2257",
-    "broker_code": "KIS",
-    "method": "AVG"
-   },
-   {
-    "account_id": "SAMSUNG-2257",
-    "broker_code": "SAMSUNG",
-    "method": "AVG"
-   }
-  ],
-  "tickers": [
-   "SOXL",
-   "INTC",
-   "META"
-  ],
-  "carry_2024_lots": true
- },
- {
-  "customer_id": 2258,
-  "scenario": "MULTI_BROKER",
-  "accounts": [
-   {
-    "account_id": "KIWOOM-2258",
-    "broker_code": "KIWOOM",
-    "method": "FIFO"
-   },
-   {
-    "account_id": "NAMUH-2258",
-    "broker_code": "NAMUH",
-    "method": "CHOICE"
-   }
-  ],
-  "tickers": [
-   "INTC",
-   "LCID"
-  ],
-  "carry_2024_lots": false
- },
- {
-  "customer_id": 2259,
-  "scenario": "MULTI_BROKER",
-  "accounts": [
-   {
-    "account_id": "DAISHIN-2259",
-    "broker_code": "DAISHIN",
-    "method": "AVG"
-   },
-   {
-    "account_id": "KB-2259",
-    "broker_code": "KB",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "SOXL",
-   "SCHD",
+   "NVDA",
    "AAPL"
   ],
   "carry_2024_lots": true
  },
  {
-  "customer_id": 2260,
+  "customer_id": 2252,
+  "name": "신하준",
   "scenario": "MULTI_BROKER",
   "accounts": [
    {
-    "account_id": "KIS-2260",
-    "broker_code": "KIS",
-    "method": "AVG"
-   },
-   {
-    "account_id": "KIWOOM-2260",
-    "broker_code": "KIWOOM",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "COIN"
-  ],
-  "carry_2024_lots": true
- },
- {
-  "customer_id": 2261,
-  "scenario": "MULTI_BROKER",
-  "accounts": [
-   {
-    "account_id": "SHINHAN-2261",
-    "broker_code": "SHINHAN",
-    "method": "FIFO"
-   },
-   {
-    "account_id": "DAISHIN-2261",
+    "account_id": "DAISHIN-2252",
     "broker_code": "DAISHIN",
-    "method": "AVG"
+    "method": "AVG",
+    "display_no": "764-48-515614"
+   },
+   {
+    "account_id": "KB-2252",
+    "broker_code": "KB",
+    "method": "FIFO",
+    "display_no": "350-28-117173"
    }
   ],
   "tickers": [
-   "GOOGL",
-   "AMD"
+   "TSLA"
   ],
   "carry_2024_lots": false
  },
  {
-  "customer_id": 2262,
+  "customer_id": 2253,
+  "name": "최수아",
   "scenario": "MULTI_BROKER",
   "accounts": [
    {
-    "account_id": "NAMUH-2262",
-    "broker_code": "NAMUH",
-    "method": "CHOICE"
+    "account_id": "SAMSUNG-2253",
+    "broker_code": "SAMSUNG",
+    "method": "AVG",
+    "display_no": "458-69-505334"
    },
    {
-    "account_id": "KB-2262",
-    "broker_code": "KB",
-    "method": "FIFO"
+    "account_id": "MIRAE-2253",
+    "broker_code": "MIRAE",
+    "method": "FIFO",
+    "display_no": "769-65-181918"
    }
   ],
   "tickers": [
@@ -4810,789 +5223,856 @@
   "carry_2024_lots": false
  },
  {
-  "customer_id": 2263,
+  "customer_id": 2254,
+  "name": "송지호",
   "scenario": "MULTI_BROKER",
   "accounts": [
    {
-    "account_id": "DAISHIN-2263",
-    "broker_code": "DAISHIN",
-    "method": "AVG"
+    "account_id": "MIRAE-2254",
+    "broker_code": "MIRAE",
+    "method": "FIFO",
+    "display_no": "621-37-761310"
    },
    {
-    "account_id": "NAMUH-2263",
+    "account_id": "NAMUH-2254",
     "broker_code": "NAMUH",
-    "method": "CHOICE"
+    "method": "CHOICE",
+    "display_no": "633-57-125312"
    }
   ],
   "tickers": [
-   "AMZN",
-   "TSLA",
-   "SOXL"
+   "NVDA"
   ],
-  "carry_2024_lots": false
+  "carry_2024_lots": true
  },
  {
-  "customer_id": 2264,
+  "customer_id": 2255,
+  "name": "이채원",
   "scenario": "MULTI_BROKER",
   "accounts": [
    {
-    "account_id": "SHINHAN-2264",
-    "broker_code": "SHINHAN",
-    "method": "FIFO"
+    "account_id": "NAMUH-2255",
+    "broker_code": "NAMUH",
+    "method": "CHOICE",
+    "display_no": "168-29-964774"
    },
    {
-    "account_id": "TOSS-2264",
+    "account_id": "TOSS-2255",
     "broker_code": "TOSS",
-    "method": "AVG"
+    "method": "AVG",
+    "display_no": "486-52-792706"
    }
   ],
   "tickers": [
-   "LCID",
-   "AMD"
-  ],
-  "carry_2024_lots": false
- },
- {
-  "customer_id": 2265,
-  "scenario": "MULTI_BROKER",
-  "accounts": [
-   {
-    "account_id": "KIS-2265",
-    "broker_code": "KIS",
-    "method": "AVG"
-   },
-   {
-    "account_id": "KAKAOPAY-2265",
-    "broker_code": "KAKAOPAY",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "MSFT",
-   "AMD"
-  ],
-  "carry_2024_lots": false
- },
- {
-  "customer_id": 2266,
-  "scenario": "MULTI_BROKER",
-  "accounts": [
-   {
-    "account_id": "TOSS-2266",
-    "broker_code": "TOSS",
-    "method": "AVG"
-   },
-   {
-    "account_id": "SHINHAN-2266",
-    "broker_code": "SHINHAN",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
+   "INTC",
    "PLTR"
   ],
   "carry_2024_lots": false
  },
  {
-  "customer_id": 2267,
+  "customer_id": 2256,
+  "name": "박서현",
   "scenario": "MULTI_BROKER",
   "accounts": [
    {
-    "account_id": "DAISHIN-2267",
-    "broker_code": "DAISHIN",
-    "method": "AVG"
+    "account_id": "MIRAE-2256",
+    "broker_code": "MIRAE",
+    "method": "FIFO",
+    "display_no": "844-71-925242"
    },
    {
-    "account_id": "KB-2267",
-    "broker_code": "KB",
-    "method": "FIFO"
+    "account_id": "SHINHAN-2256",
+    "broker_code": "SHINHAN",
+    "method": "FIFO",
+    "display_no": "167-38-591055"
    }
   ],
   "tickers": [
-   "MSFT",
-   "GOOGL"
+   "AAPL"
   ],
   "carry_2024_lots": false
  },
  {
-  "customer_id": 2268,
-  "scenario": "TRANSFER",
+  "customer_id": 2257,
+  "name": "류우진",
+  "scenario": "MULTI_BROKER",
   "accounts": [
    {
-    "account_id": "KIS-2268",
-    "broker_code": "KIS",
-    "method": "AVG"
+    "account_id": "SHINHAN-2257",
+    "broker_code": "SHINHAN",
+    "method": "FIFO",
+    "display_no": "331-12-554949"
    },
    {
-    "account_id": "NAMUH-2268",
-    "broker_code": "NAMUH",
-    "method": "CHOICE"
-   }
-  ],
-  "tickers": [
-   "LCID",
-   "GOOGL"
-  ],
-  "carry_2024_lots": false,
-  "transfer": {
-   "from": "KIS-2268",
-   "to": "NAMUH-2268",
-   "ticker": "LCID"
-  }
- },
- {
-  "customer_id": 2269,
-  "scenario": "TRANSFER",
-  "accounts": [
-   {
-    "account_id": "KIWOOM-2269",
-    "broker_code": "KIWOOM",
-    "method": "FIFO"
-   },
-   {
-    "account_id": "NAMUH-2269",
-    "broker_code": "NAMUH",
-    "method": "CHOICE"
-   }
-  ],
-  "tickers": [
-   "NVDA"
-  ],
-  "carry_2024_lots": false,
-  "transfer": {
-   "from": "KIWOOM-2269",
-   "to": "NAMUH-2269",
-   "ticker": "NVDA"
-  }
- },
- {
-  "customer_id": 2270,
-  "scenario": "TRANSFER",
-  "accounts": [
-   {
-    "account_id": "TOSS-2270",
-    "broker_code": "TOSS",
-    "method": "AVG"
-   },
-   {
-    "account_id": "KIWOOM-2270",
-    "broker_code": "KIWOOM",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "RIVN",
-   "NVDA"
-  ],
-  "carry_2024_lots": false,
-  "transfer": {
-   "from": "TOSS-2270",
-   "to": "KIWOOM-2270",
-   "ticker": "RIVN"
-  }
- },
- {
-  "customer_id": 2271,
-  "scenario": "TRANSFER",
-  "accounts": [
-   {
-    "account_id": "KB-2271",
-    "broker_code": "KB",
-    "method": "FIFO"
-   },
-   {
-    "account_id": "NAMUH-2271",
-    "broker_code": "NAMUH",
-    "method": "CHOICE"
-   }
-  ],
-  "tickers": [
-   "NVDA"
-  ],
-  "carry_2024_lots": true,
-  "transfer": {
-   "from": "KB-2271",
-   "to": "NAMUH-2271",
-   "ticker": "NVDA"
-  }
- },
- {
-  "customer_id": 2272,
-  "scenario": "TRANSFER",
-  "accounts": [
-   {
-    "account_id": "NAMUH-2272",
-    "broker_code": "NAMUH",
-    "method": "CHOICE"
-   },
-   {
-    "account_id": "TOSS-2272",
-    "broker_code": "TOSS",
-    "method": "AVG"
-   }
-  ],
-  "tickers": [
-   "AAPL",
-   "TSLA",
-   "SOXL"
-  ],
-  "carry_2024_lots": true,
-  "transfer": {
-   "from": "NAMUH-2272",
-   "to": "TOSS-2272",
-   "ticker": "AAPL"
-  }
- },
- {
-  "customer_id": 2273,
-  "scenario": "TRANSFER",
-  "accounts": [
-   {
-    "account_id": "KIS-2273",
-    "broker_code": "KIS",
-    "method": "AVG"
-   },
-   {
-    "account_id": "KIWOOM-2273",
-    "broker_code": "KIWOOM",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "SCHD",
-   "AMZN"
-  ],
-  "carry_2024_lots": true,
-  "transfer": {
-   "from": "KIS-2273",
-   "to": "KIWOOM-2273",
-   "ticker": "SCHD"
-  }
- },
- {
-  "customer_id": 2274,
-  "scenario": "TRANSFER",
-  "accounts": [
-   {
-    "account_id": "MIRAE-2274",
-    "broker_code": "MIRAE",
-    "method": "FIFO"
-   },
-   {
-    "account_id": "KAKAOPAY-2274",
+    "account_id": "KAKAOPAY-2257",
     "broker_code": "KAKAOPAY",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "GOOGL",
-   "AMD"
-  ],
-  "carry_2024_lots": false,
-  "transfer": {
-   "from": "MIRAE-2274",
-   "to": "KAKAOPAY-2274",
-   "ticker": "GOOGL"
-  }
- },
- {
-  "customer_id": 2275,
-  "scenario": "TRANSFER",
-  "accounts": [
-   {
-    "account_id": "DAISHIN-2275",
-    "broker_code": "DAISHIN",
-    "method": "AVG"
-   },
-   {
-    "account_id": "NAMUH-2275",
-    "broker_code": "NAMUH",
-    "method": "CHOICE"
-   }
-  ],
-  "tickers": [
-   "SCHD"
-  ],
-  "carry_2024_lots": false,
-  "transfer": {
-   "from": "DAISHIN-2275",
-   "to": "NAMUH-2275",
-   "ticker": "SCHD"
-  }
- },
- {
-  "customer_id": 2276,
-  "scenario": "TRANSFER",
-  "accounts": [
-   {
-    "account_id": "DAISHIN-2276",
-    "broker_code": "DAISHIN",
-    "method": "AVG"
-   },
-   {
-    "account_id": "KIS-2276",
-    "broker_code": "KIS",
-    "method": "AVG"
-   }
-  ],
-  "tickers": [
-   "AMZN"
-  ],
-  "carry_2024_lots": false,
-  "transfer": {
-   "from": "DAISHIN-2276",
-   "to": "KIS-2276",
-   "ticker": "AMZN"
-  }
- },
- {
-  "customer_id": 2277,
-  "scenario": "TRANSFER",
-  "accounts": [
-   {
-    "account_id": "MIRAE-2277",
-    "broker_code": "MIRAE",
-    "method": "FIFO"
-   },
-   {
-    "account_id": "NAMUH-2277",
-    "broker_code": "NAMUH",
-    "method": "CHOICE"
-   }
-  ],
-  "tickers": [
-   "AMZN"
-  ],
-  "carry_2024_lots": true,
-  "transfer": {
-   "from": "MIRAE-2277",
-   "to": "NAMUH-2277",
-   "ticker": "AMZN"
-  }
- },
- {
-  "customer_id": 2278,
-  "scenario": "TRANSFER",
-  "accounts": [
-   {
-    "account_id": "KB-2278",
-    "broker_code": "KB",
-    "method": "FIFO"
-   },
-   {
-    "account_id": "NAMUH-2278",
-    "broker_code": "NAMUH",
-    "method": "CHOICE"
-   }
-  ],
-  "tickers": [
-   "AMD",
-   "MSFT",
-   "RIVN"
-  ],
-  "carry_2024_lots": true,
-  "transfer": {
-   "from": "KB-2278",
-   "to": "NAMUH-2278",
-   "ticker": "AMD"
-  }
- },
- {
-  "customer_id": 2279,
-  "scenario": "TRANSFER",
-  "accounts": [
-   {
-    "account_id": "KAKAOPAY-2279",
-    "broker_code": "KAKAOPAY",
-    "method": "FIFO"
-   },
-   {
-    "account_id": "DAISHIN-2279",
-    "broker_code": "DAISHIN",
-    "method": "AVG"
-   }
-  ],
-  "tickers": [
-   "SOXL",
-   "TSLA"
-  ],
-  "carry_2024_lots": true,
-  "transfer": {
-   "from": "KAKAOPAY-2279",
-   "to": "DAISHIN-2279",
-   "ticker": "SOXL"
-  }
- },
- {
-  "customer_id": 2280,
-  "scenario": "TRANSFER",
-  "accounts": [
-   {
-    "account_id": "SAMSUNG-2280",
-    "broker_code": "SAMSUNG",
-    "method": "AVG"
-   },
-   {
-    "account_id": "NAMUH-2280",
-    "broker_code": "NAMUH",
-    "method": "CHOICE"
+    "method": "FIFO",
+    "display_no": "594-44-444094"
    }
   ],
   "tickers": [
    "PLTR",
    "NVDA"
   ],
-  "carry_2024_lots": false,
-  "transfer": {
-   "from": "SAMSUNG-2280",
-   "to": "NAMUH-2280",
-   "ticker": "PLTR"
-  }
+  "carry_2024_lots": false
  },
  {
-  "customer_id": 2281,
-  "scenario": "TRANSFER",
+  "customer_id": 2258,
+  "name": "박준서",
+  "scenario": "MULTI_BROKER",
   "accounts": [
    {
-    "account_id": "SHINHAN-2281",
-    "broker_code": "SHINHAN",
-    "method": "FIFO"
+    "account_id": "MIRAE-2258",
+    "broker_code": "MIRAE",
+    "method": "FIFO",
+    "display_no": "515-65-261528"
    },
    {
-    "account_id": "NAMUH-2281",
-    "broker_code": "NAMUH",
-    "method": "CHOICE"
+    "account_id": "KIS-2258",
+    "broker_code": "KIS",
+    "method": "AVG",
+    "display_no": "524-70-132081"
    }
   ],
   "tickers": [
-   "COIN"
+   "SCHD",
+   "LCID"
   ],
-  "carry_2024_lots": false,
-  "transfer": {
-   "from": "SHINHAN-2281",
-   "to": "NAMUH-2281",
-   "ticker": "COIN"
-  }
+  "carry_2024_lots": true
  },
  {
-  "customer_id": 2282,
-  "scenario": "TRANSFER",
+  "customer_id": 2259,
+  "name": "정서연",
+  "scenario": "MULTI_BROKER",
   "accounts": [
    {
-    "account_id": "KB-2282",
-    "broker_code": "KB",
-    "method": "FIFO"
+    "account_id": "MIRAE-2259",
+    "broker_code": "MIRAE",
+    "method": "FIFO",
+    "display_no": "281-14-239967"
    },
    {
-    "account_id": "NAMUH-2282",
-    "broker_code": "NAMUH",
-    "method": "CHOICE"
-   }
-  ],
-  "tickers": [
-   "LCID",
-   "SOXL",
-   "RIVN"
-  ],
-  "carry_2024_lots": false,
-  "transfer": {
-   "from": "KB-2282",
-   "to": "NAMUH-2282",
-   "ticker": "LCID"
-  }
- },
- {
-  "customer_id": 2283,
-  "scenario": "TRANSFER",
-  "accounts": [
-   {
-    "account_id": "SAMSUNG-2283",
-    "broker_code": "SAMSUNG",
-    "method": "AVG"
-   },
-   {
-    "account_id": "NAMUH-2283",
-    "broker_code": "NAMUH",
-    "method": "CHOICE"
+    "account_id": "DAISHIN-2259",
+    "broker_code": "DAISHIN",
+    "method": "AVG",
+    "display_no": "398-56-811710"
    }
   ],
   "tickers": [
    "AMD",
    "MSFT"
   ],
-  "carry_2024_lots": false,
-  "transfer": {
-   "from": "SAMSUNG-2283",
-   "to": "NAMUH-2283",
-   "ticker": "AMD"
-  }
+  "carry_2024_lots": true
  },
  {
-  "customer_id": 2284,
-  "scenario": "TRANSFER",
+  "customer_id": 2260,
+  "name": "안지우",
+  "scenario": "MULTI_BROKER",
   "accounts": [
    {
-    "account_id": "KB-2284",
-    "broker_code": "KB",
-    "method": "FIFO"
+    "account_id": "DAISHIN-2260",
+    "broker_code": "DAISHIN",
+    "method": "AVG",
+    "display_no": "805-46-133589"
    },
    {
-    "account_id": "KIWOOM-2284",
-    "broker_code": "KIWOOM",
-    "method": "FIFO"
+    "account_id": "KAKAOPAY-2260",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO",
+    "display_no": "502-53-797312"
    }
   ],
   "tickers": [
-   "INTC",
-   "MSFT",
+   "SOXL",
+   "AMZN",
+   "NVDA"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2262,
+  "name": "한우진",
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "SHINHAN-2262",
+    "broker_code": "SHINHAN",
+    "method": "FIFO",
+    "display_no": "500-77-719171"
+   },
+   {
+    "account_id": "TOSS-2262",
+    "broker_code": "TOSS",
+    "method": "AVG",
+    "display_no": "727-88-306214"
+   }
+  ],
+  "tickers": [
+   "TSLA",
+   "SCHD",
+   "NVDA"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2263,
+  "name": "송지아",
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "MIRAE-2263",
+    "broker_code": "MIRAE",
+    "method": "FIFO",
+    "display_no": "989-91-926271"
+   },
+   {
+    "account_id": "TOSS-2263",
+    "broker_code": "TOSS",
+    "method": "AVG",
+    "display_no": "413-86-795535"
+   }
+  ],
+  "tickers": [
+   "PLTR",
+   "SOXL"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2264,
+  "name": "임지호",
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "KIS-2264",
+    "broker_code": "KIS",
+    "method": "AVG",
+    "display_no": "536-36-864581"
+   },
+   {
+    "account_id": "KB-2264",
+    "broker_code": "KB",
+    "method": "FIFO",
+    "display_no": "267-56-202345"
+   }
+  ],
+  "tickers": [
+   "NVDA",
+   "LCID"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2265,
+  "name": "강현우",
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "KAKAOPAY-2265",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO",
+    "display_no": "356-12-750475"
+   },
+   {
+    "account_id": "TOSS-2265",
+    "broker_code": "TOSS",
+    "method": "AVG",
+    "display_no": "923-21-166514"
+   }
+  ],
+  "tickers": [
+   "GOOGL"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2266,
+  "name": "황선우",
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2266",
+    "broker_code": "KIWOOM",
+    "method": "FIFO",
+    "display_no": "954-94-918691"
+   },
+   {
+    "account_id": "KAKAOPAY-2266",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO",
+    "display_no": "606-81-908283"
+   }
+  ],
+  "tickers": [
+   "COIN"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2267,
+  "name": "신민준",
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "SAMSUNG-2267",
+    "broker_code": "SAMSUNG",
+    "method": "AVG",
+    "display_no": "187-27-983973"
+   },
+   {
+    "account_id": "DAISHIN-2267",
+    "broker_code": "DAISHIN",
+    "method": "AVG",
+    "display_no": "198-86-645798"
+   }
+  ],
+  "tickers": [
+   "LCID",
+   "GOOGL"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2268,
+  "name": "신민준",
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "MIRAE-2268",
+    "broker_code": "MIRAE",
+    "method": "FIFO",
+    "display_no": "828-21-244100"
+   },
+   {
+    "account_id": "NAMUH-2268",
+    "broker_code": "NAMUH",
+    "method": "CHOICE",
+    "display_no": "637-87-728669"
+   }
+  ],
+  "tickers": [
+   "RIVN",
+   "AMZN"
+  ],
+  "carry_2024_lots": true,
+  "transfer": {
+   "from": "MIRAE-2268",
+   "to": "NAMUH-2268",
+   "ticker": "RIVN"
+  }
+ },
+ {
+  "customer_id": 2269,
+  "name": "송채원",
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2269",
+    "broker_code": "KIWOOM",
+    "method": "FIFO",
+    "display_no": "991-98-672590"
+   },
+   {
+    "account_id": "TOSS-2269",
+    "broker_code": "TOSS",
+    "method": "AVG",
+    "display_no": "404-80-789857"
+   }
+  ],
+  "tickers": [
+   "AMZN",
+   "SOXL"
+  ],
+  "carry_2024_lots": true,
+  "transfer": {
+   "from": "KIWOOM-2269",
+   "to": "TOSS-2269",
+   "ticker": "AMZN"
+  }
+ },
+ {
+  "customer_id": 2270,
+  "name": "최지호",
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "KB-2270",
+    "broker_code": "KB",
+    "method": "FIFO",
+    "display_no": "353-20-450290"
+   },
+   {
+    "account_id": "TOSS-2270",
+    "broker_code": "TOSS",
+    "method": "AVG",
+    "display_no": "272-33-779986"
+   }
+  ],
+  "tickers": [
+   "META",
+   "PLTR"
+  ],
+  "carry_2024_lots": true,
+  "transfer": {
+   "from": "KB-2270",
+   "to": "TOSS-2270",
+   "ticker": "META"
+  }
+ },
+ {
+  "customer_id": 2271,
+  "name": "송하은",
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "MIRAE-2271",
+    "broker_code": "MIRAE",
+    "method": "FIFO",
+    "display_no": "782-59-301821"
+   },
+   {
+    "account_id": "NAMUH-2271",
+    "broker_code": "NAMUH",
+    "method": "CHOICE",
+    "display_no": "944-77-406924"
+   }
+  ],
+  "tickers": [
    "AMD"
   ],
   "carry_2024_lots": false,
   "transfer": {
-   "from": "KB-2284",
-   "to": "KIWOOM-2284",
-   "ticker": "INTC"
+   "from": "MIRAE-2271",
+   "to": "NAMUH-2271",
+   "ticker": "AMD"
   }
  },
  {
-  "customer_id": 2285,
+  "customer_id": 2272,
+  "name": "서선우",
   "scenario": "TRANSFER",
   "accounts": [
    {
-    "account_id": "SAMSUNG-2285",
-    "broker_code": "SAMSUNG",
-    "method": "AVG"
+    "account_id": "KAKAOPAY-2272",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO",
+    "display_no": "690-33-954008"
    },
    {
-    "account_id": "NAMUH-2285",
-    "broker_code": "NAMUH",
-    "method": "CHOICE"
+    "account_id": "SHINHAN-2272",
+    "broker_code": "SHINHAN",
+    "method": "FIFO",
+    "display_no": "756-84-225805"
    }
   ],
   "tickers": [
-   "MSFT",
-   "META"
+   "AMD",
+   "AAPL",
+   "MSFT"
   ],
   "carry_2024_lots": true,
   "transfer": {
-   "from": "SAMSUNG-2285",
-   "to": "NAMUH-2285",
-   "ticker": "MSFT"
+   "from": "KAKAOPAY-2272",
+   "to": "SHINHAN-2272",
+   "ticker": "AMD"
   }
  },
  {
-  "customer_id": 2286,
-  "scenario": "NO_SALE",
+  "customer_id": 2273,
+  "name": "최준서",
+  "scenario": "TRANSFER",
   "accounts": [
    {
-    "account_id": "KAKAOPAY-2286",
+    "account_id": "KAKAOPAY-2273",
     "broker_code": "KAKAOPAY",
-    "method": "FIFO"
+    "method": "FIFO",
+    "display_no": "841-92-923758"
+   },
+   {
+    "account_id": "NAMUH-2273",
+    "broker_code": "NAMUH",
+    "method": "CHOICE",
+    "display_no": "226-57-440904"
    }
   ],
   "tickers": [
-   "AMZN"
-  ],
-  "carry_2024_lots": true
- },
- {
-  "customer_id": 2287,
-  "scenario": "NO_SALE",
-  "accounts": [
-   {
-    "account_id": "KAKAOPAY-2287",
-    "broker_code": "KAKAOPAY",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "AAPL",
    "META"
   ],
-  "carry_2024_lots": false
+  "carry_2024_lots": false,
+  "transfer": {
+   "from": "KAKAOPAY-2273",
+   "to": "NAMUH-2273",
+   "ticker": "META"
+  }
  },
  {
-  "customer_id": 2288,
-  "scenario": "NO_SALE",
+  "customer_id": 2274,
+  "name": "윤다은",
+  "scenario": "TRANSFER",
   "accounts": [
    {
-    "account_id": "MIRAE-2288",
-    "broker_code": "MIRAE",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "COIN"
-  ],
-  "carry_2024_lots": false
- },
- {
-  "customer_id": 2289,
-  "scenario": "NO_SALE",
-  "accounts": [
+    "account_id": "DAISHIN-2274",
+    "broker_code": "DAISHIN",
+    "method": "AVG",
+    "display_no": "358-10-554341"
+   },
    {
-    "account_id": "SHINHAN-2289",
+    "account_id": "SHINHAN-2274",
     "broker_code": "SHINHAN",
-    "method": "FIFO"
+    "method": "FIFO",
+    "display_no": "574-30-164387"
    }
   ],
   "tickers": [
-   "AAPL"
+   "SOXL"
   ],
-  "carry_2024_lots": false
+  "carry_2024_lots": true,
+  "transfer": {
+   "from": "DAISHIN-2274",
+   "to": "SHINHAN-2274",
+   "ticker": "SOXL"
+  }
  },
  {
-  "customer_id": 2290,
-  "scenario": "NO_SALE",
+  "customer_id": 2275,
+  "name": "안도윤",
+  "scenario": "TRANSFER",
   "accounts": [
    {
-    "account_id": "SHINHAN-2290",
+    "account_id": "NAMUH-2275",
+    "broker_code": "NAMUH",
+    "method": "CHOICE",
+    "display_no": "759-38-571170"
+   },
+   {
+    "account_id": "TOSS-2275",
+    "broker_code": "TOSS",
+    "method": "AVG",
+    "display_no": "305-98-389003"
+   }
+  ],
+  "tickers": [
+   "AMD"
+  ],
+  "carry_2024_lots": true,
+  "transfer": {
+   "from": "NAMUH-2275",
+   "to": "TOSS-2275",
+   "ticker": "AMD"
+  }
+ },
+ {
+  "customer_id": 2276,
+  "name": "최지호",
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "SAMSUNG-2276",
+    "broker_code": "SAMSUNG",
+    "method": "AVG",
+    "display_no": "201-44-790271"
+   },
+   {
+    "account_id": "NAMUH-2276",
+    "broker_code": "NAMUH",
+    "method": "CHOICE",
+    "display_no": "628-49-882660"
+   }
+  ],
+  "tickers": [
+   "PLTR",
+   "LCID",
+   "NVDA"
+  ],
+  "carry_2024_lots": true,
+  "transfer": {
+   "from": "SAMSUNG-2276",
+   "to": "NAMUH-2276",
+   "ticker": "PLTR"
+  }
+ },
+ {
+  "customer_id": 2277,
+  "name": "최수아",
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "KIS-2277",
+    "broker_code": "KIS",
+    "method": "AVG",
+    "display_no": "378-85-309156"
+   },
+   {
+    "account_id": "SHINHAN-2277",
     "broker_code": "SHINHAN",
-    "method": "FIFO"
+    "method": "FIFO",
+    "display_no": "743-61-802374"
    }
   ],
   "tickers": [
-   "RIVN",
-   "COIN"
+   "NVDA"
   ],
-  "carry_2024_lots": true
+  "carry_2024_lots": true,
+  "transfer": {
+   "from": "KIS-2277",
+   "to": "SHINHAN-2277",
+   "ticker": "NVDA"
+  }
  },
  {
-  "customer_id": 2291,
-  "scenario": "NO_SALE",
+  "customer_id": 2278,
+  "name": "신채원",
+  "scenario": "TRANSFER",
   "accounts": [
    {
-    "account_id": "MIRAE-2291",
+    "account_id": "MIRAE-2278",
     "broker_code": "MIRAE",
-    "method": "FIFO"
+    "method": "FIFO",
+    "display_no": "240-39-530687"
+   },
+   {
+    "account_id": "NAMUH-2278",
+    "broker_code": "NAMUH",
+    "method": "CHOICE",
+    "display_no": "987-15-314915"
    }
   ],
   "tickers": [
    "GOOGL",
-   "META",
-   "MSFT"
-  ],
-  "carry_2024_lots": true
- },
- {
-  "customer_id": 2292,
-  "scenario": "NO_SALE",
-  "accounts": [
-   {
-    "account_id": "MIRAE-2292",
-    "broker_code": "MIRAE",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "SOXL",
    "AMD",
    "TSLA"
   ],
-  "carry_2024_lots": true
+  "carry_2024_lots": false,
+  "transfer": {
+   "from": "MIRAE-2278",
+   "to": "NAMUH-2278",
+   "ticker": "GOOGL"
+  }
  },
  {
-  "customer_id": 2293,
+  "customer_id": 2279,
+  "name": "윤유나",
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2279",
+    "broker_code": "KIWOOM",
+    "method": "FIFO",
+    "display_no": "910-86-662971"
+   },
+   {
+    "account_id": "NAMUH-2279",
+    "broker_code": "NAMUH",
+    "method": "CHOICE",
+    "display_no": "864-90-897872"
+   }
+  ],
+  "tickers": [
+   "GOOGL"
+  ],
+  "carry_2024_lots": false,
+  "transfer": {
+   "from": "KIWOOM-2279",
+   "to": "NAMUH-2279",
+   "ticker": "GOOGL"
+  }
+ },
+ {
+  "customer_id": 2280,
+  "name": "신준서",
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2280",
+    "broker_code": "KIWOOM",
+    "method": "FIFO",
+    "display_no": "334-83-391158"
+   },
+   {
+    "account_id": "NAMUH-2280",
+    "broker_code": "NAMUH",
+    "method": "CHOICE",
+    "display_no": "100-64-830206"
+   }
+  ],
+  "tickers": [
+   "INTC"
+  ],
+  "carry_2024_lots": false,
+  "transfer": {
+   "from": "KIWOOM-2280",
+   "to": "NAMUH-2280",
+   "ticker": "INTC"
+  }
+ },
+ {
+  "customer_id": 2281,
+  "name": "강하은",
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "MIRAE-2281",
+    "broker_code": "MIRAE",
+    "method": "FIFO",
+    "display_no": "314-35-239070"
+   },
+   {
+    "account_id": "NAMUH-2281",
+    "broker_code": "NAMUH",
+    "method": "CHOICE",
+    "display_no": "402-68-164251"
+   }
+  ],
+  "tickers": [
+   "NVDA"
+  ],
+  "carry_2024_lots": false,
+  "transfer": {
+   "from": "MIRAE-2281",
+   "to": "NAMUH-2281",
+   "ticker": "NVDA"
+  }
+ },
+ {
+  "customer_id": 2282,
+  "name": "박서현",
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "DAISHIN-2282",
+    "broker_code": "DAISHIN",
+    "method": "AVG",
+    "display_no": "483-14-658922"
+   },
+   {
+    "account_id": "NAMUH-2282",
+    "broker_code": "NAMUH",
+    "method": "CHOICE",
+    "display_no": "279-97-983852"
+   }
+  ],
+  "tickers": [
+   "NVDA",
+   "RIVN"
+  ],
+  "carry_2024_lots": false,
+  "transfer": {
+   "from": "DAISHIN-2282",
+   "to": "NAMUH-2282",
+   "ticker": "NVDA"
+  }
+ },
+ {
+  "customer_id": 2283,
+  "name": "홍채원",
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "NAMUH-2283",
+    "broker_code": "NAMUH",
+    "method": "CHOICE",
+    "display_no": "535-32-740626"
+   },
+   {
+    "account_id": "KAKAOPAY-2283",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO",
+    "display_no": "956-66-392736"
+   }
+  ],
+  "tickers": [
+   "SOXL"
+  ],
+  "carry_2024_lots": false,
+  "transfer": {
+   "from": "NAMUH-2283",
+   "to": "KAKAOPAY-2283",
+   "ticker": "SOXL"
+  }
+ },
+ {
+  "customer_id": 2284,
+  "name": "이하은",
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "TOSS-2284",
+    "broker_code": "TOSS",
+    "method": "AVG",
+    "display_no": "504-93-708868"
+   },
+   {
+    "account_id": "KIWOOM-2284",
+    "broker_code": "KIWOOM",
+    "method": "FIFO",
+    "display_no": "829-27-155398"
+   }
+  ],
+  "tickers": [
+   "SCHD"
+  ],
+  "carry_2024_lots": false,
+  "transfer": {
+   "from": "TOSS-2284",
+   "to": "KIWOOM-2284",
+   "ticker": "SCHD"
+  }
+ },
+ {
+  "customer_id": 2285,
+  "name": "안채원",
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2285",
+    "broker_code": "KIWOOM",
+    "method": "FIFO",
+    "display_no": "662-27-968336"
+   },
+   {
+    "account_id": "NAMUH-2285",
+    "broker_code": "NAMUH",
+    "method": "CHOICE",
+    "display_no": "282-15-548497"
+   }
+  ],
+  "tickers": [
+   "GOOGL"
+  ],
+  "carry_2024_lots": false,
+  "transfer": {
+   "from": "KIWOOM-2285",
+   "to": "NAMUH-2285",
+   "ticker": "GOOGL"
+  }
+ },
+ {
+  "customer_id": 2286,
+  "name": "송도윤",
   "scenario": "NO_SALE",
   "accounts": [
    {
-    "account_id": "KAKAOPAY-2293",
-    "broker_code": "KAKAOPAY",
-    "method": "FIFO"
+    "account_id": "KB-2286",
+    "broker_code": "KB",
+    "method": "FIFO",
+    "display_no": "571-31-814435"
    }
   ],
   "tickers": [
-   "LCID",
-   "PLTR"
+   "META"
   ],
   "carry_2024_lots": false
  },
  {
-  "customer_id": 2294,
-  "scenario": "LOSS_HEAVY",
+  "customer_id": 2287,
+  "name": "김민준",
+  "scenario": "NO_SALE",
   "accounts": [
    {
-    "account_id": "KIWOOM-2294",
+    "account_id": "KIWOOM-2287",
     "broker_code": "KIWOOM",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "RIVN",
-   "LCID"
-  ],
-  "carry_2024_lots": false
- },
- {
-  "customer_id": 2295,
-  "scenario": "LOSS_HEAVY",
-  "accounts": [
-   {
-    "account_id": "KAKAOPAY-2295",
-    "broker_code": "KAKAOPAY",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "RIVN"
-  ],
-  "carry_2024_lots": false
- },
- {
-  "customer_id": 2296,
-  "scenario": "LOSS_HEAVY",
-  "accounts": [
-   {
-    "account_id": "KIWOOM-2296",
-    "broker_code": "KIWOOM",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "LCID",
-   "RIVN"
-  ],
-  "carry_2024_lots": true
- },
- {
-  "customer_id": 2297,
-  "scenario": "LOSS_HEAVY",
-  "accounts": [
-   {
-    "account_id": "MIRAE-2297",
-    "broker_code": "MIRAE",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "RIVN"
-  ],
-  "carry_2024_lots": true
- },
- {
-  "customer_id": 2298,
-  "scenario": "LOSS_HEAVY",
-  "accounts": [
-   {
-    "account_id": "KAKAOPAY-2298",
-    "broker_code": "KAKAOPAY",
-    "method": "FIFO"
-   }
-  ],
-  "tickers": [
-   "SOXL",
-   "LCID"
-  ],
-  "carry_2024_lots": false
- },
- {
-  "customer_id": 2299,
-  "scenario": "LOSS_HEAVY",
-  "accounts": [
-   {
-    "account_id": "MIRAE-2299",
-    "broker_code": "MIRAE",
-    "method": "FIFO"
+    "method": "FIFO",
+    "display_no": "875-91-714298"
    }
   ],
   "tickers": [
@@ -5601,19 +6081,233 @@
   "carry_2024_lots": false
  },
  {
-  "customer_id": 2300,
-  "scenario": "LOSS_HEAVY",
+  "customer_id": 2288,
+  "name": "송지민",
+  "scenario": "NO_SALE",
   "accounts": [
    {
-    "account_id": "SHINHAN-2300",
+    "account_id": "NAMUH-2288",
+    "broker_code": "NAMUH",
+    "method": "CHOICE",
+    "display_no": "866-87-127096"
+   }
+  ],
+  "tickers": [
+   "AMD"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2289,
+  "name": "박채원",
+  "scenario": "NO_SALE",
+  "accounts": [
+   {
+    "account_id": "SHINHAN-2289",
     "broker_code": "SHINHAN",
-    "method": "FIFO"
+    "method": "FIFO",
+    "display_no": "784-83-666245"
+   }
+  ],
+  "tickers": [
+   "AMZN",
+   "NVDA"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2290,
+  "name": "서다은",
+  "scenario": "NO_SALE",
+  "accounts": [
+   {
+    "account_id": "KAKAOPAY-2290",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO",
+    "display_no": "578-13-146290"
+   }
+  ],
+  "tickers": [
+   "GOOGL"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2291,
+  "name": "안지호",
+  "scenario": "NO_SALE",
+  "accounts": [
+   {
+    "account_id": "KAKAOPAY-2291",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO",
+    "display_no": "486-82-228914"
+   }
+  ],
+  "tickers": [
+   "MSFT",
+   "GOOGL"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2292,
+  "name": "강선우",
+  "scenario": "NO_SALE",
+  "accounts": [
+   {
+    "account_id": "MIRAE-2292",
+    "broker_code": "MIRAE",
+    "method": "FIFO",
+    "display_no": "665-15-755377"
+   }
+  ],
+  "tickers": [
+   "AMZN",
+   "SOXL"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2293,
+  "name": "홍우진",
+  "scenario": "NO_SALE",
+  "accounts": [
+   {
+    "account_id": "MIRAE-2293",
+    "broker_code": "MIRAE",
+    "method": "FIFO",
+    "display_no": "162-44-940951"
    }
   ],
   "tickers": [
    "INTC",
+   "AAPL"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2294,
+  "name": "장서현",
+  "scenario": "LOSS_HEAVY",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2294",
+    "broker_code": "KIWOOM",
+    "method": "FIFO",
+    "display_no": "628-34-496453"
+   }
+  ],
+  "tickers": [
+   "SOXL",
+   "RIVN",
    "RIVN"
   ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2295,
+  "name": "임지호",
+  "scenario": "LOSS_HEAVY",
+  "accounts": [
+   {
+    "account_id": "KAKAOPAY-2295",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO",
+    "display_no": "398-90-508819"
+   }
+  ],
+  "tickers": [
+   "LCID",
+   "RIVN",
+   "META"
+  ],
   "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2296,
+  "name": "안선우",
+  "scenario": "LOSS_HEAVY",
+  "accounts": [
+   {
+    "account_id": "KB-2296",
+    "broker_code": "KB",
+    "method": "FIFO",
+    "display_no": "347-81-831283"
+   }
+  ],
+  "tickers": [
+   "LCID",
+   "SOXL"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2297,
+  "name": "오예준",
+  "scenario": "LOSS_HEAVY",
+  "accounts": [
+   {
+    "account_id": "MIRAE-2297",
+    "broker_code": "MIRAE",
+    "method": "FIFO",
+    "display_no": "504-38-945891"
+   }
+  ],
+  "tickers": [
+   "INTC"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2298,
+  "name": "이유나",
+  "scenario": "LOSS_HEAVY",
+  "accounts": [
+   {
+    "account_id": "MIRAE-2298",
+    "broker_code": "MIRAE",
+    "method": "FIFO",
+    "display_no": "746-96-307607"
+   }
+  ],
+  "tickers": [
+   "RIVN"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2299,
+  "name": "홍우진",
+  "scenario": "LOSS_HEAVY",
+  "accounts": [
+   {
+    "account_id": "KB-2299",
+    "broker_code": "KB",
+    "method": "FIFO",
+    "display_no": "498-22-584141"
+   }
+  ],
+  "tickers": [
+   "SOXL"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2300,
+  "name": "최준서",
+  "scenario": "LOSS_HEAVY",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2300",
+    "broker_code": "KIWOOM",
+    "method": "FIFO",
+    "display_no": "957-86-649317"
+   }
+  ],
+  "tickers": [
+   "SOXL"
+  ],
+  "carry_2024_lots": false
  }
 ]

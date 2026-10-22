@@ -44,6 +44,8 @@ TICKERS = {  # 2024-01-02 기준 가격(USD)와 연간 추세(배수). 실제 �
 BROKERS = list(BROKER_METHOD)  # 10개
 SCENARIOS = [("SINGLE_FIFO", 30), ("SINGLE_AVG", 15), ("MULTI_BROKER", 22), ("TRANSFER", 18), ("NO_SALE", 8), ("LOSS_HEAVY", 7)]
 TAX_YEAR = 2025
+SURNAMES = ["김", "이", "박", "최", "정", "강", "조", "윤", "장", "임", "한", "오", "서", "신", "권", "황", "안", "송", "류", "홍"]
+GIVEN = ["민준", "서연", "도윤", "지우", "하준", "서현", "예준", "하은", "지호", "수아", "준서", "지민", "현우", "지아", "건우", "다은", "우진", "채원", "선우", "유나"]
 
 
 def d2(x: float | Decimal) -> Decimal:
@@ -141,11 +143,13 @@ class Gen:
         carry = rng.random() < 0.45
         n_t = rng.choice([1, 1, 2, 2, 3])
         tickers = rng.sample(list(TICKERS), n_t)
-        prof = {"customer_id": cust, "scenario": scenario, "accounts": [], "tickers": tickers, "carry_2024_lots": carry}
+        prof = {"customer_id": cust, "name": rng.choice(SURNAMES) + rng.choice(GIVEN),  # 가짜 이름 (F08-10). 주민번호·연락처 필드 없음
+                "scenario": scenario, "accounts": [], "tickers": tickers, "carry_2024_lots": carry}
 
         def acc_for(broker):
             a = f"{broker}-{cust}"
-            prof["accounts"].append({"account_id": a, "broker_code": broker, "method": BROKER_METHOD[broker]})
+            acct_no = f"{rng.randint(100, 999)}-{rng.randint(10, 99)}-{rng.randint(100000, 999999)}"  # 형식만 흉내낸 가짜 계좌번호
+            prof["accounts"].append({"account_id": a, "broker_code": broker, "method": BROKER_METHOD[broker], "display_no": acct_no})
             return a
 
         if scenario in ("SINGLE_FIFO", "SINGLE_AVG", "NO_SALE", "LOSS_HEAVY"):
