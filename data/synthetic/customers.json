@@ -1,0 +1,5619 @@
+[
+ {
+  "customer_id": 2001,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2001",
+    "broker_code": "KIWOOM",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "AAPL",
+   "INTC"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2002,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KB-2002",
+    "broker_code": "KB",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "MSFT",
+   "PLTR"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2003,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2003",
+    "broker_code": "KIWOOM",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "TSLA"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2004,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "SHINHAN-2004",
+    "broker_code": "SHINHAN",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "NVDA",
+   "AAPL"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2005,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KB-2005",
+    "broker_code": "KB",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "AMZN",
+   "LCID"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2006,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KAKAOPAY-2006",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "META"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2007,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "SHINHAN-2007",
+    "broker_code": "SHINHAN",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "META"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2008,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KB-2008",
+    "broker_code": "KB",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "RIVN",
+   "NVDA",
+   "AAPL"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2009,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KB-2009",
+    "broker_code": "KB",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "NVDA",
+   "COIN"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2010,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "MIRAE-2010",
+    "broker_code": "MIRAE",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "NVDA",
+   "RIVN"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2011,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KB-2011",
+    "broker_code": "KB",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "COIN",
+   "NVDA",
+   "META"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2012,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "MIRAE-2012",
+    "broker_code": "MIRAE",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "META"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2013,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "MIRAE-2013",
+    "broker_code": "MIRAE",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "SOXL",
+   "AMZN",
+   "PLTR"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2014,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KAKAOPAY-2014",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "AMD"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2015,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "NAMUH-2015",
+    "broker_code": "NAMUH",
+    "method": "CHOICE"
+   }
+  ],
+  "tickers": [
+   "LCID"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2016,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KAKAOPAY-2016",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "SCHD",
+   "AMD",
+   "INTC"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2017,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2017",
+    "broker_code": "KIWOOM",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "GOOGL",
+   "AAPL",
+   "META"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2018,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "SHINHAN-2018",
+    "broker_code": "SHINHAN",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "SOXL",
+   "AMD",
+   "AAPL"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2019,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2019",
+    "broker_code": "KIWOOM",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "AMZN",
+   "GOOGL"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2020,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KB-2020",
+    "broker_code": "KB",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "META"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2021,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2021",
+    "broker_code": "KIWOOM",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "PLTR",
+   "AMD"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2022,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KB-2022",
+    "broker_code": "KB",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "AAPL"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2023,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "SHINHAN-2023",
+    "broker_code": "SHINHAN",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "COIN"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2024,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "MIRAE-2024",
+    "broker_code": "MIRAE",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "TSLA",
+   "AMD"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2025,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KAKAOPAY-2025",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "SOXL"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2026,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KB-2026",
+    "broker_code": "KB",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "AMZN"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2027,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2027",
+    "broker_code": "KIWOOM",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "LCID"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2028,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "NAMUH-2028",
+    "broker_code": "NAMUH",
+    "method": "CHOICE"
+   }
+  ],
+  "tickers": [
+   "GOOGL",
+   "AMZN"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2029,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2029",
+    "broker_code": "KIWOOM",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "MSFT",
+   "AAPL",
+   "COIN"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2030,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2030",
+    "broker_code": "KIWOOM",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "INTC",
+   "AAPL",
+   "NVDA"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2031,
+  "scenario": "SINGLE_AVG",
+  "accounts": [
+   {
+    "account_id": "DAISHIN-2031",
+    "broker_code": "DAISHIN",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "AMD",
+   "PLTR",
+   "RIVN"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2032,
+  "scenario": "SINGLE_AVG",
+  "accounts": [
+   {
+    "account_id": "DAISHIN-2032",
+    "broker_code": "DAISHIN",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "PLTR"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2033,
+  "scenario": "SINGLE_AVG",
+  "accounts": [
+   {
+    "account_id": "DAISHIN-2033",
+    "broker_code": "DAISHIN",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "SOXL"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2034,
+  "scenario": "SINGLE_AVG",
+  "accounts": [
+   {
+    "account_id": "KIS-2034",
+    "broker_code": "KIS",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "LCID",
+   "AMZN"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2035,
+  "scenario": "SINGLE_AVG",
+  "accounts": [
+   {
+    "account_id": "KIS-2035",
+    "broker_code": "KIS",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "AMD"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2036,
+  "scenario": "SINGLE_AVG",
+  "accounts": [
+   {
+    "account_id": "TOSS-2036",
+    "broker_code": "TOSS",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "SCHD"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2037,
+  "scenario": "SINGLE_AVG",
+  "accounts": [
+   {
+    "account_id": "SAMSUNG-2037",
+    "broker_code": "SAMSUNG",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "RIVN"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2038,
+  "scenario": "SINGLE_AVG",
+  "accounts": [
+   {
+    "account_id": "SAMSUNG-2038",
+    "broker_code": "SAMSUNG",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "NVDA",
+   "LCID"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2039,
+  "scenario": "SINGLE_AVG",
+  "accounts": [
+   {
+    "account_id": "SAMSUNG-2039",
+    "broker_code": "SAMSUNG",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "LCID",
+   "PLTR"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2040,
+  "scenario": "SINGLE_AVG",
+  "accounts": [
+   {
+    "account_id": "SAMSUNG-2040",
+    "broker_code": "SAMSUNG",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "TSLA",
+   "LCID"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2041,
+  "scenario": "SINGLE_AVG",
+  "accounts": [
+   {
+    "account_id": "DAISHIN-2041",
+    "broker_code": "DAISHIN",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "NVDA",
+   "LCID",
+   "META"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2042,
+  "scenario": "SINGLE_AVG",
+  "accounts": [
+   {
+    "account_id": "DAISHIN-2042",
+    "broker_code": "DAISHIN",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "NVDA"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2043,
+  "scenario": "SINGLE_AVG",
+  "accounts": [
+   {
+    "account_id": "TOSS-2043",
+    "broker_code": "TOSS",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "META"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2044,
+  "scenario": "SINGLE_AVG",
+  "accounts": [
+   {
+    "account_id": "SAMSUNG-2044",
+    "broker_code": "SAMSUNG",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "GOOGL"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2045,
+  "scenario": "SINGLE_AVG",
+  "accounts": [
+   {
+    "account_id": "KIS-2045",
+    "broker_code": "KIS",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "SCHD",
+   "META",
+   "TSLA"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2046,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "KB-2046",
+    "broker_code": "KB",
+    "method": "FIFO"
+   },
+   {
+    "account_id": "DAISHIN-2046",
+    "broker_code": "DAISHIN",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "NVDA",
+   "INTC"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2047,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "SHINHAN-2047",
+    "broker_code": "SHINHAN",
+    "method": "FIFO"
+   },
+   {
+    "account_id": "KIWOOM-2047",
+    "broker_code": "KIWOOM",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "SCHD",
+   "NVDA"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2048,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2048",
+    "broker_code": "KIWOOM",
+    "method": "FIFO"
+   },
+   {
+    "account_id": "NAMUH-2048",
+    "broker_code": "NAMUH",
+    "method": "CHOICE"
+   }
+  ],
+  "tickers": [
+   "NVDA",
+   "PLTR"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2049,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "KIS-2049",
+    "broker_code": "KIS",
+    "method": "AVG"
+   },
+   {
+    "account_id": "SAMSUNG-2049",
+    "broker_code": "SAMSUNG",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "TSLA",
+   "GOOGL",
+   "INTC"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2050,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "NAMUH-2050",
+    "broker_code": "NAMUH",
+    "method": "CHOICE"
+   },
+   {
+    "account_id": "KIWOOM-2050",
+    "broker_code": "KIWOOM",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "TSLA",
+   "SCHD"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2051,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "DAISHIN-2051",
+    "broker_code": "DAISHIN",
+    "method": "AVG"
+   },
+   {
+    "account_id": "KB-2051",
+    "broker_code": "KB",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "AMZN",
+   "INTC"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2052,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "KIS-2052",
+    "broker_code": "KIS",
+    "method": "AVG"
+   },
+   {
+    "account_id": "KB-2052",
+    "broker_code": "KB",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "AMZN"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2053,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "KAKAOPAY-2053",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO"
+   },
+   {
+    "account_id": "KIS-2053",
+    "broker_code": "KIS",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "INTC",
+   "META"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2054,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "KIS-2054",
+    "broker_code": "KIS",
+    "method": "AVG"
+   },
+   {
+    "account_id": "SHINHAN-2054",
+    "broker_code": "SHINHAN",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "INTC"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2055,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "KIS-2055",
+    "broker_code": "KIS",
+    "method": "AVG"
+   },
+   {
+    "account_id": "SAMSUNG-2055",
+    "broker_code": "SAMSUNG",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "MSFT"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2056,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2056",
+    "broker_code": "KIWOOM",
+    "method": "FIFO"
+   },
+   {
+    "account_id": "KB-2056",
+    "broker_code": "KB",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "INTC",
+   "COIN",
+   "TSLA"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2057,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "SAMSUNG-2057",
+    "broker_code": "SAMSUNG",
+    "method": "AVG"
+   },
+   {
+    "account_id": "NAMUH-2057",
+    "broker_code": "NAMUH",
+    "method": "CHOICE"
+   }
+  ],
+  "tickers": [
+   "META",
+   "SCHD"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2058,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "DAISHIN-2058",
+    "broker_code": "DAISHIN",
+    "method": "AVG"
+   },
+   {
+    "account_id": "TOSS-2058",
+    "broker_code": "TOSS",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "SCHD",
+   "PLTR",
+   "MSFT"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2059,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "KIS-2059",
+    "broker_code": "KIS",
+    "method": "AVG"
+   },
+   {
+    "account_id": "KAKAOPAY-2059",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "META",
+   "TSLA",
+   "PLTR"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2060,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "KAKAOPAY-2060",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO"
+   },
+   {
+    "account_id": "SHINHAN-2060",
+    "broker_code": "SHINHAN",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "NVDA",
+   "TSLA"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2061,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2061",
+    "broker_code": "KIWOOM",
+    "method": "FIFO"
+   },
+   {
+    "account_id": "DAISHIN-2061",
+    "broker_code": "DAISHIN",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "META"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2062,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "KB-2062",
+    "broker_code": "KB",
+    "method": "FIFO"
+   },
+   {
+    "account_id": "MIRAE-2062",
+    "broker_code": "MIRAE",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "SCHD"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2063,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "SAMSUNG-2063",
+    "broker_code": "SAMSUNG",
+    "method": "AVG"
+   },
+   {
+    "account_id": "KIWOOM-2063",
+    "broker_code": "KIWOOM",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "TSLA"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2064,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "SHINHAN-2064",
+    "broker_code": "SHINHAN",
+    "method": "FIFO"
+   },
+   {
+    "account_id": "DAISHIN-2064",
+    "broker_code": "DAISHIN",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "RIVN",
+   "PLTR"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2065,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2065",
+    "broker_code": "KIWOOM",
+    "method": "FIFO"
+   },
+   {
+    "account_id": "DAISHIN-2065",
+    "broker_code": "DAISHIN",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "GOOGL",
+   "LCID"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2066,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "TOSS-2066",
+    "broker_code": "TOSS",
+    "method": "AVG"
+   },
+   {
+    "account_id": "KIWOOM-2066",
+    "broker_code": "KIWOOM",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "INTC",
+   "GOOGL",
+   "TSLA"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2067,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "DAISHIN-2067",
+    "broker_code": "DAISHIN",
+    "method": "AVG"
+   },
+   {
+    "account_id": "KIWOOM-2067",
+    "broker_code": "KIWOOM",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "MSFT"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2068,
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "SAMSUNG-2068",
+    "broker_code": "SAMSUNG",
+    "method": "AVG"
+   },
+   {
+    "account_id": "NAMUH-2068",
+    "broker_code": "NAMUH",
+    "method": "CHOICE"
+   }
+  ],
+  "tickers": [
+   "SOXL"
+  ],
+  "carry_2024_lots": false,
+  "transfer": {
+   "from": "SAMSUNG-2068",
+   "to": "NAMUH-2068",
+   "ticker": "SOXL"
+  }
+ },
+ {
+  "customer_id": 2069,
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "SAMSUNG-2069",
+    "broker_code": "SAMSUNG",
+    "method": "AVG"
+   },
+   {
+    "account_id": "TOSS-2069",
+    "broker_code": "TOSS",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "RIVN"
+  ],
+  "carry_2024_lots": true,
+  "transfer": {
+   "from": "SAMSUNG-2069",
+   "to": "TOSS-2069",
+   "ticker": "RIVN"
+  }
+ },
+ {
+  "customer_id": 2070,
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "DAISHIN-2070",
+    "broker_code": "DAISHIN",
+    "method": "AVG"
+   },
+   {
+    "account_id": "NAMUH-2070",
+    "broker_code": "NAMUH",
+    "method": "CHOICE"
+   }
+  ],
+  "tickers": [
+   "COIN"
+  ],
+  "carry_2024_lots": false,
+  "transfer": {
+   "from": "DAISHIN-2070",
+   "to": "NAMUH-2070",
+   "ticker": "COIN"
+  }
+ },
+ {
+  "customer_id": 2071,
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "DAISHIN-2071",
+    "broker_code": "DAISHIN",
+    "method": "AVG"
+   },
+   {
+    "account_id": "NAMUH-2071",
+    "broker_code": "NAMUH",
+    "method": "CHOICE"
+   }
+  ],
+  "tickers": [
+   "COIN"
+  ],
+  "carry_2024_lots": false,
+  "transfer": {
+   "from": "DAISHIN-2071",
+   "to": "NAMUH-2071",
+   "ticker": "COIN"
+  }
+ },
+ {
+  "customer_id": 2072,
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2072",
+    "broker_code": "KIWOOM",
+    "method": "FIFO"
+   },
+   {
+    "account_id": "NAMUH-2072",
+    "broker_code": "NAMUH",
+    "method": "CHOICE"
+   }
+  ],
+  "tickers": [
+   "RIVN"
+  ],
+  "carry_2024_lots": false,
+  "transfer": {
+   "from": "KIWOOM-2072",
+   "to": "NAMUH-2072",
+   "ticker": "RIVN"
+  }
+ },
+ {
+  "customer_id": 2073,
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "SHINHAN-2073",
+    "broker_code": "SHINHAN",
+    "method": "FIFO"
+   },
+   {
+    "account_id": "DAISHIN-2073",
+    "broker_code": "DAISHIN",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "PLTR",
+   "SOXL",
+   "GOOGL"
+  ],
+  "carry_2024_lots": false,
+  "transfer": {
+   "from": "SHINHAN-2073",
+   "to": "DAISHIN-2073",
+   "ticker": "PLTR"
+  }
+ },
+ {
+  "customer_id": 2074,
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "DAISHIN-2074",
+    "broker_code": "DAISHIN",
+    "method": "AVG"
+   },
+   {
+    "account_id": "KIWOOM-2074",
+    "broker_code": "KIWOOM",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "LCID",
+   "MSFT",
+   "NVDA"
+  ],
+  "carry_2024_lots": false,
+  "transfer": {
+   "from": "DAISHIN-2074",
+   "to": "KIWOOM-2074",
+   "ticker": "LCID"
+  }
+ },
+ {
+  "customer_id": 2075,
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "SHINHAN-2075",
+    "broker_code": "SHINHAN",
+    "method": "FIFO"
+   },
+   {
+    "account_id": "NAMUH-2075",
+    "broker_code": "NAMUH",
+    "method": "CHOICE"
+   }
+  ],
+  "tickers": [
+   "GOOGL",
+   "AAPL",
+   "AMD"
+  ],
+  "carry_2024_lots": false,
+  "transfer": {
+   "from": "SHINHAN-2075",
+   "to": "NAMUH-2075",
+   "ticker": "GOOGL"
+  }
+ },
+ {
+  "customer_id": 2076,
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "SHINHAN-2076",
+    "broker_code": "SHINHAN",
+    "method": "FIFO"
+   },
+   {
+    "account_id": "NAMUH-2076",
+    "broker_code": "NAMUH",
+    "method": "CHOICE"
+   }
+  ],
+  "tickers": [
+   "COIN"
+  ],
+  "carry_2024_lots": true,
+  "transfer": {
+   "from": "SHINHAN-2076",
+   "to": "NAMUH-2076",
+   "ticker": "COIN"
+  }
+ },
+ {
+  "customer_id": 2077,
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "KAKAOPAY-2077",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO"
+   },
+   {
+    "account_id": "SAMSUNG-2077",
+    "broker_code": "SAMSUNG",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "INTC"
+  ],
+  "carry_2024_lots": false,
+  "transfer": {
+   "from": "KAKAOPAY-2077",
+   "to": "SAMSUNG-2077",
+   "ticker": "INTC"
+  }
+ },
+ {
+  "customer_id": 2078,
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "SAMSUNG-2078",
+    "broker_code": "SAMSUNG",
+    "method": "AVG"
+   },
+   {
+    "account_id": "NAMUH-2078",
+    "broker_code": "NAMUH",
+    "method": "CHOICE"
+   }
+  ],
+  "tickers": [
+   "NVDA"
+  ],
+  "carry_2024_lots": false,
+  "transfer": {
+   "from": "SAMSUNG-2078",
+   "to": "NAMUH-2078",
+   "ticker": "NVDA"
+  }
+ },
+ {
+  "customer_id": 2079,
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "SAMSUNG-2079",
+    "broker_code": "SAMSUNG",
+    "method": "AVG"
+   },
+   {
+    "account_id": "DAISHIN-2079",
+    "broker_code": "DAISHIN",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "COIN"
+  ],
+  "carry_2024_lots": false,
+  "transfer": {
+   "from": "SAMSUNG-2079",
+   "to": "DAISHIN-2079",
+   "ticker": "COIN"
+  }
+ },
+ {
+  "customer_id": 2080,
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "KB-2080",
+    "broker_code": "KB",
+    "method": "FIFO"
+   },
+   {
+    "account_id": "NAMUH-2080",
+    "broker_code": "NAMUH",
+    "method": "CHOICE"
+   }
+  ],
+  "tickers": [
+   "INTC"
+  ],
+  "carry_2024_lots": false,
+  "transfer": {
+   "from": "KB-2080",
+   "to": "NAMUH-2080",
+   "ticker": "INTC"
+  }
+ },
+ {
+  "customer_id": 2081,
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "DAISHIN-2081",
+    "broker_code": "DAISHIN",
+    "method": "AVG"
+   },
+   {
+    "account_id": "NAMUH-2081",
+    "broker_code": "NAMUH",
+    "method": "CHOICE"
+   }
+  ],
+  "tickers": [
+   "INTC",
+   "LCID",
+   "COIN"
+  ],
+  "carry_2024_lots": false,
+  "transfer": {
+   "from": "DAISHIN-2081",
+   "to": "NAMUH-2081",
+   "ticker": "INTC"
+  }
+ },
+ {
+  "customer_id": 2082,
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "KB-2082",
+    "broker_code": "KB",
+    "method": "FIFO"
+   },
+   {
+    "account_id": "SHINHAN-2082",
+    "broker_code": "SHINHAN",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "SCHD",
+   "AMD",
+   "PLTR"
+  ],
+  "carry_2024_lots": false,
+  "transfer": {
+   "from": "KB-2082",
+   "to": "SHINHAN-2082",
+   "ticker": "SCHD"
+  }
+ },
+ {
+  "customer_id": 2083,
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "KB-2083",
+    "broker_code": "KB",
+    "method": "FIFO"
+   },
+   {
+    "account_id": "DAISHIN-2083",
+    "broker_code": "DAISHIN",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "AMD"
+  ],
+  "carry_2024_lots": true,
+  "transfer": {
+   "from": "KB-2083",
+   "to": "DAISHIN-2083",
+   "ticker": "AMD"
+  }
+ },
+ {
+  "customer_id": 2084,
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2084",
+    "broker_code": "KIWOOM",
+    "method": "FIFO"
+   },
+   {
+    "account_id": "MIRAE-2084",
+    "broker_code": "MIRAE",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "SOXL",
+   "COIN"
+  ],
+  "carry_2024_lots": true,
+  "transfer": {
+   "from": "KIWOOM-2084",
+   "to": "MIRAE-2084",
+   "ticker": "SOXL"
+  }
+ },
+ {
+  "customer_id": 2085,
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "KAKAOPAY-2085",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO"
+   },
+   {
+    "account_id": "MIRAE-2085",
+    "broker_code": "MIRAE",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "AMZN"
+  ],
+  "carry_2024_lots": true,
+  "transfer": {
+   "from": "KAKAOPAY-2085",
+   "to": "MIRAE-2085",
+   "ticker": "AMZN"
+  }
+ },
+ {
+  "customer_id": 2086,
+  "scenario": "NO_SALE",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2086",
+    "broker_code": "KIWOOM",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "LCID",
+   "GOOGL"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2087,
+  "scenario": "NO_SALE",
+  "accounts": [
+   {
+    "account_id": "KAKAOPAY-2087",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "PLTR",
+   "NVDA"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2088,
+  "scenario": "NO_SALE",
+  "accounts": [
+   {
+    "account_id": "KAKAOPAY-2088",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "AMD",
+   "META"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2089,
+  "scenario": "NO_SALE",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2089",
+    "broker_code": "KIWOOM",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "COIN"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2090,
+  "scenario": "NO_SALE",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2090",
+    "broker_code": "KIWOOM",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "INTC"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2091,
+  "scenario": "NO_SALE",
+  "accounts": [
+   {
+    "account_id": "NAMUH-2091",
+    "broker_code": "NAMUH",
+    "method": "CHOICE"
+   }
+  ],
+  "tickers": [
+   "MSFT"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2092,
+  "scenario": "NO_SALE",
+  "accounts": [
+   {
+    "account_id": "MIRAE-2092",
+    "broker_code": "MIRAE",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "COIN",
+   "AMD"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2093,
+  "scenario": "NO_SALE",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2093",
+    "broker_code": "KIWOOM",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "NVDA",
+   "TSLA"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2094,
+  "scenario": "LOSS_HEAVY",
+  "accounts": [
+   {
+    "account_id": "MIRAE-2094",
+    "broker_code": "MIRAE",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "LCID"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2095,
+  "scenario": "LOSS_HEAVY",
+  "accounts": [
+   {
+    "account_id": "SHINHAN-2095",
+    "broker_code": "SHINHAN",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "RIVN",
+   "INTC"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2096,
+  "scenario": "LOSS_HEAVY",
+  "accounts": [
+   {
+    "account_id": "MIRAE-2096",
+    "broker_code": "MIRAE",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "INTC",
+   "RIVN"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2097,
+  "scenario": "LOSS_HEAVY",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2097",
+    "broker_code": "KIWOOM",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "SOXL",
+   "RIVN"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2098,
+  "scenario": "LOSS_HEAVY",
+  "accounts": [
+   {
+    "account_id": "KAKAOPAY-2098",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "LCID",
+   "INTC"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2099,
+  "scenario": "LOSS_HEAVY",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2099",
+    "broker_code": "KIWOOM",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "SOXL",
+   "RIVN"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2100,
+  "scenario": "LOSS_HEAVY",
+  "accounts": [
+   {
+    "account_id": "KAKAOPAY-2100",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "RIVN",
+   "SOXL",
+   "LCID"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2101,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KB-2101",
+    "broker_code": "KB",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "COIN",
+   "PLTR"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2102,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "MIRAE-2102",
+    "broker_code": "MIRAE",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "MSFT",
+   "NVDA",
+   "INTC"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2103,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "SHINHAN-2103",
+    "broker_code": "SHINHAN",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "PLTR",
+   "AMZN",
+   "META"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2104,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KAKAOPAY-2104",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "RIVN",
+   "COIN",
+   "MSFT"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2105,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KAKAOPAY-2105",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "PLTR"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2106,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "MIRAE-2106",
+    "broker_code": "MIRAE",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "GOOGL",
+   "TSLA"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2107,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2107",
+    "broker_code": "KIWOOM",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "AAPL"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2108,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "MIRAE-2108",
+    "broker_code": "MIRAE",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "LCID",
+   "MSFT"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2109,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "MIRAE-2109",
+    "broker_code": "MIRAE",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "RIVN",
+   "COIN"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2110,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "MIRAE-2110",
+    "broker_code": "MIRAE",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "MSFT",
+   "AAPL"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2111,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "MIRAE-2111",
+    "broker_code": "MIRAE",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "LCID"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2112,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "SHINHAN-2112",
+    "broker_code": "SHINHAN",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "TSLA",
+   "INTC",
+   "AAPL"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2113,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "SHINHAN-2113",
+    "broker_code": "SHINHAN",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "AMZN",
+   "GOOGL",
+   "COIN"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2114,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "MIRAE-2114",
+    "broker_code": "MIRAE",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "MSFT",
+   "AMZN",
+   "COIN"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2115,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2115",
+    "broker_code": "KIWOOM",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "PLTR",
+   "RIVN"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2116,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KB-2116",
+    "broker_code": "KB",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "SCHD",
+   "AMZN"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2117,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KB-2117",
+    "broker_code": "KB",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "MSFT"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2118,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2118",
+    "broker_code": "KIWOOM",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "MSFT"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2119,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2119",
+    "broker_code": "KIWOOM",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "SOXL"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2120,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KB-2120",
+    "broker_code": "KB",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "RIVN",
+   "META"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2121,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KAKAOPAY-2121",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "GOOGL",
+   "MSFT"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2122,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KAKAOPAY-2122",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "SOXL"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2123,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KB-2123",
+    "broker_code": "KB",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "RIVN",
+   "PLTR"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2124,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "SHINHAN-2124",
+    "broker_code": "SHINHAN",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "RIVN",
+   "NVDA"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2125,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "SHINHAN-2125",
+    "broker_code": "SHINHAN",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "AAPL",
+   "COIN"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2126,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KB-2126",
+    "broker_code": "KB",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "AMD",
+   "TSLA"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2127,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KAKAOPAY-2127",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "META",
+   "RIVN",
+   "AMD"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2128,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KB-2128",
+    "broker_code": "KB",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "LCID",
+   "INTC",
+   "MSFT"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2129,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2129",
+    "broker_code": "KIWOOM",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "PLTR"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2130,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "SHINHAN-2130",
+    "broker_code": "SHINHAN",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "META"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2131,
+  "scenario": "SINGLE_AVG",
+  "accounts": [
+   {
+    "account_id": "DAISHIN-2131",
+    "broker_code": "DAISHIN",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "AMD",
+   "INTC"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2132,
+  "scenario": "SINGLE_AVG",
+  "accounts": [
+   {
+    "account_id": "TOSS-2132",
+    "broker_code": "TOSS",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "RIVN",
+   "NVDA"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2133,
+  "scenario": "SINGLE_AVG",
+  "accounts": [
+   {
+    "account_id": "DAISHIN-2133",
+    "broker_code": "DAISHIN",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "META",
+   "AMZN"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2134,
+  "scenario": "SINGLE_AVG",
+  "accounts": [
+   {
+    "account_id": "DAISHIN-2134",
+    "broker_code": "DAISHIN",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "INTC"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2135,
+  "scenario": "SINGLE_AVG",
+  "accounts": [
+   {
+    "account_id": "KIS-2135",
+    "broker_code": "KIS",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "SOXL",
+   "RIVN"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2136,
+  "scenario": "SINGLE_AVG",
+  "accounts": [
+   {
+    "account_id": "KIS-2136",
+    "broker_code": "KIS",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "AAPL",
+   "TSLA"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2137,
+  "scenario": "SINGLE_AVG",
+  "accounts": [
+   {
+    "account_id": "TOSS-2137",
+    "broker_code": "TOSS",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "COIN",
+   "NVDA",
+   "MSFT"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2138,
+  "scenario": "SINGLE_AVG",
+  "accounts": [
+   {
+    "account_id": "TOSS-2138",
+    "broker_code": "TOSS",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "PLTR",
+   "TSLA",
+   "META"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2139,
+  "scenario": "SINGLE_AVG",
+  "accounts": [
+   {
+    "account_id": "TOSS-2139",
+    "broker_code": "TOSS",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "COIN",
+   "TSLA"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2140,
+  "scenario": "SINGLE_AVG",
+  "accounts": [
+   {
+    "account_id": "TOSS-2140",
+    "broker_code": "TOSS",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "RIVN",
+   "TSLA"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2141,
+  "scenario": "SINGLE_AVG",
+  "accounts": [
+   {
+    "account_id": "KIS-2141",
+    "broker_code": "KIS",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "PLTR"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2142,
+  "scenario": "SINGLE_AVG",
+  "accounts": [
+   {
+    "account_id": "TOSS-2142",
+    "broker_code": "TOSS",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "AMD",
+   "NVDA",
+   "RIVN"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2143,
+  "scenario": "SINGLE_AVG",
+  "accounts": [
+   {
+    "account_id": "KIS-2143",
+    "broker_code": "KIS",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "AAPL",
+   "GOOGL"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2144,
+  "scenario": "SINGLE_AVG",
+  "accounts": [
+   {
+    "account_id": "KIS-2144",
+    "broker_code": "KIS",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "SCHD",
+   "TSLA",
+   "GOOGL"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2145,
+  "scenario": "SINGLE_AVG",
+  "accounts": [
+   {
+    "account_id": "TOSS-2145",
+    "broker_code": "TOSS",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "COIN",
+   "AMZN",
+   "INTC"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2146,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "TOSS-2146",
+    "broker_code": "TOSS",
+    "method": "AVG"
+   },
+   {
+    "account_id": "KIS-2146",
+    "broker_code": "KIS",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "TSLA"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2147,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "SHINHAN-2147",
+    "broker_code": "SHINHAN",
+    "method": "FIFO"
+   },
+   {
+    "account_id": "KIWOOM-2147",
+    "broker_code": "KIWOOM",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "AMD",
+   "SCHD",
+   "RIVN"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2148,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "MIRAE-2148",
+    "broker_code": "MIRAE",
+    "method": "FIFO"
+   },
+   {
+    "account_id": "NAMUH-2148",
+    "broker_code": "NAMUH",
+    "method": "CHOICE"
+   }
+  ],
+  "tickers": [
+   "AMZN",
+   "LCID"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2149,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "NAMUH-2149",
+    "broker_code": "NAMUH",
+    "method": "CHOICE"
+   },
+   {
+    "account_id": "MIRAE-2149",
+    "broker_code": "MIRAE",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "SOXL",
+   "TSLA"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2150,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "DAISHIN-2150",
+    "broker_code": "DAISHIN",
+    "method": "AVG"
+   },
+   {
+    "account_id": "KIWOOM-2150",
+    "broker_code": "KIWOOM",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "GOOGL"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2151,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "KAKAOPAY-2151",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO"
+   },
+   {
+    "account_id": "SHINHAN-2151",
+    "broker_code": "SHINHAN",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "MSFT",
+   "RIVN"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2152,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "TOSS-2152",
+    "broker_code": "TOSS",
+    "method": "AVG"
+   },
+   {
+    "account_id": "DAISHIN-2152",
+    "broker_code": "DAISHIN",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "GOOGL",
+   "INTC"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2153,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "SAMSUNG-2153",
+    "broker_code": "SAMSUNG",
+    "method": "AVG"
+   },
+   {
+    "account_id": "KIS-2153",
+    "broker_code": "KIS",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "COIN",
+   "GOOGL"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2154,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "DAISHIN-2154",
+    "broker_code": "DAISHIN",
+    "method": "AVG"
+   },
+   {
+    "account_id": "KAKAOPAY-2154",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "RIVN",
+   "META"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2155,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2155",
+    "broker_code": "KIWOOM",
+    "method": "FIFO"
+   },
+   {
+    "account_id": "SHINHAN-2155",
+    "broker_code": "SHINHAN",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "INTC",
+   "AAPL"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2156,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2156",
+    "broker_code": "KIWOOM",
+    "method": "FIFO"
+   },
+   {
+    "account_id": "DAISHIN-2156",
+    "broker_code": "DAISHIN",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "GOOGL"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2157,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "TOSS-2157",
+    "broker_code": "TOSS",
+    "method": "AVG"
+   },
+   {
+    "account_id": "KIWOOM-2157",
+    "broker_code": "KIWOOM",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "COIN",
+   "META"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2158,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "KB-2158",
+    "broker_code": "KB",
+    "method": "FIFO"
+   },
+   {
+    "account_id": "SHINHAN-2158",
+    "broker_code": "SHINHAN",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "META"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2159,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "KIS-2159",
+    "broker_code": "KIS",
+    "method": "AVG"
+   },
+   {
+    "account_id": "MIRAE-2159",
+    "broker_code": "MIRAE",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "LCID"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2160,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "DAISHIN-2160",
+    "broker_code": "DAISHIN",
+    "method": "AVG"
+   },
+   {
+    "account_id": "TOSS-2160",
+    "broker_code": "TOSS",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "COIN"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2161,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "KIS-2161",
+    "broker_code": "KIS",
+    "method": "AVG"
+   },
+   {
+    "account_id": "MIRAE-2161",
+    "broker_code": "MIRAE",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "RIVN",
+   "SOXL",
+   "AMD"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2162,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2162",
+    "broker_code": "KIWOOM",
+    "method": "FIFO"
+   },
+   {
+    "account_id": "SAMSUNG-2162",
+    "broker_code": "SAMSUNG",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "COIN",
+   "AMD",
+   "AAPL"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2163,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "KIS-2163",
+    "broker_code": "KIS",
+    "method": "AVG"
+   },
+   {
+    "account_id": "KB-2163",
+    "broker_code": "KB",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "TSLA",
+   "AAPL"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2164,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "KB-2164",
+    "broker_code": "KB",
+    "method": "FIFO"
+   },
+   {
+    "account_id": "KIS-2164",
+    "broker_code": "KIS",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "TSLA",
+   "PLTR"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2165,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "KB-2165",
+    "broker_code": "KB",
+    "method": "FIFO"
+   },
+   {
+    "account_id": "KIS-2165",
+    "broker_code": "KIS",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "SCHD",
+   "PLTR"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2166,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "DAISHIN-2166",
+    "broker_code": "DAISHIN",
+    "method": "AVG"
+   },
+   {
+    "account_id": "SHINHAN-2166",
+    "broker_code": "SHINHAN",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "AMD",
+   "INTC"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2167,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "KB-2167",
+    "broker_code": "KB",
+    "method": "FIFO"
+   },
+   {
+    "account_id": "DAISHIN-2167",
+    "broker_code": "DAISHIN",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "COIN",
+   "TSLA"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2168,
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "KB-2168",
+    "broker_code": "KB",
+    "method": "FIFO"
+   },
+   {
+    "account_id": "DAISHIN-2168",
+    "broker_code": "DAISHIN",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "AMD",
+   "TSLA",
+   "INTC"
+  ],
+  "carry_2024_lots": false,
+  "transfer": {
+   "from": "KB-2168",
+   "to": "DAISHIN-2168",
+   "ticker": "AMD"
+  }
+ },
+ {
+  "customer_id": 2169,
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "KIS-2169",
+    "broker_code": "KIS",
+    "method": "AVG"
+   },
+   {
+    "account_id": "SHINHAN-2169",
+    "broker_code": "SHINHAN",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "INTC"
+  ],
+  "carry_2024_lots": false,
+  "transfer": {
+   "from": "KIS-2169",
+   "to": "SHINHAN-2169",
+   "ticker": "INTC"
+  }
+ },
+ {
+  "customer_id": 2170,
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "KIS-2170",
+    "broker_code": "KIS",
+    "method": "AVG"
+   },
+   {
+    "account_id": "NAMUH-2170",
+    "broker_code": "NAMUH",
+    "method": "CHOICE"
+   }
+  ],
+  "tickers": [
+   "AMZN"
+  ],
+  "carry_2024_lots": false,
+  "transfer": {
+   "from": "KIS-2170",
+   "to": "NAMUH-2170",
+   "ticker": "AMZN"
+  }
+ },
+ {
+  "customer_id": 2171,
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "SAMSUNG-2171",
+    "broker_code": "SAMSUNG",
+    "method": "AVG"
+   },
+   {
+    "account_id": "KB-2171",
+    "broker_code": "KB",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "META",
+   "LCID"
+  ],
+  "carry_2024_lots": false,
+  "transfer": {
+   "from": "SAMSUNG-2171",
+   "to": "KB-2171",
+   "ticker": "META"
+  }
+ },
+ {
+  "customer_id": 2172,
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "NAMUH-2172",
+    "broker_code": "NAMUH",
+    "method": "CHOICE"
+   },
+   {
+    "account_id": "SHINHAN-2172",
+    "broker_code": "SHINHAN",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "RIVN",
+   "AMZN"
+  ],
+  "carry_2024_lots": true,
+  "transfer": {
+   "from": "NAMUH-2172",
+   "to": "SHINHAN-2172",
+   "ticker": "RIVN"
+  }
+ },
+ {
+  "customer_id": 2173,
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "DAISHIN-2173",
+    "broker_code": "DAISHIN",
+    "method": "AVG"
+   },
+   {
+    "account_id": "NAMUH-2173",
+    "broker_code": "NAMUH",
+    "method": "CHOICE"
+   }
+  ],
+  "tickers": [
+   "AMD",
+   "RIVN"
+  ],
+  "carry_2024_lots": false,
+  "transfer": {
+   "from": "DAISHIN-2173",
+   "to": "NAMUH-2173",
+   "ticker": "AMD"
+  }
+ },
+ {
+  "customer_id": 2174,
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "KIS-2174",
+    "broker_code": "KIS",
+    "method": "AVG"
+   },
+   {
+    "account_id": "DAISHIN-2174",
+    "broker_code": "DAISHIN",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "RIVN",
+   "SOXL",
+   "PLTR"
+  ],
+  "carry_2024_lots": true,
+  "transfer": {
+   "from": "KIS-2174",
+   "to": "DAISHIN-2174",
+   "ticker": "RIVN"
+  }
+ },
+ {
+  "customer_id": 2175,
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "KB-2175",
+    "broker_code": "KB",
+    "method": "FIFO"
+   },
+   {
+    "account_id": "SHINHAN-2175",
+    "broker_code": "SHINHAN",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "TSLA",
+   "SCHD"
+  ],
+  "carry_2024_lots": true,
+  "transfer": {
+   "from": "KB-2175",
+   "to": "SHINHAN-2175",
+   "ticker": "TSLA"
+  }
+ },
+ {
+  "customer_id": 2176,
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "TOSS-2176",
+    "broker_code": "TOSS",
+    "method": "AVG"
+   },
+   {
+    "account_id": "NAMUH-2176",
+    "broker_code": "NAMUH",
+    "method": "CHOICE"
+   }
+  ],
+  "tickers": [
+   "GOOGL"
+  ],
+  "carry_2024_lots": true,
+  "transfer": {
+   "from": "TOSS-2176",
+   "to": "NAMUH-2176",
+   "ticker": "GOOGL"
+  }
+ },
+ {
+  "customer_id": 2177,
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "NAMUH-2177",
+    "broker_code": "NAMUH",
+    "method": "CHOICE"
+   },
+   {
+    "account_id": "SHINHAN-2177",
+    "broker_code": "SHINHAN",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "NVDA",
+   "AAPL"
+  ],
+  "carry_2024_lots": true,
+  "transfer": {
+   "from": "NAMUH-2177",
+   "to": "SHINHAN-2177",
+   "ticker": "NVDA"
+  }
+ },
+ {
+  "customer_id": 2178,
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "DAISHIN-2178",
+    "broker_code": "DAISHIN",
+    "method": "AVG"
+   },
+   {
+    "account_id": "KIWOOM-2178",
+    "broker_code": "KIWOOM",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "TSLA"
+  ],
+  "carry_2024_lots": true,
+  "transfer": {
+   "from": "DAISHIN-2178",
+   "to": "KIWOOM-2178",
+   "ticker": "TSLA"
+  }
+ },
+ {
+  "customer_id": 2179,
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "KAKAOPAY-2179",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO"
+   },
+   {
+    "account_id": "DAISHIN-2179",
+    "broker_code": "DAISHIN",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "INTC",
+   "LCID"
+  ],
+  "carry_2024_lots": false,
+  "transfer": {
+   "from": "KAKAOPAY-2179",
+   "to": "DAISHIN-2179",
+   "ticker": "INTC"
+  }
+ },
+ {
+  "customer_id": 2180,
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "DAISHIN-2180",
+    "broker_code": "DAISHIN",
+    "method": "AVG"
+   },
+   {
+    "account_id": "KIWOOM-2180",
+    "broker_code": "KIWOOM",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "PLTR",
+   "AMZN",
+   "LCID"
+  ],
+  "carry_2024_lots": true,
+  "transfer": {
+   "from": "DAISHIN-2180",
+   "to": "KIWOOM-2180",
+   "ticker": "PLTR"
+  }
+ },
+ {
+  "customer_id": 2181,
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2181",
+    "broker_code": "KIWOOM",
+    "method": "FIFO"
+   },
+   {
+    "account_id": "NAMUH-2181",
+    "broker_code": "NAMUH",
+    "method": "CHOICE"
+   }
+  ],
+  "tickers": [
+   "SOXL",
+   "NVDA",
+   "TSLA"
+  ],
+  "carry_2024_lots": true,
+  "transfer": {
+   "from": "KIWOOM-2181",
+   "to": "NAMUH-2181",
+   "ticker": "SOXL"
+  }
+ },
+ {
+  "customer_id": 2182,
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "SHINHAN-2182",
+    "broker_code": "SHINHAN",
+    "method": "FIFO"
+   },
+   {
+    "account_id": "KAKAOPAY-2182",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "INTC",
+   "RIVN"
+  ],
+  "carry_2024_lots": false,
+  "transfer": {
+   "from": "SHINHAN-2182",
+   "to": "KAKAOPAY-2182",
+   "ticker": "INTC"
+  }
+ },
+ {
+  "customer_id": 2183,
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "KIS-2183",
+    "broker_code": "KIS",
+    "method": "AVG"
+   },
+   {
+    "account_id": "MIRAE-2183",
+    "broker_code": "MIRAE",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "INTC"
+  ],
+  "carry_2024_lots": false,
+  "transfer": {
+   "from": "KIS-2183",
+   "to": "MIRAE-2183",
+   "ticker": "INTC"
+  }
+ },
+ {
+  "customer_id": 2184,
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "SAMSUNG-2184",
+    "broker_code": "SAMSUNG",
+    "method": "AVG"
+   },
+   {
+    "account_id": "NAMUH-2184",
+    "broker_code": "NAMUH",
+    "method": "CHOICE"
+   }
+  ],
+  "tickers": [
+   "AMZN",
+   "SOXL"
+  ],
+  "carry_2024_lots": false,
+  "transfer": {
+   "from": "SAMSUNG-2184",
+   "to": "NAMUH-2184",
+   "ticker": "AMZN"
+  }
+ },
+ {
+  "customer_id": 2185,
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "KIS-2185",
+    "broker_code": "KIS",
+    "method": "AVG"
+   },
+   {
+    "account_id": "NAMUH-2185",
+    "broker_code": "NAMUH",
+    "method": "CHOICE"
+   }
+  ],
+  "tickers": [
+   "AMD",
+   "AAPL",
+   "INTC"
+  ],
+  "carry_2024_lots": false,
+  "transfer": {
+   "from": "KIS-2185",
+   "to": "NAMUH-2185",
+   "ticker": "AMD"
+  }
+ },
+ {
+  "customer_id": 2186,
+  "scenario": "NO_SALE",
+  "accounts": [
+   {
+    "account_id": "SHINHAN-2186",
+    "broker_code": "SHINHAN",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "MSFT",
+   "AMD",
+   "TSLA"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2187,
+  "scenario": "NO_SALE",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2187",
+    "broker_code": "KIWOOM",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "TSLA",
+   "AMD"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2188,
+  "scenario": "NO_SALE",
+  "accounts": [
+   {
+    "account_id": "MIRAE-2188",
+    "broker_code": "MIRAE",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "INTC",
+   "AAPL"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2189,
+  "scenario": "NO_SALE",
+  "accounts": [
+   {
+    "account_id": "MIRAE-2189",
+    "broker_code": "MIRAE",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "RIVN"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2190,
+  "scenario": "NO_SALE",
+  "accounts": [
+   {
+    "account_id": "NAMUH-2190",
+    "broker_code": "NAMUH",
+    "method": "CHOICE"
+   }
+  ],
+  "tickers": [
+   "LCID",
+   "TSLA",
+   "INTC"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2191,
+  "scenario": "NO_SALE",
+  "accounts": [
+   {
+    "account_id": "MIRAE-2191",
+    "broker_code": "MIRAE",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "AAPL",
+   "COIN"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2192,
+  "scenario": "NO_SALE",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2192",
+    "broker_code": "KIWOOM",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "PLTR",
+   "AMD"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2193,
+  "scenario": "NO_SALE",
+  "accounts": [
+   {
+    "account_id": "MIRAE-2193",
+    "broker_code": "MIRAE",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "PLTR"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2194,
+  "scenario": "LOSS_HEAVY",
+  "accounts": [
+   {
+    "account_id": "KB-2194",
+    "broker_code": "KB",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "RIVN",
+   "INTC"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2195,
+  "scenario": "LOSS_HEAVY",
+  "accounts": [
+   {
+    "account_id": "KAKAOPAY-2195",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "LCID"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2196,
+  "scenario": "LOSS_HEAVY",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2196",
+    "broker_code": "KIWOOM",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "LCID"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2197,
+  "scenario": "LOSS_HEAVY",
+  "accounts": [
+   {
+    "account_id": "SHINHAN-2197",
+    "broker_code": "SHINHAN",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "INTC"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2198,
+  "scenario": "LOSS_HEAVY",
+  "accounts": [
+   {
+    "account_id": "MIRAE-2198",
+    "broker_code": "MIRAE",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "INTC"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2199,
+  "scenario": "LOSS_HEAVY",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2199",
+    "broker_code": "KIWOOM",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "RIVN",
+   "LCID"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2200,
+  "scenario": "LOSS_HEAVY",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2200",
+    "broker_code": "KIWOOM",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "RIVN"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2201,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2201",
+    "broker_code": "KIWOOM",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "AAPL",
+   "AMD"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2202,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KAKAOPAY-2202",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "AMD"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2203,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KAKAOPAY-2203",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "GOOGL",
+   "COIN",
+   "LCID"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2204,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2204",
+    "broker_code": "KIWOOM",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "PLTR",
+   "COIN",
+   "AMZN"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2205,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KB-2205",
+    "broker_code": "KB",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "META",
+   "AMD",
+   "TSLA"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2206,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "NAMUH-2206",
+    "broker_code": "NAMUH",
+    "method": "CHOICE"
+   }
+  ],
+  "tickers": [
+   "SOXL",
+   "MSFT"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2207,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "SHINHAN-2207",
+    "broker_code": "SHINHAN",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "COIN"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2208,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "SHINHAN-2208",
+    "broker_code": "SHINHAN",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "LCID"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2209,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KAKAOPAY-2209",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "AMZN",
+   "META"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2210,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2210",
+    "broker_code": "KIWOOM",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "INTC"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2211,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KB-2211",
+    "broker_code": "KB",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "TSLA"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2212,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KB-2212",
+    "broker_code": "KB",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "LCID"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2213,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "NAMUH-2213",
+    "broker_code": "NAMUH",
+    "method": "CHOICE"
+   }
+  ],
+  "tickers": [
+   "AMZN",
+   "SOXL"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2214,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "SHINHAN-2214",
+    "broker_code": "SHINHAN",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "MSFT"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2215,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KB-2215",
+    "broker_code": "KB",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "SCHD",
+   "AMZN"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2216,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "NAMUH-2216",
+    "broker_code": "NAMUH",
+    "method": "CHOICE"
+   }
+  ],
+  "tickers": [
+   "AAPL",
+   "COIN"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2217,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2217",
+    "broker_code": "KIWOOM",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "LCID",
+   "AAPL"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2218,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KB-2218",
+    "broker_code": "KB",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "GOOGL"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2219,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KAKAOPAY-2219",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "INTC",
+   "SOXL"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2220,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KAKAOPAY-2220",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "TSLA",
+   "AMZN"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2221,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2221",
+    "broker_code": "KIWOOM",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "NVDA",
+   "META",
+   "COIN"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2222,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KB-2222",
+    "broker_code": "KB",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "PLTR"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2223,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2223",
+    "broker_code": "KIWOOM",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "NVDA"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2224,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KAKAOPAY-2224",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "COIN",
+   "META",
+   "LCID"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2225,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KAKAOPAY-2225",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "AMD"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2226,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "NAMUH-2226",
+    "broker_code": "NAMUH",
+    "method": "CHOICE"
+   }
+  ],
+  "tickers": [
+   "SOXL",
+   "RIVN"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2227,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "SHINHAN-2227",
+    "broker_code": "SHINHAN",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "META",
+   "NVDA",
+   "INTC"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2228,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "KAKAOPAY-2228",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "COIN",
+   "RIVN"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2229,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "MIRAE-2229",
+    "broker_code": "MIRAE",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "TSLA",
+   "SCHD"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2230,
+  "scenario": "SINGLE_FIFO",
+  "accounts": [
+   {
+    "account_id": "SHINHAN-2230",
+    "broker_code": "SHINHAN",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "AAPL",
+   "INTC"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2231,
+  "scenario": "SINGLE_AVG",
+  "accounts": [
+   {
+    "account_id": "TOSS-2231",
+    "broker_code": "TOSS",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "PLTR"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2232,
+  "scenario": "SINGLE_AVG",
+  "accounts": [
+   {
+    "account_id": "KIS-2232",
+    "broker_code": "KIS",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "GOOGL"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2233,
+  "scenario": "SINGLE_AVG",
+  "accounts": [
+   {
+    "account_id": "SAMSUNG-2233",
+    "broker_code": "SAMSUNG",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "SOXL",
+   "META",
+   "INTC"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2234,
+  "scenario": "SINGLE_AVG",
+  "accounts": [
+   {
+    "account_id": "TOSS-2234",
+    "broker_code": "TOSS",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "INTC",
+   "TSLA"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2235,
+  "scenario": "SINGLE_AVG",
+  "accounts": [
+   {
+    "account_id": "KIS-2235",
+    "broker_code": "KIS",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "AMZN"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2236,
+  "scenario": "SINGLE_AVG",
+  "accounts": [
+   {
+    "account_id": "KIS-2236",
+    "broker_code": "KIS",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "AAPL",
+   "SOXL",
+   "LCID"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2237,
+  "scenario": "SINGLE_AVG",
+  "accounts": [
+   {
+    "account_id": "TOSS-2237",
+    "broker_code": "TOSS",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "SOXL",
+   "TSLA"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2238,
+  "scenario": "SINGLE_AVG",
+  "accounts": [
+   {
+    "account_id": "TOSS-2238",
+    "broker_code": "TOSS",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "AMZN",
+   "SOXL"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2239,
+  "scenario": "SINGLE_AVG",
+  "accounts": [
+   {
+    "account_id": "TOSS-2239",
+    "broker_code": "TOSS",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "LCID",
+   "RIVN"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2240,
+  "scenario": "SINGLE_AVG",
+  "accounts": [
+   {
+    "account_id": "SAMSUNG-2240",
+    "broker_code": "SAMSUNG",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "AMD"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2241,
+  "scenario": "SINGLE_AVG",
+  "accounts": [
+   {
+    "account_id": "DAISHIN-2241",
+    "broker_code": "DAISHIN",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "TSLA"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2242,
+  "scenario": "SINGLE_AVG",
+  "accounts": [
+   {
+    "account_id": "KIS-2242",
+    "broker_code": "KIS",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "COIN"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2243,
+  "scenario": "SINGLE_AVG",
+  "accounts": [
+   {
+    "account_id": "KIS-2243",
+    "broker_code": "KIS",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "AMZN"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2244,
+  "scenario": "SINGLE_AVG",
+  "accounts": [
+   {
+    "account_id": "NAMUH-2244",
+    "broker_code": "NAMUH",
+    "method": "CHOICE"
+   }
+  ],
+  "tickers": [
+   "SOXL"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2245,
+  "scenario": "SINGLE_AVG",
+  "accounts": [
+   {
+    "account_id": "DAISHIN-2245",
+    "broker_code": "DAISHIN",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "COIN"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2246,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "KIS-2246",
+    "broker_code": "KIS",
+    "method": "AVG"
+   },
+   {
+    "account_id": "KIWOOM-2246",
+    "broker_code": "KIWOOM",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "SOXL"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2247,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "DAISHIN-2247",
+    "broker_code": "DAISHIN",
+    "method": "AVG"
+   },
+   {
+    "account_id": "SHINHAN-2247",
+    "broker_code": "SHINHAN",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "LCID"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2248,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "SHINHAN-2248",
+    "broker_code": "SHINHAN",
+    "method": "FIFO"
+   },
+   {
+    "account_id": "KB-2248",
+    "broker_code": "KB",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "META"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2249,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "SAMSUNG-2249",
+    "broker_code": "SAMSUNG",
+    "method": "AVG"
+   },
+   {
+    "account_id": "NAMUH-2249",
+    "broker_code": "NAMUH",
+    "method": "CHOICE"
+   }
+  ],
+  "tickers": [
+   "AMD",
+   "GOOGL"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2250,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "KIS-2250",
+    "broker_code": "KIS",
+    "method": "AVG"
+   },
+   {
+    "account_id": "TOSS-2250",
+    "broker_code": "TOSS",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "LCID"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2251,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "KB-2251",
+    "broker_code": "KB",
+    "method": "FIFO"
+   },
+   {
+    "account_id": "DAISHIN-2251",
+    "broker_code": "DAISHIN",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "AMD",
+   "TSLA"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2252,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "TOSS-2252",
+    "broker_code": "TOSS",
+    "method": "AVG"
+   },
+   {
+    "account_id": "KB-2252",
+    "broker_code": "KB",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "INTC"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2253,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "KIS-2253",
+    "broker_code": "KIS",
+    "method": "AVG"
+   },
+   {
+    "account_id": "DAISHIN-2253",
+    "broker_code": "DAISHIN",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "NVDA"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2254,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "SAMSUNG-2254",
+    "broker_code": "SAMSUNG",
+    "method": "AVG"
+   },
+   {
+    "account_id": "KIWOOM-2254",
+    "broker_code": "KIWOOM",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "SCHD"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2255,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "NAMUH-2255",
+    "broker_code": "NAMUH",
+    "method": "CHOICE"
+   },
+   {
+    "account_id": "KIS-2255",
+    "broker_code": "KIS",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "AAPL",
+   "COIN"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2256,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "NAMUH-2256",
+    "broker_code": "NAMUH",
+    "method": "CHOICE"
+   },
+   {
+    "account_id": "MIRAE-2256",
+    "broker_code": "MIRAE",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "NVDA"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2257,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "KIS-2257",
+    "broker_code": "KIS",
+    "method": "AVG"
+   },
+   {
+    "account_id": "SAMSUNG-2257",
+    "broker_code": "SAMSUNG",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "SOXL",
+   "INTC",
+   "META"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2258,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2258",
+    "broker_code": "KIWOOM",
+    "method": "FIFO"
+   },
+   {
+    "account_id": "NAMUH-2258",
+    "broker_code": "NAMUH",
+    "method": "CHOICE"
+   }
+  ],
+  "tickers": [
+   "INTC",
+   "LCID"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2259,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "DAISHIN-2259",
+    "broker_code": "DAISHIN",
+    "method": "AVG"
+   },
+   {
+    "account_id": "KB-2259",
+    "broker_code": "KB",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "SOXL",
+   "SCHD",
+   "AAPL"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2260,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "KIS-2260",
+    "broker_code": "KIS",
+    "method": "AVG"
+   },
+   {
+    "account_id": "KIWOOM-2260",
+    "broker_code": "KIWOOM",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "COIN"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2261,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "SHINHAN-2261",
+    "broker_code": "SHINHAN",
+    "method": "FIFO"
+   },
+   {
+    "account_id": "DAISHIN-2261",
+    "broker_code": "DAISHIN",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "GOOGL",
+   "AMD"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2262,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "NAMUH-2262",
+    "broker_code": "NAMUH",
+    "method": "CHOICE"
+   },
+   {
+    "account_id": "KB-2262",
+    "broker_code": "KB",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "NVDA"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2263,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "DAISHIN-2263",
+    "broker_code": "DAISHIN",
+    "method": "AVG"
+   },
+   {
+    "account_id": "NAMUH-2263",
+    "broker_code": "NAMUH",
+    "method": "CHOICE"
+   }
+  ],
+  "tickers": [
+   "AMZN",
+   "TSLA",
+   "SOXL"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2264,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "SHINHAN-2264",
+    "broker_code": "SHINHAN",
+    "method": "FIFO"
+   },
+   {
+    "account_id": "TOSS-2264",
+    "broker_code": "TOSS",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "LCID",
+   "AMD"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2265,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "KIS-2265",
+    "broker_code": "KIS",
+    "method": "AVG"
+   },
+   {
+    "account_id": "KAKAOPAY-2265",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "MSFT",
+   "AMD"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2266,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "TOSS-2266",
+    "broker_code": "TOSS",
+    "method": "AVG"
+   },
+   {
+    "account_id": "SHINHAN-2266",
+    "broker_code": "SHINHAN",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "PLTR"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2267,
+  "scenario": "MULTI_BROKER",
+  "accounts": [
+   {
+    "account_id": "DAISHIN-2267",
+    "broker_code": "DAISHIN",
+    "method": "AVG"
+   },
+   {
+    "account_id": "KB-2267",
+    "broker_code": "KB",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "MSFT",
+   "GOOGL"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2268,
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "KIS-2268",
+    "broker_code": "KIS",
+    "method": "AVG"
+   },
+   {
+    "account_id": "NAMUH-2268",
+    "broker_code": "NAMUH",
+    "method": "CHOICE"
+   }
+  ],
+  "tickers": [
+   "LCID",
+   "GOOGL"
+  ],
+  "carry_2024_lots": false,
+  "transfer": {
+   "from": "KIS-2268",
+   "to": "NAMUH-2268",
+   "ticker": "LCID"
+  }
+ },
+ {
+  "customer_id": 2269,
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2269",
+    "broker_code": "KIWOOM",
+    "method": "FIFO"
+   },
+   {
+    "account_id": "NAMUH-2269",
+    "broker_code": "NAMUH",
+    "method": "CHOICE"
+   }
+  ],
+  "tickers": [
+   "NVDA"
+  ],
+  "carry_2024_lots": false,
+  "transfer": {
+   "from": "KIWOOM-2269",
+   "to": "NAMUH-2269",
+   "ticker": "NVDA"
+  }
+ },
+ {
+  "customer_id": 2270,
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "TOSS-2270",
+    "broker_code": "TOSS",
+    "method": "AVG"
+   },
+   {
+    "account_id": "KIWOOM-2270",
+    "broker_code": "KIWOOM",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "RIVN",
+   "NVDA"
+  ],
+  "carry_2024_lots": false,
+  "transfer": {
+   "from": "TOSS-2270",
+   "to": "KIWOOM-2270",
+   "ticker": "RIVN"
+  }
+ },
+ {
+  "customer_id": 2271,
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "KB-2271",
+    "broker_code": "KB",
+    "method": "FIFO"
+   },
+   {
+    "account_id": "NAMUH-2271",
+    "broker_code": "NAMUH",
+    "method": "CHOICE"
+   }
+  ],
+  "tickers": [
+   "NVDA"
+  ],
+  "carry_2024_lots": true,
+  "transfer": {
+   "from": "KB-2271",
+   "to": "NAMUH-2271",
+   "ticker": "NVDA"
+  }
+ },
+ {
+  "customer_id": 2272,
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "NAMUH-2272",
+    "broker_code": "NAMUH",
+    "method": "CHOICE"
+   },
+   {
+    "account_id": "TOSS-2272",
+    "broker_code": "TOSS",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "AAPL",
+   "TSLA",
+   "SOXL"
+  ],
+  "carry_2024_lots": true,
+  "transfer": {
+   "from": "NAMUH-2272",
+   "to": "TOSS-2272",
+   "ticker": "AAPL"
+  }
+ },
+ {
+  "customer_id": 2273,
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "KIS-2273",
+    "broker_code": "KIS",
+    "method": "AVG"
+   },
+   {
+    "account_id": "KIWOOM-2273",
+    "broker_code": "KIWOOM",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "SCHD",
+   "AMZN"
+  ],
+  "carry_2024_lots": true,
+  "transfer": {
+   "from": "KIS-2273",
+   "to": "KIWOOM-2273",
+   "ticker": "SCHD"
+  }
+ },
+ {
+  "customer_id": 2274,
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "MIRAE-2274",
+    "broker_code": "MIRAE",
+    "method": "FIFO"
+   },
+   {
+    "account_id": "KAKAOPAY-2274",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "GOOGL",
+   "AMD"
+  ],
+  "carry_2024_lots": false,
+  "transfer": {
+   "from": "MIRAE-2274",
+   "to": "KAKAOPAY-2274",
+   "ticker": "GOOGL"
+  }
+ },
+ {
+  "customer_id": 2275,
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "DAISHIN-2275",
+    "broker_code": "DAISHIN",
+    "method": "AVG"
+   },
+   {
+    "account_id": "NAMUH-2275",
+    "broker_code": "NAMUH",
+    "method": "CHOICE"
+   }
+  ],
+  "tickers": [
+   "SCHD"
+  ],
+  "carry_2024_lots": false,
+  "transfer": {
+   "from": "DAISHIN-2275",
+   "to": "NAMUH-2275",
+   "ticker": "SCHD"
+  }
+ },
+ {
+  "customer_id": 2276,
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "DAISHIN-2276",
+    "broker_code": "DAISHIN",
+    "method": "AVG"
+   },
+   {
+    "account_id": "KIS-2276",
+    "broker_code": "KIS",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "AMZN"
+  ],
+  "carry_2024_lots": false,
+  "transfer": {
+   "from": "DAISHIN-2276",
+   "to": "KIS-2276",
+   "ticker": "AMZN"
+  }
+ },
+ {
+  "customer_id": 2277,
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "MIRAE-2277",
+    "broker_code": "MIRAE",
+    "method": "FIFO"
+   },
+   {
+    "account_id": "NAMUH-2277",
+    "broker_code": "NAMUH",
+    "method": "CHOICE"
+   }
+  ],
+  "tickers": [
+   "AMZN"
+  ],
+  "carry_2024_lots": true,
+  "transfer": {
+   "from": "MIRAE-2277",
+   "to": "NAMUH-2277",
+   "ticker": "AMZN"
+  }
+ },
+ {
+  "customer_id": 2278,
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "KB-2278",
+    "broker_code": "KB",
+    "method": "FIFO"
+   },
+   {
+    "account_id": "NAMUH-2278",
+    "broker_code": "NAMUH",
+    "method": "CHOICE"
+   }
+  ],
+  "tickers": [
+   "AMD",
+   "MSFT",
+   "RIVN"
+  ],
+  "carry_2024_lots": true,
+  "transfer": {
+   "from": "KB-2278",
+   "to": "NAMUH-2278",
+   "ticker": "AMD"
+  }
+ },
+ {
+  "customer_id": 2279,
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "KAKAOPAY-2279",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO"
+   },
+   {
+    "account_id": "DAISHIN-2279",
+    "broker_code": "DAISHIN",
+    "method": "AVG"
+   }
+  ],
+  "tickers": [
+   "SOXL",
+   "TSLA"
+  ],
+  "carry_2024_lots": true,
+  "transfer": {
+   "from": "KAKAOPAY-2279",
+   "to": "DAISHIN-2279",
+   "ticker": "SOXL"
+  }
+ },
+ {
+  "customer_id": 2280,
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "SAMSUNG-2280",
+    "broker_code": "SAMSUNG",
+    "method": "AVG"
+   },
+   {
+    "account_id": "NAMUH-2280",
+    "broker_code": "NAMUH",
+    "method": "CHOICE"
+   }
+  ],
+  "tickers": [
+   "PLTR",
+   "NVDA"
+  ],
+  "carry_2024_lots": false,
+  "transfer": {
+   "from": "SAMSUNG-2280",
+   "to": "NAMUH-2280",
+   "ticker": "PLTR"
+  }
+ },
+ {
+  "customer_id": 2281,
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "SHINHAN-2281",
+    "broker_code": "SHINHAN",
+    "method": "FIFO"
+   },
+   {
+    "account_id": "NAMUH-2281",
+    "broker_code": "NAMUH",
+    "method": "CHOICE"
+   }
+  ],
+  "tickers": [
+   "COIN"
+  ],
+  "carry_2024_lots": false,
+  "transfer": {
+   "from": "SHINHAN-2281",
+   "to": "NAMUH-2281",
+   "ticker": "COIN"
+  }
+ },
+ {
+  "customer_id": 2282,
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "KB-2282",
+    "broker_code": "KB",
+    "method": "FIFO"
+   },
+   {
+    "account_id": "NAMUH-2282",
+    "broker_code": "NAMUH",
+    "method": "CHOICE"
+   }
+  ],
+  "tickers": [
+   "LCID",
+   "SOXL",
+   "RIVN"
+  ],
+  "carry_2024_lots": false,
+  "transfer": {
+   "from": "KB-2282",
+   "to": "NAMUH-2282",
+   "ticker": "LCID"
+  }
+ },
+ {
+  "customer_id": 2283,
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "SAMSUNG-2283",
+    "broker_code": "SAMSUNG",
+    "method": "AVG"
+   },
+   {
+    "account_id": "NAMUH-2283",
+    "broker_code": "NAMUH",
+    "method": "CHOICE"
+   }
+  ],
+  "tickers": [
+   "AMD",
+   "MSFT"
+  ],
+  "carry_2024_lots": false,
+  "transfer": {
+   "from": "SAMSUNG-2283",
+   "to": "NAMUH-2283",
+   "ticker": "AMD"
+  }
+ },
+ {
+  "customer_id": 2284,
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "KB-2284",
+    "broker_code": "KB",
+    "method": "FIFO"
+   },
+   {
+    "account_id": "KIWOOM-2284",
+    "broker_code": "KIWOOM",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "INTC",
+   "MSFT",
+   "AMD"
+  ],
+  "carry_2024_lots": false,
+  "transfer": {
+   "from": "KB-2284",
+   "to": "KIWOOM-2284",
+   "ticker": "INTC"
+  }
+ },
+ {
+  "customer_id": 2285,
+  "scenario": "TRANSFER",
+  "accounts": [
+   {
+    "account_id": "SAMSUNG-2285",
+    "broker_code": "SAMSUNG",
+    "method": "AVG"
+   },
+   {
+    "account_id": "NAMUH-2285",
+    "broker_code": "NAMUH",
+    "method": "CHOICE"
+   }
+  ],
+  "tickers": [
+   "MSFT",
+   "META"
+  ],
+  "carry_2024_lots": true,
+  "transfer": {
+   "from": "SAMSUNG-2285",
+   "to": "NAMUH-2285",
+   "ticker": "MSFT"
+  }
+ },
+ {
+  "customer_id": 2286,
+  "scenario": "NO_SALE",
+  "accounts": [
+   {
+    "account_id": "KAKAOPAY-2286",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "AMZN"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2287,
+  "scenario": "NO_SALE",
+  "accounts": [
+   {
+    "account_id": "KAKAOPAY-2287",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "AAPL",
+   "META"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2288,
+  "scenario": "NO_SALE",
+  "accounts": [
+   {
+    "account_id": "MIRAE-2288",
+    "broker_code": "MIRAE",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "COIN"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2289,
+  "scenario": "NO_SALE",
+  "accounts": [
+   {
+    "account_id": "SHINHAN-2289",
+    "broker_code": "SHINHAN",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "AAPL"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2290,
+  "scenario": "NO_SALE",
+  "accounts": [
+   {
+    "account_id": "SHINHAN-2290",
+    "broker_code": "SHINHAN",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "RIVN",
+   "COIN"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2291,
+  "scenario": "NO_SALE",
+  "accounts": [
+   {
+    "account_id": "MIRAE-2291",
+    "broker_code": "MIRAE",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "GOOGL",
+   "META",
+   "MSFT"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2292,
+  "scenario": "NO_SALE",
+  "accounts": [
+   {
+    "account_id": "MIRAE-2292",
+    "broker_code": "MIRAE",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "SOXL",
+   "AMD",
+   "TSLA"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2293,
+  "scenario": "NO_SALE",
+  "accounts": [
+   {
+    "account_id": "KAKAOPAY-2293",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "LCID",
+   "PLTR"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2294,
+  "scenario": "LOSS_HEAVY",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2294",
+    "broker_code": "KIWOOM",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "RIVN",
+   "LCID"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2295,
+  "scenario": "LOSS_HEAVY",
+  "accounts": [
+   {
+    "account_id": "KAKAOPAY-2295",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "RIVN"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2296,
+  "scenario": "LOSS_HEAVY",
+  "accounts": [
+   {
+    "account_id": "KIWOOM-2296",
+    "broker_code": "KIWOOM",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "LCID",
+   "RIVN"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2297,
+  "scenario": "LOSS_HEAVY",
+  "accounts": [
+   {
+    "account_id": "MIRAE-2297",
+    "broker_code": "MIRAE",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "RIVN"
+  ],
+  "carry_2024_lots": true
+ },
+ {
+  "customer_id": 2298,
+  "scenario": "LOSS_HEAVY",
+  "accounts": [
+   {
+    "account_id": "KAKAOPAY-2298",
+    "broker_code": "KAKAOPAY",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "SOXL",
+   "LCID"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2299,
+  "scenario": "LOSS_HEAVY",
+  "accounts": [
+   {
+    "account_id": "MIRAE-2299",
+    "broker_code": "MIRAE",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "INTC"
+  ],
+  "carry_2024_lots": false
+ },
+ {
+  "customer_id": 2300,
+  "scenario": "LOSS_HEAVY",
+  "accounts": [
+   {
+    "account_id": "SHINHAN-2300",
+    "broker_code": "SHINHAN",
+    "method": "FIFO"
+   }
+  ],
+  "tickers": [
+   "INTC",
+   "RIVN"
+  ],
+  "carry_2024_lots": true
+ }
+]
