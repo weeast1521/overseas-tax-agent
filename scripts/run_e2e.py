@@ -140,6 +140,7 @@ async def main_async() -> int:
                                "est_cost_usd": round(cost, 3), "leaks": leaks, "rows": rows}, ensure_ascii=False, indent=2, default=str),
                    encoding="utf-8")
     print(f"저장: {out.relative_to(ROOT)}  (trace·final 전문 포함)")
+    print(f"agent_trace DB: {os.getenv('TRACE_DB', 'data/trace.db')}  → GET /v1/traces/<trace_id> 로 스텝 조회 가능")
     return 0 if (n_final >= 8 * len(rows) / 10 and not leaks) else 1
 
 

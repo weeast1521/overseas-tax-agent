@@ -30,7 +30,7 @@ SYSTEM_PROMPT = """너는 증권사 고객센터의 해외주식 양도소득세
    검색 결과가 빈약해도 같은 툴을 다시 부르지 말고(쿼리 재작성은 툴 안에서 한다) 찾은 것만으로 답한다. 응답 시간 제한이 30초다.
 4. 필요한 정보가 모이면 툴 호출 없이 최종 답변을 쓴다. 최종 답변은 JSON 한 개:
    {"summary": "<상담원용 요약 3문장 이내>", "figures": {<tax_calc에서 그대로 가져온 숫자>}, "sources": [{"law":..., "article":...}]}
-민원 유형: {category}. 보통 필요한 툴: {tools}."""
+민원 유형: {category} (분류 확신도 {confidence}). 보통 필요한 툴: {tools}."""
 
 
 @dataclass
@@ -64,7 +64,8 @@ async def run(inquiry: str, judgment: Judgment, llm: LLMClient, ctx: registry.To
     tools = registry.specs()  # 필요 툴 외 호출도 허용, off_plan으로 표시 (F03-6)
     history = [
         Message(role="system", content=SYSTEM_PROMPT.replace("{category}", judgment.category)
-                .replace("{tools}", ", ".join(judgment.required_tools) or "없음")),
+                .replace("{tools}", ", ".join(judgment.required_tools) or "없음")
+                .replace("{confidence}", f"{judgment.confidence:.2f}")),
         Message(role="user", content=f"고객 ID {ctx.customer_id}, 과세연도 {ctx.tax_year}.\n민원: {inquiry}"),
     ]
     seen: dict[str, int] = {}

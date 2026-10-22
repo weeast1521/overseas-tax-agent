@@ -15,7 +15,7 @@ import uuid
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import JSONResponse
 
-from app import repo
+from app import repo, trace
 from app.agent import react
 from app.judge.base import Judgment, get_judge
 from app.judge.claude_judge import JudgeError
@@ -96,27 +96,41 @@ def decide_status(gate: str, needs_confirmation: list[str], figures: dict | None
     return "AUTO", None, None
 
 
+def _record(body: InquiryRequest, resp: InquiryResponse, result: react.AgentResult | None, judge, llm, gate: str | None) -> None:
+    """F03-6: 판단·스텝·결과를 agent_trace에 남긴다. 실패해도 응답은 그대로 나간다."""
+    trace.save_safely({
+        "trace_id": resp.trace_id, "customer_id": body.customer_id, "tax_year": body.tax_year, "inquiry_text": body.text,
+        "category": resp.category, "confidence": resp.confidence, "gate": gate, "status": resp.status,
+        "review_reason": resp.review_reason, "error_code": resp.error_code, "aborted": result.aborted if result else None,
+        "judge_name": getattr(judge, "name", None), "llm_name": getattr(llm, "name", None), "llm_model": getattr(llm, "model", None),
+        "steps": resp.steps, "tokens_in": resp.tokens_in, "tokens_out": resp.tokens_out, "latency_ms": resp.latency_ms,
+        "final_text": resp.draft,
+    }, trace.steps_from_agent(result))
+
+
 async def handle_inquiry(body: InquiryRequest) -> tuple[InquiryResponse, react.AgentResult | None]:
     """F01 파이프라인 본체. API 핸들러와 e2e 스크립트가 같이 쓴다. 두 번째 값은 에이전트 trace(없으면 None)."""
     trace_id = _trace_id()
     t0 = time.perf_counter()
     ms = lambda: int((time.perf_counter() - t0) * 1000)  # noqa: E731
+    judge = _judge()
 
     # F02 Judge — 민원 문장만 넘긴다. customer_id·계좌는 넘기지 않는다 (F02-3). 실패 시 폴백 없음 (F02-4)
     try:
-        judgment: Judgment = await _judge().classify(body.text)
+        judgment: Judgment = await judge.classify(body.text)
     except Exception as e:  # JudgeError(E-JUDGE) / JudgeFormatError(E-LLM-FORMAT) / 기타
-        return InquiryResponse(trace_id=trace_id, status="REVIEW", review_reason="AGENT_ABORTED",
+        resp = InquiryResponse(trace_id=trace_id, status="REVIEW", review_reason="AGENT_ABORTED",
                                category="UNKNOWN", confidence=0, error_code=e.code if isinstance(e, JudgeError) else "E-JUDGE",
-                               latency_ms=ms()), None
+                               latency_ms=ms())
+        _record(body, resp, None, judge, None, None)
+        return resp, None
 
     gate = judgment.gate()
-    if gate == "REJECTED":
-        return InquiryResponse(trace_id=trace_id, status="REJECTED", category=judgment.category,
-                               confidence=judgment.confidence, latency_ms=ms()), None
-    if gate == "REVIEW":
-        return InquiryResponse(trace_id=trace_id, status="REVIEW", review_reason="LOW_CONFIDENCE",
-                               category=judgment.category, confidence=judgment.confidence, latency_ms=ms()), None
+    if gate in ("REJECTED", "REVIEW"):
+        resp = InquiryResponse(trace_id=trace_id, status=gate, review_reason="LOW_CONFIDENCE" if gate == "REVIEW" else None,
+                               category=judgment.category, confidence=judgment.confidence, latency_ms=ms())
+        _record(body, resp, None, judge, None, gate)
+        return resp, None
 
     # F11 방식 결정
     m = repo.resolve_methods(body.customer_id, body.method_override)
@@ -125,18 +139,36 @@ async def handle_inquiry(body: InquiryRequest) -> tuple[InquiryResponse, react.A
     # F05 figures — 에이전트와 독립
     figures, calc_error = compute_figures(body.customer_id, body.tax_year, m["methods"])
 
-    # F03 에이전트 — 초안 재료. F07 조립·검증은 SCRUM-35·36에서 이 자리에 끼운다
+    # F03 에이전트 — Judge 결과(유형·필요 툴·확신도)는 react.run이 시스템 프롬프트에 주입한다 (F03-6)
+    llm = _llm()
     ctx = registry.ToolContext(body.customer_id, body.tax_year, body.method_override)
-    result = await react.run(body.text, judgment, _llm(), ctx)
+    result = await react.run(body.text, judgment, llm, ctx)
 
     status, reason, err = decide_status(gate, m["needs_confirmation"], figures, result.aborted, calc_error)
-    return InquiryResponse(
+    resp = InquiryResponse(
         trace_id=trace_id, status=status, review_reason=reason, category=judgment.category,
         confidence=judgment.confidence, method=method, draft=result.final, figures=figures,
         steps=len(result.steps), latency_ms=ms(),
         tokens_in=sum(st.in_tokens for st in result.steps), tokens_out=sum(st.out_tokens for st in result.steps),
         error_code=err,
-    ), result
+    )
+    _record(body, resp, result, judge, llm, gate)
+    return resp, result
+
+
+@app.get("/v1/traces/{trace_id}")
+async def get_trace(trace_id: str):
+    """F09 "근거 보기". 스텝별 thought·tool·args·observation. 게이트웨이가 인증 후 프록시한다."""
+    t = trace.get_store().get(trace_id)
+    if t is None:
+        return _error(404, "E-NOT-FOUND", "no such trace", trace_id)
+    return t
+
+
+@app.get("/v1/traces")
+async def list_traces(status: str | None = None, limit: int = 50):
+    """검토 대기 목록 등. ?status=REVIEW"""
+    return {"items": trace.get_store().list(status=status, limit=min(limit, 200))}
 
 
 @app.post("/v1/inquiries", response_model=InquiryResponse, responses={400: {"model": ErrorBody}})
