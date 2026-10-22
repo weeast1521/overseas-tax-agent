@@ -1,4 +1,7 @@
-"""Claude API 구현체 (개발·검증 구간, 구성 A). 온도 0."""
+"""Claude API 구현체 (개발·검증 구간, 구성 A).
+
+anthropic SDK 2.x는 temperature 인자를 받지 않는다. 출력 재현성은 평가 러너에서 같은 입력 2회 실행으로 측정한다(F10).
+"""
 from __future__ import annotations
 
 import os
@@ -30,7 +33,7 @@ class ClaudeClient:
                 conv.append({"role": m.role, "content": m.content})
 
         resp = await self.client.messages.create(
-            model=self.model, max_tokens=1500, temperature=0, system=system or None,
+            model=self.model, max_tokens=1500, system=system or None,
             tools=[{"name": t.name, "description": t.description, "input_schema": t.input_schema} for t in tools],
             messages=conv,
         )

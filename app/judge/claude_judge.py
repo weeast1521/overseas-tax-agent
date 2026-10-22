@@ -78,7 +78,7 @@ class ClaudeJudge:
     def build_request(self, text: str, retry: bool = False) -> dict:
         """API에 보낼 요청 전체. 여기에 들어가는 고객 정보는 text뿐이다 (테스트로 고정)."""
         return {
-            "model": self.model, "max_tokens": 200, "temperature": 0,
+            "model": self.model, "max_tokens": 200,  # SDK 2.x는 temperature 인자가 없다
             "system": SYSTEM + (RETRY_NOTE if retry else ""),
             "tools": [{"name": "classify", "description": "민원 유형 분류 결과", "input_schema": SCHEMA}],
             "tool_choice": {"type": "tool", "name": "classify"},

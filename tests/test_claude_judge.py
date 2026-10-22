@@ -41,7 +41,7 @@ def test_valid_output_sets_default_tools_and_usage():
     assert r.required_tools == DEFAULT_TOOLS["TRANSFER_BASIS"]
     assert j.last_usage == {"calls": 1, "in_tokens": 900, "out_tokens": 40}
     req = fake.requests[0]
-    assert req["tool_choice"] == {"type": "tool", "name": "classify"} and req["temperature"] == 0
+    assert req["tool_choice"] == {"type": "tool", "name": "classify"} and "temperature" not in req  # SDK 2.x
     assert req["tools"][0]["input_schema"]["properties"]["category"]["enum"] == CATEGORIES
 
 
