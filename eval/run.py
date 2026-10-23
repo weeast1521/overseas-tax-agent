@@ -162,6 +162,7 @@ def main_cli() -> int:
     ap.add_argument("--resume", action="store_true")
     ap.add_argument("--estimate", action="store_true", help="10건만 돌려 200건 예상 비용")
     ap.add_argument("--out-dir", default=str(ROOT / "results"))
+    ap.add_argument("--trades", default=str(ROOT / "data" / "synthetic" / "trades.json"), help="평가용 거래 파일. .env의 TRADES_FILE보다 우선")
     ap.add_argument("--model", help="구성 A의 에이전트 모델 덮어쓰기 (예: claude-sonnet-5-5). 결과 파일명에 붙는다")
     ap.add_argument("--repeat", type=int, default=1, help="같은 설정으로 n회 실행 (재현성). tag 뒤에 _r1, _r2 …")
     args = ap.parse_args()
@@ -171,7 +172,7 @@ def main_cli() -> int:
 
     for k, v in CONFIGS[args.config].items():
         os.environ[k] = v
-    os.environ.setdefault("TRADES_FILE", str(ROOT / "data" / "synthetic" / "trades.json"))
+    os.environ["TRADES_FILE"] = args.trades  # .env(TRADES_FILE=data/samples…)가 평가를 덮어쓰지 않도록 강제. 평가셋 고객은 synthetic에만 있다
     if args.config == "A":
         if not os.getenv("ANTHROPIC_API_KEY"):
             print("ANTHROPIC_API_KEY 없음 (.env)"); return 2
@@ -180,6 +181,10 @@ def main_cli() -> int:
     os.environ.setdefault("TRACE_DB", str(Path(args.out_dir) / f"trace_{args.config}_{args.tag}.db"))
 
     cases = load_cases(Path(args.cases))
+    known = {int(r["customer_id"]) for r in json.loads(Path(args.trades).read_text(encoding="utf-8"))}
+    missing = sorted({c["customer_id"] for c in cases if c["customer_id"] is not None and c["customer_id"] not in known})
+    if missing:  # 돈 쓰기 전에 멈춘다
+        print(f"평가셋 고객 {len(missing)}명이 {args.trades}에 없음 (예: {missing[:5]}). --trades 확인"); return 2
     if args.only:
         want = set(args.only.split(",")); cases = [c for c in cases if c["case_id"] in want]
     if args.estimate:
