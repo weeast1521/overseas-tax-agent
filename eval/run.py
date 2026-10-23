@@ -162,7 +162,12 @@ def main_cli() -> int:
     ap.add_argument("--resume", action="store_true")
     ap.add_argument("--estimate", action="store_true", help="10건만 돌려 200건 예상 비용")
     ap.add_argument("--out-dir", default=str(ROOT / "results"))
+    ap.add_argument("--model", help="구성 A의 에이전트 모델 덮어쓰기 (예: claude-sonnet-5-5). 결과 파일명에 붙는다")
+    ap.add_argument("--repeat", type=int, default=1, help="같은 설정으로 n회 실행 (재현성). tag 뒤에 _r1, _r2 …")
     args = ap.parse_args()
+    if args.model:
+        os.environ["CLAUDE_MODEL"] = args.model
+        args.tag = f"{args.tag}_{args.model.replace('claude-', '')}"
 
     for k, v in CONFIGS[args.config].items():
         os.environ[k] = v
@@ -201,6 +206,16 @@ def main_cli() -> int:
           f"cases={len(cases)} corpus={meta['corpus_version']} git={meta['git_commit']}\n→ {out}\n")
 
     from app import main  # noqa: F401  (환경변수 설정 후 import)
+    if args.repeat > 1:
+        base_tag = args.tag
+        for i in range(1, args.repeat + 1):
+            sub = [sys.executable, "-m", "eval.run", "--config", args.config, "--cases", args.cases, "--tag", f"{base_tag}_r{i}", "--out-dir", args.out_dir]
+            if args.limit: sub += ["--limit", str(args.limit)]
+            if args.only: sub += ["--only", args.only]
+            print(f"\n===== 실행 {i}/{args.repeat} ({base_tag}_r{i}) =====")
+            subprocess.run(sub, cwd=ROOT, check=False)
+        print(f"\n재현성 확인: python -m eval.report {out_dir}/{args.config}_{base_tag}_r1.jsonl --diff {out_dir}/{args.config}_{base_tag}_r2.jsonl")
+        return 0
     rows = asyncio.run(run_cases(cases, args.config, out, args.resume))
     meta["finished_at"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
     tin, tout = sum(r.get("tokens_in", 0) for r in rows), sum(r.get("tokens_out", 0) for r in rows)
