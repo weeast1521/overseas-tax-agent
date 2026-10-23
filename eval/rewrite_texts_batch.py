@@ -4,7 +4,8 @@
   python eval/rewrite_texts_batch.py status   # 진행 상태
   python eval/rewrite_texts_batch.py merge    # 끝났으면 결과를 eval/cases.jsonl에 반영 (원본은 eval/cases.template.jsonl로 백업)
 
-- 대상: kind=TAX 120건 + REG 60건. OOS 20건은 손으로 쓴 그대로 둔다.
+- 대상: kind=TAX·REG 중 style≠typo. typo 변형은 모델이 오타를 고쳐 버리므로 템플릿 그대로 둔다. OOS 20건도 그대로.
+- 1차 실행(10/24) 교훈: '나무'를 증권사로 못 알아보고 '당사/다른 증권사'로 바꾼 6건 → 템플릿으로 되돌림. 증권사명은 '나무증권'처럼 풀어 쓰는 게 안전
 - 말투(style)·사실(증권사·종목·숫자·질문 의도)은 유지. 고객 식별값은 애초에 문장에 없다.
 - Batch API는 실시간 대비 50% 할인. 180건 × ~400토큰 → Haiku 기준 몇 센트.
 - merge 후 반드시 `python eval/validate_cases.py` (expected는 안 바뀌므로 통과해야 정상).
@@ -26,7 +27,7 @@ MODEL = os.getenv("REWRITE_MODEL", "claude-haiku-5-5")
 SYSTEM = """너는 증권사 고객센터에 들어오는 해외주식 양도소득세 민원 문장을 다듬는 사람이다.
 주어진 문장을 같은 뜻, 같은 말투로 더 자연스러운 한국어 민원 한 문단(1~3문장)으로 다시 쓴다.
 규칙:
-- 사실을 바꾸지 않는다: 증권사 이름, 종목 이름, 숫자, 질문의 핵심(무엇을 묻는지)은 그대로.
+- 사실을 바꾸지 않는다: 증권사 이름(나무=NH투자증권의 나무증권, 반드시 '나무' 또는 '나무증권'으로 유지), 종목 이름, 숫자, 질문의 핵심은 그대로.
 - style이 formal이면 존댓말·격식체, casual이면 구어체 존댓말, typo면 띄어쓰기 오류·오타 2~3개를 자연스럽게 섞는다(의미는 알아볼 수 있게).
 - 새로운 사실(계좌번호, 이름, 금액)을 지어내지 않는다. 답을 쓰지 않는다. 문장만 출력한다."""
 
@@ -41,7 +42,7 @@ def client():
 
 
 def cmd_submit():
-    cases = [c for c in load() if c["kind"] in ("TAX", "REG") and c["text_source"] == "template"]
+    cases = [c for c in load() if c["kind"] in ("TAX", "REG") and c["text_source"] == "template" and c["style"] != "typo"]  # typo는 템플릿의 의도적 오타를 그대로 둔다 (모델이 고쳐 버림)
     reqs = [{"custom_id": c["case_id"],
              "params": {"model": MODEL, "max_tokens": 300, "system": SYSTEM,
                         "messages": [{"role": "user", "content": f"style: {c['style'] or 'casual'}\n문장: {c['text']}"}]}}

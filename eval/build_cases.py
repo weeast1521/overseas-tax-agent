@@ -1,6 +1,6 @@
 """SCRUM-42 (F10-1~4): 평가셋 200건 생성 → eval/cases.jsonl
 
-  python eval/build_cases.py            # 시드 고정, 같은 출력
+  python eval/build_cases.py [--out eval/cases.jsonl]   # 시드 고정, 같은 출력. ★Batch로 다듬은 cases.jsonl을 덮어쓰니 주의
 
 구성 (200):
   세액 120  TRANSFER_BASIS 40 · MULTI_BROKER 40 · TAX_BASIS 20 · FX_BASIS 10 · OFFSET 10
@@ -195,6 +195,10 @@ def fill(tpl: str, cust: dict) -> str:
 
 
 def main() -> int:
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--out", default=str(OUT))
+    out_path = Path(ap.parse_args().out)
     rng = random.Random(42)
     customers = {c["customer_id"]: c for c in json.loads((SYN / "customers.json").read_text(encoding="utf-8"))}
     expected = json.loads((SYN / "expected.json").read_text(encoding="utf-8"))["customers"]
@@ -249,12 +253,12 @@ def main() -> int:
     for q in OOS:
         add("OOS", "OUT_OF_SCOPE", None, q, {"status": "REJECTED"})
 
-    OUT.parent.mkdir(exist_ok=True)
-    with OUT.open("w", encoding="utf-8") as f:
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    with out_path.open("w", encoding="utf-8") as f:
         for c in cases:
             f.write(json.dumps(c, ensure_ascii=False) + "\n")
     from collections import Counter
-    print(f"{len(cases)}건 → {OUT.relative_to(ROOT)}")
+    print(f"{len(cases)}건 → {out_path}")
     print("kind:", dict(Counter(c["kind"] for c in cases)), " category:", dict(Counter(c["category"] for c in cases)))
     groups = Counter(c["variant_of"] for c in cases if c["variant_of"])
     print(f"variant 그룹 {len(groups)}개 (각 {set(v + 1 for v in groups.values())}건)  expected.status:", dict(Counter(c["expected"]["status"] for c in cases)))
