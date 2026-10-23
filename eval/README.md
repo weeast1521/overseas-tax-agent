@@ -20,3 +20,16 @@
 세액 케이스의 status는 **계산 결과만으로** 정한다: 선택제 계좌에 고객 선택값 없음 → `REVIEW/METHOD_UNCONFIRMED`,
 이체 lot 포함 매도 → `REVIEW/TRANSFER_REVIEW`, 그 외 `AUTO`. Judge 확신도가 낮아 `REVIEW/LOW_CONFIDENCE`가 나오는 건
 틀린 게 아니라 **보정 지표**(SCRUM-22)로 따로 센다. 러너가 그렇게 채점한다.
+
+## 러너·리포트 (SCRUM-43)
+
+```bash
+python -m eval.run --config stub                 # 비용 0. 러너 점검·재현성 기준선 (RuleJudge + 대본 LLM)
+python -m eval.run --config A --estimate         # 10건만 → 200건 예상 비용·시간
+python -m eval.run --config A --tag 20261024     # 본 실행 (opus + haiku). 중단되면 --resume
+python -m eval.report results/A_20261024.jsonl   # 지표 7종 + status 분포 + confidence 보정 표 + 실패 목록 → results/report_*.md
+python -m eval.report results/A_run1.jsonl --diff results/A_run2.jsonl   # 재현성: 결정(status·reason·category·tax_krw) 불일치 0이어야
+```
+
+결과 파일(`results/`)은 git에 올리지 않는다. 보고서 표만 README/노션으로 옮긴다.
+stub 기준선(10/24): 숫자 100% · 분류 66% · 차단 20% · 조문 5% · 표현 민감도 55% — 규칙 Judge와 키워드 검색의 한계가 그대로 숫자로 보인다. 구성 A는 이 표와 나란히 놓는다.
