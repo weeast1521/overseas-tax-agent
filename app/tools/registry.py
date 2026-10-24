@@ -105,6 +105,14 @@ def specs(names: list[str] | None = None) -> list[ToolSpec]:
 
 
 async def invoke(name: str, args: dict, ctx: ToolContext) -> dict:
+    """툴 호출. 모델이 인자를 빠뜨리거나 툴이 예외를 던져도 루프는 죽지 않는다 — Observation에 에러 코드로 돌려준다."""
     if name not in TOOLS:
         return {"error": "E-TOOL-UNKNOWN", "message": f"no tool {name}"}
-    return await TOOLS[name](args, ctx)
+    args = args if isinstance(args, dict) else {}
+    missing = [k for k in SPECS[name].input_schema.get("required", []) if k not in args]
+    if missing:
+        return {"error": "E-TOOL-ARGS", "message": f"{name}: 필수 인자 누락 {missing}", "required": SPECS[name].input_schema.get("required", [])}
+    try:
+        return await TOOLS[name](args, ctx)
+    except Exception as e:  # 툴 내부 예외 → 루프가 아니라 Observation으로 (평가 1차에서 Haiku가 reg_search를 인자 없이 불러 KeyError로 크래시)
+        return {"error": "E-TOOL-EXC", "message": f"{name}: {type(e).__name__}: {str(e)[:200]}"}

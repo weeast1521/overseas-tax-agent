@@ -50,3 +50,23 @@ def test_max_steps():
     calls = [Completion(tool_call=ToolCall(id=str(i), name="reg_search", args={"query": f"q{i}"})) for i in range(20)]
     r = asyncio.run(react.run("x", J(), FakeLLM(calls), registry.ToolContext(1023, 2025)))
     assert r.aborted == "E-MAXSTEP" and len(r.steps) == react.MAX_STEPS
+
+
+def test_missing_tool_args_and_tool_exception_do_not_crash():
+    """평가 1차(Haiku) 크래시 재현: reg_search를 인자 없이 호출 → E-TOOL-ARGS Observation, 루프 계속."""
+    llm = FakeLLM([
+        Completion(tool_call=ToolCall(id="1", name="reg_search", args={})),
+        Completion(tool_call=ToolCall(id="2", name="reg_search", args={"query": "기본공제"})),
+        Completion(text=json.dumps({"summary": "ok", "figures": {}, "sources": []})),
+    ])
+    r = asyncio.run(react.run("기본공제가 뭐예요", J(), llm, registry.ToolContext(1023, 2025)))
+    assert r.final and r.aborted is None
+    assert r.steps[0].error_code == "E-TOOL-ARGS" and r.steps[1].error_code is None
+
+
+def test_tool_internal_exception_becomes_observation(monkeypatch):
+    async def boom(args, ctx):
+        raise RuntimeError("db down")
+    monkeypatch.setitem(registry.TOOLS, "reg_search", boom)
+    obs = asyncio.run(registry.invoke("reg_search", {"query": "x"}, registry.ToolContext(1023, 2025)))
+    assert obs["error"] == "E-TOOL-EXC" and "db down" in obs["message"]
