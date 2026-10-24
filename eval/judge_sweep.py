@@ -45,7 +45,9 @@ async def sweep(model: str, cases: list[dict], repeat: int, out: Path) -> None:
                            "category": j.category, "confidence": j.confidence, "flags": j.flags, "error": None}
                 except JudgeError as e:
                     row = {"run": r, "case_id": c["case_id"], "kind": c["kind"], "expected": c["category"],
-                           "category": None, "confidence": None, "flags": [], "error": e.code}
+                           "category": None, "confidence": None, "flags": [], "error": f"{e.code}: {str(e)[:160]}"}
+                    if i == 1:
+                        print(f"  첫 호출 실패: {row['error']}", flush=True)
                 tin += judge.last_usage["in_tokens"]; tout += judge.last_usage["out_tokens"]
                 f.write(json.dumps(row, ensure_ascii=False) + "\n")
                 if i % 50 == 0:
@@ -65,6 +67,11 @@ def report(paths: list[Path]) -> None:
             by_case[r["case_id"]].append(r)
         print(f"\n## {model} — {len(runs)}회 × {len(by_case)}문장")
 
+        errs = Counter(r["error"] for r in rows if r["error"])
+        if errs:
+            print("오류:", dict(errs.most_common(3)))
+        if not any(r["confidence"] is not None for r in rows):
+            print("유효한 결과 없음 — 전부 실패"); continue
         # 1. confidence 흔들림
         sds = [statistics.pstdev([x["confidence"] for x in v if x["confidence"] is not None]) for v in by_case.values() if len(v) > 1]
         rngs = [max(x["confidence"] for x in v) - min(x["confidence"] for x in v) for v in by_case.values() if len(v) > 1 and all(x["confidence"] is not None for x in v)]
@@ -92,9 +99,6 @@ def report(paths: list[Path]) -> None:
         reg = [r for r in rows if r["kind"] == "REG"]
         oos = Counter(r["case_id"] for r in reg if r["category"] == "OUT_OF_SCOPE")
         print(f"REG 60문장 중 OUT_OF_SCOPE 판정: {len(oos)}문장 (실행 {len(runs)}회 중 판정 횟수: {dict(oos.most_common(20))})")
-        errs = Counter(r["error"] for r in rows if r["error"])
-        if errs:
-            print("오류:", dict(errs))
 
 
 def main() -> int:
