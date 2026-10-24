@@ -22,7 +22,9 @@ DEFAULT_TOOLS: dict[str, list[str]] = {
 }
 
 REVIEW_THRESHOLD = float(os.getenv("JUDGE_REVIEW_THRESHOLD", "0.70"))
-AUTO_THRESHOLD = float(os.getenv("JUDGE_AUTO_THRESHOLD", "0.95"))
+# 임계값 근거 (SCRUM-22, 10/24): 합성 200문장 × Haiku Judge 5회 = 1,000판정에서 confidence ≥ 0.70 구간 분류 오답 0,
+# 흔들림 표준편차 0.012. 0.95는 AUTO 8%뿐(사실상 전부 사람 검토). 0.85 → AUTO 91%, 오답 0. 실데이터로 재확인 후 0.80 검토.
+AUTO_THRESHOLD = float(os.getenv("JUDGE_AUTO_THRESHOLD", "0.85"))
 
 
 class Judgment(BaseModel):
