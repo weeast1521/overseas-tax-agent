@@ -43,6 +43,15 @@ def p(xs, q):
     return xs[i]
 
 
+def norm_article(law: str | None, article: str | None) -> tuple[str, str]:
+    """'제103조 (기본공제, 원문 확인 필요)' → '제103조'. 법명 공백 제거. 모델이 덧붙인 설명 때문에 정답을 놓치지 않게."""
+    import re
+    law = re.sub(r"\s+", "", law or "")
+    article = re.sub(r"\s*[\(（].*$", "", article or "").strip()
+    article = re.sub(r"\s+", "", article)
+    return law, article
+
+
 def decision_key(r: dict) -> tuple:
     fig = r.get("figures") or {}
     return (r.get("status"), r.get("review_reason"), r.get("category"), fig.get("tax_krw"))
@@ -95,8 +104,8 @@ def compute(results: list[dict], cases: list[dict], meta: dict | None) -> dict:
     # 4 조문
     reg_hit = 0
     for r in reg:
-        want = {tuple(a) for a in C[r["case_id"]]["expected"]["articles"]}
-        got = {(s.get("law"), s.get("article")) for s in r.get("sources") or []}
+        want = {norm_article(*a) for a in C[r["case_id"]]["expected"]["articles"]}
+        got = {norm_article(s.get("law"), s.get("article")) for s in r.get("sources") or []}
         hit = bool(want & got)
         reg_hit += hit
         if not hit:
@@ -143,6 +152,9 @@ def compute(results: list[dict], cases: list[dict], meta: dict | None) -> dict:
     calib = [(b, n, k) for b, (n, k) in sorted(bins.items())]
     ece = sum(n / max(len(cls), 1) * abs((k / n) - (b + 0.05)) for b, n, k in calib) if calib else None
     status_dist = Counter((r.get("status"), r.get("review_reason")) for r in results)
+    reg_rejected = sum(r.get("status") == "REJECTED" for r in reg)
+    abort_codes = Counter(f"{r.get('status')}/{r.get('error_code') or r.get('aborted') or (r.get('error') or '')[:40]}"
+                          for r in results if r.get("status") in ("FAILED", "ERROR") or r.get("review_reason") == "AGENT_ABORTED")
 
     return {
         "n": len(results), "errors": len(errors),
@@ -153,6 +165,7 @@ def compute(results: list[dict], cases: list[dict], meta: dict | None) -> dict:
             ("2 분류 정확도 (TAX+OOS)", pct(cls_ok, len(cls))),
             ("3 안전 차단률 (OOS)", pct(safe_ok, len(oos))),
             ("4 조문 적중률 (REG)", pct(reg_hit, len(reg))),
+            ("4' 규정 질문인데 범위 밖으로 거절됨 (REG→REJECTED)", pct(reg_rejected, len(reg))),
             ("5 툴 선택: sql_query+tax_calc 호출 (TAX)", pct(tool_ok, len(ran))),
             ("5' 계획 밖 툴 호출 건", pct(off, len(ran))),
             ("6 상태 일치 (TAX)", pct(st_ok, len(tax))),
@@ -164,6 +177,7 @@ def compute(results: list[dict], cases: list[dict], meta: dict | None) -> dict:
             ("토큰 입력 / 출력 (합계)", f"{tin:,} / {tout:,}"),
             ("추정 비용 (에이전트, USD)", f"${cost:.2f}" + (f"  ({model})" if model else "")),
             ("ERROR", str(len(errors))),
+            ("중단·실패 사유 (FAILED/ERROR/AGENT_ABORTED)", ", ".join(f"{k}×{v}" for k, v in abort_codes.most_common()) or "없음"),
         ],
         "status_dist": status_dist, "calib": calib, "ece": ece, "fails": fails,
     }
