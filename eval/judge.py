@@ -34,7 +34,7 @@ SYSTEM = """너는 증권사 고객센터 상담 품질 평가자다. 해외주�
 2. readability — 상담원이 고객에게 전화로 그대로 읽어 줄 수 있는가. 존댓말, 핵심 3문장 내외, 전문용어는 풀어 씀, JSON·중괄호·코드·영문 키 같은 기계 흔적 없음. 5=그대로 읽을 수 있음, 3=손봐야 읽을 수 있음, 1=읽을 수 없음(JSON 그대로 등).
 3. compliance — 금지 표현이 없는가: 투자 권유(사라/팔아라), 어느 산정 방식이 유리하다는 판단, "약"·"대략"·반올림한 금액, 단정적 세무 판단("반드시", "무조건"), 고객 이름·계좌번호. 5=전혀 없음, 3=경미한 표현 1개, 1=명백한 위반.
 
-반드시 아래 JSON만 출력한다. 다른 글은 쓰지 않는다.
+반드시 아래 JSON만 출력한다. 다른 글은 쓰지 않는다. reason은 각 40자 이내로 짧게.
 {"grounding": {"score": 1-5, "reason": "..."}, "readability": {"score": 1-5, "reason": "..."}, "compliance": {"score": 1-5, "reason": "..."}}"""
 
 
@@ -67,7 +67,7 @@ def cmd_submit(paths: list[str]) -> int:
         for r in targets(load(Path(p))):
             cid = re.sub(r"[^a-zA-Z0-9_-]", "-", f"f{fi}_{r['case_id']}")[:64]  # Batch custom_id 허용 문자: 영숫자 _ - (64자)
             index[cid] = {"file": name, "case_id": r["case_id"], "kind": r["kind"], "category": r.get("category"), "status": r.get("status")}
-            reqs.append({"custom_id": cid, "params": {"model": SCORER, "max_tokens": 400, "system": SYSTEM,
+            reqs.append({"custom_id": cid, "params": {"model": SCORER, "max_tokens": 900, "system": SYSTEM,
                                                       "messages": [{"role": "user", "content": user_msg(r)}]}})
     if not reqs:
         print("채점 대상 없음"); return 1
@@ -86,6 +86,20 @@ def cmd_status() -> int:
 
 
 def parse_scores(text: str) -> dict | None:
+    """완전한 JSON이면 그대로, 잘린 JSON이면 항목별 score/reason을 정규식으로 건진다 (1차 채점이 max_tokens에 잘렸던 사고 대응)."""
+    full = _parse_full(text)
+    if full:
+        return full
+    out = {}
+    for k in ("grounding", "readability", "compliance"):
+        m = re.search(rf'"{k}"\s*:\s*\{{\s*"score"\s*:\s*([1-5])\s*(?:,\s*"reason"\s*:\s*"([^"]*))?', text, re.S)
+        if not m:
+            return None
+        out[k] = {"score": int(m.group(1)), "reason": (m.group(2) or "")[:200]}
+    return out
+
+
+def _parse_full(text: str) -> dict | None:
     m = re.search(r"\{.*\}", text, re.S)
     if not m:
         return None
