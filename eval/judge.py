@@ -62,10 +62,10 @@ def client():
 
 def cmd_submit(paths: list[str]) -> int:
     reqs, index = [], {}
-    for p in paths:
+    for fi, p in enumerate(paths):
         name = Path(p).stem
         for r in targets(load(Path(p))):
-            cid = f"{name}::{r['case_id']}"
+            cid = re.sub(r"[^a-zA-Z0-9_-]", "-", f"f{fi}_{r['case_id']}")[:64]  # Batch custom_id 허용 문자: 영숫자 _ - (64자)
             index[cid] = {"file": name, "case_id": r["case_id"], "kind": r["kind"], "category": r.get("category"), "status": r.get("status")}
             reqs.append({"custom_id": cid, "params": {"model": SCORER, "max_tokens": 400, "system": SYSTEM,
                                                       "messages": [{"role": "user", "content": user_msg(r)}]}})
