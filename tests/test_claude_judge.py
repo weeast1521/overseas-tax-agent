@@ -110,3 +110,19 @@ def test_judge_impl_env_switch(monkeypatch):
     monkeypatch.setenv("JUDGE_IMPL", "claude")
     monkeypatch.setenv("ANTHROPIC_API_KEY", "sk-ant-test")
     assert isinstance(base.get_judge(), ClaudeJudge)
+
+
+def test_tool_choice_unsupported_falls_back_without_forcing():
+    """sonnet-5-5처럼 tool_choice=tool을 거부하는 모델: 400 한 번 받으면 강제 없이 재요청, 이후 요청도 강제 없음."""
+    class Reject(Exception):
+        pass
+    j, fake = judge_with(Reject('Error code: 400 - tool_choice: type "tool" and "any" are not supported'),
+                         tool_resp({"category": "OFFSET", "confidence": 0.8, "flags": []}),
+                         tool_resp({"category": "FX_BASIS", "confidence": 0.9, "flags": []}))
+    r = asyncio.run(j.classify("손실이랑 이익 합쳐서 계산하나요"))
+    assert r.category == "OFFSET" and j.force_tool is False
+    assert "tool_choice" in fake.requests[0] and "tool_choice" not in fake.requests[1]
+    assert "반드시 classify 도구" in fake.requests[1]["system"]
+    r2 = asyncio.run(j.classify("환율 기준일이 언제예요"))
+    assert r2.category == "FX_BASIS" and "tool_choice" not in fake.requests[2]
+    assert j.last_usage["calls"] == 1

@@ -77,16 +77,19 @@ class ClaudeJudge:
             client = AsyncAnthropic()  # ANTHROPIC_API_KEY
         self.client = client
         self.last_usage = {"calls": 0, "in_tokens": 0, "out_tokens": 0}
+        self.force_tool = True  # 일부 모델(sonnet-5-5)은 tool_choice=tool을 거부 → 400 받으면 끄고 재요청
 
     def build_request(self, text: str, retry: bool = False) -> dict:
         """API에 보낼 요청 전체. 여기에 들어가는 고객 정보는 text뿐이다 (테스트로 고정)."""
-        return {
+        req = {
             "model": self.model, "max_tokens": 200,  # SDK 2.x는 temperature 인자가 없다
-            "system": SYSTEM + (RETRY_NOTE if retry else ""),
+            "system": SYSTEM + (RETRY_NOTE if retry else "") + ("" if self.force_tool else "\n\n반드시 classify 도구를 호출해 답하라. 텍스트로 답하지 마라."),
             "tools": [{"name": "classify", "description": "민원 유형 분류 결과", "input_schema": SCHEMA}],
-            "tool_choice": {"type": "tool", "name": "classify"},
             "messages": [{"role": "user", "content": text}],
         }
+        if self.force_tool:
+            req["tool_choice"] = {"type": "tool", "name": "classify"}
+        return req
 
     @staticmethod
     def _parse(resp: Any) -> Judgment | None:
@@ -105,8 +108,15 @@ class ClaudeJudge:
         for attempt in range(2):
             try:
                 resp = await self.client.messages.create(**self.build_request(text, retry=attempt > 0))
-            except Exception as e:  # 네트워크·인증·과금 등. 폴백 없음
-                raise JudgeError(f"{type(e).__name__}: {e}") from e
+            except Exception as e:  # 네트워크·인증·과금 등. 다른 Judge로 폴백하지 않는다
+                if self.force_tool and "tool_choice" in str(e):  # 모델이 강제 호출을 지원하지 않음 → 강제 없이 같은 요청 (모델 교체 아님)
+                    self.force_tool = False
+                    try:
+                        resp = await self.client.messages.create(**self.build_request(text, retry=attempt > 0))
+                    except Exception as e2:
+                        raise JudgeError(f"{type(e2).__name__}: {e2}") from e2
+                else:
+                    raise JudgeError(f"{type(e).__name__}: {e}") from e
             usage = getattr(resp, "usage", None)
             self.last_usage["calls"] += 1
             self.last_usage["in_tokens"] += getattr(usage, "input_tokens", 0) or 0
