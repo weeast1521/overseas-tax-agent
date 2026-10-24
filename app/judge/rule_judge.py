@@ -11,7 +11,7 @@ class RuleJudge:
 
     async def classify(self, text: str) -> Judgment:
         t = re.sub(r"\s", "", text)
-        if re.search(r"추천|사도|매수해|오를|전망|살까", t):
+        if re.search(r"추천|사도|매수해|오를|전망|살까|가산세|배당|부양가족|인적공제|펀드환매|연말정산", t):
             return Judgment(category="OUT_OF_SCOPE", confidence=0.9, flags=["ASKS_INVESTMENT_ADVICE"])
         if re.search(r"이체|옮겼|옮긴|대체입고|입고|이관|가져왔", t):
             cat = "TRANSFER_BASIS"
@@ -21,6 +21,8 @@ class RuleJudge:
             cat = "FX_BASIS"
         elif re.search(r"상계|손해|손실|통산", t):
             cat = "OFFSET"
+        elif re.search(r"신고(기한|시기|대행|서류|방법)|언제신고|예정신고|기한후|홈택스|분할납부|세무대리인|대상인가요|대상에", t):
+            cat = "FILING"
         elif re.search(r"세금|얼마|차익|수익률", t):
             cat = "TAX_BASIS"
         else:

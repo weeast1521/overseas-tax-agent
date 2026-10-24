@@ -4,7 +4,7 @@
 
 검사:
   1. 스키마·필수 필드, case_id 유일, variant_of가 실제 case_id를 가리킴
-  2. 분포: TAX 120(TRANSFER 40·MULTI 40·TAX 20·FX 10·OFFSET 10) / REG 60 / OOS 20, variant 그룹 ≥ 20개 각 3건
+  2. 분포: TAX 120(TRANSFER 40·MULTI 40·TAX 20·FX 10·OFFSET 10) / REG 56 / OOS 24 (범위 결정 a), variant 그룹 ≥ 20개 각 3건
   3. TAX: customer_id가 data/synthetic에 있고, expected.figures가 **현재 tax_calc** 결과와 일치 (계산기가 바뀌면 여기서 걸린다)
   4. REG: expected.articles 비어 있지 않음. 코퍼스(data/corpus)에 없는 조문은 경고로 나열 → SCRUM-31 수집 목록
   5. OOS: expected.status == REJECTED
@@ -21,7 +21,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-EXPECTED_DIST = {"TRANSFER_BASIS": 40, "MULTI_BROKER": 40, "TAX_BASIS": 20, "FX_BASIS": 10, "OFFSET": 10, "REG": 60, "OUT_OF_SCOPE": 20}
+EXPECTED_DIST = {"TRANSFER_BASIS": 40, "MULTI_BROKER": 40, "TAX_BASIS": 20, "FX_BASIS": 10, "OFFSET": 10, "REG": 56, "OUT_OF_SCOPE": 24}
 REQUIRED = {"case_id", "variant_of", "kind", "style", "customer_id", "text", "text_source", "category", "expected"}
 
 

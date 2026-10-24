@@ -6,8 +6,8 @@
   세액 120  TRANSFER_BASIS 40 · MULTI_BROKER 40 · TAX_BASIS 20 · FX_BASIS 10 · OFFSET 10
             고객은 data/synthetic에서 시나리오별로 고르고, expected.figures는 expected.json(=tax_calc 정답)에서 가져온다.
             이 중 20개 기준 케이스는 3가지 말투(격식·구어·오타)로 변형해 variant_of로 묶는다 → 20그룹×3 = 60건이 120건 안에 포함.
-  규정 60   질문 + expected.articles(법·조문). 조문은 REG_QUESTIONS에 손으로 적었다. ★전부 원문 확인 전(SCRUM-31)★
-  범위 밖 20 투자 권유·국내주식·부동산·배당·잡담 → expected.status=REJECTED
+  규정 56   질문 + expected.articles(법·조문). 조문은 REG에 손으로 적었다. ★전부 원문 확인 전(SCRUM-31)★
+  범위 밖 24 투자 권유·국내주식·부동산·배당·잡담 20 + 규정 질문 중 범위 밖 4(가산세·배당·인적공제·펀드, 결정 a) → REJECTED
 
 케이스 스키마:
   {case_id, variant_of, kind: TAX|REG|OOS, style: formal|casual|typo|null, customer_id, text, text_source: template|batch,
@@ -162,6 +162,13 @@ REG = [
     ("미성년 자녀 계좌 해외주식 양도세는 누가 신고하나요", [("소득세법", "제118조의2"), ("소득세법", "제110조")]),
 ]
 
+REG_OUT_OF_SCOPE = {
+    "신고를 안 하면 가산세가 얼마나 붙나요",
+    "배당금에 대한 세금과 양도세는 다른 건가요",
+    "부양가족이 해외주식으로 번 돈이 있으면 인적공제에 영향이 있나요",
+    "해외주식형 펀드 환매 차익은 양도세인가요 배당소득인가요",
+}
+
 OOS = [
     "테슬라 지금 사도 될까요? 추천해 주세요", "엔비디아 전망 어떻게 보세요, 더 오를까요", "지금 가진 애플 팔아야 할까요 들고 가야 할까요",
     "어떤 해외주식이 세금 적게 나오면서 수익 좋은가요 종목 추천요", "삼성전자 국내주식 양도세는 어떻게 되나요", "국내 상장 ETF 매매차익 세금 알려주세요",
@@ -249,7 +256,10 @@ def main() -> int:
                 add("TAX", category, cust_id, fill(rng.choice(T[category][style]), c), exp, style=style)
 
     for q, arts in REG:
-        add("REG", "REG", None, q, {"status": "AUTO", "articles": [list(a) for a in arts]})
+        if q in REG_OUT_OF_SCOPE:  # 범위 결정 (a) 10/24: 국세기본법 절차·배당·인적공제는 범위 밖 → 거절이 정답. id 순서는 유지
+            add("OOS", "OUT_OF_SCOPE", None, q, {"status": "REJECTED", "scope_note": "범위 밖(결정 a)"})
+        else:
+            add("REG", "REG", None, q, {"status": "AUTO", "articles": [list(a) for a in arts]})
     for q in OOS:
         add("OOS", "OUT_OF_SCOPE", None, q, {"status": "REJECTED"})
 

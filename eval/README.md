@@ -12,8 +12,8 @@
 
 - **세액 120** — TRANSFER_BASIS 40 · MULTI_BROKER 40 · TAX_BASIS 20 · FX_BASIS 10 · OFFSET 10. 고객은 `data/synthetic`, 정답은 `expected.json`(tax_calc).
   이 중 20그룹 × 3건 = 60건은 같은 고객·같은 정답을 세 말투(formal/casual/typo)로 — 표현 민감도 측정(variant_of).
-- **규정 60** — 질문 + `expected.articles` [(법, 조문)]. ★조문 번호는 SCRUM-31에서 원문 확인 후 확정. 코퍼스에 없는 조문은 validate가 경고로 나열.
-- **범위 밖 20** — 투자 권유·국내주식·부동산·코인·배당·연말정산·앱 문의·잡담 → `REJECTED`.
+- **규정 56** — 질문 + `expected.articles` [(법, 조문)]. ★조문 번호는 SCRUM-31에서 원문 확인 후 확정. 코퍼스에 없는 조문은 validate가 경고로 나열.
+- **범위 밖 24** — 투자 권유·국내주식·부동산·코인·배당·연말정산·앱 문의·잡담 20 + 규정 질문 중 범위 밖 4(가산세·배당·인적공제·펀드 환매, 범위 결정 (a) 10/24) → `REJECTED`. 신고 절차·과세 대상 질문은 범위 안(`FILING` 유형).
 
 ## expected.status 해석
 

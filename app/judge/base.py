@@ -10,7 +10,7 @@ from typing import Literal, Protocol
 
 from pydantic import BaseModel, Field
 
-Category = Literal["TRANSFER_BASIS", "MULTI_BROKER", "TAX_BASIS", "OFFSET", "FX_BASIS", "OUT_OF_SCOPE"]
+Category = Literal["TRANSFER_BASIS", "MULTI_BROKER", "TAX_BASIS", "OFFSET", "FX_BASIS", "FILING", "OUT_OF_SCOPE"]
 
 DEFAULT_TOOLS: dict[str, list[str]] = {
     "TRANSFER_BASIS": ["sql_query", "broker_method", "tax_calc", "reg_search"],  # 이체(대체입고) 취득가액
@@ -18,6 +18,7 @@ DEFAULT_TOOLS: dict[str, list[str]] = {
     "TAX_BASIS": ["sql_query", "broker_method", "tax_calc", "reg_search"],
     "OFFSET": ["sql_query", "tax_calc", "reg_search"],
     "FX_BASIS": ["sql_query", "reg_search"],  # 환율 기준일 설명이 중심. 숫자는 figures(직접 계산)로 나간다
+    "FILING": ["reg_search"],  # 신고 절차·과세 대상 여부 — 규정 설명만, 계산 없음 (범위 결정 (a), 10/24)
     "OUT_OF_SCOPE": [],
 }
 
