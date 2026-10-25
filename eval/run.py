@@ -165,7 +165,11 @@ def main_cli() -> int:
     ap.add_argument("--trades", default=str(ROOT / "data" / "synthetic" / "trades.json"), help="평가용 거래 파일. .env의 TRADES_FILE보다 우선")
     ap.add_argument("--model", help="구성 A의 에이전트 모델 덮어쓰기 (예: claude-sonnet-5-5). 결과 파일명에 붙는다")
     ap.add_argument("--repeat", type=int, default=1, help="같은 설정으로 n회 실행 (재현성). tag 뒤에 _r1, _r2 …")
+    ap.add_argument("--final-format", choices=["json", "prose"], default="json", help="에이전트 최종 답변 형식. prose = 프롬프트만으로 고객용 문장 (대조 실험)")
     args = ap.parse_args()
+    os.environ["AGENT_FINAL_FORMAT"] = args.final_format
+    if args.final_format != "json":
+        args.tag = f"{args.tag}_{args.final_format}"
     if args.model:
         os.environ["CLAUDE_MODEL"] = args.model
         args.tag = f"{args.tag}_{args.model.replace('claude-', '')}"
@@ -203,7 +207,7 @@ def main_cli() -> int:
         "judge_impl": os.environ["JUDGE_IMPL"], "judge_model": os.getenv("JUDGE_MODEL"),
         "llm_provider": os.environ["LLM_PROVIDER"], "llm_model": os.getenv("CLAUDE_MODEL") if os.environ["LLM_PROVIDER"] == "claude" else os.getenv("OLLAMA_MODEL"),
         "temperature": "n/a (SDK 2.x — 재현성은 2회 실행 diff로 측정)",
-        "review_threshold": os.getenv("JUDGE_REVIEW_THRESHOLD", "0.70"), "auto_threshold": os.getenv("JUDGE_AUTO_THRESHOLD", "0.95"),
+        "final_format": args.final_format, "review_threshold": os.getenv("JUDGE_REVIEW_THRESHOLD", "0.70"), "auto_threshold": os.getenv("JUDGE_AUTO_THRESHOLD", "0.95"),
     }
     if args.config == "stub":
         meta.update(judge_model="rule", llm_model="stub-v1")

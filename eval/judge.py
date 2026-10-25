@@ -148,11 +148,15 @@ def cmd_merge() -> int:
 
 
 def cmd_report(paths: list[str]) -> int:
+    subset = None
+    if "--subset" in paths:  # 같은 case_id끼리 비교: --subset <결과 또는 점수 파일>
+        i = paths.index("--subset"); subset = {r["case_id"] for r in load(Path(paths[i + 1]))}; paths = paths[:i] + paths[i + 2:]
+    print(f"\n(비교 대상 case {len(subset)}건으로 제한)" if subset else "")
     print("\n| 결과 파일 | n | ① grounding | ② readability | ③ compliance | 평균 | 3점 이하 비율 |")
     print("| --- | --- | --- | --- | --- | --- | --- |")
     low_all = []
     for p in paths:
-        rows = [r for r in load(Path(p)) if "grounding" in r]
+        rows = [r for r in load(Path(p)) if "grounding" in r and (subset is None or r["case_id"] in subset)]
         if not rows:
             print(f"| {Path(p).stem} | 0 | — | — | — | — | — |"); continue
         g = [r["grounding"]["score"] for r in rows]; rd = [r["readability"]["score"] for r in rows]; c = [r["compliance"]["score"] for r in rows]
