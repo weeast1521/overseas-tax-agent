@@ -19,6 +19,7 @@ import argparse
 import asyncio
 import hashlib
 import json
+import importlib
 import os
 import re
 import subprocess
@@ -214,6 +215,7 @@ def main_cli() -> int:
 
     out_dir = Path(args.out_dir); out_dir.mkdir(exist_ok=True)
     out = out_dir / f"{args.config}_{args.tag}.jsonl"
+    _judge_base = importlib.import_module("app.judge.base")
     meta = {
         "config": args.config, "tag": args.tag, "started_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "git_commit": git_commit(), "cases_file": str(Path(args.cases).relative_to(ROOT)) if Path(args.cases).is_relative_to(ROOT) else args.cases,
@@ -223,7 +225,7 @@ def main_cli() -> int:
         "judge_impl": os.environ["JUDGE_IMPL"], "judge_model": os.getenv("JUDGE_MODEL"),
         "llm_provider": os.environ["LLM_PROVIDER"], "llm_model": os.getenv("CLAUDE_MODEL") if os.environ["LLM_PROVIDER"] == "claude" else os.getenv("OLLAMA_MODEL"),
         "temperature": "n/a (SDK 2.x — 재현성은 2회 실행 diff로 측정)",
-        "final_format": args.final_format, "review_threshold": os.getenv("JUDGE_REVIEW_THRESHOLD", "0.70"), "auto_threshold": os.getenv("JUDGE_AUTO_THRESHOLD", "0.95"),
+        "final_format": args.final_format, "review_threshold": _judge_base.REVIEW_THRESHOLD, "auto_threshold": _judge_base.AUTO_THRESHOLD,  # 실제 적용 값 (환경변수가 아니라 코드가 읽은 값)
     }
     if args.config == "stub":
         meta.update(judge_model="rule", llm_model="stub-v1")
