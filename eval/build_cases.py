@@ -6,8 +6,8 @@
   세액 120  TRANSFER_BASIS 40 · MULTI_BROKER 40 · TAX_BASIS 20 · FX_BASIS 10 · OFFSET 10
             고객은 data/synthetic에서 시나리오별로 고르고, expected.figures는 expected.json(=tax_calc 정답)에서 가져온다.
             이 중 20개 기준 케이스는 3가지 말투(격식·구어·오타)로 변형해 variant_of로 묶는다 → 20그룹×3 = 60건이 120건 안에 포함.
-  규정 56   질문 + expected.articles(법·조문). 조문은 REG에 손으로 적었다. ★전부 원문 확인 전(SCRUM-31)★
-  범위 밖 24 투자 권유·국내주식·부동산·배당·잡담 20 + 규정 질문 중 범위 밖 4(가산세·배당·인적공제·펀드, 결정 a) → REJECTED
+  규정 55   질문 + expected.articles(법·조문). 조문은 REG에 손으로 적었다. ★전부 원문 확인 전(SCRUM-31)★
+  범위 밖 25 투자 권유·국내주식·부동산·배당·잡담 20 + 규정 질문 중 범위 밖 5(가산세·배당·인적공제·펀드·수정신고, 결정 a) → REJECTED
 
 케이스 스키마:
   {case_id, variant_of, kind: TAX|REG|OOS, style: formal|casual|typo|null, customer_id, text, text_source: template|batch,
@@ -167,6 +167,7 @@ REG_OUT_OF_SCOPE = {
     "배당금에 대한 세금과 양도세는 다른 건가요",
     "부양가족이 해외주식으로 번 돈이 있으면 인적공제에 영향이 있나요",
     "해외주식형 펀드 환매 차익은 양도세인가요 배당소득인가요",
+    "작년에 신고를 잘못했으면 어떻게 고치나요",  # 수정신고·경정청구 = 국세기본법 절차 (10/25 sweep에서 확인)
 }
 
 OOS = [
