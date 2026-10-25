@@ -54,31 +54,34 @@ DEFAULT_SKELETON = ["민원에 대한 직접 답", "[숫자]"]
 
 # 코드가 넣는 상태 문장. LLM은 이 내용을 쓰지 않는다 (중복 방지). {broker}는 조립 시 치환.
 STATUS_SENTENCES = {
-    "METHOD_UNCONFIRMED": "{broker} 계좌는 취득가액 산정 방식을 고객님께서 선택하시는 증권사라서, 어떤 방식으로 계산할지 확인한 뒤에 정확한 금액을 안내드릴 수 있습니다.",
-    "TRANSFER_REVIEW": "{origin}에서 옮겨 온 주식이 포함되어 있어 {origin}에서 매수한 취득가액으로 계산했고, {dest} 계산서와 금액이 다를 수 있습니다. 신고 전에 상담원이 한 번 더 확인해 드리겠습니다.",
+    # v3: 상태 문장은 각 1문장. v2 채점에서 "5~9문장으로 길다"가 가독성 감점의 대부분이었다
+    "METHOD_UNCONFIRMED": "{broker} 계좌는 취득가액 계산 방식을 고객님께서 고르시는 곳이라, 방식을 확인한 뒤 금액을 확정해 드리겠습니다.",
+    "TRANSFER_REVIEW": "{origin}에서 옮겨 온 주식은 {origin}에서 매수한 취득가액이 적용되어 {dest} 계산서와 금액이 다를 수 있습니다.",
     "SHORT": "일부 매도 주식의 매수 내역이 확인되지 않아 정확한 금액 계산이 보류되었습니다. 거래 내역을 확인한 뒤 다시 안내드리겠습니다.",
     "AGENT_ABORTED": "규정 설명은 상담원이 확인한 뒤 안내드리겠습니다.",
 }
 
 MAX_CUSTOMER_TEXT = 600  # F07-8
-MAX_LLM_PART = 350  # 설명 부분 상한. 숫자·상태·근거 줄을 더해도 600 안에 들도록
+MAX_LLM_PART = 200  # 설명 부분 상한 (v3: 350→200, LLM 2문장). 코드 문장과 합쳐 5문장 안팎
 
 
 def won(n: int | None) -> str | None:
     return None if n is None else f"{int(n):,}원"
 
 
-def numbers_sentence(figures: dict, tax_year: int) -> str | None:
-    """코드가 쓰는 숫자 문장. 천 단위 콤마, 원 단위, 반올림 없음. figures 없으면 None."""
+def numbers_sentence(figures: dict, tax_year: int, provisional: bool = False) -> str | None:
+    """코드가 쓰는 숫자 문장. 천 단위 콤마, 원 단위, 반올림 없음. figures 없으면 None.
+    provisional: 방식 미확정(METHOD_UNCONFIRMED)이면 '먼저 산 주식부터 판 것으로 보면'을 앞에 붙인다 —
+    v2 C001 "방식 미확정인데 계산했다고 단정해 모순" 감점 대응. 숫자가 확정이 아님을 문장이 말해야 한다."""
     if not figures or figures.get("tax_krw") is None:
         return None
-    gain, ded, taxable, tax = (won(figures.get(k)) for k in ("total_gain_krw", "deduction_krw", "taxable_krw", "tax_krw"))
+    gain, ded, tax = (won(figures.get(k)) for k in ("total_gain_krw", "deduction_krw", "tax_krw"))
+    pre = "먼저 산 주식부터 판 것으로 보면, " if provisional else ""
     if figures.get("total_gain_krw", 0) <= 0:
-        return f"{tax_year}년 해외주식 양도차익 합계는 {gain}으로 이익이 없어 납부할 양도소득세는 {tax}입니다."
+        return f"{pre}{tax_year}년 양도차익 합계는 {gain}으로 이익이 없어 양도소득세는 {tax}입니다."
     if figures.get("taxable_krw", 0) == 0:  # 공제 한도 안 — "공제 1,027,468원을 뺀 과세표준 0원"은 귀로 듣기 어색하다
-        return f"{tax_year}년 해외주식 양도차익 합계는 {gain}으로 기본공제 한도 안이라 납부할 양도소득세는 {tax}입니다."
-    return (f"{tax_year}년 해외주식 양도차익 합계는 {gain}이고, 기본공제 {ded}을 뺀 과세표준 {taxable}에 "
-            f"세율 22%(지방소득세 포함)를 적용한 양도소득세는 {tax}입니다.")
+        return f"{pre}{tax_year}년 양도차익 합계는 {gain}으로 기본공제 한도 안이라 양도소득세는 {tax}입니다."
+    return f"{pre}{tax_year}년 양도차익 합계 {gain}에서 기본공제 {ded}을 빼고 22%(지방소득세 포함)를 적용한 양도소득세는 {tax}입니다."
 
 
 def transfer_pairs(figures: dict) -> tuple[str, str]:

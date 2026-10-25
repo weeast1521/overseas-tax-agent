@@ -20,7 +20,7 @@ from app.llm.base import Completion, LLMClient, Message
 SYSTEM = """너는 증권사 고객센터 상담원이 고객에게 전화로 그대로 읽어 줄 안내문의 '설명 부분'을 쓴다.
 
 규칙:
-1. 아래 '설명 순서'대로, 존댓말로, {max_len}자 이내, 3문장 이내로 쓴다. 자연스러운 단락 하나로, 줄바꿈 없이.
+1. 아래 '설명 순서'대로, 존댓말로, {max_len}자 이내, 2문장 이내로 쓴다. 한 문장은 짧게(60자 안팎). 자연스러운 단락 하나로, 줄바꿈 없이.
    '[숫자]' 항목은 건너뛴다 — 금액 문장은 시스템이 뒤에 붙인다.
 2. 금액·수량·비율 숫자를 하나도 쓰지 않는다. 숫자는 시스템이 붙인다. (연도는 써도 된다)
 3. 법 이름·조문 번호·대괄호 인용을 쓰지 않는다. 근거 조문은 시스템이 따로 표시한다.
@@ -102,7 +102,9 @@ def build_facts(category: str, figures: dict | None, chunks: list[dict], needs_c
         status.append(sk.STATUS_SENTENCES["AGENT_ABORTED"])
     return {
         "category": category, "tax_year": tax_year, "numbers": numbers,
-        "numbers_sentence": sk.numbers_sentence(figures, tax_year), "by_account_sentence": sk.by_account_sentence(figures),
+        "numbers_sentence": sk.numbers_sentence(figures, tax_year, provisional=bool(needs_confirmation)),
+        # 계좌별 금액은 '증권사별 계산서가 왜 다른가'가 질문인 MULTI_BROKER에서만 (v2: 모든 유형에 붙어 문장 수 증가)
+        "by_account_sentence": sk.by_account_sentence(figures) if category == "MULTI_BROKER" else None,
         "status_sentences": status, "sources": _source_set(chunks),
         "skeleton": sk.SKELETONS.get(category, sk.DEFAULT_SKELETON),
     }

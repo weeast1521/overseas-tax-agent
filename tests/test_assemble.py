@@ -66,8 +66,9 @@ def test_method_unconfirmed_sentence_inserted_by_code_not_llm():
     fig, err, needs = figures_for(1077)  # override 없음 → NAMUH 선택제 미확정
     assert needs == ["NAMUH-1077"]
     d = run(asm.assemble("TRANSFER_BASIS", "…", fig, [], needs, llm=EchoLLM("설명만 씁니다."), tax_year=2025))
-    assert "NH투자증권(나무) 계좌는 취득가액 산정 방식을 고객님께서 선택하시는" in d.customer_text  # LLM은 안 썼지만 들어 있다
-    assert d.customer_text.count("확인한 뒤에 정확한 금액") == 1  # 한 번만
+    assert "NH투자증권(나무) 계좌는 취득가액 계산 방식을 고객님께서 고르시는" in d.customer_text  # LLM은 안 썼지만 들어 있다
+    assert d.customer_text.count("금액을 확정해 드리겠습니다") == 1  # 한 번만
+    assert "먼저 산 주식부터 판 것으로 보면, 2025년" in d.customer_text  # 미확정이면 숫자가 가정임을 말한다 (v2 C001 모순)
     assert "방식 미확정 계좌: NAMUH-1077" in d.agent_note and "NAMUH-1077" not in d.customer_text  # 계좌 ID는 메모에만
     assert "근거:" not in d.customer_text and "인용 조문 없음" in d.agent_note
 
@@ -76,7 +77,7 @@ def test_llm_failure_still_delivers_numbers_and_status():
     fig, err, needs = figures_for(1077)
     d = run(asm.assemble("MULTI_BROKER", "…", fig, CHUNKS, needs, llm=DeadLLM(), tax_year=2025))
     assert d.error == "E-ASSEMBLE:RuntimeError" and d.llm_text is None
-    assert f"{fig['tax_krw']:,}원" in d.customer_text and "선택하시는 증권사" in d.customer_text and "근거: 소득세법 시행령 제162조" in d.agent_note
+    assert f"{fig['tax_krw']:,}원" in d.customer_text and "고르시는 곳" in d.customer_text and "근거: 소득세법 시행령 제162조" in d.agent_note
     assert "조립 LLM 실패" in d.agent_note
 
 
@@ -116,6 +117,16 @@ def test_numbers_sentence_zero_gain():
     assert "-120,000원" in s and "0원" in s and "22%" not in s
 
 
+def test_v2_regressions_sentence_count_and_by_account_only_multi():
+    """v2 채점: 5~9문장. 코드 문장은 숫자 1 + 상태 각 1. 계좌별 문장은 MULTI_BROKER만."""
+    fig, err, needs = figures_for(1077)  # 상태 2개
+    d = run(asm.assemble("TRANSFER_BASIS", "…", fig, [], needs, llm=None, tax_year=2025))
+    assert d.customer_text.count("다.") == 3 and "증권사별 양도차익" not in d.customer_text
+    fig2, _, needs2 = figures_for(1023)
+    d2 = run(asm.assemble("MULTI_BROKER", "…", fig2, [], needs2, llm=None, tax_year=2025))
+    assert "증권사별 양도차익" in d2.customer_text
+
+
 # --- 조립기 v1 채점(10/25)에서 나온 감점 사유 회귀 테스트 ---
 
 def test_v1_regressions_no_mid_sentence_cut_and_length_budget():
@@ -123,7 +134,7 @@ def test_v1_regressions_no_mid_sentence_cut_and_length_budget():
     fig, err, needs = figures_for(1077)  # 상태 문장 2개 → 코드 몫이 가장 긴 경우
     long = "첫째 설명입니다. " * 10 + "둘째 설명은 이렇게 끝나지 않고 계속"
     d = run(asm.assemble("TRANSFER_BASIS", "…", fig, CHUNKS, needs, llm=EchoLLM(long), tax_year=2025))
-    head = d.customer_text.split(" 증권사별")[0].split(" 2025년")[0]
+    head = d.customer_text.split(" 먼저 산 주식부터")[0].split(" 2025년")[0]
     assert head.endswith("다.") and "계속" not in d.customer_text  # 문장 끝에서 잘림
     assert len(d.customer_text) <= sk.MAX_CUSTOMER_TEXT
     assert asm.llm_budget(d.facts) + len(asm.code_part(d.facts)) <= sk.MAX_CUSTOMER_TEXT
@@ -148,4 +159,4 @@ def test_prompt_gives_chunk_text_not_just_names():
 
 def test_numbers_sentence_within_deduction():
     s = sk.numbers_sentence({"total_gain_krw": 1027468, "deduction_krw": 1027468, "taxable_krw": 0, "tax_krw": 0}, 2025)
-    assert s == "2025년 해외주식 양도차익 합계는 1,027,468원으로 기본공제 한도 안이라 납부할 양도소득세는 0원입니다."
+    assert s == "2025년 양도차익 합계는 1,027,468원으로 기본공제 한도 안이라 양도소득세는 0원입니다."
