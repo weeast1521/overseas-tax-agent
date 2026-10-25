@@ -202,6 +202,8 @@ def main_cli() -> int:
     if args.only:
         if args.only.endswith(".jsonl"):  # 기존 결과 파일과 같은 case 집합 → 같은 시험지로 before/after
             want = {json.loads(l)["case_id"] for l in Path(args.only).read_text(encoding="utf-8").splitlines() if l.strip()}
+        elif args.only.endswith(".txt"):  # case_id 목록 파일 (# 주석 줄 무시) — 예: eval/holdout_f07.txt
+            want = {x.strip() for l in Path(args.only).read_text(encoding="utf-8").splitlines() if l.strip() and not l.startswith("#") for x in l.split(",") if x.strip()}
         else:
             want = set(args.only.split(","))
         cases = [c for c in cases if c["case_id"] in want]
