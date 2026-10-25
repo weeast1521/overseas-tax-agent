@@ -129,3 +129,28 @@ def verify(text: str, figures: dict | None, sources: list[dict], status_sentence
         if k not in seen:
             seen.add(k); uniq.append(f)
     return VerifyResult(ok=not uniq, failures=uniq)
+
+
+def _cli(paths: list[str]) -> int:
+    """저장된 평가 결과(.jsonl)에 검증기를 사후 적용한다. 코드만 돌리므로 비용 0.
+      python -m app.answer.verify results/A_1025_asm_opus-5-5.jsonl [...]"""
+    import json
+    from collections import Counter
+    for p in paths:
+        rows = [json.loads(l) for l in open(p, encoding="utf-8") if l.strip()]
+        drafted = [r for r in rows if r.get("draft") and r.get("status") not in ("REJECTED", "ERROR")]
+        codes: Counter = Counter()
+        bad = []
+        for r in drafted:
+            v = verify(r["draft"], r.get("figures"), r.get("sources") or [])
+            if not v.ok:
+                codes.update(v.codes); bad.append((r["case_id"], v.failures))
+        print(f"\n## {p}: draft {len(drafted)}건 중 검증 실패 {len(bad)}건  코드별 {dict(codes)}")
+        for cid, fs in bad[:20]:
+            print(f"  {cid}: " + "; ".join(f"{f['code']} {f['detail']}" for f in fs[:3]))
+    return 0
+
+
+if __name__ == "__main__":
+    import sys
+    sys.exit(_cli(sys.argv[1:]))
