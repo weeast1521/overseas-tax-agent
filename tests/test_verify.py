@@ -28,7 +28,7 @@ def test_rounded_number_fails():
     assert "E-VERIFY-NUMBER" in r.codes and any("330,000원" in f["detail"] for f in r.failures)
 
 
-@pytest.mark.parametrize("bad", ["약 330,000원", "250만 원", "33만 원 정도", "세율 20%"])
+@pytest.mark.parametrize("bad", ["약 330,000원", "250만 원", "33만 원 정도", "세율 30%"])
 def test_approx_and_unit_forms_fail(bad):
     r = vf.verify(OK_TEXT.replace("양도소득세는 328,628원입니다.", f"양도소득세는 {bad}입니다."), FIG, SRC)
     assert "E-VERIFY-NUMBER" in r.codes, bad
@@ -105,3 +105,14 @@ def test_verify_failed_blocks_auto(monkeypatch):
     assert resp.status == "REVIEW" and resp.review_reason == "VERIFY_FAILED"
     assert {f["code"] for f in resp.verify_failures} >= {"E-VERIFY-ADVICE", "E-VERIFY-NUMBER"}
     assert "검증 실패" in resp.agent_note and resp.error_code.startswith("E-VERIFY")
+
+
+def test_decimal_amounts_compared_whole():
+    """버그: 12.63달러의 '63'만 잡아 거짓 양성 (JSON 모드 사후 적용에서 발견)."""
+    fig = {"by_account": [{"gain_krw": 1, "sales": [{"usd_gain": "12.63", "sold_qty": "1.5", "lots_used": []}]}]}
+    assert vf.verify("차익은 12.63달러, 1.5주를 파셨습니다.", fig, []).ok
+    assert "E-VERIFY-NUMBER" in vf.verify("차익은 12.64달러입니다.", fig, []).codes
+
+
+def test_tax_rate_parts_allowed():
+    assert vf.verify("세율은 20%에 지방소득세 2%를 더한 22%입니다.", None, []).ok

@@ -20,11 +20,12 @@ from app.llm.base import Completion, LLMClient, Message
 SYSTEM = """너는 증권사 고객센터 상담원이 고객에게 전화로 그대로 읽어 줄 안내문의 '설명 부분'을 쓴다.
 
 규칙:
-1. 아래 '설명 순서'대로, 존댓말로, {max_len}자 이내로 쓴다. 문장마다 줄을 바꾸지 않고 자연스러운 단락 하나로 쓴다.
-2. 숫자(금액·수량·비율)는 '사용 가능한 숫자'에 있는 문자열을 글자 그대로만 쓴다. 없는 숫자는 쓰지 않는다. "약"·"대략"·반올림 금지.
-   세액·과세표준 같은 최종 숫자 문장은 시스템이 뒤에 붙이므로 네가 다시 쓸 필요 없다.
-3. 규정은 '인용 가능한 조문'에 있는 것만 [법 이름 조문] 형식으로 붙인다. 목록에 없는 조문·법령·국세청 예규는 절대 쓰지 않는다. 없으면 조문 없이 절차만 설명한다.
-4. '시스템이 덧붙일 상태 문장'의 내용(방식 확인 필요, 이체 검토, 매수내역 부족)은 네가 쓰지 않는다. 시스템이 넣는다.
+1. 아래 '설명 순서'대로, 존댓말로, {max_len}자 이내, 3문장 이내로 쓴다. 자연스러운 단락 하나로, 줄바꿈 없이.
+   '[숫자]' 항목은 건너뛴다 — 금액 문장은 시스템이 뒤에 붙인다.
+2. 금액·수량·비율 숫자를 하나도 쓰지 않는다. 숫자는 시스템이 붙인다. (연도는 써도 된다)
+3. 법 이름·조문 번호·대괄호 인용을 쓰지 않는다. 근거 조문은 시스템이 따로 표시한다.
+   설명 내용은 '참고 규정 내용'과 맞아야 하고, 거기에 없는 규정은 단정하지 않는다. 규정 내용이 없으면 일반적인 절차만 말한다.
+4. '시스템이 덧붙일 상태 문장'의 내용(방식 확인 필요, 이체 검토, 매수내역 부족)은 네가 쓰지 않는다. 같은 말을 반복하지 않는다.
 5. 금지: 투자 권유, 어느 산정 방식이 유리·불리하다는 판단, "반드시"·"무조건" 같은 단정, 고객 이름·계좌번호·거래번호,
    JSON·중괄호·영문 키·툴 이름, "확인 필요"·"안내해 주세요" 같은 상담원·내부용 문장. 전문용어(FIFO, lot, CHOICE)는 풀어 쓴다.
 6. 설명 문장만 출력한다. 제목·머리말·마크다운·인사말 없이."""
@@ -35,8 +36,8 @@ USER = """민원 유형: {category}
 설명 순서:
 {skeleton}
 
-사용 가능한 숫자: {numbers}
-인용 가능한 조문: {sources}
+시스템이 덧붙일 금액 문장: {numbers}
+참고 규정 내용(검색 결과): {sources}
 시스템이 덧붙일 상태 문장: {status}
 에이전트가 모은 참고 요약(내부용, 그대로 옮기지 말 것): {summary}"""
 
@@ -59,7 +60,8 @@ def _source_set(chunks: list[dict]) -> list[dict]:
         key = (c.get("law"), c.get("article"))
         if key[0] and key[1] and key not in seen:
             seen.add(key)
-            out.append({"law": c["law"], "article": c["article"], "chunk_id": c.get("chunk_id")})
+            out.append({"law": c["law"], "article": c["article"], "chunk_id": c.get("chunk_id"),
+                        "_text": re.sub(r"★[^★]*★\s*", "", str(c.get("text") or ""))[:180]})
     return out
 
 
@@ -115,23 +117,34 @@ def _clean(text: str) -> str:
             return ""
     text = re.sub(r"^\s*(설명|답변|안내)\s*[:：]\s*", "", text.strip())
     text = re.sub(r"[*_#`]+", "", text)
+    text = re.sub(r"\s*\[[^\[\]]*제\s*\d+\s*조[^\[\]]*\]", "", text)  # 지시를 어긴 [법 조문] 토큰 — 검증은 원문(llm_text)으로 따로 한다
     return re.sub(r"\s*\n\s*", " ", text).strip()
 
 
+def _fit(text: str, limit: int) -> str:
+    """문장 끝에서 자른다. 중간에 끊긴 문장은 버린다 (조립기 v1 가독성 감점 원인)."""
+    cut = text[:limit].rstrip()
+    if cut.endswith(("다.", "요.", "다", "요")) and len(text) <= limit:
+        return cut
+    idx = max(cut.rfind("다."), cut.rfind("요."))
+    return cut[: idx + 2].strip() if idx > 0 else ""
+
+
+def code_part(facts: dict) -> str:
+    parts = [facts.get("by_account_sentence"), facts.get("numbers_sentence"), *(facts.get("status_sentences") or [])]
+    return " ".join(p for p in parts if p)
+
+
+def llm_budget(facts: dict) -> int:
+    """LLM 설명 몫 = 600 - 코드 문장 길이 - 여유. 최대 MAX_LLM_PART."""
+    return max(0, min(sk.MAX_LLM_PART, sk.MAX_CUSTOMER_TEXT - len(code_part(facts)) - 5))
+
+
 def compose(facts: dict, llm_text: str | None) -> str:
-    """고객용 문장 = LLM 설명 + 숫자 문장 + 상태 문장 + 근거 줄. 순서와 존재를 코드가 보장한다."""
-    parts: list[str] = []
-    if llm_text:
-        parts.append(_clean(llm_text)[: sk.MAX_LLM_PART])
-    if facts.get("by_account_sentence"):
-        parts.append(facts["by_account_sentence"])
-    if facts.get("numbers_sentence"):
-        parts.append(facts["numbers_sentence"])
-    parts.extend(facts.get("status_sentences") or [])
-    text = " ".join(p for p in parts if p).strip()
-    if facts.get("sources"):
-        text += "\n근거: " + ", ".join(f"{s['law']} {s['article']}" for s in facts["sources"])
-    return text
+    """고객용 문장 = LLM 설명 + 계좌별 숫자 + 숫자 문장 + 상태 문장. 순서·존재·길이를 코드가 보장한다.
+    근거 조문은 고객 문장에 넣지 않는다(전화로 읽기 어려움, v1 채점 감점) → Draft.sources와 상담원 메모로."""
+    head = _fit(_clean(llm_text), llm_budget(facts)) if llm_text else ""
+    return " ".join(p for p in (head, code_part(facts)) if p).strip()
 
 
 def agent_note_of(facts: dict, needs_confirmation: list[str], figures: dict | None, calc_error: str | None,
@@ -148,7 +161,9 @@ def agent_note_of(facts: dict, needs_confirmation: list[str], figures: dict | No
         lines.append(f"에이전트 중단 {aborted} — 규정 설명은 에이전트 없이 조립됨")
     if llm_error:
         lines.append(f"조립 LLM 실패 {llm_error} — 설명 부분 없이 코드 문장만 내보냄")
-    if not facts.get("sources"):
+    if facts.get("sources"):
+        lines.append("근거: " + ", ".join(f"{s['law']} {s['article']}" for s in facts["sources"]))
+    else:
         lines.append("인용 조문 없음 — 규정 설명은 조문 없이 절차만")
     if summary:
         lines.append(f"에이전트 요약: {summary}")
@@ -161,14 +176,14 @@ async def assemble(category: str, inquiry: str, figures: dict | None, chunks: li
     facts = build_facts(category, figures, chunks, needs_confirmation, calc_error, aborted, tax_year)
     summary = _summary_of(agent_final)
     llm_text, tin, tout, err = None, 0, 0, None
-    if llm is not None:
+    if llm is not None and llm_budget(facts) >= 40:
         msgs = [
-            Message(role="system", content=SYSTEM.replace("{max_len}", str(sk.MAX_LLM_PART))),
+            Message(role="system", content=SYSTEM.replace("{max_len}", str(llm_budget(facts)))),
             Message(role="user", content=USER.format(
                 category=category, inquiry=inquiry[:500],
                 skeleton="\n".join(f"{i}. {s}" for i, s in enumerate(facts["skeleton"], 1)),
-                numbers=", ".join(facts["numbers"].values()) or "(없음 — 숫자를 쓰지 말 것)",
-                sources=", ".join(f"[{s['law']} {s['article']}]" for s in facts["sources"]) or "(없음 — 조문을 쓰지 말 것)",
+                numbers=code_part(facts) or "(없음)",
+                sources=" / ".join(f"{s['law']} {s['article']}: {s['_text']}" for s in facts["sources"]) or "(없음 — 규정을 단정하지 말 것)",
                 status=" / ".join(facts["status_sentences"]) or "(없음)",
                 summary=summary or "(없음)")),
         ]
@@ -184,4 +199,4 @@ async def assemble(category: str, inquiry: str, figures: dict | None, chunks: li
     text = compose(facts, llm_text)
     return Draft(customer_text=text,
                  agent_note=agent_note_of(facts, needs_confirmation, figures, calc_error, aborted, summary, err),
-                 sources=facts["sources"], facts=facts, llm_text=llm_text, tokens_in=tin, tokens_out=tout, error=err)
+                 sources=[{k: v for k, v in x.items() if not k.startswith("_")} for x in facts["sources"]], facts=facts, llm_text=llm_text, tokens_in=tin, tokens_out=tout, error=err)

@@ -17,7 +17,7 @@ from dataclasses import dataclass, field
 
 from app.answer import skeleton as sk
 
-_AMOUNT = re.compile(r"(?<![\d,])(\d{1,3}(?:,\d{3})+|\d+)\s*(원|달러|주(?!식))")
+_AMOUNT = re.compile(r"(?<![\d,.])(\d{1,3}(?:,\d{3})+|\d+)(\.\d+)?\s*(원|달러|주(?!식))")  # 소수점 포함 전체를 잡는다 (12.63달러의 63만 잡던 버그)
 _WON_UNIT = re.compile(r"\d+(?:\.\d+)?\s*(만|억|천)\s*원")
 _PERCENT = re.compile(r"(\d+(?:\.\d+)?)\s*%")
 _ARTICLE = re.compile(r"(제\s*\d+\s*조(?:\s*의\s*\d+)?)")
@@ -26,7 +26,7 @@ _APPROX = re.compile(r"(약|대략|대충|얼추)\s*\d")
 _ADVICE = re.compile(r"유리|불리|추천|권유|권해|사세요|파세요|매수하세요|매도하세요|바꾸세요|변경하세요|반드시|무조건|절대로")
 _LEAK = re.compile(r"sql_query|tax_calc|reg_search|broker_method|FIFO|\bAVG\b|CHOICE|\blot\b|JSON|json|확인 필요|안내해 주세요|안내하세요|안내 바랍니다|상담원은|상담원이 안내|\{|\}|```")
 _PII = re.compile(r"\b[A-Z]{2,}-\d{4}(?:-|\b)|\b[A-Z]{2,}-\d{8}-\d+\b")
-_ALLOWED_PCT = {"22"}
+_ALLOWED_PCT = {"22", "20", "2"}  # 22% = 양도소득세 20% + 지방소득세 2%
 
 
 @dataclass
@@ -73,7 +73,9 @@ def allowed_numbers(figures: dict | None) -> set[str]:
     return out
 
 
-def verify(text: str, figures: dict | None, sources: list[dict], status_sentences: list[str] | None = None) -> VerifyResult:
+def verify(text: str, figures: dict | None, sources: list[dict], status_sentences: list[str] | None = None,
+           raw_llm: str | None = None) -> VerifyResult:
+    """raw_llm: 조립기가 정리하기 전 LLM 원문. 조립기가 [조문] 토큰을 지워도 지어낸 인용은 여기서 잡는다."""
     fails: list[dict] = []
     body = text or ""
     # 근거 줄은 숫자·표현 검사에서 제외하고 조문 검사에만 쓴다
@@ -82,7 +84,8 @@ def verify(text: str, figures: dict | None, sources: list[dict], status_sentence
     # 1. 숫자 완전 일치 (F07-5)
     allowed = allowed_numbers(figures)
     for m in _AMOUNT.finditer(main_part):
-        raw = m.group(1).replace(",", "")
+        f = float(m.group(1).replace(",", "") + (m.group(2) or ""))
+        raw = str(int(f)) if f.is_integer() else str(f)
         if raw not in allowed and "-" + raw not in allowed:  # 손실은 음수로 들어 있다
             fails.append({"code": "E-VERIFY-NUMBER", "detail": f"{m.group(0).strip()} — 계산 결과에 없는 숫자"})
     for m in _WON_UNIT.finditer(main_part):
@@ -97,12 +100,14 @@ def verify(text: str, figures: dict | None, sources: list[dict], status_sentence
     allowed_arts = {_norm_art(s["article"]) for s in sources or [] if s.get("article")}
     allowed_pairs = {(s["law"], _norm_art(s["article"])) for s in sources or [] if s.get("article")}
     reported: set[str] = set()
-    for m in _LAW_TOKEN.finditer(body):
+    cite_scope = body + ("\n" + raw_llm if raw_llm else "")
+    for m in _LAW_TOKEN.finditer(cite_scope):
         if (m.group(1).strip(), _norm_art(m.group(2))) not in allowed_pairs:
             fails.append({"code": "E-VERIFY-SOURCE", "detail": f"[{m.group(1)} {m.group(2)}] — 검색 결과에 없는 조문"})
             reported.add(_norm_art(m.group(2)))
-    for m in _ARTICLE.finditer(body):
+    for m in _ARTICLE.finditer(cite_scope):
         if _norm_art(m.group(1)) not in allowed_arts and _norm_art(m.group(1)) not in reported:
+            reported.add(_norm_art(m.group(1)))
             fails.append({"code": "E-VERIFY-SOURCE", "detail": f"{m.group(1)} — 검색 결과에 없는 조문"})
 
     # 3. 금지 표현 (F07-7)

@@ -75,6 +75,8 @@ def numbers_sentence(figures: dict, tax_year: int) -> str | None:
     gain, ded, taxable, tax = (won(figures.get(k)) for k in ("total_gain_krw", "deduction_krw", "taxable_krw", "tax_krw"))
     if figures.get("total_gain_krw", 0) <= 0:
         return f"{tax_year}년 해외주식 양도차익 합계는 {gain}으로 이익이 없어 납부할 양도소득세는 {tax}입니다."
+    if figures.get("taxable_krw", 0) == 0:  # 공제 한도 안 — "공제 1,027,468원을 뺀 과세표준 0원"은 귀로 듣기 어색하다
+        return f"{tax_year}년 해외주식 양도차익 합계는 {gain}으로 기본공제 한도 안이라 납부할 양도소득세는 {tax}입니다."
     return (f"{tax_year}년 해외주식 양도차익 합계는 {gain}이고, 기본공제 {ded}을 뺀 과세표준 {taxable}에 "
             f"세율 22%(지방소득세 포함)를 적용한 양도소득세는 {tax}입니다.")
 

@@ -38,6 +38,15 @@ def _llm():
     return get_client()
 
 
+def _assembler_llm(agent_llm):
+    """조립기 LLM. ASSEMBLER_MODEL이 있으면 그 모델(예: claude-sonnet-5-5 — 설명 250자면 충분, 지연 감소), 없으면 에이전트와 같은 LLM."""
+    name = os.getenv("ASSEMBLER_MODEL")
+    if not name or getattr(agent_llm, "name", "") != "claude":
+        return agent_llm
+    from app.llm.claude_client import ClaudeClient
+    return ClaudeClient(model=name)
+
+
 def _trace_id() -> str:
     return f"tr_{uuid.uuid4().hex[:12]}"
 
@@ -151,11 +160,11 @@ async def handle_inquiry(body: InquiryRequest) -> tuple[InquiryResponse, react.A
     # F07 조립 — 고객용 문장은 코드가 짠 골격 + 숫자·상태·근거 줄, LLM은 설명만. ANSWER_ASSEMBLER=off면 에이전트 원문(대조 실험용)
     draft_text, note, sources, a_in, a_out, verify_failures = result.final, None, [], 0, 0, []
     if ASSEMBLER_ON and status != "FAILED":
-        d = await assemble.assemble(judgment.category, body.text, figures, ctx.chunks, m["needs_confirmation"], llm=llm,
+        d = await assemble.assemble(judgment.category, body.text, figures, ctx.chunks, m["needs_confirmation"], llm=_assembler_llm(llm),
                                     agent_final=result.final, calc_error=calc_error, aborted=result.aborted, tax_year=body.tax_year)
         draft_text, note, sources, a_in, a_out = d.customer_text, d.agent_note, d.sources, d.tokens_in, d.tokens_out
         # F07-5~8 사후 검증 — 숫자·출처·표현·길이. 하나라도 걸리면 AUTO로 못 나간다 (SCRUM-36)
-        v = verify.verify(draft_text, figures, sources, d.facts.get("status_sentences"))
+        v = verify.verify(draft_text, figures, sources, d.facts.get("status_sentences"), raw_llm=d.llm_text)
         if not v.ok:
             verify_failures = v.failures
             note = (note + "\n" if note else "") + "검증 실패: " + "; ".join(f"{f['code']} {f['detail']}" for f in v.failures[:6])
