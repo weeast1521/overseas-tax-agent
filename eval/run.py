@@ -168,7 +168,7 @@ def main_cli() -> int:
     ap.add_argument("--cases", default=str(ROOT / "eval" / "cases.jsonl"))
     ap.add_argument("--tag", default=datetime.now().strftime("%Y%m%d_%H%M"))
     ap.add_argument("--limit", type=int)
-    ap.add_argument("--only")
+    ap.add_argument("--only", help="case_id 목록(쉼표) 또는 기존 결과 파일 경로(.jsonl) — 그 파일에 있는 case만 다시 돌린다 (before/after)")
     ap.add_argument("--resume", action="store_true")
     ap.add_argument("--estimate", action="store_true", help="10건만 돌려 200건 예상 비용")
     ap.add_argument("--out-dir", default=str(ROOT / "results"))
@@ -200,7 +200,11 @@ def main_cli() -> int:
     if missing:  # 돈 쓰기 전에 멈춘다
         print(f"평가셋 고객 {len(missing)}명이 {args.trades}에 없음 (예: {missing[:5]}). --trades 확인"); return 2
     if args.only:
-        want = set(args.only.split(",")); cases = [c for c in cases if c["case_id"] in want]
+        if args.only.endswith(".jsonl"):  # 기존 결과 파일과 같은 case 집합 → 같은 시험지로 before/after
+            want = {json.loads(l)["case_id"] for l in Path(args.only).read_text(encoding="utf-8").splitlines() if l.strip()}
+        else:
+            want = set(args.only.split(","))
+        cases = [c for c in cases if c["case_id"] in want]
     if args.estimate:
         cases = cases[:10]; args.tag = args.tag + "_estimate"
     if args.limit:
