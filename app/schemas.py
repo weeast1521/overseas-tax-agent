@@ -40,7 +40,8 @@ class InquiryResponse(BaseModel):
     category: str
     confidence: float
     method: MethodInfo = MethodInfo()
-    draft: str | None = None
+    draft: str | None = None  # 고객에게 읽어 줄 문장 (F07 조립기 customer_text). ANSWER_ASSEMBLER=off면 에이전트 원문
+    agent_note: str | None = None  # 상담원만 보는 메모 — 확인할 계좌·이체 lot·내부 오류. 고객 문장과 분리 (F07)
     figures: dict[str, Any] | None = None  # tax_calc CalcResult 그대로 + transferred_lot_sales (F01-4)
     sources: list[Source] = []
     steps: int = 0

@@ -2,7 +2,7 @@
 
 POST /v1/inquiries 처리 흐름 (명세서 F01):
   요청 검증 → trace 생성 → F02 Judge → 게이팅 → F11 방식 결정 → F05 계산(figures)
-  → F03 에이전트 → (F07 조립·검증: SCRUM-35·36) → status 결정
+  → F03 에이전트 → status 결정 → F07 조립(SCRUM-35; 검증은 SCRUM-36)
 
 숫자(figures)는 에이전트와 무관하게 tax_calc로 직접 계산한다. LLM이 실패해도 상담원은 숫자를 받는다.
 """
@@ -17,6 +17,7 @@ from fastapi.responses import JSONResponse
 
 from app import repo, trace
 from app.agent import react
+from app.answer import assemble
 from app.judge.base import Judgment, get_judge
 from app.judge.claude_judge import JudgeError
 from app.llm.base import get_client
@@ -24,6 +25,7 @@ from app.schemas import ErrorBody, InquiryRequest, InquiryResponse, MethodInfo
 from app.tools import registry, tax_calc
 
 TAX_YEAR = int(os.getenv("TAX_YEAR", "2025"))
+ASSEMBLER_ON = os.getenv("ANSWER_ASSEMBLER", "on").lower() not in ("off", "0", "false")
 
 app = FastAPI(title="overseas-tax-agent", version="0.2.0")
 
@@ -145,11 +147,18 @@ async def handle_inquiry(body: InquiryRequest) -> tuple[InquiryResponse, react.A
     result = await react.run(body.text, judgment, llm, ctx)
 
     status, reason, err = decide_status(gate, m["needs_confirmation"], figures, result.aborted, calc_error)
+
+    # F07 조립 — 고객용 문장은 코드가 짠 골격 + 숫자·상태·근거 줄, LLM은 설명만. ANSWER_ASSEMBLER=off면 에이전트 원문(대조 실험용)
+    draft_text, note, sources, a_in, a_out = result.final, None, [], 0, 0
+    if ASSEMBLER_ON and status != "FAILED":
+        d = await assemble.assemble(judgment.category, body.text, figures, ctx.chunks, m["needs_confirmation"], llm=llm,
+                                    agent_final=result.final, calc_error=calc_error, aborted=result.aborted, tax_year=body.tax_year)
+        draft_text, note, sources, a_in, a_out = d.customer_text, d.agent_note, d.sources, d.tokens_in, d.tokens_out
     resp = InquiryResponse(
         trace_id=trace_id, status=status, review_reason=reason, category=judgment.category,
-        confidence=judgment.confidence, method=method, draft=result.final, figures=figures,
-        steps=len(result.steps), latency_ms=ms(),
-        tokens_in=sum(st.in_tokens for st in result.steps), tokens_out=sum(st.out_tokens for st in result.steps),
+        confidence=judgment.confidence, method=method, draft=draft_text, agent_note=note, figures=figures,
+        sources=sources, steps=len(result.steps), latency_ms=ms(),
+        tokens_in=sum(st.in_tokens for st in result.steps) + a_in, tokens_out=sum(st.out_tokens for st in result.steps) + a_out,
         error_code=err,
     )
     _record(body, resp, result, judge, llm, gate)
