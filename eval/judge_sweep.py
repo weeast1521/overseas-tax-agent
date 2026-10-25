@@ -98,7 +98,7 @@ def report(paths: list[Path]) -> None:
         # 4. REG → OUT_OF_SCOPE
         reg = [r for r in rows if r["kind"] == "REG"]
         oos = Counter(r["case_id"] for r in reg if r["category"] == "OUT_OF_SCOPE")
-        print(f"REG 60문장 중 OUT_OF_SCOPE 판정: {len(oos)}문장 (실행 {len(runs)}회 중 판정 횟수: {dict(oos.most_common(20))})")
+        print(f"REG {len(reg)/len(runs):.0f}문장 중 OUT_OF_SCOPE 판정: {len(oos)}문장 (실행 {len(runs)}회 중 판정 횟수: {dict(oos.most_common(20))})")
 
 
 def main() -> int:

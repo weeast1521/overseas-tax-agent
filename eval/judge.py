@@ -46,6 +46,9 @@ def user_msg(r: dict) -> str:
     fig = r.get("figures") or {}
     fig_s = json.dumps({k: fig.get(k) for k in ("tax_krw", "total_gain_krw", "taxable_krw") if k in fig}, ensure_ascii=False)
     src = r.get("sources") or []
+    if not src:  # 문장 모드 결과(러너 수정 전)에서 '근거:' 줄을 못 읽은 경우 보정
+        sys.path.insert(0, str(ROOT / "eval")); from run import parse_sources  # noqa: E402
+        src = parse_sources(r.get("draft"))
     src_s = "\n".join(f"- {s.get('law')} {s.get('article')}" for s in src) or "- (인용 없음)"
     return (f"민원 유형: {r.get('category')}\nstatus: {r.get('status')} / {r.get('review_reason') or ''}\n"
             f"코드가 계산한 figures(참고용, 판단 금지): {fig_s}\n인용 조문:\n{src_s}\n\n--- 답변 초안 ---\n{(r.get('draft') or '')[:3000]}")

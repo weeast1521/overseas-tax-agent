@@ -20,6 +20,7 @@ import asyncio
 import hashlib
 import json
 import os
+import re
 import subprocess
 import sys
 import time
@@ -90,8 +91,17 @@ class StubLLM:
 
 
 def parse_sources(draft: str | None) -> list[dict]:
+    """draft에서 인용 조문을 뽑는다. JSON 모드는 sources 배열, 문장 모드는 '근거: <법> <조문>' 줄."""
     if not draft:
         return []
+    found = []
+    for m in re.finditer(r"근거\s*[:：]\s*(.+)", draft):
+        for part in re.split(r"[,，;/]|\s+및\s+|\s*·\s*", m.group(1)):
+            mm = re.match(r"\s*(\S+(?:\s(?:시행령|시행규칙))?)\s+(제\s*\d+조(?:의\s*\d+)?(?:\s*제?\d+항)?)", part.strip())
+            if mm:
+                found.append({"law": mm.group(1), "article": mm.group(2).replace(" ", "")})
+    if found:
+        return found
     s = draft.strip()
     if s.startswith("```"):
         s = s.strip("`")
