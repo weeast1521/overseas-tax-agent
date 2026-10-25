@@ -17,7 +17,7 @@ from fastapi.responses import JSONResponse
 
 from app import repo, trace
 from app.agent import react
-from app.answer import assemble
+from app.answer import assemble, verify
 from app.judge.base import Judgment, get_judge
 from app.judge.claude_judge import JudgeError
 from app.llm.base import get_client
@@ -149,15 +149,23 @@ async def handle_inquiry(body: InquiryRequest) -> tuple[InquiryResponse, react.A
     status, reason, err = decide_status(gate, m["needs_confirmation"], figures, result.aborted, calc_error)
 
     # F07 조립 — 고객용 문장은 코드가 짠 골격 + 숫자·상태·근거 줄, LLM은 설명만. ANSWER_ASSEMBLER=off면 에이전트 원문(대조 실험용)
-    draft_text, note, sources, a_in, a_out = result.final, None, [], 0, 0
+    draft_text, note, sources, a_in, a_out, verify_failures = result.final, None, [], 0, 0, []
     if ASSEMBLER_ON and status != "FAILED":
         d = await assemble.assemble(judgment.category, body.text, figures, ctx.chunks, m["needs_confirmation"], llm=llm,
                                     agent_final=result.final, calc_error=calc_error, aborted=result.aborted, tax_year=body.tax_year)
         draft_text, note, sources, a_in, a_out = d.customer_text, d.agent_note, d.sources, d.tokens_in, d.tokens_out
+        # F07-5~8 사후 검증 — 숫자·출처·표현·길이. 하나라도 걸리면 AUTO로 못 나간다 (SCRUM-36)
+        v = verify.verify(draft_text, figures, sources, d.facts.get("status_sentences"))
+        if not v.ok:
+            verify_failures = v.failures
+            note = (note + "\n" if note else "") + "검증 실패: " + "; ".join(f"{f['code']} {f['detail']}" for f in v.failures[:6])
+            if status == "AUTO":
+                status, reason = "REVIEW", "VERIFY_FAILED"
+            err = err or v.codes[0]
     resp = InquiryResponse(
         trace_id=trace_id, status=status, review_reason=reason, category=judgment.category,
         confidence=judgment.confidence, method=method, draft=draft_text, agent_note=note, figures=figures,
-        sources=sources, steps=len(result.steps), latency_ms=ms(),
+        sources=sources, verify_failures=verify_failures, steps=len(result.steps), latency_ms=ms(),
         tokens_in=sum(st.in_tokens for st in result.steps) + a_in, tokens_out=sum(st.out_tokens for st in result.steps) + a_out,
         error_code=err,
     )

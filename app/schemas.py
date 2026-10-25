@@ -44,6 +44,7 @@ class InquiryResponse(BaseModel):
     agent_note: str | None = None  # 상담원만 보는 메모 — 확인할 계좌·이체 lot·내부 오류. 고객 문장과 분리 (F07)
     figures: dict[str, Any] | None = None  # tax_calc CalcResult 그대로 + transferred_lot_sales (F01-4)
     sources: list[Source] = []
+    verify_failures: list[dict[str, str]] = []  # F07 사후 검증에 걸린 항목 [{code, detail}]. 비어 있으면 통과 (SCRUM-36)
     steps: int = 0
     latency_ms: int = 0
     tokens_in: int = 0  # 에이전트 루프 LLM 입력 토큰 합계 (Judge 제외)
