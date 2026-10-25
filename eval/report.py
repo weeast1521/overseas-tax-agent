@@ -114,6 +114,12 @@ def compute(results: list[dict], cases: list[dict], meta: dict | None) -> dict:
     ran = [r for r in tax if r.get("tools")]
     tool_ok = sum({"sql_query", "tax_calc"} <= set(r["tools"]) for r in ran)
     off = sum(1 for r in ran if r.get("off_plan"))
+    # 8 F07 사후 검증 (SCRUM-36): draft가 있는 건 중 verify_failures가 붙은 건, 코드별 횟수
+    drafted = [r for r in results if r.get("draft") and r.get("status") not in ("REJECTED", "ERROR")]
+    vf_rows = [r for r in drafted if r.get("verify_failures")]
+    vf_codes = Counter(f.get("code") for r in vf_rows for f in r["verify_failures"])
+    for r in vf_rows:
+        fail(r, "검증", "통과", "; ".join(f"{f.get('code')} {f.get('detail')}" for f in r["verify_failures"][:3]))
     # 6 상태
     st_ok, st_lowconf = 0, 0
     for r in tax:
@@ -171,6 +177,7 @@ def compute(results: list[dict], cases: list[dict], meta: dict | None) -> dict:
             ("6 상태 일치 (TAX)", pct(st_ok, len(tax))),
             ("6' 보정 보류: REVIEW/LOW_CONFIDENCE 였으나 기대 AUTO", pct(st_lowconf, len(tax))),
             ("7 표현 민감도: 그룹 3건 결정 동일", pct(consistent, len(full))),
+            ("8 사후 검증 실패 (draft 있는 건 중, F07)", pct(len(vf_rows), len(drafted)) + (" — " + ", ".join(f"{k}×{v}" for k, v in vf_codes.most_common()) if vf_codes else "")),
             ("평균 스텝", f"{statistics.mean(steps):.1f}" if steps else "—"),
             ("지연 p50 / p95 (초)", f"{p(lat, .5) / 1000:.1f} / {p(lat, .95) / 1000:.1f}" if lat else "—"),
             ("30초 초과", str(sum(x > 30_000 for x in lat))),
