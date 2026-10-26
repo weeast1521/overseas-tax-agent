@@ -30,7 +30,7 @@ SYSTEM = """너는 증권사 고객센터 상담 품질 평가자다. 해외주�
 중요: 숫자(세액·양도차익·금액)의 맞고 틀림은 절대 판단하지 마라. 숫자는 별도 코드가 검증한다. 너는 문장의 품질만 본다.
 
 세 항목을 각각 1~5점으로 채점하고 근거를 한 줄씩 쓴다.
-1. grounding — 숫자 외의 설명(왜 두 계산서가 다른지, 어떤 절차인지, 어떤 규정인지)이 제공된 인용 조문·figures·민원 유형과 맞는가. 인용 없이 규정을 단정하거나, 유형과 무관한 설명을 하면 감점. 5=설명 전부가 근거와 맞음, 3=일부 근거 없음, 1=틀리거나 무관.
+1. grounding — 숫자 외의 설명(왜 두 계산서가 다른지, 어떤 절차인지, 어떤 규정인지)이 제공된 인용 조문·figures·'데이터로 확인한 사실'·민원 유형과 맞는가. 인용 없이 규정을 단정하거나, 유형과 무관한 설명을 하면 감점. '데이터로 확인한 사실'(증권사명, 증권사별 산정 방식, 방식 미확정 여부, 이체 여부)은 거래 기록에서 온 근거로 인정한다 — 법 조문이 아니라는 이유로 감점하지 않는다. 5=설명 전부가 근거와 맞음, 3=일부 근거 없음, 1=틀리거나 무관.
 2. readability — 상담원이 고객에게 전화로 그대로 읽어 줄 수 있는가. 존댓말, 핵심 3문장 내외, 전문용어는 풀어 씀, JSON·중괄호·코드·영문 키 같은 기계 흔적 없음. 5=그대로 읽을 수 있음, 3=손봐야 읽을 수 있음, 1=읽을 수 없음(JSON 그대로 등).
 3. compliance — 금지 표현이 없는가: 투자 권유(사라/팔아라), 어느 산정 방식이 유리하다는 판단, "약"·"대략"·반올림한 금액, 단정적 세무 판단("반드시", "무조건"), 고객 이름·계좌번호. 5=전혀 없음, 3=경미한 표현 1개, 1=명백한 위반.
 
@@ -51,7 +51,27 @@ def user_msg(r: dict) -> str:
         src = parse_sources(r.get("draft"))
     src_s = "\n".join(f"- {s.get('law')} {s.get('article')}" for s in src) or "- (인용 없음)"
     return (f"민원 유형: {r.get('category')}\nstatus: {r.get('status')} / {r.get('review_reason') or ''}\n"
-            f"코드가 계산한 figures(참고용, 판단 금지): {fig_s}\n인용 조문:\n{src_s}\n\n--- 답변 초안 ---\n{(r.get('draft') or '')[:3000]}")
+            f"코드가 계산한 figures(참고용, 판단 금지): {fig_s}\n데이터로 확인한 사실:\n{data_facts(r)}\n인용 조문:\n{src_s}\n\n--- 답변 초안 ---\n{(r.get('draft') or '')[:3000]}")
+
+
+def data_facts(r: dict) -> str:
+    """거래 데이터·증권사 방식 표에서 코드가 확인한 사실. 10/26 채점에서 '증권사명은 근거 없음'으로 감점되던 측정 문제 대응.
+    결과 파일의 method·figures만 쓴다 (모델 출력이 아님)."""
+    sys.path.insert(0, str(ROOT)); from app.answer.skeleton import BROKER_KO  # noqa: E402
+    BASE_KO = {"FIFO": "선입선출 고정", "AVG": "이동평균 고정", "CHOICE": "고객 선택제(기본 선입선출)"}
+    m = r.get("method") or {}
+    fig = r.get("figures") or {}
+    lines = []
+    for acc, base in (m.get("brokers") or {}).items():
+        code = acc.split("-")[0]
+        lines.append(f"- 계좌 {BROKER_KO.get(code, code)}: 산정 방식 {BASE_KO.get(base, base)}")
+    if m.get("needs_confirmation"):
+        lines.append(f"- 방식 미확정(고객 선택값 없음): {', '.join(BROKER_KO.get(a.split('-')[0], a) for a in m['needs_confirmation'])}")
+    for acc, meth in (m.get("confirmed") or {}).items():
+        lines.append(f"- 고객이 선택해 저장된 방식: {BROKER_KO.get(acc.split('-')[0], acc)} {meth}")
+    if fig.get("transferred_lot_sales"):
+        lines.append(f"- 다른 증권사에서 옮겨 온(대체입고) 주식이 섞인 매도 {len(fig['transferred_lot_sales'])}건")
+    return "\n".join(lines) or "- (없음)"
 
 
 def targets(rows: list[dict]) -> list[dict]:

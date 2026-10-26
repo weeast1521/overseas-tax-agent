@@ -104,8 +104,11 @@ async def _reg_search(args: dict, ctx: ToolContext) -> dict:
 TOOLS: dict[str, ToolFn] = {"sql_query": _sql_query, "broker_method": _broker_method, "tax_calc": _tax_calc, "reg_search": _reg_search}
 
 
+AGENT_TOOLS = ["sql_query", "tax_calc", "reg_search"]  # 에이전트에게 보이는 툴. broker_method는 디버그 API 전용 (SCRUM-19)
+
+
 def specs(names: list[str] | None = None) -> list[ToolSpec]:
-    return [SPECS[n] for n in (names or SPECS)]
+    return [SPECS[n] for n in (names or AGENT_TOOLS)]
 
 
 async def invoke(name: str, args: dict, ctx: ToolContext) -> dict:
