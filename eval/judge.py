@@ -70,7 +70,19 @@ def data_facts(r: dict) -> str:
     for acc, meth in (m.get("confirmed") or {}).items():
         lines.append(f"- 고객이 선택해 저장된 방식: {BROKER_KO.get(acc.split('-')[0], acc)} {meth}")
     if fig.get("transferred_lot_sales"):
-        lines.append(f"- 다른 증권사에서 옮겨 온(대체입고) 주식이 섞인 매도 {len(fig['transferred_lot_sales'])}건")
+        from app.answer.skeleton import transfer_pairs  # noqa: E402
+        origin, dest = transfer_pairs(fig)
+        lines.append(f"- 다른 증권사에서 옮겨 온(대체입고) 주식이 섞인 매도 {len(fig['transferred_lot_sales'])}건: {origin}에서 매수 → {dest}에서 매도 (원 매수 증권사 취득가액 적용)")
+    if fig.get("tax_year"):
+        lines.append(f"- 과세연도 {fig['tax_year']}년")
+    tickers = sorted({s_["ticker"] for a in fig.get("by_account") or [] for s_ in a.get("sales") or []})
+    if tickers:
+        lines.append(f"- 매도 종목: {', '.join(tickers)}")
+    if fig.get("fx_note"):
+        lines.append(f"- 환율: {fig['fx_note']}")
+    methods = {a["account_id"]: a["method"] for a in fig.get("by_account") or []}
+    if methods:
+        lines.append("- 실제 계산에 쓴 방식: " + ", ".join(f"{BROKER_KO.get(k.split('-')[0], k)} {'선입선출' if v == 'FIFO' else '이동평균'}" for k, v in methods.items()))
     return "\n".join(lines) or "- (없음)"
 
 

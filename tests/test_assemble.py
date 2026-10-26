@@ -68,7 +68,7 @@ def test_method_unconfirmed_sentence_inserted_by_code_not_llm():
     d = run(asm.assemble("TRANSFER_BASIS", "…", fig, [], needs, llm=EchoLLM("설명만 씁니다."), tax_year=2025))
     assert "NH투자증권(나무) 계좌는 취득가액 계산 방식을 고객님께서 고르시는" in d.customer_text  # LLM은 안 썼지만 들어 있다
     assert d.customer_text.count("금액을 확정해 드리겠습니다") == 1  # 한 번만
-    assert "먼저 산 주식부터 판 것으로 보면, 2025년" in d.customer_text  # 미확정이면 숫자가 가정임을 말한다 (v2 C001 모순)
+    assert "NH투자증권(나무) 계좌를 먼저 산 주식부터 판 것으로 계산하면, 2025년" in d.customer_text  # 미확정 계좌만 가정 (v2 C001, 10/26 C028)
     assert "방식 미확정 계좌: NAMUH-1077" in d.agent_note and "NAMUH-1077" not in d.customer_text  # 계좌 ID는 메모에만
     assert "근거:" not in d.customer_text and "인용 조문 없음" in d.agent_note
 
@@ -134,7 +134,7 @@ def test_v1_regressions_no_mid_sentence_cut_and_length_budget():
     fig, err, needs = figures_for(1077)  # 상태 문장 2개 → 코드 몫이 가장 긴 경우
     long = "첫째 설명입니다. " * 10 + "둘째 설명은 이렇게 끝나지 않고 계속"
     d = run(asm.assemble("TRANSFER_BASIS", "…", fig, CHUNKS, needs, llm=EchoLLM(long), tax_year=2025))
-    head = d.customer_text.split(" 먼저 산 주식부터")[0].split(" 2025년")[0]
+    head = d.customer_text.split(" NH투자증권(나무) 계좌를 먼저")[0].split(" 2025년")[0]
     assert head.endswith("다.") and "계속" not in d.customer_text  # 문장 끝에서 잘림
     assert len(d.customer_text) <= sk.MAX_CUSTOMER_TEXT
     assert asm.llm_budget(d.facts) + len(asm.code_part(d.facts)) <= sk.MAX_CUSTOMER_TEXT

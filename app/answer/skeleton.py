@@ -83,14 +83,19 @@ def won(n: int | None) -> str | None:
     return None if n is None else f"{int(n):,}원"
 
 
-def numbers_sentence(figures: dict, tax_year: int, provisional: bool = False) -> str | None:
+def numbers_sentence(figures: dict, tax_year: int, provisional: bool | str = False) -> str | None:
     """코드가 쓰는 숫자 문장. 천 단위 콤마, 원 단위, 반올림 없음. figures 없으면 None.
     provisional: 방식 미확정(METHOD_UNCONFIRMED)이면 '먼저 산 주식부터 판 것으로 보면'을 앞에 붙인다 —
     v2 C001 "방식 미확정인데 계산했다고 단정해 모순" 감점 대응. 숫자가 확정이 아님을 문장이 말해야 한다."""
     if not figures or figures.get("tax_krw") is None:
         return None
     gain, ded, tax = (won(figures.get(k)) for k in ("total_gain_krw", "deduction_krw", "tax_krw"))
-    pre = "먼저 산 주식부터 판 것으로 보면, " if provisional else ""
+    # provisional이 증권사 이름이면 그 계좌만 가정임을 밝힌다 — 10/26 채점: '이동평균 고정 계좌인데 선입선출로 설명' (C028·C036).
+    # 가정은 선택제 계좌에만 걸리고, 고정 방식 계좌는 원래 방식대로 계산됐다.
+    if isinstance(provisional, str) and provisional:
+        pre = f"{provisional} 계좌를 먼저 산 주식부터 판 것으로 계산하면, "
+    else:
+        pre = "먼저 산 주식부터 판 것으로 보면, " if provisional else ""
     if figures.get("total_gain_krw", 0) <= 0:
         return f"{pre}{tax_year}년 양도차익 합계는 {gain}으로 이익이 없어 양도소득세는 {tax}입니다."
     if figures.get("taxable_krw", 0) == 0:  # 공제 한도 안 — "공제 1,027,468원을 뺀 과세표준 0원"은 귀로 듣기 어색하다

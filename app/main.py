@@ -40,9 +40,10 @@ def _llm():
 
 
 def _assembler_llm(agent_llm):
-    """조립기 LLM. ASSEMBLER_MODEL이 있으면 그 모델(예: claude-sonnet-5-5 — 설명 250자면 충분, 지연 감소), 없으면 에이전트와 같은 LLM."""
-    name = os.getenv("ASSEMBLER_MODEL")
-    if not name or getattr(agent_llm, "name", "") != "claude":
+    """조립기 LLM. 설명 2문장·200자라 에이전트만큼 큰 모델이 필요 없다."""
+    # 기본 claude-sonnet-5-5 (10/26 홀드아웃: Opus 조립과 문장 점수 차이 없음, E-TIMEOUT 11→2에 기여). 'same'이면 에이전트와 같은 LLM
+    name = os.getenv("ASSEMBLER_MODEL", "claude-sonnet-5-5")
+    if name == "same" or getattr(agent_llm, "name", "") != "claude" or name == getattr(agent_llm, "model", None):
         return agent_llm
     from app.llm.claude_client import ClaudeClient
     return ClaudeClient(model=name)

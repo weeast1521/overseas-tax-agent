@@ -102,7 +102,8 @@ def build_facts(category: str, figures: dict | None, chunks: list[dict], needs_c
         status.append(sk.STATUS_SENTENCES["AGENT_ABORTED"])
     return {
         "category": category, "tax_year": tax_year, "numbers": numbers,
-        "numbers_sentence": sk.numbers_sentence(figures, tax_year, provisional=bool(needs_confirmation)),
+        "numbers_sentence": sk.numbers_sentence(figures, tax_year, provisional="·".join(sorted({
+            sk.BROKER_KO.get(acc.split("-")[0], acc.split("-")[0]) for acc in needs_confirmation}))),
         "method_sentence": sk.method_sentence(method_info),  # 저장된 고객 방식 (SCRUM-47)
         # 계좌별 금액은 '증권사별 계산서가 왜 다른가'가 질문인 MULTI_BROKER에서만 (v2: 모든 유형에 붙어 문장 수 증가)
         "by_account_sentence": sk.by_account_sentence(figures) if category == "MULTI_BROKER" else None,

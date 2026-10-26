@@ -66,7 +66,7 @@ def test_2_saved_avg_then_auto_calc_with_avg(client):
     assert j["review_reason"] != "METHOD_UNCONFIRMED"  # 이체 lot이 있어 TRANSFER_REVIEW는 남는다
     # 4. 초안 문장 — 코드가 넣고, 고객 문장 규칙(영문 약어 없음)을 지킨다
     assert "NH투자증권(나무) 계좌는 고객님께서 선택하신 평균 매수 단가로 보는 방식(이동평균법)으로 계산했습니다(2025년 기준)." in j["draft"]
-    assert "먼저 산 주식부터 판 것으로 보면" not in j["draft"]  # 확정됐으니 '가정' 문구 없음
+    assert "먼저 산 주식부터 판 것으로" not in j["draft"]  # 확정됐으니 '가정' 문구 없음
     assert "AVG" not in j["draft"] and "저장된 방식: NAMUH-1077 AVG" in j["agent_note"]
     assert j["verify_failures"] == []
 
