@@ -1,0 +1,205 @@
+[
+ {
+  "customer_id": 2010,
+  "account_id": "NAMUH-2010",
+  "tax_year": 2025,
+  "method": "FIFO",
+  "confirmed_by": "seed"
+ },
+ {
+  "customer_id": 2023,
+  "account_id": "NAMUH-2023",
+  "tax_year": 2025,
+  "method": "FIFO",
+  "confirmed_by": "seed"
+ },
+ {
+  "customer_id": 2048,
+  "account_id": "NAMUH-2048",
+  "tax_year": 2025,
+  "method": "AVG",
+  "confirmed_by": "seed"
+ },
+ {
+  "customer_id": 2068,
+  "account_id": "NAMUH-2068",
+  "tax_year": 2025,
+  "method": "AVG",
+  "confirmed_by": "seed"
+ },
+ {
+  "customer_id": 2069,
+  "account_id": "NAMUH-2069",
+  "tax_year": 2025,
+  "method": "AVG",
+  "confirmed_by": "seed"
+ },
+ {
+  "customer_id": 2070,
+  "account_id": "NAMUH-2070",
+  "tax_year": 2025,
+  "method": "FIFO",
+  "confirmed_by": "seed"
+ },
+ {
+  "customer_id": 2071,
+  "account_id": "NAMUH-2071",
+  "tax_year": 2025,
+  "method": "AVG",
+  "confirmed_by": "seed"
+ },
+ {
+  "customer_id": 2074,
+  "account_id": "NAMUH-2074",
+  "tax_year": 2025,
+  "method": "FIFO",
+  "confirmed_by": "seed"
+ },
+ {
+  "customer_id": 2076,
+  "account_id": "NAMUH-2076",
+  "tax_year": 2025,
+  "method": "FIFO",
+  "confirmed_by": "seed"
+ },
+ {
+  "customer_id": 2080,
+  "account_id": "NAMUH-2080",
+  "tax_year": 2025,
+  "method": "FIFO",
+  "confirmed_by": "seed"
+ },
+ {
+  "customer_id": 2095,
+  "account_id": "NAMUH-2095",
+  "tax_year": 2025,
+  "method": "AVG",
+  "confirmed_by": "seed"
+ },
+ {
+  "customer_id": 2150,
+  "account_id": "NAMUH-2150",
+  "tax_year": 2025,
+  "method": "AVG",
+  "confirmed_by": "seed"
+ },
+ {
+  "customer_id": 2166,
+  "account_id": "NAMUH-2166",
+  "tax_year": 2025,
+  "method": "AVG",
+  "confirmed_by": "seed"
+ },
+ {
+  "customer_id": 2170,
+  "account_id": "NAMUH-2170",
+  "tax_year": 2025,
+  "method": "FIFO",
+  "confirmed_by": "seed"
+ },
+ {
+  "customer_id": 2171,
+  "account_id": "NAMUH-2171",
+  "tax_year": 2025,
+  "method": "FIFO",
+  "confirmed_by": "seed"
+ },
+ {
+  "customer_id": 2172,
+  "account_id": "NAMUH-2172",
+  "tax_year": 2025,
+  "method": "AVG",
+  "confirmed_by": "seed"
+ },
+ {
+  "customer_id": 2181,
+  "account_id": "NAMUH-2181",
+  "tax_year": 2025,
+  "method": "FIFO",
+  "confirmed_by": "seed"
+ },
+ {
+  "customer_id": 2248,
+  "account_id": "NAMUH-2248",
+  "tax_year": 2025,
+  "method": "AVG",
+  "confirmed_by": "seed"
+ },
+ {
+  "customer_id": 2254,
+  "account_id": "NAMUH-2254",
+  "tax_year": 2025,
+  "method": "AVG",
+  "confirmed_by": "seed"
+ },
+ {
+  "customer_id": 2255,
+  "account_id": "NAMUH-2255",
+  "tax_year": 2025,
+  "method": "AVG",
+  "confirmed_by": "seed"
+ },
+ {
+  "customer_id": 2268,
+  "account_id": "NAMUH-2268",
+  "tax_year": 2025,
+  "method": "FIFO",
+  "confirmed_by": "seed"
+ },
+ {
+  "customer_id": 2271,
+  "account_id": "NAMUH-2271",
+  "tax_year": 2025,
+  "method": "AVG",
+  "confirmed_by": "seed"
+ },
+ {
+  "customer_id": 2273,
+  "account_id": "NAMUH-2273",
+  "tax_year": 2025,
+  "method": "FIFO",
+  "confirmed_by": "seed"
+ },
+ {
+  "customer_id": 2275,
+  "account_id": "NAMUH-2275",
+  "tax_year": 2025,
+  "method": "FIFO",
+  "confirmed_by": "seed"
+ },
+ {
+  "customer_id": 2278,
+  "account_id": "NAMUH-2278",
+  "tax_year": 2025,
+  "method": "AVG",
+  "confirmed_by": "seed"
+ },
+ {
+  "customer_id": 2279,
+  "account_id": "NAMUH-2279",
+  "tax_year": 2025,
+  "method": "AVG",
+  "confirmed_by": "seed"
+ },
+ {
+  "customer_id": 2280,
+  "account_id": "NAMUH-2280",
+  "tax_year": 2025,
+  "method": "AVG",
+  "confirmed_by": "seed"
+ },
+ {
+  "customer_id": 2281,
+  "account_id": "NAMUH-2281",
+  "tax_year": 2025,
+  "method": "AVG",
+  "confirmed_by": "seed"
+ },
+ {
+  "customer_id": 2288,
+  "account_id": "NAMUH-2288",
+  "tax_year": 2025,
+  "method": "FIFO",
+  "confirmed_by": "seed"
+ }
+]

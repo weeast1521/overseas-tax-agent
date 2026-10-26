@@ -58,6 +58,7 @@ def validate(cases: list[dict], trades_file: Path) -> tuple[list[str], list[str]
             errors.append(f"variant 그룹 {base}: 말투 3종(formal/casual/typo)이 아님")
 
     # TAX: 현재 계산기와 대조
+    os.environ["METHOD_DB"] = ":memory:"  # 평가는 항상 저장된 고객 방식 없이 (시험지 기대값과 같은 조건). 데모용 data/method.db가 섞이지 않게
     os.environ["TRADES_FILE"] = str(trades_file)
     from app import main, repo
     known = {int(r["customer_id"]) for r in json.loads(trades_file.read_text(encoding="utf-8"))}

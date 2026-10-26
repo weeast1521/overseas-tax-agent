@@ -191,6 +191,7 @@ def main_cli() -> int:
 
     for k, v in CONFIGS[args.config].items():
         os.environ[k] = v
+    os.environ["METHOD_DB"] = ":memory:"  # 평가는 항상 저장된 고객 방식 없이 (시험지 기대값과 같은 조건). 데모용 data/method.db가 섞이지 않게
     os.environ["TRADES_FILE"] = args.trades  # .env(TRADES_FILE=data/samples…)가 평가를 덮어쓰지 않도록 강제. 평가셋 고객은 synthetic에만 있다
     if args.config == "A":
         if not os.getenv("ANTHROPIC_API_KEY"):

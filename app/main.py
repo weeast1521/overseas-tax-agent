@@ -16,13 +16,13 @@ import uuid
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import JSONResponse
 
-from app import repo, trace
+from app import method_store, repo, trace
 from app.agent import react
 from app.answer import assemble, verify
 from app.judge.base import Judgment, get_judge
 from app.judge.claude_judge import JudgeError
 from app.llm.base import get_client
-from app.schemas import ErrorBody, InquiryRequest, InquiryResponse, MethodInfo
+from app.schemas import BrokerMethodRequest, ErrorBody, InquiryRequest, InquiryResponse, MethodInfo, MethodSetRequest
 from app.tools import registry, tax_calc
 
 TAX_YEAR = int(os.getenv("TAX_YEAR", "2025"))
@@ -70,6 +70,27 @@ async def tool_tax_calc(req: tax_calc.CalcRequest):
         raise HTTPException(422, {"error": e.code, "message": str(e), "ticker": e.ticker, "short_qty": str(e.short_qty)})
     except tax_calc.CalcError as e:
         raise HTTPException(422, {"error": e.code, "message": str(e)})
+
+
+@app.post("/v1/tools/broker_method")
+async def tool_broker_method(req: BrokerMethodRequest):
+    """디버그용 (F11). 게이트웨이에 노출하지 않는다."""
+    ctx = registry.ToolContext(req.customer_id, req.tax_year, req.method_override)
+    return await registry.invoke("broker_method", {}, ctx)
+
+
+@app.post("/v1/customers/{customer_id}/accounts/{account_id}/method", responses={409: {"model": ErrorBody}, 422: {"model": ErrorBody}})
+async def set_customer_method(customer_id: int, account_id: str, req: MethodSetRequest):
+    """F11-2 상담원이 고객에게 확인한 산정 방식 저장 (SCRUM-47). 선택제 계좌만. 계좌·연도당 1회 규칙 → 409 E-METHOD-CHANGE."""
+    m = repo.resolve_methods(customer_id, None, req.tax_year)
+    if account_id not in m["brokers"]:
+        return _error(404, "E-NOT-FOUND", f"{account_id}: 이 고객의 계좌가 아님")
+    if m["brokers"][account_id] != "CHOICE":
+        return _error(422, "E-METHOD-NOT-CHOICE", f"{account_id}: 증권사 고정 방식({m['brokers'][account_id]}) 계좌라 저장할 수 없음")
+    try:
+        return method_store.get_store().set(customer_id, account_id, req.tax_year, req.method, req.confirmed_by)
+    except method_store.MethodChangeError as e:
+        return _error(409, e.code, str(e))
 
 
 def compute_figures(customer_id: int, tax_year: int, methods: dict[str, str]) -> tuple[dict | None, str | None]:
@@ -145,8 +166,9 @@ async def handle_inquiry(body: InquiryRequest) -> tuple[InquiryResponse, react.A
         return resp, None
 
     # F11 방식 결정
-    m = repo.resolve_methods(body.customer_id, body.method_override)
-    method = MethodInfo(applied=body.method_override, brokers=m["brokers"], needs_confirmation=m["needs_confirmation"])
+    m = repo.resolve_methods(body.customer_id, body.method_override, body.tax_year)
+    method = MethodInfo(applied=body.method_override, brokers=m["brokers"], needs_confirmation=m["needs_confirmation"],
+                        confirmed={k: v["method"] for k, v in m["confirmed"].items()})
 
     # F05 figures — 에이전트와 독립
     figures, calc_error = compute_figures(body.customer_id, body.tax_year, m["methods"])
@@ -170,7 +192,8 @@ async def handle_inquiry(body: InquiryRequest) -> tuple[InquiryResponse, react.A
     draft_text, note, sources, a_in, a_out, verify_failures = result.final, None, [], 0, 0, []
     if ASSEMBLER_ON:
         # FAILED여도 숫자·상태 문장은 코드로 조립해 넘긴다 (LLM 설명만 빠짐). 남은 시간 안에 조립 LLM이 못 끝내면 코드 문장만.
-        asm_args = dict(agent_final=result.final, calc_error=calc_error, aborted=result.aborted, tax_year=body.tax_year)
+        asm_args = dict(agent_final=result.final, calc_error=calc_error, aborted=result.aborted, tax_year=body.tax_year,
+                        method_info={**m, "override": body.method_override})
         code_only = lambda: assemble.assemble(judgment.category, body.text, figures, ctx.chunks, m["needs_confirmation"], llm=None, **asm_args)  # noqa: E731
         if status == "FAILED":
             d = await code_only()

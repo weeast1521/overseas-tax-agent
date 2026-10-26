@@ -67,7 +67,7 @@ async def _tax_calc(args: dict, ctx: ToolContext) -> dict:
         from app.repo import account_methods
         req = tax_calc.CalcRequest(customer_id=ctx.customer_id, tax_year=ctx.tax_year,
                                    trades=[tax_calc.Trade(**r) for r in trades],
-                                   account_methods=account_methods(ctx.customer_id, args.get("method_override") or ctx.method_override))
+                                   account_methods=account_methods(ctx.customer_id, args.get("method_override") or ctx.method_override, ctx.tax_year))
         res = tax_calc.calculate(req)
         # 요약을 앞에: Observation은 2,000자에서 잘리므로 에이전트가 반드시 봐야 할 숫자를 먼저 둔다
         return {
@@ -85,11 +85,12 @@ async def _tax_calc(args: dict, ctx: ToolContext) -> dict:
 
 
 async def _broker_method(args: dict, ctx: ToolContext) -> dict:
-    # F11. customer_method 테이블은 SCRUM-47에서. 지금은 증권사 기본 + override.
+    """F11 (SCRUM-47). 증권사 기본 방식 + 고객 저장값(customer_method) + override. 어느 방식이 유리한지는 내지 않는다 (F11-3)."""
     from app.repo import resolve_methods
-    m = resolve_methods(ctx.customer_id, ctx.method_override)
+    m = resolve_methods(ctx.customer_id, ctx.method_override, ctx.tax_year)
     return {"accounts": m["brokers"], "applied": m["methods"], "needs_confirmation": m["needs_confirmation"],
-            "as_of": "2025-04", "note": "선택제 계좌는 고객 확인 전까지 FIFO로 계산"}
+            "confirmed": {k: {"method": v["method"], "changed_at": v["changed_at"]} for k, v in m["confirmed"].items()},
+            "as_of": "2025-04", "note": "선택제 계좌는 고객 확인(저장) 전까지 FIFO로 계산"}
 
 
 async def _reg_search(args: dict, ctx: ToolContext) -> dict:

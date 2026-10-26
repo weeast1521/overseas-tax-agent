@@ -25,6 +25,20 @@ class MethodInfo(BaseModel):
     applied: Method | None = None  # 상담원이 확정한 방식. None이면 계좌별 기본 방식
     brokers: dict[str, str] = {}  # account_id → FIFO | AVG | CHOICE (증권사 기본)
     needs_confirmation: list[str] = []  # 선택제인데 고객 선택값이 없는 계좌 (F11-2)
+    confirmed: dict[str, str] = {}  # 선택제 계좌 중 고객 방식이 저장된 것 account_id → FIFO|AVG (SCRUM-47)
+
+
+class MethodSetRequest(BaseModel):
+    """상담원이 고객에게 방식을 확인한 뒤 저장 (F11-2, SCRUM-47). S2에서 게이트웨이 JWT의 상담원 ID가 confirmed_by로 들어간다."""
+    tax_year: int
+    method: Method
+    confirmed_by: str = Field(min_length=1, max_length=64)
+
+
+class BrokerMethodRequest(BaseModel):
+    customer_id: int
+    tax_year: int
+    method_override: Method | None = None
 
 
 class Source(BaseModel):

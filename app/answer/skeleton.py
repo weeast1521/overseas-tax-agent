@@ -61,6 +61,20 @@ STATUS_SENTENCES = {
     "AGENT_ABORTED": "규정 설명은 상담원이 확인한 뒤 안내드리겠습니다.",
 }
 
+METHOD_SHORT = {"FIFO": "먼저 산 주식부터 판 것으로 보는 방식(선입선출법)", "AVG": "평균 매수 단가로 보는 방식(이동평균법)"}
+
+
+def method_sentence(method_info: dict | None) -> str | None:
+    """F11-4 (SCRUM-47): 선택제 계좌에 고객이 고른 방식이 저장돼 있으면 '어느 방식으로 계산했는지'를 코드가 말한다."""
+    mi = method_info or {}
+    conf = mi.get("confirmed") or {}
+    if not conf or mi.get("override"):
+        return None
+    year = mi.get("tax_year")
+    parts = [f"{BROKER_KO.get(mi['broker_codes'].get(acc, ''), acc)} 계좌는 고객님께서 선택하신 {METHOD_SHORT[v['method']]}" for acc, v in conf.items()]
+    return "·".join(parts) + f"으로 계산했습니다({year}년 기준)."
+
+
 MAX_CUSTOMER_TEXT = 600  # F07-8
 MAX_LLM_PART = 200  # 설명 부분 상한 (v3: 350→200, LLM 2문장). 코드 문장과 합쳐 5문장 안팎
 

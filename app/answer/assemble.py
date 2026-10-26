@@ -80,7 +80,7 @@ def _summary_of(agent_final: str | None) -> str | None:
 
 
 def build_facts(category: str, figures: dict | None, chunks: list[dict], needs_confirmation: list[str],
-                calc_error: str | None, aborted: str | None, tax_year: int) -> dict:
+                calc_error: str | None, aborted: str | None, tax_year: int, method_info: dict | None = None) -> dict:
     """코드가 보장하는 사실 묶음. LLM 입력이자 verify의 정답."""
     figures = figures or {}
     numbers: dict[str, str] = {}
@@ -103,6 +103,7 @@ def build_facts(category: str, figures: dict | None, chunks: list[dict], needs_c
     return {
         "category": category, "tax_year": tax_year, "numbers": numbers,
         "numbers_sentence": sk.numbers_sentence(figures, tax_year, provisional=bool(needs_confirmation)),
+        "method_sentence": sk.method_sentence(method_info),  # 저장된 고객 방식 (SCRUM-47)
         # 계좌별 금액은 '증권사별 계산서가 왜 다른가'가 질문인 MULTI_BROKER에서만 (v2: 모든 유형에 붙어 문장 수 증가)
         "by_account_sentence": sk.by_account_sentence(figures) if category == "MULTI_BROKER" else None,
         "status_sentences": status, "sources": _source_set(chunks),
@@ -133,7 +134,7 @@ def _fit(text: str, limit: int) -> str:
 
 
 def code_part(facts: dict) -> str:
-    parts = [facts.get("by_account_sentence"), facts.get("numbers_sentence"), *(facts.get("status_sentences") or [])]
+    parts = [facts.get("method_sentence"), facts.get("by_account_sentence"), facts.get("numbers_sentence"), *(facts.get("status_sentences") or [])]
     return " ".join(p for p in parts if p)
 
 
@@ -150,10 +151,15 @@ def compose(facts: dict, llm_text: str | None) -> str:
 
 
 def agent_note_of(facts: dict, needs_confirmation: list[str], figures: dict | None, calc_error: str | None,
-                  aborted: str | None, summary: str | None, llm_error: str | None) -> str:
+                  aborted: str | None, summary: str | None, llm_error: str | None, method_info: dict | None = None) -> str:
     lines: list[str] = []
+    mi = method_info or {}
+    if mi.get("override"):
+        lines.append(f"method_override={mi['override']} 1회 적용 (저장 안 함) — 고객이 확정하면 방식 저장 API로 저장")
+    for acc, v in (mi.get("confirmed") or {}).items():
+        lines.append(f"저장된 방식: {acc} {v['method']} ({v['changed_at'][:10]}, {v['confirmed_by']} 확인)")
     if needs_confirmation:
-        lines.append(f"방식 미확정 계좌: {', '.join(needs_confirmation)} — 고객과 FIFO/이동평균 확인 후 method_override로 재실행")
+        lines.append(f"방식 미확정 계좌: {', '.join(needs_confirmation)} — 고객에게 선입선출/이동평균 확인 → 방식 저장(POST /v1/customers/…/method) 후 재실행")
     tls = (figures or {}).get("transferred_lot_sales") or []
     if tls:
         lines.append(f"이체 lot 포함 매도 {len(tls)}건: {', '.join(tls[:5])}{' …' if len(tls) > 5 else ''} — 원 매수 증권사 취득가액 적용됨, 계산서와 차이 설명 필요")
@@ -174,8 +180,8 @@ def agent_note_of(facts: dict, needs_confirmation: list[str], figures: dict | No
 
 async def assemble(category: str, inquiry: str, figures: dict | None, chunks: list[dict], needs_confirmation: list[str],
                    *, llm: LLMClient | None, agent_final: str | None = None, calc_error: str | None = None,
-                   aborted: str | None = None, tax_year: int = 2025) -> Draft:
-    facts = build_facts(category, figures, chunks, needs_confirmation, calc_error, aborted, tax_year)
+                   aborted: str | None = None, tax_year: int = 2025, method_info: dict | None = None) -> Draft:
+    facts = build_facts(category, figures, chunks, needs_confirmation, calc_error, aborted, tax_year, method_info)
     summary = _summary_of(agent_final)
     llm_text, tin, tout, err = None, 0, 0, None
     if llm is not None and llm_budget(facts) >= 40:
@@ -200,5 +206,5 @@ async def assemble(category: str, inquiry: str, figures: dict | None, chunks: li
             err = f"E-ASSEMBLE:{type(e).__name__}"
     text = compose(facts, llm_text)
     return Draft(customer_text=text,
-                 agent_note=agent_note_of(facts, needs_confirmation, figures, calc_error, aborted, summary, err),
+                 agent_note=agent_note_of(facts, needs_confirmation, figures, calc_error, aborted, summary, err, method_info),
                  sources=[{k: v for k, v in x.items() if not k.startswith("_")} for x in facts["sources"]], facts=facts, llm_text=llm_text, tokens_in=tin, tokens_out=tout, error=err)
