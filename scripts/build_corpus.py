@@ -145,21 +145,27 @@ def _ymd(s: str | None) -> str | None:
     return f"{s[:4]}-{s[4:6]}-{s[6:8]}" if re.fullmatch(r"\d{8}", s) else (s or None)
 
 
-_AMEND = re.compile(r"<(?:개정|신설|전문개정|본조신설|제목개정)\s*([^>]*)>")
+_AMEND = re.compile(r"<(?:개정|신설|전문개정|본조신설|제목개정)\s*([^>]*)>")      # 항·호 끝: <개정 2001.12.31, 2005.2.19>
+_BRACKET = re.compile(r"\[(?:전문개정|본조신설|제목개정|개정|신설)\s*([^\]]*)\]")  # 조문 끝: [본조신설 2011.12.31]
 _DATE = re.compile(r"(\d{4})\.\s*(\d{1,2})\.\s*(\d{1,2})")
 
 
-def last_amended(text: str) -> str | None:
-    """원문 속 <개정 2001.12.31, 2005.2.19> 표시에서 가장 늦은 날짜. 없으면 None."""
-    dates = [f"{y}-{int(m):02d}-{int(d):02d}" for g in _AMEND.findall(text) for y, m, d in _DATE.findall(g)]
-    return max(dates) if dates else None
+def _dates(groups: list[str]) -> list[str]:
+    return [f"{y}-{int(m):02d}-{int(d):02d}" for g in groups for y, m, d in _DATE.findall(g)]
+
+
+def last_amended(text: str, article_text: str = "") -> str | None:
+    """이 조각의 최종 개정일. 항·호의 <개정 …> + 조문 전체의 [본조신설·전문개정 …]. 둘 다 없으면 None.
+    법제처 원문은 항을 고치면 그 항 끝에 <개정 날짜>를 붙인다 → 표시 없는 항은 조문이 생긴 뒤 바뀌지 않은 항이다."""
+    ds = _dates(_AMEND.findall(text)) + _dates(_BRACKET.findall(article_text or text))
+    return max(ds) if ds else None
 
 
 def scope_of(amended: str | None, tax_year: int) -> str:
-    """2025 귀속에 이 문구가 그대로 적용됐는지. 현행 버전만 받을 수 있으므로(시행일 법령 API 없음) 개정 표시로 판단한다.
-    그 해 1월 1일 이후 개정이면 귀속연도 버전과 다를 수 있어 사람이 확인해야 한다. (공포일 기준이라 보수적)"""
+    """귀속연도 버전과 같은지. 현행 버전만 받을 수 있어(시행일 법령 API 없음) 원문의 개정 표시로 판단한다.
+    그 해 1월 1일 이후 개정(공포일 기준, 보수적)이면 귀속연도 버전과 다를 수 있어 사람이 확인한다."""
     if amended is None:
-        return f"{tax_year} 귀속 확인 필요(개정 표시 없음)"
+        return f"{tax_year} 귀속 동일(개정 표시 없음 — 제정 이후 변경 없음)"
     return f"{tax_year} 귀속 동일(최종 개정 {amended})" if amended < f"{tax_year}-01-01" else f"{tax_year} 귀속 확인 필요({amended} 개정)"
 
 
@@ -168,6 +174,7 @@ def law_chunks(law_name: str, doc_type: str, base: dict, arts: list[dict], sourc
     chunks = []
     for a in arts:
         head = a["head"] if a["head"] else f"{a['article']}({a['title']})"
+        article_all = head + "\n" + "\n".join(b for _, b in a["clauses"])  # [본조신설 …]은 보통 마지막 항 끝에 붙는다
         items = a["clauses"] or [("", "")]
         for clause, body in items:
             prefix = head if not body.startswith(head[:20]) else ""
@@ -179,7 +186,7 @@ def law_chunks(law_name: str, doc_type: str, base: dict, arts: list[dict], sourc
                     "law": law_name, "article": a["article"], "clause": clause, "part": i, "title": a["title"],
                     "doc_type": doc_type, "effective_date": _ymd(a.get("ef")) or ef,
                     "source_url": source_url + "/" + urllib.parse.quote(a["article"]),
-                    "amended_last": last_amended(text), "tax_year_scope": scope_of(last_amended(text), tax_year),
+                    "amended_last": last_amended(body or head, article_all), "tax_year_scope": scope_of(last_amended(body or head, article_all), tax_year),
                     "keywords": keywords_of(text), "text": text,
                 })
     return chunks
@@ -316,9 +323,11 @@ def main() -> int:
         for e in errs:
             print("✗", e)
         laws = [c for c in v1 if c["doc_type"] in ("법령", "시행령")]
-        review = sorted({(c["law"], c["article"], c.get("amended_last") or "") for c in laws if "확인 필요" in (c.get("tax_year_scope") or "")})
-        print(f"2025 귀속 동일 {sum('동일' in (c.get('tax_year_scope') or '') for c in laws)}/{len(laws)} 조각 · "
-              f"확인 필요 조문 {len(review)}개" + (": " + ", ".join(f"{l} {a}({d or '표시 없음'})" for l, a, d in review) if review else ""))
+        review = [c for c in laws if "확인 필요" in (c.get("tax_year_scope") or "")]
+        print(f"2025 귀속 동일 {len(laws) - len(review)}/{len(laws)} 조각 · 확인 필요 {len(review)} 조각")
+        for c in sorted(review, key=lambda c: (c["law"], c["article"], c["clause"], c["part"])):
+            first = c["text"].split("\n")[1 if "\n" in c["text"] else 0][:90]
+            print(f"  - {c['law']} {c['article']} {c['clause'] or ''} ({c['amended_last']} 개정): {first}")
         print("검사 통과 ✓" if not errs else f"검사 실패 {len(errs)}건")
         return 1 if errs else 0
     return 0

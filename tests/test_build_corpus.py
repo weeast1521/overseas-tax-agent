@@ -80,7 +80,9 @@ def test_amendment_scope():
     assert bc.last_amended("표시 없음") is None
     assert bc.scope_of("2005-02-19", 2025) == "2025 귀속 동일(최종 개정 2005-02-19)"
     assert bc.scope_of("2025-12-23", 2025).startswith("2025 귀속 확인 필요")
-    assert bc.scope_of(None, 2025).startswith("2025 귀속 확인 필요")
+    assert bc.scope_of(None, 2025).startswith("2025 귀속 동일(개정 표시 없음")  # 표시 없는 항 = 생긴 뒤 바뀌지 않음
+    assert bc.last_amended("② 둘째 항", "제1조 … ② 둘째 항 [본조신설 2025. 12. 23.]") == "2025-12-23"  # 조문 단위 표시 상속
+    assert bc.last_amended("② 둘째 항 <개정 2010.1.1>", "[전문개정 2009.12.31]") == "2010-01-01"
 
 
 def test_fx_question_matches_statute_wording():
