@@ -316,7 +316,7 @@ def main() -> int:
         for e in errs:
             print("✗", e)
         laws = [c for c in v1 if c["doc_type"] in ("법령", "시행령")]
-        review = sorted({(c["law"], c["article"], c.get("amended_last")) for c in laws if "확인 필요" in (c.get("tax_year_scope") or "")})
+        review = sorted({(c["law"], c["article"], c.get("amended_last") or "") for c in laws if "확인 필요" in (c.get("tax_year_scope") or "")})
         print(f"2025 귀속 동일 {sum('동일' in (c.get('tax_year_scope') or '') for c in laws)}/{len(laws)} 조각 · "
               f"확인 필요 조문 {len(review)}개" + (": " + ", ".join(f"{l} {a}({d or '표시 없음'})" for l, a, d in review) if review else ""))
         print("검사 통과 ✓" if not errs else f"검사 실패 {len(errs)}건")
