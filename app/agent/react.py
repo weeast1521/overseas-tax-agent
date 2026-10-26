@@ -20,8 +20,13 @@ from app.tools import registry
 
 MAX_STEPS = 8
 
-# 최종 답변 형식. json = 조립기(F07)에 넘길 재료 / prose = 프롬프트만으로 고객용 문장 (대조 실험용, AGENT_FINAL_FORMAT=prose)
+# 최종 답변 형식 (AGENT_FINAL_FORMAT).
+#   notes (기본) = 상담원용 짧은 메모. 고객 문장·숫자는 조립기(F07)가 코드로 만든다 — 에이전트가 숫자를 다시 쓸 이유가 없다.
+#                 SCRUM-19: json 모드는 최종 답에 figures를 통째로 다시 써서 출력 토큰이 많고 30초를 자주 넘겼다.
+#   json  = 조립기 이전의 기준 형식 (before 비교용) / prose = 프롬프트만으로 고객용 문장 (절제 실험용)
 FINAL_FORMATS = {
+    "notes": """최종 답변은 상담원용 메모다. 한국어 3줄 이내, 숫자·금액·JSON·고객용 문장은 쓰지 않는다(시스템이 계산 결과로 고객 안내문을 조립한다).
+   쓸 것: 민원의 핵심 쟁점 한 줄, 확인한 사실(어느 증권사·이체 여부·손익통산 여부 등) 한 줄, 상담원이 고객에게 확인할 점 한 줄.""",
     "json": """최종 답변은 JSON 한 개:
    {"summary": "<상담원용 요약 3문장 이내>", "figures": {<tax_calc에서 그대로 가져온 숫자>}, "sources": [{"law":..., "article":...}]}""",
     "prose": """최종 답변은 상담원이 고객에게 전화로 그대로 읽어 줄 한국어 문장이다. 규칙:
@@ -70,11 +75,13 @@ def _sig(name: str, args: dict) -> str:
     return hashlib.sha1(f"{name}:{norm}".encode()).hexdigest()
 
 
-async def run(inquiry: str, judgment: Judgment, llm: LLMClient, ctx: registry.ToolContext) -> AgentResult:
-    res = AgentResult()
+async def run(inquiry: str, judgment: Judgment, llm: LLMClient, ctx: registry.ToolContext,
+              res: AgentResult | None = None) -> AgentResult:
+    """res를 넘기면 스텝을 그 객체에 쌓는다 — 호출자가 타임아웃으로 취소해도 그때까지의 스텝이 남는다 (SCRUM-19)."""
+    res = res if res is not None else AgentResult()
     tools = registry.specs()  # 필요 툴 외 호출도 허용, off_plan으로 표시 (F03-6)
     history = [
-        Message(role="system", content=SYSTEM_PROMPT.replace("{final_format}", FINAL_FORMATS[os.getenv("AGENT_FINAL_FORMAT", "json")])
+        Message(role="system", content=SYSTEM_PROMPT.replace("{final_format}", FINAL_FORMATS[os.getenv("AGENT_FINAL_FORMAT", "notes")])
                 .replace("{category}", judgment.category)
                 .replace("{tools}", ", ".join(judgment.required_tools) or "없음")
                 .replace("{confidence}", f"{judgment.confidence:.2f}")),
@@ -100,7 +107,7 @@ async def run(inquiry: str, judgment: Judgment, llm: LLMClient, ctx: registry.To
             if format_errors >= 2:
                 res.aborted = "E-LLM-FORMAT"
                 return res
-            history.append(Message(role="user", content="툴을 호출하거나 최종 답변 JSON을 써라."))
+            history.append(Message(role="user", content="툴을 호출하거나 최종 답변을 써라."))
             continue
 
         call = reply.tool_call

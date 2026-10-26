@@ -8,6 +8,7 @@ POST /v1/inquiries 처리 흐름 (명세서 F01):
 """
 from __future__ import annotations
 
+import asyncio
 import os
 import time
 import uuid
@@ -90,7 +91,7 @@ def compute_figures(customer_id: int, tax_year: int, methods: dict[str, str]) ->
 def decide_status(gate: str, needs_confirmation: list[str], figures: dict | None,
                   agent_aborted: str | None, calc_error: str | None) -> tuple[str, str | None, str | None]:
     """(status, review_reason, error_code). 우선순위: FAILED > METHOD_UNCONFIRMED > TRANSFER_REVIEW > AGENT_ABORTED > LOW_CONFIDENCE > AUTO."""
-    if agent_aborted in ("E-LLM-FORMAT", "E-TOOL-FAIL"):
+    if agent_aborted in ("E-LLM-FORMAT", "E-TOOL-FAIL", "E-TIMEOUT"):
         return "FAILED", None, agent_aborted
     if calc_error in ("E-CALC-FX",):
         return "FAILED", None, calc_error
@@ -153,15 +154,33 @@ async def handle_inquiry(body: InquiryRequest) -> tuple[InquiryResponse, react.A
     # F03 에이전트 — Judge 결과(유형·필요 툴·확신도)는 react.run이 시스템 프롬프트에 주입한다 (F03-6)
     llm = _llm()
     ctx = registry.ToolContext(body.customer_id, body.tax_year, body.method_override)
-    result = await react.run(body.text, judgment, llm, ctx)
+    # F01-6 동기 타임아웃 (SCRUM-19). 마감은 접수 시각 기준 — Judge 시간도 포함한다.
+    # 취소 안전성: 에이전트 경로는 읽기 전용(sql_query·tax_calc·reg_search)이고 trace는 응답 직전에 한 번 쓰므로 열린 트랜잭션이 없다.
+    deadline = t0 + float(os.getenv("SYNC_TIMEOUT_SEC", "30"))
+    left = lambda: max(0.05, deadline - time.perf_counter())  # noqa: E731
+    result = react.AgentResult()  # 타임아웃으로 취소돼도 여기에 쌓인 스텝은 남는다
+    try:
+        await asyncio.wait_for(react.run(body.text, judgment, llm, ctx, res=result), timeout=left())
+    except asyncio.TimeoutError:
+        result.aborted = "E-TIMEOUT"
 
     status, reason, err = decide_status(gate, m["needs_confirmation"], figures, result.aborted, calc_error)
 
     # F07 조립 — 고객용 문장은 코드가 짠 골격 + 숫자·상태·근거 줄, LLM은 설명만. ANSWER_ASSEMBLER=off면 에이전트 원문(대조 실험용)
     draft_text, note, sources, a_in, a_out, verify_failures = result.final, None, [], 0, 0, []
-    if ASSEMBLER_ON and status != "FAILED":
-        d = await assemble.assemble(judgment.category, body.text, figures, ctx.chunks, m["needs_confirmation"], llm=_assembler_llm(llm),
-                                    agent_final=result.final, calc_error=calc_error, aborted=result.aborted, tax_year=body.tax_year)
+    if ASSEMBLER_ON:
+        # FAILED여도 숫자·상태 문장은 코드로 조립해 넘긴다 (LLM 설명만 빠짐). 남은 시간 안에 조립 LLM이 못 끝내면 코드 문장만.
+        asm_args = dict(agent_final=result.final, calc_error=calc_error, aborted=result.aborted, tax_year=body.tax_year)
+        code_only = lambda: assemble.assemble(judgment.category, body.text, figures, ctx.chunks, m["needs_confirmation"], llm=None, **asm_args)  # noqa: E731
+        if status == "FAILED":
+            d = await code_only()
+        else:
+            try:
+                d = await asyncio.wait_for(assemble.assemble(judgment.category, body.text, figures, ctx.chunks, m["needs_confirmation"],
+                                                             llm=_assembler_llm(llm), **asm_args), timeout=left())
+            except asyncio.TimeoutError:
+                status, reason, err = "FAILED", None, "E-TIMEOUT"
+                d = await code_only()
         draft_text, note, sources, a_in, a_out = d.customer_text, d.agent_note, d.sources, d.tokens_in, d.tokens_out
         # F07-5~8 사후 검증 — 숫자·출처·표현·길이. 하나라도 걸리면 AUTO로 못 나간다 (SCRUM-36)
         v = verify.verify(draft_text, figures, sources, d.facts.get("status_sentences"), raw_llm=d.llm_text)
@@ -171,6 +190,10 @@ async def handle_inquiry(body: InquiryRequest) -> tuple[InquiryResponse, react.A
             if status == "AUTO":
                 status, reason = "REVIEW", "VERIFY_FAILED"
             err = err or v.codes[0]
+        if err == "E-TIMEOUT":
+            n = len(result.steps)
+            last = next((st.tool for st in reversed(result.steps) if st.tool), None)
+            note = f"응답 시간 초과(E-TIMEOUT) — 스텝 {n}까지 진행(마지막 툴 {last or '없음'}). 숫자·상태 문장만 코드로 조립, 규정 설명은 직접 확인\n" + (note or "")
     resp = InquiryResponse(
         trace_id=trace_id, status=status, review_reason=reason, category=judgment.category,
         confidence=judgment.confidence, method=method, draft=draft_text, agent_note=note, figures=figures,
