@@ -38,7 +38,7 @@ MAX_CHARS = 800
 API = "https://www.law.go.kr/DRF"
 
 # 질문에 자주 나오는 말 → keywords (키워드 검색 스텁·하이브리드 검색의 BM25 보조)
-KEYWORDS = ["국외자산", "해외주식", "양도가액", "취득가액", "필요경비", "기준환율", "환율", "결제일", "수령일", "지급일", "기본공제",
+KEYWORDS = ["타 증권사", "이전", "입고", "국외자산", "해외주식", "양도가액", "취득가액", "필요경비", "기준환율", "환율", "결제일", "수령일", "지급일", "기본공제",
             "250만", "세율", "20", "지방소득세", "선입선출", "먼저 취득", "이동평균", "총평균", "통산", "손익", "결손금", "합산",
             "예정신고", "확정신고", "신고기한", "5월", "분할납부", "대체입고", "이체", "외국납부세액", "가산세", "기한후신고", "무신고"]
 
@@ -226,6 +226,34 @@ def raw_chunks(path: Path, law: str | None = None, doc_type: str | None = None) 
     return chunks
 
 
+def pdf_chunks(path: Path, m: dict) -> list[dict]:
+    """PDF(국세청 안내 책자 등) → 쪽 단위 chunk. 메타(source_url·effective_date)는 sources.json manual 항목에서.
+    쪽의 첫 줄을 제목으로 쓰고, 800자를 넘으면 문장 경계로 나눈다. 텍스트 층이 없는 스캔 PDF는 0개가 나온다."""
+    from pypdf import PdfReader
+    if not m.get("source_url") or not m.get("effective_date"):
+        raise SystemExit(f"{path.name}: sources.json manual 항목에 source_url·effective_date가 필요함")
+    pages = [(i, (pg.extract_text() or "").strip()) for i, pg in enumerate(PdfReader(str(path)).pages, 1)]
+    return pages_to_chunks(pages, m)
+
+
+def pages_to_chunks(pages: list[tuple[int, str]], m: dict) -> list[dict]:
+    chunks = []
+    for no, text in pages:
+        text = re.sub(r"[ \t]+", " ", text)
+        lines = [l.strip() for l in text.splitlines() if l.strip()]
+        if len(" ".join(lines)) < 40:  # 표지·빈 쪽
+            continue
+        title = lines[0][:60]
+        body = "\n".join(lines)
+        for i, part in enumerate(split_sentences(body, MAX_CHARS), 1):
+            cid = f"{m['law']}|p{no}|{i}"
+            chunks.append({"chunk_id": "c_" + hashlib.sha1(cid.encode()).hexdigest()[:10], "law": m["law"], "article": f"p.{no}",
+                           "clause": "", "part": i, "title": title, "doc_type": m["doc_type"],
+                           "effective_date": _ymd(m["effective_date"]), "source_url": f"{m['source_url']}#page={no}",
+                           "tax_year_scope": m.get("tax_year_scope"), "keywords": keywords_of(part), "text": part})
+    return chunks
+
+
 # ---------------- 검사 ----------------
 
 REQUIRED_QUESTIONS = {  # 수용 조건: 이 세 질문에 답하는 chunk가 각각 있어야 한다
@@ -300,7 +328,7 @@ def main() -> int:
             p = RAW / m["file"]
             if not p.exists():
                 print(f"건너뜀: raw/{m['file']} 없음 — {m['what']}"); continue
-            chunks += raw_chunks(p, m["law"], m["doc_type"])
+            chunks += pdf_chunks(p, m) if p.suffix.lower() == ".pdf" else raw_chunks(p, m["law"], m["doc_type"])
         known = {m["file"] for m in src["manual"]}
         for p in sorted(RAW.glob("*.txt")):  # API 대신 법령을 붙여 넣은 파일 등 (머리에 # law: / # doc_type:)
             if p.name not in known:

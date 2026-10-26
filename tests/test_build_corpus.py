@@ -90,3 +90,15 @@ def test_fx_question_matches_statute_wording():
     cs = [{"chunk_id": f"c{i}", "text": "x", "source_url": "u", "effective_date": "d"} for i in range(60)]
     cs[0]["text"] = "양도가액 및 필요경비를 수령하거나 지출한 날 현재 기준환율에 의하여 계산한다"
     assert not any("결제일 환율" in e for e in bc.check(cs))
+
+
+def test_pdf_pages_to_chunks():
+    m = {"law": "국세청 안내", "doc_type": "국세청안내", "source_url": "https://example/x.pdf", "effective_date": "2025-05-01",
+         "tax_year_scope": "2024 귀속"}
+    pages = [(1, "표지"), (2, "환율 적용\n양도가액은 양도대금을 수령한 날의 기준환율로 환산합니다.  취득가액도   같습니다."),
+             (3, "긴 쪽\n" + "문장입니다. " * 200)]
+    cs = bc.pages_to_chunks(pages, m)
+    assert [c["article"] for c in cs][:1] == ["p.2"] and cs[0]["title"] == "환율 적용"
+    assert cs[0]["source_url"].endswith("#page=2") and cs[0]["effective_date"] == "2025-05-01"
+    assert "취득가액도 같습니다" in cs[0]["text"]  # 공백 정리
+    assert len([c for c in cs if c["article"] == "p.3"]) >= 2 and all(len(c["text"]) <= bc.MAX_CHARS for c in cs)
