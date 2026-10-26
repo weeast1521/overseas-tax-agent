@@ -236,6 +236,13 @@ def pdf_chunks(path: Path, m: dict) -> list[dict]:
     return pages_to_chunks(pages, m)
 
 
+def _is_title(line: str) -> bool:
+    """쪽 번호('- 14 -'), 목차 점선('···· 3'), 숫자만 있는 줄은 제목이 아니다. 한글이 4자 이상인 첫 줄을 제목으로."""
+    if re.fullmatch(r"[-–\s]*\d+[-–\s]*", line) or re.search(r"[·.…]{4,}", line):
+        return False
+    return len(re.findall(r"[가-힣]", line)) >= 4
+
+
 def pages_to_chunks(pages: list[tuple[int, str]], m: dict) -> list[dict]:
     chunks = []
     for no, text in pages:
@@ -243,7 +250,7 @@ def pages_to_chunks(pages: list[tuple[int, str]], m: dict) -> list[dict]:
         lines = [l.strip() for l in text.splitlines() if l.strip()]
         if len(" ".join(lines)) < 40:  # 표지·빈 쪽
             continue
-        title = lines[0][:60]
+        title = next((l for l in lines if _is_title(l)), lines[0])[:60]
         body = "\n".join(lines)
         for i, part in enumerate(split_sentences(body, MAX_CHARS), 1):
             cid = f"{m['law']}|p{no}|{i}"

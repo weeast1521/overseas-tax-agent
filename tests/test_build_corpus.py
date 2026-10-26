@@ -102,3 +102,9 @@ def test_pdf_pages_to_chunks():
     assert cs[0]["source_url"].endswith("#page=2") and cs[0]["effective_date"] == "2025-05-01"
     assert "취득가액도 같습니다" in cs[0]["text"]  # 공백 정리
     assert len([c for c in cs if c["article"] == "p.3"]) >= 2 and all(len(c["text"]) <= bc.MAX_CHARS for c in cs)
+
+
+def test_pdf_title_skips_page_numbers_and_toc():
+    m = {"law": "x", "doc_type": "국세청안내", "source_url": "u", "effective_date": "2025-05-01"}
+    cs = bc.pages_to_chunks([(16, "- 14 -\nⅠ. 세금문제 ······················ 3\n해외주식 양도소득 계산 방법\n본문이 충분히 길게 이어지는 문장입니다.")], m)
+    assert cs[0]["title"] == "해외주식 양도소득 계산 방법"
