@@ -72,3 +72,19 @@ def test_check_flags_placeholder_missing_meta_and_required_questions():
     assert errs == ["'대체입고 취득가액'에 답하는 chunk 없음", "'결제일 환율'에 답하는 chunk 없음", "'250만원 공제'에 답하는 chunk 없음"]
     good[0]["text"] = "대체입고 주식의 취득가액"; good[1]["text"] = "결제일의 기준환율로 환산"; good[2]["text"] = "250만원을 공제"
     assert bc.check(good) == []
+
+
+def test_amendment_scope():
+    assert bc.last_amended("본문 <개정 2001.12.31, 2005.2.19>") == "2005-02-19"
+    assert bc.last_amended("본문 <신설 2024. 12. 31.> 다른 <개정 2019.12.31>") == "2024-12-31"
+    assert bc.last_amended("표시 없음") is None
+    assert bc.scope_of("2005-02-19", 2025) == "2025 귀속 동일(최종 개정 2005-02-19)"
+    assert bc.scope_of("2025-12-23", 2025).startswith("2025 귀속 확인 필요")
+    assert bc.scope_of(None, 2025).startswith("2025 귀속 확인 필요")
+
+
+def test_fx_question_matches_statute_wording():
+    """시행령 제178조의5는 '결제일'이라는 말 없이 '수령하거나 지출한 날 현재 … 기준환율'로 쓴다."""
+    cs = [{"chunk_id": f"c{i}", "text": "x", "source_url": "u", "effective_date": "d"} for i in range(60)]
+    cs[0]["text"] = "양도가액 및 필요경비를 수령하거나 지출한 날 현재 기준환율에 의하여 계산한다"
+    assert not any("결제일 환율" in e for e in bc.check(cs))

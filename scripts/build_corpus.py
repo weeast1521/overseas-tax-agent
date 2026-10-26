@@ -145,7 +145,25 @@ def _ymd(s: str | None) -> str | None:
     return f"{s[:4]}-{s[4:6]}-{s[6:8]}" if re.fullmatch(r"\d{8}", s) else (s or None)
 
 
-def law_chunks(law_name: str, doc_type: str, base: dict, arts: list[dict], source_url: str) -> list[dict]:
+_AMEND = re.compile(r"<(?:개정|신설|전문개정|본조신설|제목개정)\s*([^>]*)>")
+_DATE = re.compile(r"(\d{4})\.\s*(\d{1,2})\.\s*(\d{1,2})")
+
+
+def last_amended(text: str) -> str | None:
+    """원문 속 <개정 2001.12.31, 2005.2.19> 표시에서 가장 늦은 날짜. 없으면 None."""
+    dates = [f"{y}-{int(m):02d}-{int(d):02d}" for g in _AMEND.findall(text) for y, m, d in _DATE.findall(g)]
+    return max(dates) if dates else None
+
+
+def scope_of(amended: str | None, tax_year: int) -> str:
+    """2025 귀속에 이 문구가 그대로 적용됐는지. 현행 버전만 받을 수 있으므로(시행일 법령 API 없음) 개정 표시로 판단한다.
+    그 해 1월 1일 이후 개정이면 귀속연도 버전과 다를 수 있어 사람이 확인해야 한다. (공포일 기준이라 보수적)"""
+    if amended is None:
+        return f"{tax_year} 귀속 확인 필요(개정 표시 없음)"
+    return f"{tax_year} 귀속 동일(최종 개정 {amended})" if amended < f"{tax_year}-01-01" else f"{tax_year} 귀속 확인 필요({amended} 개정)"
+
+
+def law_chunks(law_name: str, doc_type: str, base: dict, arts: list[dict], source_url: str, tax_year: int = 2025) -> list[dict]:
     ef = _ymd(base.get("시행일자"))
     chunks = []
     for a in arts:
@@ -161,7 +179,8 @@ def law_chunks(law_name: str, doc_type: str, base: dict, arts: list[dict], sourc
                     "law": law_name, "article": a["article"], "clause": clause, "part": i, "title": a["title"],
                     "doc_type": doc_type, "effective_date": _ymd(a.get("ef")) or ef,
                     "source_url": source_url + "/" + urllib.parse.quote(a["article"]),
-                    "tax_year_scope": None, "keywords": keywords_of(text), "text": text,
+                    "amended_last": last_amended(text), "tax_year_scope": scope_of(last_amended(text), tax_year),
+                    "keywords": keywords_of(text), "text": text,
                 })
     return chunks
 
@@ -204,7 +223,8 @@ def raw_chunks(path: Path, law: str | None = None, doc_type: str | None = None) 
 
 REQUIRED_QUESTIONS = {  # 수용 조건: 이 세 질문에 답하는 chunk가 각각 있어야 한다
     "대체입고 취득가액": [["대체입고", "이체", "이관", "입고"], ["취득가액", "취득가", "매입가"]],
-    "결제일 환율": [["결제일", "수령일", "지급일", "수령한 날", "지급한 날"], ["환율", "기준환율", "환산"]],
+    # 법령 표현은 "수령하거나 지출한 날 현재 … 기준환율"(시행령 제178조의5) — 결제일이라는 말을 쓰지 않는다
+    "결제일 환율": [["결제일", "수령일", "지급일", "수령한 날", "지급한 날", "지출한 날", "수령하거나"], ["환율", "기준환율", "환산"]],
     "250만원 공제": [["250만", "2백50만", "2,500,000"], ["공제"]],
 }
 
@@ -291,9 +311,14 @@ def main() -> int:
         print(f"chunk {len(chunks)}개 → {OUT} ({', '.join(f'{t} {len(v)}' for t, v in by_type.items())})")
 
     if args.check or args.build:
-        errs = check(load_v1())
+        v1 = load_v1()
+        errs = check(v1)
         for e in errs:
             print("✗", e)
+        laws = [c for c in v1 if c["doc_type"] in ("법령", "시행령")]
+        review = sorted({(c["law"], c["article"], c.get("amended_last")) for c in laws if "확인 필요" in (c.get("tax_year_scope") or "")})
+        print(f"2025 귀속 동일 {sum('동일' in (c.get('tax_year_scope') or '') for c in laws)}/{len(laws)} 조각 · "
+              f"확인 필요 조문 {len(review)}개" + (": " + ", ".join(f"{l} {a}({d or '표시 없음'})" for l, a, d in review) if review else ""))
         print("검사 통과 ✓" if not errs else f"검사 실패 {len(errs)}건")
         return 1 if errs else 0
     return 0
