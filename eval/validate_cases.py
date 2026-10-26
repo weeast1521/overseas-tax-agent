@@ -91,9 +91,8 @@ def validate(cases: list[dict], trades_file: Path) -> tuple[list[str], list[str]
 
     # REG
     corpus_articles = set()
-    for p in sorted((ROOT / "data" / "corpus").glob("*.json")):
-        for ch in json.loads(p.read_text(encoding="utf-8")):
-            corpus_articles.add((ch["law"], ch["article"]))
+    for ch in repo.load_corpus():
+        corpus_articles.add((ch["law"], ch["article"]))
     missing_articles: Counter = Counter()
     for c in cases:
         if c["kind"] == "REG":

@@ -22,10 +22,21 @@ def load_trades(customer_id: int, tickers: list[str] | None = None) -> list[dict
     return [{k: v for k, v in r.items() if k != "customer_id"} for r in rows]
 
 
+def corpus_files() -> list[Path]:
+    """규정 코퍼스 파일. CORPUS_DIR > data/corpus/v1 (SCRUM-31 원문 수집본) > data/corpus/seed.json (자리표시 7개)."""
+    d = os.getenv("CORPUS_DIR")
+    if d:
+        return sorted(Path(d).glob("*.json"))
+    v1 = sorted((DATA / "corpus" / "v1").glob("*.json"))
+    return v1 or [DATA / "corpus" / "seed.json"]
+
+
+def load_corpus() -> list[dict]:
+    return [c for p in corpus_files() for c in json.loads(p.read_text(encoding="utf-8"))]
+
+
 def search_corpus(query: str, k: int = 5) -> list[dict]:
-    chunks = []
-    for p in sorted((DATA / "corpus").glob("*.json")):
-        chunks.extend(json.loads(p.read_text(encoding="utf-8")))
+    chunks = load_corpus()
     terms = [t for t in query.replace("·", " ").split() if len(t) > 1]
     scored = []
     for c in chunks:

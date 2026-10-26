@@ -221,11 +221,12 @@ def main_cli() -> int:
     out_dir = Path(args.out_dir); out_dir.mkdir(exist_ok=True)
     out = out_dir / f"{args.config}_{args.tag}.jsonl"
     _judge_base = importlib.import_module("app.judge.base")
+    repo = importlib.import_module("app.repo")
     meta = {
         "config": args.config, "tag": args.tag, "started_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "git_commit": git_commit(), "cases_file": str(Path(args.cases).relative_to(ROOT)) if Path(args.cases).is_relative_to(ROOT) else args.cases,
         "cases_hash": file_hash([Path(args.cases)]), "n_cases": len(cases),
-        "corpus_version": file_hash(list((ROOT / "data" / "corpus").glob("*.json"))),
+        "corpus_version": file_hash(repo.corpus_files()), "corpus_files": [str(p.relative_to(ROOT)) for p in repo.corpus_files()],
         "trades_file": os.environ["TRADES_FILE"], "trace_db": os.environ["TRACE_DB"],
         "judge_impl": os.environ["JUDGE_IMPL"], "judge_model": os.getenv("JUDGE_MODEL"),
         "llm_provider": os.environ["LLM_PROVIDER"], "llm_model": os.getenv("CLAUDE_MODEL") if os.environ["LLM_PROVIDER"] == "claude" else os.getenv("OLLAMA_MODEL"),

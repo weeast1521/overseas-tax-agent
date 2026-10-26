@@ -1,0 +1,74 @@
+"""SCRUM-31 청킹 — 법제처 API 응답 모양을 본뜬 가짜 JSON과 붙여 넣기 텍스트. 실제 법령 문구는 쓰지 않는다(맥에서 API로 받음)."""
+import importlib.util
+import json
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+spec = importlib.util.spec_from_file_location("build_corpus", ROOT / "scripts" / "build_corpus.py")
+bc = importlib.util.module_from_spec(spec); spec.loader.exec_module(bc)
+
+FAKE = {"법령": {
+    "기본정보": {"법령명_한글": "가상법", "시행일자": "20250101"},
+    "조문": {"조문단위": [
+        {"조문여부": "전문", "조문번호": "118", "조문내용": "제10절 국외자산 양도"},  # 장·절 제목 → 제외
+        {"조문여부": "조문", "조문번호": "118", "조문가지번호": "2", "조문제목": "가상 범위",
+         "조문내용": "제118조의2(가상 범위) 가상 머리말이다.",
+         "항": [{"항번호": "①", "항내용": "① 첫째 항이다.", "호": [{"호번호": "1.", "호내용": "1. 첫째 호"}, {"호내용": "2. 둘째 호"}]},
+               {"항번호": "②", "항내용": "② 대체입고된 주식의 취득가액은 원래 취득한 가액이다. " + "긴 문장이다. " * 150}]},
+        {"조문여부": "조문", "조문번호": "103", "조문제목": "가상 공제", "조문내용": "제103조(가상 공제) 연 250만원을 공제한다."},
+        {"조문여부": "조문", "조문번호": "200", "조문내용": "제200조(목록에 없음) 무시된다."},
+    ]}}}
+
+
+def test_parse_skips_headings_and_filters_articles():
+    base, arts = bc.parse_law_json(FAKE, "가상법", {"제118조의2", "제103조"})
+    assert base["시행일자"] == "20250101"
+    assert [a["article"] for a in arts] == ["제118조의2", "제103조"]
+    a = arts[0]
+    assert a["title"] == "가상 범위" and [c[0] for c in a["clauses"]] == ["①", "②"]
+    assert "1. 첫째 호" in a["clauses"][0][1] and "2. 둘째 호" in a["clauses"][0][1]  # 호가 항 본문에 붙음
+    assert arts[1]["clauses"] == []  # 항 없는 조문
+
+
+def test_chunks_have_meta_limits_and_context():
+    base, arts = bc.parse_law_json(FAKE, "가상법", None)
+    cs = bc.law_chunks("가상법", "법령", base, arts, "https://www.law.go.kr/법령/가상법")
+    assert all(c["source_url"].startswith("https://www.law.go.kr/") and c["effective_date"] == "2025-01-01" for c in cs)
+    assert all(len(c["text"]) <= bc.MAX_CHARS + 210 for c in cs)
+    long = [c for c in cs if c["article"] == "제118조의2" and c["clause"] == "②"]
+    assert len(long) >= 2 and [c["part"] for c in long] == list(range(1, len(long) + 1))  # 800자 넘으면 문장 경계로 나눔
+    assert all(c["text"].startswith("제118조의2(가상 범위)") for c in long)  # 조 머리를 각 chunk 앞에 붙여 맥락 유지
+    assert "대체입고" in long[0]["keywords"] and "취득가액" in long[0]["keywords"]
+    assert len({c["chunk_id"] for c in cs}) == len(cs)
+    one = [c for c in cs if c["article"] == "제103조"]
+    assert len(one) == 1 and "250만" in one[0]["text"]
+
+
+def test_raw_text_sections(tmp_path):
+    p = tmp_path / "nts_guide.txt"
+    p.write_text("# source_url: https://www.nts.go.kr/example\n# effective_date: 2025-05-01\n# tax_year_scope: 2024 귀속\n"
+                 "## 환율 기준\n양도가액은 대금을 수령한 날, 취득가액은 지급한 날의 기준환율로 환산합니다.\n\n## 빈 절\n", encoding="utf-8")
+    cs = bc.raw_chunks(p, "국세청 안내", "국세청안내")
+    assert len(cs) == 1 and cs[0]["article"] == "환율 기준" and cs[0]["tax_year_scope"] == "2024 귀속"
+    assert cs[0]["effective_date"] == "2025-05-01" and cs[0]["text"].startswith("환율 기준\n")
+
+
+def test_raw_text_requires_source(tmp_path):
+    p = tmp_path / "x.txt"
+    p.write_text("## 제목\n본문", encoding="utf-8")
+    try:
+        bc.raw_chunks(p, "x", "x")
+        assert False
+    except SystemExit as e:
+        assert "source_url" in str(e)
+
+
+def test_check_flags_placeholder_missing_meta_and_required_questions():
+    seed = json.loads((ROOT / "data" / "corpus" / "seed.json").read_text(encoding="utf-8"))
+    errs = bc.check(seed)
+    assert any("★" in e for e in errs) and any("< 60" in e for e in errs)
+    good = [{"chunk_id": f"c{i}", "text": "평범한 문장", "source_url": "u", "effective_date": "2025-01-01"} for i in range(60)]
+    errs = bc.check(good)
+    assert errs == ["'대체입고 취득가액'에 답하는 chunk 없음", "'결제일 환율'에 답하는 chunk 없음", "'250만원 공제'에 답하는 chunk 없음"]
+    good[0]["text"] = "대체입고 주식의 취득가액"; good[1]["text"] = "결제일의 기준환율로 환산"; good[2]["text"] = "250만원을 공제"
+    assert bc.check(good) == []
