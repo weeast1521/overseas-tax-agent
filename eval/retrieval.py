@@ -108,7 +108,7 @@ def evaluate(searcher, cases: list[dict], k: int, mode: str, rewrite: bool, judg
         t0 = time.perf_counter()
         from app.rag.search import dict_rewrite
         q = dict_rewrite(c["text"]) if expand else c["text"]
-        r = searcher.search(q, k=k, mode=mode, rewrite=rewrite)
+        r = searcher.search(q, k=k, mode=mode, rewrite=rewrite, expand=False)  # 확장은 위에서 명시적으로
         ms = (time.perf_counter() - t0) * 1000
         got = [keys_of(ch) for ch in r.chunks]
         first = next((i for i, g in enumerate(got, 1) if g & set(tg)), None)

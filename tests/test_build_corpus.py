@@ -121,3 +121,16 @@ def test_transfer_question_accepts_method_difference_explanation():
     cs[0]["text"] = "결제일 기준환율로 환산"; cs[1]["text"] = "250만원을 공제"
     cs[2]["text"] = "타사 해외주식 대체입고 시 입고 전 증권사가 이동평균법으로 산출한 양도소득금액과 선입선출법 기준 양도소득금액 간에 차이"
     assert bc.check(cs) == []
+
+
+def test_sections_split_on_headings_and_span_pages():
+    pages = [(5, "- 3 -\n□ 해외주식 양도소득세 과세대상\n" + "국외 증권시장에 상장된 주식을 양도하여 발생한 소득입니다. " * 4 +
+              "\n□ 양도시기와 취득시기\n원칙적으로 대금을 청산한 날이며"),
+             (6, "- 4 -\n결제일을 양도일로 봅니다. " * 9 + "\nQ1. 수수료도 필요경비인가요?\n" + "매도 수수료는 양도비로 필요경비에 해당합니다. " * 3)]
+    secs = bc.split_sections(pages)
+    assert [s["title"] for s in secs] == ["□ 해외주식 양도소득세 과세대상", "□ 양도시기와 취득시기", "Q1. 수수료도 필요경비인가요?"]
+    assert secs[1]["page"] == 5 and "결제일을 양도일로" in secs[1]["body"]  # 쪽을 넘어가는 소제목은 이어 붙임
+    m = {"law": "국세청", "doc_type": "국세청안내", "source_url": "u", "effective_date": "2025-05-01"}
+    cs = bc.sections_to_chunks(pages, m)
+    assert cs[2]["text"].startswith("Q1. 수수료도 필요경비인가요?") and cs[2]["source_url"] == "u#page=6"
+    assert all(len(c["text"]) <= bc.MAX_CHARS for c in cs)

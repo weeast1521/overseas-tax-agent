@@ -85,7 +85,7 @@ def test_article_query_hits_by_keyword():
 def test_hybrid_fuses_and_reports_scores(tmp_path):
     st, emb = make(tmp_path)
     s = search.HybridSearcher(CHUNKS, st, emb, weak_cos=0.0)
-    r = s.search("대체입고 양도소득금액 차이", k=3)
+    r = s.search("대체입고 양도소득금액 차이", k=3, expand=False)
     assert r.chunks[0]["chunk_id"] == "d" and r.chunks[0]["vec_score"] is not None and r.chunks[0]["kw_score"] is not None
     assert not r.weak and r.rewritten_query is None
 
@@ -93,7 +93,7 @@ def test_hybrid_fuses_and_reports_scores(tmp_path):
 def test_weak_query_rewritten_by_dictionary(tmp_path):
     st, emb = make(tmp_path)
     s = search.HybridSearcher(CHUNKS, st, emb, weak_cos=0.99)  # 일부러 높게 → 첫 검색은 약함
-    r = s.search("환율 언제 기준이에요", k=3)
+    r = s.search("환율 언제 기준이에요", k=3, expand=False)  # 약함 판정 → 사전 재작성 경로
     assert r.rewritten_query and "기준환율" in r.rewritten_query and r.rewrite_by == "dict"
     assert any(c["article"] == "제178조의5" for c in r.chunks)  # 수용 조건: 시행령 조문 포함
 
@@ -114,7 +114,7 @@ def test_registry_tool_uses_hybrid_and_fills_ctx(tmp_path, monkeypatch):
     assert set(out) == {"chunks", "rewritten_query", "rewrite_by", "weak"}
     assert out["chunks"] and ctx.chunks == out["chunks"]
     assert {c["article"] for c in out["chunks"][:3]} & {"제118조의4", "대체입고 Q&A"}  # 수용 조건: 재작성 없이 상위 3
-    assert out["rewritten_query"] is None
+    assert out["rewrite_by"] in (None, "expand")  # 사전 확장(기본)만, LLM 재작성 없음
 
 
 def test_no_index_falls_back_to_keyword_over_corpus():
@@ -151,3 +151,11 @@ def test_retrieval_judge_answer_at_k_and_cache(tmp_path, monkeypatch):
     assert FakeClient.calls == 1  # 캐시
     j.save()
     assert (tmp_path / "c.json").exists()
+
+
+def test_expansion_is_default_and_can_be_turned_off(monkeypatch):
+    s = search.HybridSearcher(CHUNKS)
+    r = s.search("환율 언제", k=2, mode="keyword")
+    assert r.rewrite_by == "expand" and "기준환율" in r.rewritten_query and r.chunks[0]["article"] == "제178조의5"
+    monkeypatch.setenv("EXPAND", "off")
+    assert s.search("환율 언제", k=2, mode="keyword").rewrite_by is None

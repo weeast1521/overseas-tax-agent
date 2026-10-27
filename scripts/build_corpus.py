@@ -233,7 +233,7 @@ def pdf_chunks(path: Path, m: dict) -> list[dict]:
     if not m.get("source_url") or not m.get("effective_date"):
         raise SystemExit(f"{path.name}: sources.json manual 항목에 source_url·effective_date가 필요함")
     pages = [(i, (pg.extract_text() or "").strip()) for i, pg in enumerate(PdfReader(str(path)).pages, 1)]
-    return pages_to_chunks(pages, m)
+    return sections_to_chunks(pages, m) if m.get("chunking") == "section" else pages_to_chunks(pages, m)
 
 
 def _is_title(line: str) -> bool:
@@ -258,6 +258,47 @@ def pages_to_chunks(pages: list[tuple[int, str]], m: dict) -> list[dict]:
                            "clause": "", "part": i, "title": title, "doc_type": m["doc_type"],
                            "effective_date": _ymd(m["effective_date"]), "source_url": f"{m['source_url']}#page={no}",
                            "tax_year_scope": m.get("tax_year_scope"), "keywords": keywords_of(part), "text": part})
+    return chunks
+
+
+# 소제목 표시: □ ■ ◆ ◇ ◈ ▶ ▣ 【 / Q·Q1·Q. / Ⅰ. Ⅱ. / 1. 2. (줄 첫머리, 뒤에 한글) / [제목]
+_HEADING = re.compile(r"^\s*(?:[□■◆◇◈▶▣◎●]|【|Q\s*\d*\s*[.:)]?\s|[ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩ]+\s*[.)]|\d{1,2}\s*[.)]\s*(?=[가-힣])|\[[^\]]{2,30}\]\s*$)")
+MIN_SECTION = 120  # 이보다 짧은 소제목 조각은 다음 소제목과 합친다 (제목만 있는 줄 방지)
+
+
+def split_sections(pages: list[tuple[int, str]]) -> list[dict]:
+    """쪽들을 이어 붙여 소제목 경계로 나눈다. 쪽 번호·목차 점선 줄은 버린다. 각 절은 시작 쪽을 기억한다."""
+    secs: list[dict] = []
+    cur = None
+    for no, text in pages:
+        for raw in text.splitlines():
+            line = re.sub(r"[ \t]+", " ", raw).strip()
+            if not line or re.fullmatch(r"[-–\s]*\d+[-–\s]*", line) or re.search(r"[·.…]{4,}", line):
+                continue
+            if _HEADING.match(line) and _is_title(line):
+                if cur is None or len(cur["body"]) >= MIN_SECTION:
+                    cur = {"page": no, "title": line[:60], "body": ""}
+                    secs.append(cur)
+                    continue
+                cur["title"] = (cur["title"] + " / " + line)[:60] if not cur["body"] else cur["title"]
+            if cur is None:
+                cur = {"page": no, "title": line[:60], "body": ""}
+                secs.append(cur)
+            cur["body"] += ("\n" if cur["body"] else "") + line
+    return [s for s in secs if len(re.sub(r"\s", "", s["body"])) >= 40]
+
+
+def sections_to_chunks(pages: list[tuple[int, str]], m: dict) -> list[dict]:
+    chunks = []
+    for si, sec in enumerate(split_sections(pages), 1):
+        for i, part in enumerate(split_sentences(sec["body"], MAX_CHARS - 60), 1):
+            cid = f"{m['law']}|s{si}|{i}"
+            text = f"{sec['title']}\n{part}"
+            chunks.append({"chunk_id": "c_" + hashlib.sha1(cid.encode()).hexdigest()[:10], "law": m["law"],
+                           "article": f"p.{sec['page']} {sec['title'][:30]}", "clause": "", "part": i, "title": sec["title"],
+                           "doc_type": m["doc_type"], "effective_date": _ymd(m["effective_date"]),
+                           "source_url": f"{m['source_url']}#page={sec['page']}", "tax_year_scope": m.get("tax_year_scope"),
+                           "keywords": keywords_of(text), "text": text})
     return chunks
 
 
@@ -312,9 +353,19 @@ def main() -> int:
     ap.add_argument("--build", action="store_true", help="raw → data/corpus/v1/*.json")
     ap.add_argument("--check", action="store_true")
     ap.add_argument("--ef-yd", help="이 날짜에 시행 중이던 버전 (기본: sources.json as_of_date)")
+    ap.add_argument("--preview-sections", help="PDF 파일명(raw/ 안) — 소제목 단위로 어떻게 잘리는지 제목·쪽·길이만 출력")
     args = ap.parse_args()
     src = json.loads((CORPUS / "sources.json").read_text(encoding="utf-8"))
     RAW.mkdir(parents=True, exist_ok=True)
+
+    if args.preview_sections:
+        from pypdf import PdfReader
+        pages = [(i, (pg.extract_text() or "").strip()) for i, pg in enumerate(PdfReader(str(RAW / args.preview_sections)).pages, 1)]
+        secs = split_sections(pages)
+        print(f"{len(pages)}쪽 → 소제목 {len(secs)}개 (쪽 단위였다면 {sum(1 for _, t in pages if len(t) >= 40)}개)")
+        for s_ in secs:
+            print(f"  p.{s_['page']:>2} {len(s_['body']):>4}자  {s_['title']}")
+        return 0
 
     if args.fetch:
         oc = os.getenv("LAW_OC")

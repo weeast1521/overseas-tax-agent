@@ -93,7 +93,17 @@ class HybridSearcher:
             return top_vec < self.weak_cos
         return all(r.get("kw_score") is None for r in results)
 
-    def search(self, query: str, k: int = 5, category: str | None = None, mode: str = "hybrid", rewrite: bool = True) -> SearchResult:
+    def search(self, query: str, k: int = 5, category: str | None = None, mode: str = "hybrid", rewrite: bool = True,
+               expand: bool | None = None) -> SearchResult:
+        # 항상 사전 확장 (EXPAND=on 기본). 10/27 REG 55: hit@3 38→51%, MRR 0.31→0.41 — 인용할 조문을 더 정확히 찾는다.
+        # 약함 판정 후 재작성은 벡터 1위 코사인이 적중 0.639 / 실패 0.666으로 구분력이 없어 거의 일어나지 않았다.
+        if expand is None:
+            expand = os.getenv("EXPAND", "on") != "off"
+        if expand:
+            q_exp = dict_rewrite(query)
+            if q_exp != query:
+                res, top = self._once(q_exp, k, category, mode)
+                return SearchResult(res, self.is_weak(res, top), rewritten_query=q_exp, rewrite_by="expand", top_vec=top)
         res, top = self._once(query, k, category, mode)
         weak = self.is_weak(res, top)
         if not (weak and rewrite):
