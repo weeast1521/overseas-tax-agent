@@ -9,7 +9,7 @@ from typing import Any, Literal
 from pydantic import BaseModel, Field
 
 Status = Literal["AUTO", "REVIEW", "REJECTED", "FAILED"]
-ReviewReason = Literal["LOW_CONFIDENCE", "METHOD_UNCONFIRMED", "TRANSFER_REVIEW", "VERIFY_FAILED", "AGENT_ABORTED"]
+ReviewReason = Literal["LOW_CONFIDENCE", "METHOD_UNCONFIRMED", "TRANSFER_REVIEW", "VERIFY_FAILED", "AGENT_ABORTED", "ASSEMBLER_TIMEOUT"]
 Method = Literal["FIFO", "AVG"]
 
 

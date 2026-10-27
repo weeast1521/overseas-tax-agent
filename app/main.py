@@ -240,9 +240,15 @@ async def handle_inquiry(body: InquiryRequest) -> tuple[InquiryResponse, react.A
                 d = await asyncio.wait_for(assemble.assemble(judgment.category, body.text, figures, ctx.chunks, m["needs_confirmation"],
                                                              llm=_assembler_llm(llm), **asm_args), timeout=left())
             except asyncio.TimeoutError:
-                status, reason, err = "FAILED", None, "E-TIMEOUT"
+                # 에이전트는 끝났고 숫자·상태·근거는 다 있다 — 빠진 건 LLM 설명 2문장뿐. FAILED 가 아니라 코드 문장만으로 내보내고,
+                # 자동 발송(AUTO)은 사람이 한 번 보게 REVIEW 로 내린다 (10/27 t2sql6: E-TIMEOUT 4건 전부 이 구간이었다)
+                err = "E-ASSEMBLE-TIMEOUT"
+                if status == "AUTO":
+                    status, reason = "REVIEW", "ASSEMBLER_TIMEOUT"
                 d = await code_only()
         draft_text, note, sources, a_in, a_out = d.customer_text, d.agent_note, d.sources, d.tokens_in, d.tokens_out
+        if err == "E-ASSEMBLE-TIMEOUT":
+            note = "조립기 시간 초과(E-ASSEMBLE-TIMEOUT) — 숫자·상태·근거 문장은 코드로 조립됨, LLM 설명 2문장만 생략. 그대로 안내 가능\n" + (note or "")
         phases["assembler"] = int((time.perf_counter() - t_asm) * 1000)
         # F07-5~8 사후 검증 — 숫자·출처·표현·길이. 하나라도 걸리면 AUTO로 못 나간다 (SCRUM-36)
         v = verify.verify(draft_text, figures, sources, d.facts.get("status_sentences"), raw_llm=d.llm_text)

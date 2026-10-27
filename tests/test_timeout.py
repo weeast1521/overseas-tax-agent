@@ -58,10 +58,11 @@ def test_agent_timeout_failed_with_partial_trace(monkeypatch):
 def test_assembler_timeout_falls_back_to_code_only(monkeypatch):
     resp, agent, took = _run(monkeypatch, SlowAfter(fast=3))  # 에이전트는 끝나고 조립 LLM에서 멈춤
     assert took < 1.5
-    assert resp.status == "FAILED" and resp.error_code == "E-TIMEOUT"
+    # 에이전트는 끝났으니 FAILED 가 아니다 — 코드 문장만으로 내보내고 AUTO 는 REVIEW/ASSEMBLER_TIMEOUT 로 (10/27)
+    assert resp.status == "REVIEW" and resp.review_reason == "ASSEMBLER_TIMEOUT" and resp.error_code == "E-ASSEMBLE-TIMEOUT"
     assert agent.final and agent.aborted is None and len(agent.steps) == 3
     assert f"{resp.figures['tax_krw']:,}원" in resp.draft and "먼저 산 주식부터 판 것으로 계산했습니다" not in resp.draft
-    assert "스텝 3까지" in resp.agent_note
+    assert "E-ASSEMBLE-TIMEOUT" in resp.agent_note
 
 
 def test_fast_path_unaffected(monkeypatch):
