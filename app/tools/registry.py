@@ -21,14 +21,15 @@ class ToolContext:
         self.method_override = method_override
         self.last_rows: list[dict] | None = None  # sql_query 결과 (tax_calc 입력)
         self.chunks: list[dict] = []
-        self.category: str | None = None  # Judge 유형 — reg_search가 유형별 문서 가중에 쓴다 (F06-8)  # reg_search가 돌려준 조문 누적 — 조립기(F07)의 인용 허용 집합. LLM 출력이 아니라 여기가 출처의 진실
+        self.category: str | None = None  # Judge 유형 — reg_search가 유형별 문서 가중에 쓴다 (F06-8)
+        self.llm = None  # sql_query 의 SQL 생성용 (F04-1). None 이면 템플릿  # reg_search가 돌려준 조문 누적 — 조립기(F07)의 인용 허용 집합. LLM 출력이 아니라 여기가 출처의 진실
 
 
 SPECS: dict[str, ToolSpec] = {
     "sql_query": ToolSpec(
         name="sql_query",
-        description="고객의 해외주식 체결·결제일·결제일 환율·수수료를 조회한다. 전 계좌(증권사 무관)에서 가져온다.",
-        input_schema={"type": "object", "properties": {"intent": {"type": "string", "description": "조회 의도 (자연어)"},
+        description="고객의 해외주식 체결·결제일·결제일 환율·수수료를 거래 DB에서 조회한다(전 계좌). 의도를 자연어로 주면 SQL을 만들어 읽기 전용으로 실행한다. 고객 범위는 시스템이 고정한다.",
+        input_schema={"type": "object", "properties": {"intent": {"type": "string", "description": "조회 의도 (자연어). 예: 2025년 테슬라 매도와 결제일 환율"},
                                                        "tickers": {"type": "array", "items": {"type": "string"}}},
                       "required": ["intent"]},
     ),
@@ -52,11 +53,12 @@ SPECS: dict[str, ToolSpec] = {
 
 
 async def _sql_query(args: dict, ctx: ToolContext) -> dict:
-    # 3일차: Text-to-SQL + sqlglot 검증 + DB 실행. 지금은 리포지토리에서 직접 읽는 스텁.
-    from app.repo import load_trades
-    rows = load_trades(ctx.customer_id, tickers=args.get("tickers"))
-    ctx.last_rows = rows
-    return {"row_count": len(rows), "rows": rows[:500], "truncated": len(rows) > 500}
+    """F04 Text-to-SQL (SCRUM-26·27). LLM 제안 → sqlglot 검사·고객 바인드 → 읽기 전용 실행. 거부 시 1회 재생성, 그래도 안 되면 E-SQL-GEN."""
+    from app.tools.sql_query import run_sql_query
+    out = await run_sql_query(ctx.llm, args.get("intent", ""), args.get("tickers"), ctx.customer_id, ctx.tax_year)
+    if "error" not in out:
+        ctx.last_rows = out["rows"]
+    return out
 
 
 async def _tax_calc(args: dict, ctx: ToolContext) -> dict:

@@ -8,6 +8,7 @@ results/
 .venv/
 data/trace.db
 data/method.db
+data/trade*.db
 # 코퍼스 원문: 법령 API 덤프는 크고 재생성 가능, 증권사 FAQ는 회사 저작물 → git 제외 (README만 커밋)
 data/corpus/raw/*
 !data/corpus/raw/README.md

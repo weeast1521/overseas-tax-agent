@@ -27,7 +27,8 @@
 | `app/importers/` | 미래에셋·나무 CSV 매퍼, T+2 결제일 보정, 환율 부착, 중복 제거. 실제 헤더 확인 전 |
 | `app/agent/react.py` | ReAct 루프. MAX_STEPS 8, E-LOOP, E-TOOL-FAIL, E-TOOL-ORDER, E-LLM-FORMAT |
 | `app/llm/`, `app/judge/` | `LLMClient`·`Judge` Protocol. Claude/Ollama, Rule/Claude 구현체. 환경변수로 교체 |
-| `app/tools/registry.py` | tax_calc 연결(요약 우선 응답). sql_query·reg_search는 파일 스텁 |
+| `app/tools/registry.py` | tax_calc 연결(요약 우선 응답). sql_query → Text-to-SQL, reg_search → 하이브리드 검색 |
+| `app/tools/sql_guard.py`, `sql_exec.py`, `sql_query.py` | F04 Text-to-SQL. 아래 "거래 조회 보안" 절 |
 | `app/repo.py` | 증권사별 방식 테이블, 계좌별 방식 결정 |
 | `app/main.py` | `POST /v1/inquiries`, `POST /v1/tools/tax_calc`, `/healthz` |
 
@@ -40,6 +41,22 @@ python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 cp .env.example .env
 make test
+```
+
+## 거래 조회 보안 (F04 Text-to-SQL, SCRUM-26·27)
+
+에이전트가 자연어 의도로 `sql_query`를 부르면 LLM이 SQL을 제안하고, 세 겹을 통과해야 실행된다.
+
+| 겹 | 모듈 | 하는 일 | 실패 코드 |
+| --- | --- | --- | --- |
+| 1 검사 | `sql_guard.validate` (sqlglot) | SELECT 한 문장만 · 허용 테이블 5개(trade/account/customer/fx_rate/settlement_daily) · DML/DDL/다중문/위험 함수 거부 · `customer_id = 숫자` 리터럴 거부 · LIMIT 500 강제 | `E-SQL-SCOPE` + 사유(MULTI_STATEMENT/PARSE/NOT_SELECT/WRITE_OR_DDL/FORBIDDEN_FUNC/TABLE_NOT_ALLOWED/NO_CUSTOMER_TABLE/CUSTOMER_LITERAL) |
+| 2 바인드 | `sql_guard.bind_customer` | 고객 열이 있는 모든 테이블을 `(SELECT * FROM t WHERE customer_id = :customer_id)` 로 감싼다. LLM 이 어떤 고객을 적든 세션 고객만 조회 | — |
+| 3 실행 | `sql_exec` | SQLite `mode=ro` + `PRAGMA query_only` (파서를 우회해도 DB가 거부) · 5초 초과 중단 · 500행 상한. PostgreSQL 은 읽기 전용 계정 `tax_ro`(`db/readonly_user.sql`, statement_timeout 5s) | `E-SQL-EXEC` |
+
+거부되면 사유를 붙여 1회 재생성(F04-7), 그래도 거부면 `E-SQL-GEN`. 평가 구성(stub LLM)과 테스트는 `TEMPLATES`의 결정론 SQL을 쓴다. 테스트 19건 `tests/test_sql_guard.py` — 악의 8종 사유 코드 구분, 다른 고객 시도 → 세션 고객만, INSERT는 DB 단계 거부, 느린 쿼리 → 시간 초과.
+
+```bash
+python scripts/load_trade_db.py --src data/mine/trades.json   # 선택: 파일 DB(읽기 전용). 없으면 TRADES_FILE 로 메모리 DB
 ```
 
 ## 내 데이터로 검증

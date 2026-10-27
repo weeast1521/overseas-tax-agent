@@ -195,6 +195,7 @@ async def handle_inquiry(body: InquiryRequest) -> tuple[InquiryResponse, react.A
     llm = _llm()
     ctx = registry.ToolContext(body.customer_id, body.tax_year, body.method_override)
     ctx.category = judgment.category
+    ctx.llm = llm  # sql_query 가 SQL 생성에 쓴다
     # F01-6 동기 타임아웃 (SCRUM-19). 마감은 접수 시각 기준 — Judge 시간도 포함한다.
     # 취소 안전성: 에이전트 경로는 읽기 전용(sql_query·tax_calc·reg_search)이고 trace는 응답 직전에 한 번 쓰므로 열린 트랜잭션이 없다.
     deadline = t0 + float(os.getenv("SYNC_TIMEOUT_SEC", "30"))
