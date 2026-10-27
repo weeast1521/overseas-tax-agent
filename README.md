@@ -53,7 +53,7 @@ make test
 | 2 바인드 | `sql_guard.bind_customer` | 고객 열이 있는 모든 테이블을 `(SELECT * FROM t WHERE customer_id = :customer_id)` 로 감싼다. LLM 이 어떤 고객을 적든 세션 고객만 조회 | — |
 | 3 실행 | `sql_exec` | SQLite `mode=ro` + `PRAGMA query_only` (파서를 우회해도 DB가 거부) · 5초 초과 중단 · 500행 상한. PostgreSQL 은 읽기 전용 계정 `tax_ro`(`db/readonly_user.sql`, statement_timeout 5s) | `E-SQL-EXEC` |
 
-거부되면 사유를 붙여 1회 재생성(F04-7), 그래도 거부면 `E-SQL-GEN`. 평가 구성(stub LLM)과 테스트는 `TEMPLATES`의 결정론 SQL을 쓴다. 테스트 19건 `tests/test_sql_guard.py` — 악의 8종 사유 코드 구분, 다른 고객 시도 → 세션 고객만, INSERT는 DB 단계 거부, 느린 쿼리 → 시간 초과.
+거부되면 사유를 붙여 1회 재생성(F04-7), 그래도 거부면 `E-SQL-GEN`. 생성 경로는 `SQL_GEN=auto`: 표준 의도(전 거래 조회·종목 필터 — tax_calc 입력)는 템플릿(0ms·결정론), 집계·기간 조건이 섞인 의도만 LLM(Haiku, `SQL_MODEL`). 10/27 측정: Haiku 생성 3.6초가 30초 예산을 넘기는 결정타였고 에이전트 의도의 대부분이 표준형이었다(`scripts/show_latency.py`). 평가 구성(stub LLM)과 테스트는 `TEMPLATES`의 결정론 SQL을 쓴다. 테스트 19건 `tests/test_sql_guard.py` — 악의 8종 사유 코드 구분, 다른 고객 시도 → 세션 고객만, INSERT는 DB 단계 거부, 느린 쿼리 → 시간 초과.
 
 ```bash
 python scripts/load_trade_db.py --src data/mine/trades.json   # 선택: 파일 DB(읽기 전용). 없으면 TRADES_FILE 로 메모리 DB

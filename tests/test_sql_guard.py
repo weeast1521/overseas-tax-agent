@@ -117,7 +117,23 @@ class ClaudeLike:
         return Completion(text=self.answers.pop(0))
 
 
-def test_llm_sql_rejected_then_regenerated_once():
+@pytest.fixture
+def _llm_always(monkeypatch):
+    monkeypatch.setenv("SQL_GEN", "always")
+
+
+def test_standard_intent_uses_template_without_llm():
+    assert sql_query.is_standard_intent("2025년 전 계좌 해외주식 매도·매수 체결, 결제일 환율, 수수료, 이체 내역")
+    assert not sql_query.is_standard_intent("계좌별 매도 건수 합계")
+    llm = ClaudeLike([])  # 호출되면 pop 에서 IndexError
+    out = asyncio.run(sql_query.run_sql_query(llm, "2025년 엔비디아 매도와 결제일 환율", ["NVDA"], 2001, 2025))
+    assert out["generated_by"] == "template" and llm.prompts == [] and "NVDA" in out["sql"]
+    llm2 = ClaudeLike(["SELECT account_id, COUNT(*) AS n FROM trade WHERE customer_id = :customer_id AND side = 'SELL' GROUP BY account_id"])
+    out2 = asyncio.run(sql_query.run_sql_query(llm2, "계좌별 매도 건수 합계", None, 2001, 2025))
+    assert out2["generated_by"] == "llm" and len(llm2.prompts) == 1
+
+
+def test_llm_sql_rejected_then_regenerated_once(_llm_always):
     llm = ClaudeLike(["```sql\nSELECT * FROM trade WHERE customer_id = 1042 AND ticker='TSLA'\n```",
                       "SELECT * FROM trade WHERE customer_id = :customer_id AND ticker = 'TSLA'"])
     out = asyncio.run(sql_query.run_sql_query(llm, "테슬라 거래", None, 2001, 2025))
@@ -126,7 +142,7 @@ def test_llm_sql_rejected_then_regenerated_once():
     assert all(r["customer_id"] == 2001 and r["ticker"] == "TSLA" for r in out["rows"])
 
 
-def test_llm_rejected_twice_is_E_SQL_GEN():
+def test_llm_rejected_twice_is_E_SQL_GEN(_llm_always):
     llm = ClaudeLike(["DROP TABLE trade", "SELECT * FROM users"])
     out = asyncio.run(sql_query.run_sql_query(llm, "x", None, 2001, 2025))
     assert out["error"] == "E-SQL-GEN" and [a["rejected"] for a in out["attempts"]] == ["NOT_SELECT", "TABLE_NOT_ALLOWED"]

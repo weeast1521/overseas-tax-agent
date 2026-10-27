@@ -100,6 +100,16 @@ def template_sql(intent: str, tickers: list[str] | None, tax_year: int | None) -
     return sql
 
 
+# SQL_GEN: auto(기본) — 표준 의도(전 거래 조회, 종목 필터)는 템플릿(0ms·결정론), 집계·기간·조건이 섞인 의도만 LLM | always — 항상 LLM | never — 항상 템플릿
+# 10/27 t2sql5: Haiku 생성 3.6초가 30초 예산을 넘기는 결정타였고, 에이전트 의도의 대부분은 "전 계좌 전체 거래 + 환율" 표준형이었다.
+_NONSTANDARD = re.compile(r"집계|합계|건수|평균|총액|월별|분기|연도별|이후|이전|제외|이상|이하|초과|미만|상위|최근|최대|최소|순위|비교|GROUP|SUM|COUNT|AVG", re.I)
+
+
+def is_standard_intent(intent: str) -> bool:
+    """tax_calc 입력용 표준 조회인가 — 비표준 어휘(집계·기간 조건)가 없으면 표준."""
+    return not _NONSTANDARD.search(intent or "")
+
+
 def _strip(text: str) -> str:
     text = re.sub(r"```(?:sql)?", "", text or "", flags=re.I).strip()
     m = re.search(r"(SELECT|WITH)\b.*", text, re.I | re.S)
@@ -110,6 +120,9 @@ async def generate_sql(llm: LLMClient | None, intent: str, tickers: list[str] | 
                        reject_reason: str | None = None) -> tuple[str, str]:
     """(sql, how) — how: llm | llm-retry | template. LLM이 없거나 빈 답이면 템플릿."""
     if llm is None or getattr(llm, "name", "") not in ("claude", "ollama"):  # 실제 LLM 제공자만. 대본·가짜 LLM은 템플릿
+        return template_sql(intent, tickers, tax_year), "template"
+    mode = os.getenv("SQL_GEN", "auto")
+    if mode == "never" or (mode == "auto" and reject_reason is None and is_standard_intent(intent)):
         return template_sql(intent, tickers, tax_year), "template"
     shots = "\n".join(f"의도: {i}\nSQL: {s}" for i, s in FEWSHOT)  # 시스템 프롬프트는 매 호출 동일 → 프롬프트 캐시 대상
     hint = f"\n(과세연도 {tax_year})" if tax_year else ""
