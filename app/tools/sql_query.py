@@ -111,7 +111,7 @@ async def generate_sql(llm: LLMClient | None, intent: str, tickers: list[str] | 
     """(sql, how) — how: llm | llm-retry | template. LLM이 없거나 빈 답이면 템플릿."""
     if llm is None or getattr(llm, "name", "") not in ("claude", "ollama"):  # 실제 LLM 제공자만. 대본·가짜 LLM은 템플릿
         return template_sql(intent, tickers, tax_year), "template"
-    shots = "\n".join(f"의도: {i}\nSQL: {s}" for i, s in FEWSHOT)
+    shots = "\n".join(f"의도: {i}\nSQL: {s}" for i, s in FEWSHOT)  # 시스템 프롬프트는 매 호출 동일 → 프롬프트 캐시 대상
     hint = f"\n(과세연도 {tax_year})" if tax_year else ""
     hint += f"\n(종목: {', '.join(tickers)})" if tickers else ""
     msgs = [Message(role="system", content=SCHEMA_DOC + "\n\n예시:\n" + shots),

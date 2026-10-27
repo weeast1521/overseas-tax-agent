@@ -9,6 +9,7 @@ POST /v1/inquiries 처리 흐름 (명세서 F01):
 from __future__ import annotations
 
 import asyncio
+import json
 import os
 import time
 import uuid
@@ -51,13 +52,13 @@ def _assembler_llm(agent_llm):
     return ClaudeClient(model=name)
 
 
-def _sub_llm(agent_llm, env: str, default: str):
+def _sub_llm(agent_llm, env: str, default: str, max_tokens: int | None = None):
     """보조 LLM (SQL 생성 등). 'same'이면 에이전트와 같은 LLM. Claude 가 아닌 제공자(ollama·stub)는 그대로."""
     name = os.getenv(env, default)
     if name == "same" or getattr(agent_llm, "name", "") != "claude" or name == getattr(agent_llm, "model", None):
         return agent_llm
     from app.llm.claude_client import ClaudeClient
-    return ClaudeClient(model=name)
+    return ClaudeClient(model=name, max_tokens=max_tokens)
 
 
 def _trace_id() -> str:
@@ -156,15 +157,16 @@ def decide_status(gate: str, needs_confirmation: list[str], figures: dict | None
     return "AUTO", None, None
 
 
-def _record(body: InquiryRequest, resp: InquiryResponse, result: react.AgentResult | None, judge, llm, gate: str | None) -> None:
-    """F03-6: 판단·스텝·결과를 agent_trace에 남긴다. 실패해도 응답은 그대로 나간다."""
+def _record(body: InquiryRequest, resp: InquiryResponse, result: react.AgentResult | None, judge, llm, gate: str | None,
+            phases: dict | None = None) -> None:
+    """F03-6: 판단·스텝·결과를 agent_trace에 남긴다. 실패해도 응답은 그대로 나간다. phases = 구간별 ms (judge/agent_llm/agent_tools/assembler)."""
     trace.save_safely({
         "trace_id": resp.trace_id, "customer_id": body.customer_id, "tax_year": body.tax_year, "inquiry_text": body.text,
         "category": resp.category, "confidence": resp.confidence, "gate": gate, "status": resp.status,
         "review_reason": resp.review_reason, "error_code": resp.error_code, "aborted": result.aborted if result else None,
         "judge_name": getattr(judge, "name", None), "llm_name": getattr(llm, "name", None), "llm_model": getattr(llm, "model", None),
         "steps": resp.steps, "tokens_in": resp.tokens_in, "tokens_out": resp.tokens_out, "latency_ms": resp.latency_ms,
-        "final_text": resp.draft,
+        "final_text": resp.draft, "phases_json": json.dumps(phases) if phases else None,
     }, trace.steps_from_agent(result))
 
 
@@ -185,6 +187,7 @@ async def handle_inquiry(body: InquiryRequest) -> tuple[InquiryResponse, react.A
         _record(body, resp, None, judge, None, None)
         return resp, None
 
+    phases = {"judge": ms()}
     gate = judgment.gate()
     if gate in ("REJECTED", "REVIEW"):
         resp = InquiryResponse(trace_id=trace_id, status=gate, review_reason="LOW_CONFIDENCE" if gate == "REVIEW" else None,
@@ -205,16 +208,20 @@ async def handle_inquiry(body: InquiryRequest) -> tuple[InquiryResponse, react.A
     ctx = registry.ToolContext(body.customer_id, body.tax_year, body.method_override)
     ctx.category = judgment.category
     # sql_query 의 SQL 생성용. 단순 SELECT 한 줄이라 Haiku 로 충분 — Opus 로 하면 호출당 10초 이상 걸려 E-TIMEOUT 이 19/30 (10/27 t2sql2)
-    ctx.llm = _sub_llm(llm, "SQL_MODEL", "claude-haiku-5-5")
+    ctx.llm = _sub_llm(llm, "SQL_MODEL", "claude-haiku-5-5", max_tokens=400)
     # F01-6 동기 타임아웃 (SCRUM-19). 마감은 접수 시각 기준 — Judge 시간도 포함한다.
     # 취소 안전성: 에이전트 경로는 읽기 전용(sql_query·tax_calc·reg_search)이고 trace는 응답 직전에 한 번 쓰므로 열린 트랜잭션이 없다.
     deadline = t0 + float(os.getenv("SYNC_TIMEOUT_SEC", "30"))
     left = lambda: max(0.05, deadline - time.perf_counter())  # noqa: E731
     result = react.AgentResult()  # 타임아웃으로 취소돼도 여기에 쌓인 스텝은 남는다
+    t_agent = time.perf_counter()
     try:
         await asyncio.wait_for(react.run(body.text, judgment, llm, ctx, res=result), timeout=left())
     except asyncio.TimeoutError:
         result.aborted = "E-TIMEOUT"
+    phases["agent"] = int((time.perf_counter() - t_agent) * 1000)
+    phases["agent_llm"] = sum(st.latency_ms for st in result.steps)
+    phases["agent_tools"] = {st.tool: st.tool_ms for st in result.steps if st.tool}
 
     status, reason, err = decide_status(gate, m["needs_confirmation"], figures, result.aborted, calc_error)
 
@@ -224,6 +231,7 @@ async def handle_inquiry(body: InquiryRequest) -> tuple[InquiryResponse, react.A
         # FAILED여도 숫자·상태 문장은 코드로 조립해 넘긴다 (LLM 설명만 빠짐). 남은 시간 안에 조립 LLM이 못 끝내면 코드 문장만.
         asm_args = dict(agent_final=result.final, calc_error=calc_error, aborted=result.aborted, tax_year=body.tax_year,
                         method_info={**m, "override": body.method_override})
+        t_asm = time.perf_counter()
         code_only = lambda: assemble.assemble(judgment.category, body.text, figures, ctx.chunks, m["needs_confirmation"], llm=None, **asm_args)  # noqa: E731
         if status == "FAILED":
             d = await code_only()
@@ -235,6 +243,7 @@ async def handle_inquiry(body: InquiryRequest) -> tuple[InquiryResponse, react.A
                 status, reason, err = "FAILED", None, "E-TIMEOUT"
                 d = await code_only()
         draft_text, note, sources, a_in, a_out = d.customer_text, d.agent_note, d.sources, d.tokens_in, d.tokens_out
+        phases["assembler"] = int((time.perf_counter() - t_asm) * 1000)
         # F07-5~8 사후 검증 — 숫자·출처·표현·길이. 하나라도 걸리면 AUTO로 못 나간다 (SCRUM-36)
         v = verify.verify(draft_text, figures, sources, d.facts.get("status_sentences"), raw_llm=d.llm_text)
         if not v.ok:
@@ -254,7 +263,8 @@ async def handle_inquiry(body: InquiryRequest) -> tuple[InquiryResponse, react.A
         tokens_in=sum(st.in_tokens for st in result.steps) + a_in, tokens_out=sum(st.out_tokens for st in result.steps) + a_out,
         error_code=err,
     )
-    _record(body, resp, result, judge, llm, gate)
+    phases["total"] = resp.latency_ms
+    _record(body, resp, result, judge, llm, gate, phases)
     return resp, result
 
 

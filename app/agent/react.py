@@ -61,6 +61,7 @@ class Step:
     out_tokens: int = 0
     error_code: str | None = None
     off_plan: bool = False
+    tool_ms: int = 0  # 툴 실행 시간 (latency_ms 는 LLM 응답 시간)
 
 
 @dataclass
@@ -118,12 +119,14 @@ async def run(inquiry: str, judgment: Judgment, llm: LLMClient, ctx: registry.To
             res.aborted = "E-LOOP"
             return res
 
+        t1 = time.perf_counter()
         obs = await registry.invoke(call.name, call.args, ctx)
+        tool_ms = int((time.perf_counter() - t1) * 1000)
         obs_text = json.dumps(obs, ensure_ascii=False, default=str)[:2000]
         err = obs.get("error")
         fails[call.name] = fails.get(call.name, 0) + 1 if err else 0
         res.steps.append(Step(step_no, reply.text, call.name, call.args, obs_text, lat, reply.in_tokens, reply.out_tokens,
-                              err, off_plan=call.name not in judgment.required_tools))
+                              err, off_plan=call.name not in judgment.required_tools, tool_ms=tool_ms))
         if fails[call.name] >= 2:
             res.aborted = "E-TOOL-FAIL"
             return res

@@ -59,7 +59,9 @@ CREATE TABLE IF NOT EXISTS agent_step (
 );
 """
 
-STEP_COLS = ["step_no", "thought", "tool", "args_json", "observation", "latency_ms", "in_tokens", "out_tokens", "error_code", "off_plan"]
+STEP_COLS = ["step_no", "thought", "tool", "args_json", "observation", "latency_ms", "in_tokens", "out_tokens", "error_code", "off_plan", "tool_ms"]
+# 기존 DB 호환: 없는 열은 열어볼 때 추가
+_MIGRATIONS = [("agent_step", "tool_ms", "INTEGER NOT NULL DEFAULT 0"), ("agent_trace", "phases_json", "TEXT")]
 
 
 class TraceStore(Protocol):
@@ -78,20 +80,23 @@ class SQLiteTraceStore:
         self._conn.row_factory = sqlite3.Row
         with self._conn:
             self._conn.executescript(DDL)
+            for table, col, typ in _MIGRATIONS:
+                if col not in {r[1] for r in self._conn.execute(f"PRAGMA table_info({table})")}:
+                    self._conn.execute(f"ALTER TABLE {table} ADD COLUMN {col} {typ}")
 
     def save(self, header: dict[str, Any], steps: list[dict[str, Any]]) -> None:
         h = {**header}
         h.setdefault("created_at", datetime.now(timezone.utc).isoformat(timespec="seconds"))
         cols = ["trace_id", "created_at", "customer_id", "tax_year", "inquiry_text", "category", "confidence", "gate", "status",
                 "review_reason", "error_code", "aborted", "judge_name", "llm_name", "llm_model", "steps", "tokens_in", "tokens_out",
-                "latency_ms", "final_text"]
+                "latency_ms", "final_text", "phases_json"]
         with self._lock, self._conn:
             self._conn.execute(f"INSERT OR REPLACE INTO agent_trace ({','.join(cols)}) VALUES ({','.join('?' * len(cols))})",
                                [h.get(c) for c in cols])
             self._conn.execute("DELETE FROM agent_step WHERE trace_id = ?", (h["trace_id"],))
             self._conn.executemany(
                 f"INSERT INTO agent_step (trace_id,{','.join(STEP_COLS)}) VALUES (?,{','.join('?' * len(STEP_COLS))})",
-                [[h["trace_id"]] + [s.get(c) for c in STEP_COLS] for s in steps])
+                [[h["trace_id"]] + [s.get(c, 0 if c == "tool_ms" else None) for c in STEP_COLS] for s in steps])
 
     def get(self, trace_id: str) -> dict[str, Any] | None:
         with self._lock:
@@ -128,7 +133,7 @@ def steps_from_agent(result: Any) -> list[dict[str, Any]]:
         "step_no": st.step_no, "thought": st.thought, "tool": st.tool,
         "args_json": json.dumps(st.args, ensure_ascii=False) if st.args is not None else None,
         "observation": st.observation, "latency_ms": st.latency_ms, "in_tokens": st.in_tokens, "out_tokens": st.out_tokens,
-        "error_code": st.error_code, "off_plan": int(bool(st.off_plan)),
+        "error_code": st.error_code, "off_plan": int(bool(st.off_plan)), "tool_ms": getattr(st, "tool_ms", 0),
     } for st in (result.steps if result else [])]
 
 

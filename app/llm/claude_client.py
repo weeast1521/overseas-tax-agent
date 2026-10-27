@@ -63,6 +63,8 @@ class ClaudeClient:
 
     async def complete(self, messages: list[Message], tools: list[ToolSpec]) -> Completion:
         req = self.to_anthropic(messages, tools)
+        if req["system"]:  # 프롬프트 캐시: 시스템 프롬프트(스키마·few-shot·ReAct 지침)는 호출마다 같다 → 캐시 읽기로 TTFT·입력 비용 절감
+            req["system"] = [{"type": "text", "text": req["system"], "cache_control": {"type": "ephemeral"}}]
         resp = await self.client.messages.create(model=self.model, max_tokens=self.max_tokens, **req)
         text, call = None, None
         for block in resp.content:
