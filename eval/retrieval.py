@@ -96,26 +96,33 @@ class Judge:
         self.path.write_text(json.dumps(self.cache, ensure_ascii=False), encoding="utf-8")
 
 
-def evaluate(searcher, cases: list[dict], k: int, mode: str, rewrite: bool, judge: "Judge | None" = None) -> dict:
+CUTS = (1, 3, 5, 10, 20)
+
+
+def evaluate(searcher, cases: list[dict], k: int, mode: str, rewrite: bool, judge: "Judge | None" = None, expand: bool = False) -> dict:
     rows, unanswerable = [], []
     for c in cases:
         tg = targets(c["expected"]["articles"], searcher.chunks)
         if not tg:
             unanswerable.append(c["case_id"]); continue
         t0 = time.perf_counter()
-        r = searcher.search(c["text"], k=k, mode=mode, rewrite=rewrite)
+        from app.rag.search import dict_rewrite
+        q = dict_rewrite(c["text"]) if expand else c["text"]
+        r = searcher.search(q, k=k, mode=mode, rewrite=rewrite)
         ms = (time.perf_counter() - t0) * 1000
         got = [keys_of(ch) for ch in r.chunks]
         first = next((i for i, g in enumerate(got, 1) if g & set(tg)), None)
         found = {t for t in tg if any(t in g for g in got)}
         js = judge.scores(c, r.chunks) if judge else None
+        first_answer = next((i for i, v in enumerate(js, 1) if v == 2), None) if js else None
         rows.append({"case_id": c["case_id"], "hit": first is not None, "rr": 1 / first if first else 0.0, "judge": js,
-                     "answer": (max(js) == 2) if js else None, "relevant": (max(js) >= 1) if js else None,
+                     "answer": (max(js) == 2) if js else None, "first_answer": first_answer, "relevant": (max(js) >= 1) if js else None,
                      "recall": len(found) / len(tg), "weak": r.weak, "rewritten": r.rewritten_query, "ms": ms,
                      "top_vec": r.top_vec, "text": c["text"], "want": tg, "got": [f"{ch['law']} {ch['article']}" for ch in r.chunks]})
     n = len(rows)
     judged = [r for r in rows if r["judge"] is not None]
-    return {"mode": mode + ("+재작성" if rewrite else ""), "n": n, "unanswerable": unanswerable,
+    curve = {j: sum(1 for r in judged if r["first_answer"] and r["first_answer"] <= j) / len(judged) for j in CUTS if j <= k} if judged else {}
+    return {"mode": mode + ("+재작성" if rewrite else "") + ("+사전확장" if expand else ""), "n": n, "unanswerable": unanswerable, "curve": curve,
             "answer": (sum(r["answer"] for r in judged) / len(judged)) if judged else None,
             "relevant": (sum(r["relevant"] for r in judged) / len(judged)) if judged else None,
             "hit": sum(r["hit"] for r in rows) / n, "recall": statistics.mean(r["recall"] for r in rows),
@@ -131,6 +138,8 @@ def main() -> int:
     ap.add_argument("--show-misses", type=int, default=12)
     ap.add_argument("--judge", action="store_true", help="answer@k를 LLM으로 판정 (ANTHROPIC_API_KEY, 약 $0.3)")
     ap.add_argument("--judge-model", default="claude-sonnet-5-5")
+    ap.add_argument("--modes", default="keyword,vector,hybrid,hybrid+rewrite,hybrid+expand",
+                    help="비교할 방식(쉼표). 상위 20 판정은 비용이 커서 --k 20 --modes hybrid 처럼 좁혀서")
     args = ap.parse_args()
     os.environ["REWRITE"] = args.rewrite
     from app.rag import search
@@ -141,10 +150,15 @@ def main() -> int:
     meta = s.store.active() if has_vec else None
     print(f"\n# 검색 평가 — REG {len(cases)}문항, k={args.k}, 색인 {meta['version'] + ' ' + meta['model'] if meta else '없음(키워드만)'}, "
           f"조각 {len(s.chunks)}, 재작성 {args.rewrite}, WEAK_COS {s.weak_cos}\n")
-    configs = [("keyword", False)] + ([("vector", False), ("hybrid", False), ("hybrid", True)] if has_vec else [("keyword", True)])
+    spec = {"keyword": ("keyword", False, False), "vector": ("vector", False, False), "hybrid": ("hybrid", False, False),
+            "hybrid+rewrite": ("hybrid", True, False), "hybrid+expand": ("hybrid", False, True), "keyword+expand": ("keyword", False, True)}
+    want = [m.strip() for m in args.modes.split(",") if m.strip()]
+    if not has_vec:
+        want = [m for m in want if m.startswith("keyword")] or ["keyword", "keyword+expand"]
+    configs = [spec[m] for m in want]
     judge = Judge(args.judge_model) if args.judge else None
     try:
-        results = [evaluate(s, cases, args.k, m, rw, judge) for m, rw in configs]
+        results = [evaluate(s, cases, args.k, m, rw, judge, ex) for m, rw, ex in configs]
     finally:
         if judge:
             judge.save()
@@ -156,6 +170,13 @@ def main() -> int:
         print(f"| {r['mode']} | {r['n']} | {r['hit']:.0%} | {r['recall']:.0%} | {r['mrr']:.2f} |{jv} {r['weak']} | {r['rewritten']} | {r['ms_p50']:.0f}ms |")
     if judge:
         price = {"claude-sonnet-5-5": (2, 10), "claude-haiku-5-5": (0.2, 1)}.get(args.judge_model, (0, 0))
+        cuts = [j for j in CUTS if j <= args.k]
+        if args.k > 3:
+            print(f"\n| 방식 | " + " | ".join(f"answer@{j}" for j in cuts) + " |")
+            print("| --- " * (len(cuts) + 1) + "|")
+            for r in results:
+                print(f"| {r['mode']} | " + " | ".join(f"{r['curve'][j]:.0%}" for j in cuts) + " |")
+            print("읽는 법: answer@20이 높고 @3이 낮으면 순위 문제(재정렬로 해결), @20도 낮으면 내용 문제(코퍼스 보강)")
         print(f"\n판정 {judge.calls}회 (캐시 {len(judge.cache)}쌍) · 토큰 {judge.tin:,}/{judge.tout:,} ≈ ${judge.tin / 1e6 * price[0] + judge.tout / 1e6 * price[1]:.2f}")
         # 조문 번호는 틀렸는데 답은 되는 경우 = 시험지 정답 라벨의 한계
         best = results[-1]
@@ -164,8 +185,9 @@ def main() -> int:
     print(f"\n답할 수 없음(정답이 코퍼스에 없음): {len(results[0]['unanswerable'])}건 {results[0]['unanswerable']}")
     best = results[-1]
     if has_vec:  # WEAK_COS 보정 입력: 적중/실패별 벡터 1위 코사인
-        hv = [r["top_vec"] for r in results[2]["rows"] if r["hit"] and r["top_vec"] is not None]
-        mv = [r["top_vec"] for r in results[2]["rows"] if not r["hit"] and r["top_vec"] is not None]
+        hyb = next((r for r in results if r["mode"] == "hybrid"), results[-1])
+        hv = [r["top_vec"] for r in hyb["rows"] if r["hit"] and r["top_vec"] is not None]
+        mv = [r["top_vec"] for r in hyb["rows"] if not r["hit"] and r["top_vec"] is not None]
         if hv and mv:
             print(f"벡터 1위 코사인 — 적중 평균 {statistics.mean(hv):.3f} (최소 {min(hv):.3f}) · 실패 평균 {statistics.mean(mv):.3f} (최대 {max(mv):.3f})")
     misses = [r for r in best["rows"] if (not r["answer"]) if r["answer"] is not None] if judge else [r for r in best["rows"] if not r["hit"]]
