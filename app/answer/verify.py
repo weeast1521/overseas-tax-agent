@@ -27,6 +27,9 @@ _ADVICE = re.compile(r"유리|불리|추천|권유|권해|사세요|파세요|�
 _LEAK = re.compile(r"sql_query|tax_calc|reg_search|broker_method|FIFO|\bAVG\b|CHOICE|\blot\b|JSON|json|확인 필요|안내해 주세요|안내하세요|안내 바랍니다|상담원은|상담원이 안내|\{|\}|```")
 _PII = re.compile(r"\b[A-Z]{2,}-\d{4}(?:-|\b)|\b[A-Z]{2,}-\d{8}-\d+\b")
 _ALLOWED_PCT = {"22", "20", "2"}  # 22% = 양도소득세 20% + 지방소득세 2%
+# 법정 상수는 만 단위 표기를 허용한다 — 기본공제 250만원(소득세법 §118의7)은 계산 결과가 아니라 법 조문의 숫자.
+# 10/28 asm_haiku: 검증 실패 4건이 전부 "연 250만 원의 기본공제" 였다. 그 외 만/억 표기는 계속 거부 (반올림 흔적).
+_STATUTORY_WON = re.compile(r"250\s*만\s*원")
 
 
 @dataclass
@@ -89,6 +92,8 @@ def verify(text: str, figures: dict | None, sources: list[dict], status_sentence
         if raw not in allowed and "-" + raw not in allowed:  # 손실은 음수로 들어 있다
             fails.append({"code": "E-VERIFY-NUMBER", "detail": f"{m.group(0).strip()} — 계산 결과에 없는 숫자"})
     for m in _WON_UNIT.finditer(main_part):
+        if _STATUTORY_WON.fullmatch(m.group(0).strip()):
+            continue
         fails.append({"code": "E-VERIFY-NUMBER", "detail": f"{m.group(0)} — 만/억 단위 표기(완전 일치 아님)"})
     for m in _APPROX.finditer(main_part):
         fails.append({"code": "E-VERIFY-NUMBER", "detail": f"'{m.group(0)}…' — 근사 표현"})

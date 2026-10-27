@@ -28,7 +28,7 @@ def test_rounded_number_fails():
     assert "E-VERIFY-NUMBER" in r.codes and any("330,000원" in f["detail"] for f in r.failures)
 
 
-@pytest.mark.parametrize("bad", ["약 330,000원", "250만 원", "33만 원 정도", "세율 30%"])
+@pytest.mark.parametrize("bad", ["약 330,000원", "150만 원", "33만 원 정도", "세율 30%"])
 def test_approx_and_unit_forms_fail(bad):
     r = vf.verify(OK_TEXT.replace("양도소득세는 328,628원입니다.", f"양도소득세는 {bad}입니다."), FIG, SRC)
     assert "E-VERIFY-NUMBER" in r.codes, bad
@@ -116,3 +116,12 @@ def test_decimal_amounts_compared_whole():
 
 def test_tax_rate_parts_allowed():
     assert vf.verify("세율은 20%에 지방소득세 2%를 더한 22%입니다.", None, []).ok
+
+
+def test_statutory_deduction_in_man_units_allowed():
+    """기본공제 250만원은 법정 상수 — 만 단위 표기를 허용 (10/28 asm_haiku 검증 실패 4건이 전부 이것). 다른 만 단위는 여전히 거부."""
+    body, _, src = OK_TEXT.partition("\n근거:")  # 근거 줄 앞에 넣어야 숫자 검사 대상
+    mk = lambda extra: f"{body} {extra}\n근거:{src}"  # noqa: E731
+    assert vf.verify(mk("연 250만 원의 기본공제를 뺀 뒤 세율을 적용합니다."), FIG, SRC).ok
+    assert vf.verify(mk("연 250만원의 기본공제를 뺀 뒤 세율을 적용합니다."), FIG, SRC).ok
+    assert not vf.verify(mk("공제 후 100만 원이 남습니다."), FIG, SRC).ok
