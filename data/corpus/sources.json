@@ -62,8 +62,8 @@
       "effective_date": "2025-05-01",
       "tax_year_scope": "2024 귀속 신고안내(2025년 발간)",
       "what": "국세청 '2025년 신고안내 해외주식과 세금(개인투자자용)' PDF — 위 source_url에서 내려받아 raw/에 그대로 저장",
-      "chunking": "section",
-      "_chunking_doc": "section = 소제목(□·◈·Q·Ⅰ.·1. 등) 단위, 쪽을 넘어가는 소제목은 이어 붙임 / page = 쪽 단위. 10/27 page 단위는 한 쪽에 주제가 섞여 answer@3 35%"
+      "chunking": "page",
+      "_chunking_doc": "page(기본) = 쪽 단위 / section = 소제목(□·◈·Q·Ⅰ.·1.) 단위. 10/27 REG 55 같은 조건(hybrid+사전확장): page 36% vs section 33% answer@3 — 차이 없음, 단순한 쪽 단위 유지"
     },
     {
       "file": "nts_guide.txt",
