@@ -114,3 +114,10 @@ def test_check_flags_leftover_paste_instructions():
     cs = [{"chunk_id": f"c{i}", "law": "x", "article": "a", "text": "x", "source_url": "u", "effective_date": "d"} for i in range(60)]
     cs[0]["text"] = "대체입고 취득가액\n(페이지의 해당 부분 원문 그대로)"
     assert any("안내문이 남은 조각 1건" in e for e in bc.check(cs))
+
+
+def test_transfer_question_accepts_method_difference_explanation():
+    cs = [{"chunk_id": f"c{i}", "law": "x", "article": "a", "text": "x", "source_url": "u", "effective_date": "d"} for i in range(60)]
+    cs[0]["text"] = "결제일 기준환율로 환산"; cs[1]["text"] = "250만원을 공제"
+    cs[2]["text"] = "타사 해외주식 대체입고 시 입고 전 증권사가 이동평균법으로 산출한 양도소득금액과 선입선출법 기준 양도소득금액 간에 차이"
+    assert bc.check(cs) == []
