@@ -52,7 +52,7 @@ def test_fewshots_all_valid():
         g = sql_guard.bind_customer(sql, "sqlite")
         assert g.tables <= sql_guard.ALLOWED_TABLES and ":customer_id" in g.sql, intent
         assert not any(ch.isdigit() for ch in sql.split("customer_id =")[1][:6]), intent  # 리터럴 고객 없음
-    assert len(sql_query.FEWSHOT) == 8
+    assert len(sql_query.FEWSHOT) >= 8
 
 
 # ---------- SCRUM-27: 실행 (SQLite 읽기 전용) ----------

@@ -51,6 +51,15 @@ def _assembler_llm(agent_llm):
     return ClaudeClient(model=name)
 
 
+def _sub_llm(agent_llm, env: str, default: str):
+    """보조 LLM (SQL 생성 등). 'same'이면 에이전트와 같은 LLM. Claude 가 아닌 제공자(ollama·stub)는 그대로."""
+    name = os.getenv(env, default)
+    if name == "same" or getattr(agent_llm, "name", "") != "claude" or name == getattr(agent_llm, "model", None):
+        return agent_llm
+    from app.llm.claude_client import ClaudeClient
+    return ClaudeClient(model=name)
+
+
 def _trace_id() -> str:
     return f"tr_{uuid.uuid4().hex[:12]}"
 
@@ -195,7 +204,8 @@ async def handle_inquiry(body: InquiryRequest) -> tuple[InquiryResponse, react.A
     llm = _llm()
     ctx = registry.ToolContext(body.customer_id, body.tax_year, body.method_override)
     ctx.category = judgment.category
-    ctx.llm = llm  # sql_query 가 SQL 생성에 쓴다
+    # sql_query 의 SQL 생성용. 단순 SELECT 한 줄이라 Haiku 로 충분 — Opus 로 하면 호출당 10초 이상 걸려 E-TIMEOUT 이 19/30 (10/27 t2sql2)
+    ctx.llm = _sub_llm(llm, "SQL_MODEL", "claude-haiku-5-5")
     # F01-6 동기 타임아웃 (SCRUM-19). 마감은 접수 시각 기준 — Judge 시간도 포함한다.
     # 취소 안전성: 에이전트 경로는 읽기 전용(sql_query·tax_calc·reg_search)이고 trace는 응답 직전에 한 번 쓰므로 열린 트랜잭션이 없다.
     deadline = t0 + float(os.getenv("SYNC_TIMEOUT_SEC", "30"))

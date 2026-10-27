@@ -199,6 +199,7 @@ def main_cli() -> int:
         from app.llm.claude_client import assert_synthetic_data
         assert_synthetic_data()
     os.environ.setdefault("TRACE_DB", str(Path(args.out_dir) / f"trace_{args.config}_{args.tag}.db"))
+    os.environ.setdefault("SQL_LOG", str(Path(args.out_dir) / f"sql_{args.config}_{args.tag}.jsonl"))  # 생성 SQL 전문 (scripts/show_sql.py)
 
     cases = load_cases(Path(args.cases))
     known = {int(r["customer_id"]) for r in json.loads(Path(args.trades).read_text(encoding="utf-8"))}
