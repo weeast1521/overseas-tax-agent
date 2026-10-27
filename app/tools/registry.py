@@ -57,7 +57,9 @@ async def _sql_query(args: dict, ctx: ToolContext) -> dict:
     from app.tools.sql_query import run_sql_query
     out = await run_sql_query(ctx.llm, args.get("intent", ""), args.get("tickers"), ctx.customer_id, ctx.tax_year)
     if "error" not in out:
-        ctx.last_rows = out["rows"]
+        ctx.last_rows = out["rows"]  # tax_calc 입력은 전체
+        if len(out["rows"]) > 10:  # Observation 은 2,000자에서 잘린다 — 전부 보여주려다 잘리면 모델이 '조회가 부족하다'고 오해해 재조회한다
+            out = {**out, "rows": out["rows"][:10], "rows_shown": 10, "note": f"{out['row_count']}행 중 10행만 표시. 전체는 tax_calc 에 전달됨 — 다시 조회할 필요 없음"}
     return out
 
 
