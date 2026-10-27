@@ -120,3 +120,34 @@ def test_registry_tool_uses_hybrid_and_fills_ctx(tmp_path, monkeypatch):
 def test_no_index_falls_back_to_keyword_over_corpus():
     s = search.get_searcher()
     assert s.store is None and len(s.chunks) == len(repo.load_corpus())
+
+
+def test_retrieval_judge_answer_at_k_and_cache(tmp_path, monkeypatch):
+    """answer@k: 조문 번호가 틀려도 답이 되는 조각을 가져오면 answer=True. 같은 (질문, 조각)은 다시 묻지 않는다."""
+    import json as _j
+    import eval.retrieval as R
+
+    class Msg:
+        def __init__(self, text):
+            self.content = [type("B", (), {"type": "text", "text": text})()]
+            self.usage = type("U", (), {"input_tokens": 10, "output_tokens": 5})()
+
+    class FakeClient:
+        calls = 0
+        class messages:  # noqa: N801
+            @staticmethod
+            def create(**kw):
+                FakeClient.calls += 1
+                ids = [l.split("]")[0][1:] for l in kw["messages"][0]["content"].split("\n") if l.startswith("[")]
+                return Msg(_j.dumps([{"id": i, "score": 2 if i == "d" else 0} for i in ids]))
+
+    j = R.Judge.__new__(R.Judge)
+    j.client, j.model, j.path, j.cache, j.calls, j.tin, j.tout = FakeClient, "fake", tmp_path / "c.json", {}, 0, 0, 0
+    case = {"case_id": "X1", "text": "대체입고 양도소득금액 차이", "expected": {"articles": [["소득세법", "제118조의4"]]}}
+    s = search.HybridSearcher(CHUNKS)
+    r1 = R.evaluate(s, [case], 1, "keyword", False, j)  # 1위는 키움 Q&A(d) — 조문 라벨과 다름
+    assert r1["rows"][0]["hit"] is False and r1["rows"][0]["answer"] is True and r1["answer"] == 1.0  # 라벨은 틀려도 답은 됨
+    R.evaluate(s, [case], 1, "keyword", False, j)
+    assert FakeClient.calls == 1  # 캐시
+    j.save()
+    assert (tmp_path / "c.json").exists()
