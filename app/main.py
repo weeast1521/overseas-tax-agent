@@ -13,7 +13,9 @@ import os
 import time
 import uuid
 
-from fastapi import FastAPI, HTTPException
+from pathlib import Path
+
+from fastapi import FastAPI, Header, HTTPException
 from fastapi.responses import JSONResponse
 
 from app import method_store, repo, trace
@@ -78,6 +80,21 @@ async def tool_broker_method(req: BrokerMethodRequest):
     """디버그용 (F11). 게이트웨이에 노출하지 않는다."""
     ctx = registry.ToolContext(req.customer_id, req.tax_year, req.method_override)
     return await registry.invoke("broker_method", {}, ctx)
+
+
+@app.post("/v1/admin/corpus/reindex")
+async def admin_reindex(x_admin_token: str | None = Header(default=None)):
+    """F06-4 재색인 (SCRUM-32). 관리자 토큰(ADMIN_TOKEN) 필요. 새 버전으로 쓰고 이전 버전은 남긴다. 게이트웨이에 노출하지 않는다."""
+    if not os.getenv("ADMIN_TOKEN") or x_admin_token != os.getenv("ADMIN_TOKEN"):
+        return _error(403, "E-FORBIDDEN", "admin token required")
+    import asyncio
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("index_corpus", Path(__file__).resolve().parents[1] / "scripts" / "index_corpus.py")
+    mod = importlib.util.module_from_spec(spec); spec.loader.exec_module(mod)
+    result = await asyncio.to_thread(mod.run)
+    from app.rag import search
+    search.reset_searcher()
+    return result
 
 
 @app.post("/v1/customers/{customer_id}/accounts/{account_id}/method", responses={409: {"model": ErrorBody}, 422: {"model": ErrorBody}})
@@ -177,6 +194,7 @@ async def handle_inquiry(body: InquiryRequest) -> tuple[InquiryResponse, react.A
     # F03 에이전트 — Judge 결과(유형·필요 툴·확신도)는 react.run이 시스템 프롬프트에 주입한다 (F03-6)
     llm = _llm()
     ctx = registry.ToolContext(body.customer_id, body.tax_year, body.method_override)
+    ctx.category = judgment.category
     # F01-6 동기 타임아웃 (SCRUM-19). 마감은 접수 시각 기준 — Judge 시간도 포함한다.
     # 취소 안전성: 에이전트 경로는 읽기 전용(sql_query·tax_calc·reg_search)이고 trace는 응답 직전에 한 번 쓰므로 열린 트랜잭션이 없다.
     deadline = t0 + float(os.getenv("SYNC_TIMEOUT_SEC", "30"))

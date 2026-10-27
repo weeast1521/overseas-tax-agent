@@ -5,7 +5,8 @@ anthropic>=2.1,<3
 httpx>=0.27
 pytest>=8
 # 2일차
-# psycopg[binary]>=3.2
+# psycopg[binary]>=3.2   # RAG_STORE=pg 일 때만
 # pgvector>=0.3
 # sqlglot>=25
 pypdf>=4
+numpy>=1.26

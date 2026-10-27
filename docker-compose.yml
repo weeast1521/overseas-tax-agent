@@ -1,0 +1,15 @@
+# 로컬 개발용. 기본 RAG 저장소는 파일(RAG_STORE=local)이라 이건 선택 — pgvector 구성(RAG_STORE=pg)을 확인할 때만 띄운다.
+#   docker compose up -d pgvector
+#   psql postgresql://tax:tax@localhost:5433/tax_ai -f db/ai_schema.sql
+#   RAG_STORE=pg PG_DSN=postgresql://tax:tax@localhost:5433/tax_ai python scripts/index_corpus.py
+services:
+  pgvector:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_USER: tax
+      POSTGRES_PASSWORD: tax
+      POSTGRES_DB: tax_ai
+    ports: ["5433:5432"]
+    volumes: ["pgvector_data:/var/lib/postgresql/data", "./db/ai_schema.sql:/docker-entrypoint-initdb.d/01_ai_schema.sql:ro"]
+volumes:
+  pgvector_data:

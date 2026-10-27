@@ -20,7 +20,8 @@ class ToolContext:
         self.tax_year = tax_year
         self.method_override = method_override
         self.last_rows: list[dict] | None = None  # sql_query 결과 (tax_calc 입력)
-        self.chunks: list[dict] = []  # reg_search가 돌려준 조문 누적 — 조립기(F07)의 인용 허용 집합. LLM 출력이 아니라 여기가 출처의 진실
+        self.chunks: list[dict] = []
+        self.category: str | None = None  # Judge 유형 — reg_search가 유형별 문서 가중에 쓴다 (F06-8)  # reg_search가 돌려준 조문 누적 — 조립기(F07)의 인용 허용 집합. LLM 출력이 아니라 여기가 출처의 진실
 
 
 SPECS: dict[str, ToolSpec] = {
@@ -94,11 +95,14 @@ async def _broker_method(args: dict, ctx: ToolContext) -> dict:
 
 
 async def _reg_search(args: dict, ctx: ToolContext) -> dict:
-    # 2~3일차: pgvector 하이브리드 검색. 지금은 data/corpus/*.json 키워드 매칭 스텁.
-    from app.repo import search_corpus
-    chunks = search_corpus(args["query"], k=int(args.get("k", 5)))
-    ctx.chunks.extend(chunks)
-    return {"chunks": chunks, "rewritten_query": None}
+    """F06 하이브리드 검색 (SCRUM-33). 색인이 없으면 키워드(BM25)만. 결과 조각은 ctx.chunks에 쌓여 인용 허용 집합이 된다."""
+    import asyncio
+    from app.rag.search import get_searcher
+    k = int(args.get("k", 5))
+    res = await asyncio.to_thread(get_searcher().search, args["query"], k, getattr(ctx, "category", None))
+    out = res.as_tool()
+    ctx.chunks.extend(out["chunks"])
+    return out
 
 
 TOOLS: dict[str, ToolFn] = {"sql_query": _sql_query, "broker_method": _broker_method, "tax_calc": _tax_calc, "reg_search": _reg_search}
