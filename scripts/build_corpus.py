@@ -276,6 +276,11 @@ def check(chunks: list[dict]) -> list[str]:
     star = [c["chunk_id"] for c in chunks if "★" in c["text"]]
     if star:
         errs.append(f"★ 자리표시 {len(star)}건: {star[:5]}")
+    # README 붙여 넣기 예시의 안내문이 원문 대신 남은 경우 (10/27: 증권사 파일 3조각이 전부 안내문이었는데 통과했다)
+    filler = [f"{c['law']} / {c['article']}" for c in chunks
+              if re.search(r"원문\s*그대로|여기에\s*원문|해당\s*(부분|Q&A)\s*원문|문장이 있으면 그 부분", c["text"])]
+    if filler:
+        errs.append(f"원문 대신 안내문이 남은 조각 {len(filler)}건: {filler[:5]}")
     miss = [c["chunk_id"] for c in chunks if not c.get("source_url") or not c.get("effective_date")]
     if miss:
         errs.append(f"source_url·effective_date 누락 {len(miss)}건: {miss[:5]}")

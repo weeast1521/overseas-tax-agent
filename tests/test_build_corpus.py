@@ -108,3 +108,9 @@ def test_pdf_title_skips_page_numbers_and_toc():
     m = {"law": "x", "doc_type": "국세청안내", "source_url": "u", "effective_date": "2025-05-01"}
     cs = bc.pages_to_chunks([(16, "- 14 -\nⅠ. 세금문제 ······················ 3\n해외주식 양도소득 계산 방법\n본문이 충분히 길게 이어지는 문장입니다.")], m)
     assert cs[0]["title"] == "해외주식 양도소득 계산 방법"
+
+
+def test_check_flags_leftover_paste_instructions():
+    cs = [{"chunk_id": f"c{i}", "law": "x", "article": "a", "text": "x", "source_url": "u", "effective_date": "d"} for i in range(60)]
+    cs[0]["text"] = "대체입고 취득가액\n(페이지의 해당 부분 원문 그대로)"
+    assert any("안내문이 남은 조각 1건" in e for e in bc.check(cs))
