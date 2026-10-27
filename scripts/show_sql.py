@@ -38,7 +38,7 @@ def main() -> None:
         print(f"\n[{tid[:8]} #{no}] 의도: {intent}")
         for at in attempts:
             print(f"   거부 {at.get('rejected')} {at.get('detail', '')}: {at.get('sql', at.get('error', ''))[:160]}")
-        print(f"   {o.get('generated_by', o.get('error'))} rows={o.get('row_count')} {o.get('elapsed_ms', '')}ms")
+        print(f"   {o.get('generated_by', o.get('error'))} rows={o.get('row_count')} {o.get('elapsed_ms', '')}ms {o.get('message', '')[:200]}")
         print(f"   {o.get('sql', '')[:300]}")
     print(f"\n호출 {len(rows)}건 | 생성 경로 {dict(how)} | 거부 사유 {dict(rej)} | 오류 {dict(errs)}")
 
