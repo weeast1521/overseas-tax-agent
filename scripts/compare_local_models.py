@@ -47,13 +47,14 @@ def summarize(path: Path, cases: dict[str, dict]) -> dict:
     rows = [json.loads(l) for l in path.read_text(encoding="utf-8").splitlines() if l.strip()]
     n = len(rows)
     final = sum(1 for r in rows if r["status"] in ("AUTO", "REVIEW", "REJECTED") and r.get("error_code") not in ("E-LLM", "E-JUDGE", "E-LLM-FORMAT"))
-    cat_ok = sum(1 for r in rows if r.get("category") == cases.get(r["case_id"], {}).get("category"))
+    cls = [r for r in rows if cases.get(r["case_id"], {}).get("kind") != "REG"]  # REG 는 기대 유형이 없다 (eval.report 와 같은 기준)
+    cat_ok = sum(1 for r in cls if r.get("category") == cases[r["case_id"]]["category"])
     with_fig = [r for r in rows if cases.get(r["case_id"], {}).get("expected", {}).get("figures") and r.get("figures")]
     fig_ok = sum(1 for r in with_fig if r["figures"].get("tax_krw") == cases[r["case_id"]]["expected"]["figures"].get("tax_krw"))
     lat = [r.get("latency_ms", 0) / 1000 for r in rows]
     steps = [r.get("steps", 0) for r in rows if r.get("steps")]
-    errs = Counter(r.get("error_code") for r in rows if r.get("error_code"))
-    return {"n": n, "final": final, "cat_ok": cat_ok, "fig_ok": fig_ok, "fig_n": len(with_fig),
+    errs = Counter(r.get("error_code") for r in rows if r.get("error_code") and r["error_code"] != "E-METHOD-UNCONFIRMED")  # 방식 미확정은 정상 REVIEW
+    return {"n": n, "final": final, "cat_ok": cat_ok, "cls_n": len(cls), "fig_ok": fig_ok, "fig_n": len(with_fig),
             "steps": statistics.mean(steps) if steps else 0, "lat_avg": statistics.mean(lat) if lat else 0, "lat_max": max(lat) if lat else 0,
             "over30": sum(1 for x in lat if x > 30), "errs": dict(errs)}
 
@@ -94,7 +95,7 @@ def main() -> None:
             print(f"| {m} | (결과 없음) | | | | | | |"); continue
         s = summarize(p, cases)
         errs = ", ".join(f"{k}×{v}" for k, v in s["errs"].items()) or "—"
-        print(f"| {m} | {s['final']}/{s['n']} | {s['cat_ok']}/{s['n']} | {s['fig_ok']}/{s['fig_n']} | {s['steps']:.1f} | {s['lat_avg']:.1f}s / {s['lat_max']:.1f}s | {s['over30']} | {errs} |")
+        print(f"| {m} | {s['final']}/{s['n']} | {s['cat_ok']}/{s['cls_n']} | {s['fig_ok']}/{s['fig_n']} | {s['steps']:.1f} | {s['lat_avg']:.1f}s / {s['lat_max']:.1f}s | {s['over30']} | {errs} |")
     # E-LLM 원인 (trace 의 E-LLM 스텝 observation)
     for m, p in results.items():
         db = Path(a.out_dir) / f"trace_{p.stem}.db"

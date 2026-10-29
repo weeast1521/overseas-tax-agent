@@ -74,9 +74,15 @@ python scripts/load_trade_db.py --src data/mine/trades.json   # 선택: 파일 D
 
 모델 비교: `python scripts/compare_local_models.py` (후보 × `eval/local_smoke.txt` 13건, 표 출력). K8s 배치는 `k8s/ollama.yaml` (internal 네임스페이스, 모델 볼륨).
 
-### 모델 비교표 (SCRUM-49)
+### 모델 비교표 (SCRUM-49, 10/29, 맥 M2 Pro 32GB·Metal, `eval/local_smoke.txt` 13건, 타임아웃 120초)
 
-_실행 후 채움 — final 도달 / 분류 정확 / 숫자 정확 / 평균 스텝 / 시간 / 실패 코드._
+| 모델 | final 도달 | 분류 정확 (REG 제외) | 숫자 정확 | 평균 스텝 | 평균/최대 시간 | 비고 |
+| --- | --- | --- | --- | --- | --- | --- |
+| **qwen2.5:7b** (선택) | 13/13 | 11/11 | 10/10 | 3.8 | 39.4s / 53.7s | 툴 호출 네이티브. 출력 짧음(건당 300토큰) |
+| llama3.1:8b | 13/13 | 9/11 | 10/10 | 3.7 | 36.8s / 47.0s | 가장 빠르지만 분류 2건 틀림(TAX→MULTI, FX→TAX) |
+| exaone3.5:7.8b | 12/13 | 11/11 | 10/10 | 2.7 | 67.2s / 89.4s | 툴 호출 미지원 → 텍스트 모드. 한국어 분류 좋음, 출력이 길어(1,000+토큰) 느림. E-TOOL-FAIL 1, 내부 용어 누출 1 |
+
+읽기: ① 숫자는 세 모델 다 100% — 세금 계산이 모델 밖(코드)에 있다는 설계의 증거. ② 30초 타임아웃에서는 세 모델 다 최종 메모 전에 끊겼다(1차: qwen 3/13, llama 6/13). 로컬 7B 가 8~10k 토큰 문맥을 스텝마다 읽는 비용이 스텝당 8~10초. 맥 CPU/Metal 수치이고 GPU 수치는 SCRUM-45 에서 따로. ③ 선택은 qwen2.5:7b — 분류·완주·시간의 균형. exaone 은 분류기(LocalJudge)로는 동급이라 "분류는 exaone, 에이전트는 qwen" 조합도 가능.
 
 ## 데이터 경계 (NF, SCRUM-51)
 

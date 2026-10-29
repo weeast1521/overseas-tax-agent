@@ -3,7 +3,7 @@
 - /api/chat 의 tools 파라미터로 툴 호출. 모델은 tool calling 되는 것(qwen2.5, llama3.1, exaone3.5 등).
 - 로컬 모델은 툴 호출 형식을 자주 어긴다 → tool_calls 가 없으면 본문에서 JSON 블록(`{"name": …, "arguments": …}` 또는
   `{"tool": …, "args": …}`)을 찾아 ToolCall 로 복원한다. 같은 프로세스 안의 파싱이지 다른 모델로의 폴백이 아니다.
-- 온도 0, num_ctx 는 OLLAMA_NUM_CTX(기본 16384) — Ollama 기본 2048 이면 에이전트 문맥(8\~10k 토큰)이 잘려 조용히 망가진다.
+- 온도 0, num_ctx 는 OLLAMA_NUM_CTX(기본 16384) — Ollama 기본 2048 이면 에이전트 문맥(8~10k 토큰)이 잘려 조용히 망가진다.
 - 실패는 예외로 올린다 → react 루프가 E-LLM 으로 기록 (폴백 없음, SCRUM-51).
 """
 from __future__ import annotations
