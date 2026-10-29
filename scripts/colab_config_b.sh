@@ -21,10 +21,11 @@ cd overseas-tax-agent && git pull -q && git log --oneline -1
 step "2/6 pip"
 pip install -q -r requirements.txt 2>&1 | tail -2 || true
 
-step "3/6 Ollama 설치 (공식 tarball — install.sh 가 Colab 에서 중간에 죽는 경우가 있어 직접 푼다)"
+step "3/6 Ollama 설치 (공식 tarball .tar.zst — Colab 에 zstd 가 없어 install.sh 가 조용히 죽는다)"
 if ! command -v ollama >/dev/null; then
-  curl -fL --progress-bar https://ollama.com/download/ollama-linux-amd64.tgz -o /tmp/ollama.tgz
-  tar -C /usr/local -xzf /tmp/ollama.tgz && rm /tmp/ollama.tgz
+  command -v zstd >/dev/null || (apt-get -qq update >/dev/null && apt-get -qq install -y zstd >/dev/null)
+  curl -fL --progress-bar https://ollama.com/download/ollama-linux-amd64.tar.zst -o /tmp/ollama.tar.zst
+  tar --use-compress-program=unzstd -xf /tmp/ollama.tar.zst -C /usr && rm /tmp/ollama.tar.zst
 fi
 ollama --version
 step "4/6 Ollama 서버 기동 + 모델"
