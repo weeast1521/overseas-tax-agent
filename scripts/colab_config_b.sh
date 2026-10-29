@@ -12,26 +12,38 @@ MODELS="${1:-qwen2.5:7b}"
 ONLY="${2:-eval/local_smoke.txt}"
 TIMEOUT="${3:-120}"
 
+step() { echo; echo "### $*"; }
+
+step "1/6 레포"
 cd /content
 if [ ! -d overseas-tax-agent ]; then git clone -q https://github.com/weeast1521/overseas-tax-agent.git; fi
-cd overseas-tax-agent && git pull -q
-pip install -q -r requirements.txt
+cd overseas-tax-agent && git pull -q && git log --oneline -1
+step "2/6 pip"
+pip install -q -r requirements.txt 2>&1 | tail -2 || true
 
-# Ollama (GPU 자동 인식)
-if ! command -v ollama >/dev/null; then curl -fsSL https://ollama.com/install.sh | sh >/dev/null; fi
+step "3/6 Ollama 설치 (공식 tarball — install.sh 가 Colab 에서 중간에 죽는 경우가 있어 직접 푼다)"
+if ! command -v ollama >/dev/null; then
+  curl -fL --progress-bar https://ollama.com/download/ollama-linux-amd64.tgz -o /tmp/ollama.tgz
+  tar -C /usr/local -xzf /tmp/ollama.tgz && rm /tmp/ollama.tgz
+fi
+ollama --version
+step "4/6 Ollama 서버 기동 + 모델"
 (OLLAMA_HOST=0.0.0.0:11434 OLLAMA_KEEP_ALIVE=24h nohup ollama serve > /content/ollama.log 2>&1 &)
 for i in $(seq 1 30); do curl -fs localhost:11434/api/tags >/dev/null && break; sleep 1; done
-ollama pull bge-m3 >/dev/null
+curl -fs localhost:11434/api/tags >/dev/null || { echo "Ollama 서버가 안 떴다:"; tail -20 /content/ollama.log; exit 1; }
+ollama pull bge-m3 2>&1 | tail -1
 IFS=',' read -ra MS <<< "$MODELS"
-for m in "${MS[@]}"; do ollama pull "$m" >/dev/null; done
+for m in "${MS[@]}"; do ollama pull "$m" 2>&1 | tail -1; done
+ollama list
 nvidia-smi --query-gpu=name,memory.total --format=csv,noheader || true
 
 # 환경: 폐쇄망 구성. 키 없음, 실데이터 없음
 export LLM_PROVIDER=ollama JUDGE_IMPL=local EMBEDDER=ollama RAG_STORE=local OLLAMA_NUM_CTX=16384 TRADES_FILE=data/synthetic/trades.json
 unset ANTHROPIC_API_KEY || true
-# 코퍼스: git 에 있는 법령·시행령 조각만 (국세청 책자·증권사 안내는 맥에만) → 색인
-python scripts/index_corpus.py >/dev/null 2>&1 || python scripts/index_corpus.py
+step "5/6 코퍼스 색인 (git 에 있는 법령·시행령 조각만 — 국세청 책자·증권사 안내는 맥에만)"
+python scripts/index_corpus.py 2>&1 | tail -3
 
+step "6/6 평가 ($MODELS, $ONLY, 타임아웃 ${TIMEOUT}s)"
 GPU=$(nvidia-smi --query-gpu=name --format=csv,noheader 2>/dev/null | head -1 | tr ' ' '_' | tr -cd '[:alnum:]_' || echo gpu)
 for m in "${MS[@]}"; do
   TAG="colab_${GPU}_$(echo "$m" | tr ':/' '__')_t${TIMEOUT}"
