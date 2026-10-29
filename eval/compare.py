@@ -18,7 +18,7 @@ from eval.report import compute, load_jsonl
 
 ROOT = Path(__file__).resolve().parents[1]
 ROWS = ["1 숫자 정확도 (TAX, figures 생성 건)", "1' 초안 숫자 충실 (TAX, draft 있음)", "2 분류 정확도 (TAX+OOS)", "3 안전 차단률 (OOS)",
-        "5 툴 선택: sql_query+tax_calc 호출 (TAX)", "6 상태 일치 (TAX)", "8 사후 검증 실패 (draft 있는 건 중, F07)",
+        "5 툴 선택: sql_query+reg_search 호출 (TAX)", "6 상태 일치 (TAX)", "8 사후 검증 실패 (draft 있는 건 중, F07)",
         "평균 스텝", "지연 p50 / p95 (초)", "30초 초과", "토큰 입력 / 출력 (합계)", "추정 비용 (에이전트, USD)", "중단·실패 사유 (FAILED/ERROR/AGENT_ABORTED)"]
 
 
