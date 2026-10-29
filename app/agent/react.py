@@ -101,9 +101,9 @@ async def run(inquiry: str, judgment: Judgment, llm: LLMClient, ctx: registry.To
         except asyncio.CancelledError:
             raise
         except Exception as e:  # LLM 호출 실패(로컬 Ollama 다운·API 오류). 다른 제공자로 폴백하지 않는다 — 폐쇄망 원칙 (SCRUM-51)
-            res.steps.append(Step(step_no, None, None, None, None, int((time.perf_counter() - t0) * 1000), error_code="E-LLM"))
+            res.error_detail = f"{type(e).__name__}: {str(e)[:200]}"
+            res.steps.append(Step(step_no, None, None, None, res.error_detail, int((time.perf_counter() - t0) * 1000), error_code="E-LLM"))  # 원인은 observation 에 남긴다
             res.aborted = "E-LLM"
-            res.error_detail = f"{type(e).__name__}: {str(e)[:120]}"
             return res
         lat = int((time.perf_counter() - t0) * 1000)
 

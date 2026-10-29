@@ -31,11 +31,13 @@ def have_model(name: str) -> bool:
     return any(line.split()[0] == name or line.split()[0] == name + ":latest" for line in out.splitlines()[1:] if line.strip())
 
 
-def run_model(model: str, only: str, out_dir: str, cases: str) -> Path:
-    tag = "local_" + model.replace(":", "_").replace("/", "_")
+def run_model(model: str, only: str, out_dir: str, cases: str, timeout: float | None, suffix: str) -> Path:
+    tag = "local_" + model.replace(":", "_").replace("/", "_") + suffix
     env = {**os.environ, "OLLAMA_MODEL": model, "LOCAL_JUDGE_MODEL": model}
     env.pop("ANTHROPIC_API_KEY", None)  # 구성 B 는 키가 있어도 쓰지 않는다 — 아예 빼고 돈다
     cmd = [sys.executable, "-m", "eval.run", "--config", "B", "--tag", tag, "--only", only, "--cases", cases, "--out-dir", out_dir]
+    if timeout is not None:
+        cmd += ["--timeout", str(timeout)]
     print(f"\n=== {model}: {' '.join(cmd)}", flush=True)
     subprocess.run(cmd, cwd=ROOT, env=env, check=False)
     return Path(out_dir) / f"B_{tag}.jsonl"
@@ -64,12 +66,14 @@ def main() -> None:
     ap.add_argument("--out-dir", default="results")
     ap.add_argument("--report-only", action="store_true")
     ap.add_argument("--pull", action="store_true", help="없는 모델은 ollama pull (망 열린 준비 단계에서만)")
+    ap.add_argument("--timeout", type=float, help="동기 타임아웃 초. 실제 분포를 보려면 120 (태그에 _t<초> 가 붙는다)")
     a = ap.parse_args()
+    suffix = f"_t{int(a.timeout)}" if a.timeout else ""
     cases = {json.loads(l)["case_id"]: json.loads(l) for l in (ROOT / a.cases).read_text(encoding="utf-8").splitlines() if l.strip()}
 
     results: dict[str, Path] = {}
     for m in a.models:
-        tag = "local_" + m.replace(":", "_").replace("/", "_")
+        tag = "local_" + m.replace(":", "_").replace("/", "_") + suffix
         p = Path(a.out_dir) / f"B_{tag}.jsonl"
         if a.report_only:
             if p.exists():
@@ -81,7 +85,7 @@ def main() -> None:
             else:
                 print(f"건너뜀 {m}: ollama list 에 없음 (ollama pull {m} 또는 --pull)")
                 continue
-        results[m] = run_model(m, a.only, a.out_dir, a.cases)
+        results[m] = run_model(m, a.only, a.out_dir, a.cases, a.timeout, suffix)
 
     print("\n| 모델 | final 도달 | 분류 정확 | 숫자 정확 | 평균 스텝 | 평균/최대 시간 | 30초 초과 | 실패 코드 |")
     print("| --- | --- | --- | --- | --- | --- | --- | --- |")
@@ -91,6 +95,19 @@ def main() -> None:
         s = summarize(p, cases)
         errs = ", ".join(f"{k}×{v}" for k, v in s["errs"].items()) or "—"
         print(f"| {m} | {s['final']}/{s['n']} | {s['cat_ok']}/{s['n']} | {s['fig_ok']}/{s['fig_n']} | {s['steps']:.1f} | {s['lat_avg']:.1f}s / {s['lat_max']:.1f}s | {s['over30']} | {errs} |")
+    # E-LLM 원인 (trace 의 E-LLM 스텝 observation)
+    for m, p in results.items():
+        db = Path(a.out_dir) / f"trace_{p.stem}.db"
+        if not db.exists():
+            continue
+        import sqlite3
+        try:
+            rows = sqlite3.connect(f"file:{db}?mode=ro", uri=True).execute(
+                "SELECT observation, COUNT(*) FROM agent_step WHERE error_code = 'E-LLM' GROUP BY observation ORDER BY 2 DESC LIMIT 3").fetchall()
+        except sqlite3.Error:
+            rows = []
+        for obs, n in rows:
+            print(f"  {m} E-LLM×{n}: {(obs or '')[:160]}")
     print("\n수용 조건 (SCRUM-49): final 6/10 이상, 평균 시간 30초 안. 숫자 정확도는 모델과 무관하게 100% 여야 한다 (코드가 계산).")
 
 

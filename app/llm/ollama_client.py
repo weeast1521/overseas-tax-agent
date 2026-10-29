@@ -27,25 +27,55 @@ class OllamaClient:
         self.num_ctx = int(os.getenv("OLLAMA_NUM_CTX", "16384"))
         self.timeout = float(os.getenv("OLLAMA_TIMEOUT_SEC", "120"))
         self.last_usage = {"calls": 0, "in_tokens": 0, "out_tokens": 0, "parsed_from_text": 0}
+        # 툴 호출 미지원 모델(exaone3.5 등)은 tools 파라미터에 400 "does not support tools" 를 낸다 → 같은 모델로 텍스트 모드:
+        # 툴 설명을 시스템 프롬프트에 넣고 본문 JSON 을 파싱한다. 다른 모델로의 폴백이 아니다 (SCRUM-49, 10/29 비교에서 exaone 12/12 E-LLM)
+        self.text_tools = os.getenv("OLLAMA_TEXT_TOOLS", "auto")  # auto | always | never
 
-    async def complete(self, messages: list[Message], tools: list[ToolSpec]) -> Completion:
+    def _conv(self, messages: list[Message], text_mode: bool, tools: list[ToolSpec]) -> list[dict]:
         conv = []
         for m in messages:
             if m.role == "tool":
-                conv.append({"role": "tool", "content": m.content})
+                conv.append({"role": "tool", "content": m.content} if not text_mode else {"role": "user", "content": f"[툴 결과]\n{m.content}"})
             elif m.role == "assistant" and m.name:
-                conv.append({"role": "assistant", "content": "", "tool_calls": [{"function": {"name": m.name, "arguments": json.loads(m.content)}}]})
+                if text_mode:
+                    conv.append({"role": "assistant", "content": json.dumps({"name": m.name, "arguments": json.loads(m.content)}, ensure_ascii=False)})
+                else:
+                    conv.append({"role": "assistant", "content": "", "tool_calls": [{"function": {"name": m.name, "arguments": json.loads(m.content)}}]})
             else:
                 conv.append({"role": m.role, "content": m.content})
-        body = {
-            "model": self.model, "stream": False, "options": {"temperature": 0, "num_ctx": self.num_ctx},
-            "messages": conv,
-            "tools": [{"type": "function", "function": {"name": t.name, "description": t.description, "parameters": t.input_schema}} for t in tools],
-        }
+        if text_mode and tools:
+            spec = "\n".join(f"- {t.name}: {t.description} 인자 스키마: {json.dumps(t.input_schema, ensure_ascii=False)}" for t in tools)
+            note = ("\n\n[툴 사용 규칙] 툴을 쓰려면 다른 말 없이 JSON 한 개만 출력한다: {\"name\": \"<툴 이름>\", \"arguments\": {…}}\n"
+                    "쓸 수 있는 툴:\n" + spec + "\n툴 결과는 [툴 결과] 로 돌아온다. 최종 답변은 JSON 없이 보통 글로 쓴다.")
+            if conv and conv[0]["role"] == "system":
+                conv[0] = {"role": "system", "content": conv[0]["content"] + note}
+            else:
+                conv.insert(0, {"role": "system", "content": note.strip()})
+        return conv
+
+    async def _post(self, body: dict) -> dict:
         async with httpx.AsyncClient(timeout=self.timeout) as c:
             r = await c.post(f"{self.host}/api/chat", json=body)
-            r.raise_for_status()
-            data = r.json()
+            if r.status_code >= 400:
+                raise httpx.HTTPStatusError(f"{r.status_code} {r.text[:200]}", request=r.request, response=r)
+            return r.json()
+
+    async def complete(self, messages: list[Message], tools: list[ToolSpec]) -> Completion:
+        text_mode = self.text_tools == "always" or not tools
+        body = {"model": self.model, "stream": False, "options": {"temperature": 0, "num_ctx": self.num_ctx},
+                "messages": self._conv(messages, text_mode, tools)}
+        if not text_mode:
+            body["tools"] = [{"type": "function", "function": {"name": t.name, "description": t.description, "parameters": t.input_schema}} for t in tools]
+        try:
+            data = await self._post(body)
+        except httpx.HTTPStatusError as e:
+            if self.text_tools == "auto" and not text_mode and "support tools" in str(e):
+                self.text_tools = "always"  # 이 모델은 앞으로 텍스트 모드
+                self.last_usage["text_mode"] = True
+                body = {"model": self.model, "stream": False, "options": body["options"], "messages": self._conv(messages, True, tools)}
+                data = await self._post(body)
+            else:
+                raise
         msg = data["message"]
         text = msg.get("content") or None
         call = None

@@ -135,3 +135,25 @@ def test_ollama_down_raises_for_react_to_record_E_LLM(monkeypatch):
     FakeOllama(["__fail__"]).install(monkeypatch)
     with pytest.raises(httpx.ConnectError):
         asyncio.run(OllamaClient().complete([Message(role="user", content="q")], SPECS))
+
+
+def test_ollama_switches_to_text_tools_when_model_rejects_tools(monkeypatch):
+    """exaone3.5 처럼 tools 파라미터에 400 을 내는 모델: 같은 모델로 텍스트 모드 재요청, 본문 JSON 을 툴 호출로. 다른 모델 폴백 아님."""
+    calls = []
+
+    async def post(self_, url, json=None, **kw):
+        calls.append(json)
+        if "tools" in json:
+            return httpx.Response(400, json={"error": "registry.ollama.ai/library/exaone3.5:7.8b does not support tools"}, request=httpx.Request("POST", url))
+        return httpx.Response(200, json={"message": {"role": "assistant", "content": '{"name": "sql_query", "arguments": {"intent": "전체"}}'}}, request=httpx.Request("POST", url))
+
+    monkeypatch.setattr(httpx.AsyncClient, "post", post)
+    c = OllamaClient(model="exaone3.5:7.8b")
+    r = asyncio.run(c.complete([Message(role="system", content="S"), Message(role="user", content="q")], SPECS))
+    assert r.tool_call.name == "sql_query" and c.text_tools == "always" and c.last_usage.get("text_mode")
+    assert len(calls) == 2 and "tools" not in calls[1] and "[툴 사용 규칙]" in calls[1]["messages"][0]["content"]
+    assert all(b["model"] == "exaone3.5:7.8b" for b in calls)
+    # 다음 호출부터는 바로 텍스트 모드 (400 안 거침). tool 메시지는 user 턴 "[툴 결과]" 로
+    r2 = asyncio.run(c.complete([Message(role="user", content="q"), Message(role="assistant", content='{"intent": "x"}', name="sql_query", tool_call_id="1"),
+                                 Message(role="tool", content='{"rows": []}', tool_call_id="1")], SPECS))
+    assert len(calls) == 3 and calls[2]["messages"][-1] == {"role": "user", "content": "[툴 결과]\n{\"rows\": []}"}
