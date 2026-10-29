@@ -45,7 +45,7 @@ class FakeOllama:
 def test_local_judge_parses_json_and_sets_tools(monkeypatch):
     f = FakeOllama(['{"category": "TRANSFER_BASIS", "confidence": 0.82, "flags": []}']).install(monkeypatch)
     j = asyncio.run(LocalJudge(model="qwen2.5:7b").classify("나무로 옮긴 주식 팔았는데 취득가가 이상해요"))
-    assert j.category == "TRANSFER_BASIS" and j.confidence == 0.82 and j.required_tools == ["sql_query", "tax_calc", "reg_search"]
+    assert j.category == "TRANSFER_BASIS" and j.confidence == 0.82 and j.required_tools == ["sql_query", "reg_search"]
     body = f.requests[0]["body"]
     assert body["format"]["type"] == "object" and body["options"]["temperature"] == 0
     assert body["messages"][-1]["content"] == "나무로 옮긴 주식 팔았는데 취득가가 이상해요"  # 민원 문장만 (F02-3)

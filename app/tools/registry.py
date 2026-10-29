@@ -22,13 +22,17 @@ class ToolContext:
         self.last_rows: list[dict] | None = None  # sql_query 결과 (tax_calc 입력)
         self.chunks: list[dict] = []
         self.category: str | None = None  # Judge 유형 — reg_search가 유형별 문서 가중에 쓴다 (F06-8)
-        self.llm = None  # sql_query 의 SQL 생성용 (F04-1). None 이면 템플릿  # reg_search가 돌려준 조문 누적 — 조립기(F07)의 인용 허용 집합. LLM 출력이 아니라 여기가 출처의 진실
+        self.llm = None  # sql_query 의 SQL 생성용 (F04-1). None 이면 템플릿
+        # 코드가 미리 계산한 세액(F05, main.compute_figures). sql_query 응답에 요약으로 붙는다 — 에이전트가 tax_calc 를 따로 부를 필요가 없다 (10/29 결정 A)
+        self.figures: dict | None = None
+        self.calc_error: str | None = None
 
 
 SPECS: dict[str, ToolSpec] = {
     "sql_query": ToolSpec(
         name="sql_query",
-        description="고객의 해외주식 체결·결제일·결제일 환율·수수료를 거래 DB에서 조회한다(전 계좌). 의도를 자연어로 주면 SQL을 만들어 읽기 전용으로 실행한다. 고객 범위는 시스템이 고정한다.",
+        description="고객의 해외주식 체결·결제일·결제일 환율·수수료를 거래 DB에서 조회한다(전 계좌). 의도를 자연어로 주면 SQL을 만들어 읽기 전용으로 실행한다. 고객 범위는 시스템이 고정한다. "
+                    "응답의 tax_calc 블록에 코드가 계산한 세액·통산·계좌별 양도차익 요약이 함께 온다 — 숫자는 거기서만 쓴다.",
         input_schema={"type": "object", "properties": {"intent": {"type": "string", "description": "조회 의도 (자연어). 예: 2025년 테슬라 매도와 결제일 환율"},
                                                        "tickers": {"type": "array", "items": {"type": "string"}}},
                       "required": ["intent"]},
@@ -57,10 +61,23 @@ async def _sql_query(args: dict, ctx: ToolContext) -> dict:
     from app.tools.sql_query import run_sql_query
     out = await run_sql_query(ctx.llm, args.get("intent", ""), args.get("tickers"), ctx.customer_id, ctx.tax_year)
     if "error" not in out:
-        ctx.last_rows = out["rows"]  # tax_calc 입력은 전체
-        if len(out["rows"]) > 10:  # Observation 은 2,000자에서 잘린다 — 전부 보여주려다 잘리면 모델이 '조회가 부족하다'고 오해해 재조회한다
-            out = {**out, "rows": out["rows"][:10], "rows_shown": 10, "note": f"{out['row_count']}행 중 10행만 표시. 전체는 tax_calc 에 전달됨 — 다시 조회할 필요 없음"}
+        ctx.last_rows = out["rows"]
+        # 계산 요약을 맨 앞에 (10/29 결정 A): 세액은 코드가 이미 계산했다(compute_figures). 에이전트가 tax_calc 를 따로 부르는 것은 같은 계산의 중복이었고,
+        # 로컬 7B 는 그 호출을 29건 중 28건 건너뛰었다(A100 홀드아웃). 숫자의 출처를 하나로 — Observation 2,000자 안에 요약이 들어가도록 앞에 둔다
+        calc = calc_summary(ctx.figures) if ctx.figures else {"error": ctx.calc_error or "E-CALC-NONE", "message": "세액 계산 불가 — 숫자를 말하지 말 것"}
+        rows = out["rows"]
+        rest = {k: v for k, v in out.items() if k != "rows"}
+        return {"tax_calc": calc, **rest, "note": f"{out['row_count']}행 중 {min(5, len(rows))}행만 표시. 세액은 tax_calc 블록(코드 계산)",
+                "rows_shown": min(5, len(rows)), "rows": rows[:5]}  # 요약을 맨 앞에, rows 는 맨 뒤 (2,000자 잘림 대비)
     return out
+
+
+def calc_summary(fig: dict) -> dict:
+    """compute_figures 결과 → 에이전트에게 보여 줄 요약 (툴 _tax_calc 의 summary 와 같은 모양)."""
+    return {"tax_year": fig.get("tax_year"), "total_gain_krw": fig.get("total_gain_krw"), "deduction_krw": fig.get("deduction_krw"),
+            "taxable_krw": fig.get("taxable_krw"), "tax_krw": fig.get("tax_krw"),
+            "by_account": [{"account_id": a.get("account_id"), "broker_code": a.get("broker_code"), "method": a.get("method"), "gain_krw": a.get("gain_krw")} for a in fig.get("by_account") or []],
+            "transferred_lot_sales": fig.get("transferred_lot_sales") or []}
 
 
 async def _tax_calc(args: dict, ctx: ToolContext) -> dict:
@@ -112,7 +129,8 @@ async def _reg_search(args: dict, ctx: ToolContext) -> dict:
 TOOLS: dict[str, ToolFn] = {"sql_query": _sql_query, "broker_method": _broker_method, "tax_calc": _tax_calc, "reg_search": _reg_search}
 
 
-AGENT_TOOLS = ["sql_query", "tax_calc", "reg_search"]  # 에이전트에게 보이는 툴. broker_method는 디버그 API 전용 (SCRUM-19)
+# 에이전트에게 보이는 툴. broker_method 는 디버그 API 전용(SCRUM-19), tax_calc 도 디버그 API 전용 — 계산 요약은 sql_query 응답에 포함(10/29 결정 A)
+AGENT_TOOLS = ["sql_query", "reg_search"]
 
 
 def specs(names: list[str] | None = None) -> list[ToolSpec]:

@@ -25,8 +25,6 @@ MAX_STEPS = 8
 #   notes (기본) = 상담원용 짧은 메모. 고객 문장·숫자는 조립기(F07)가 코드로 만든다 — 에이전트가 숫자를 다시 쓸 이유가 없다.
 #                 SCRUM-19: json 모드는 최종 답에 figures를 통째로 다시 써서 출력 토큰이 많고 30초를 자주 넘겼다.
 #   json  = 조립기 이전의 기준 형식 (before 비교용) / prose = 프롬프트만으로 고객용 문장 (절제 실험용)
-ENFORCE_PLAN = os.getenv("AGENT_ENFORCE_PLAN", "on") == "on"  # 계획된 툴을 빼먹고 끝내면 1회 되묻기
-
 FINAL_FORMATS = {
     "notes": """최종 답변은 상담원용 메모다. 한국어 3줄 이내, 숫자·금액·JSON·고객용 문장은 쓰지 않는다(시스템이 계산 결과로 고객 안내문을 조립한다).
    쓸 것: 민원의 핵심 쟁점 한 줄, 확인한 사실(어느 증권사·이체 여부·손익통산 여부 등) 한 줄, 상담원이 고객에게 확인할 점 한 줄.""",
@@ -44,9 +42,9 @@ SYSTEM_PROMPT = """너는 증권사 고객센터의 해외주식 양도소득세
 
 규칙:
 1. 고객의 실제 거래는 sql_query로만 안다. 추측하지 않는다.
-2. 세액·양도차익·취득가액 등 모든 숫자는 tax_calc 출력만 쓴다. 네가 계산하지 않는다.
+2. 세액·양도차익·취득가액 등 모든 숫자는 sql_query 응답의 tax_calc 블록(코드가 계산한 것)에서만 쓴다. 네가 계산하지 않는다.
 3. 규정 설명에는 reg_search로 찾은 조문을 붙인다. 찾지 못한 규정은 말하지 않는다.
-   순서: 거래·세액이 걸린 민원은 sql_query → tax_calc를 먼저 끝내고, reg_search는 설명에 필요한 조문을 위해 1회만 부른다.
+   순서: 거래·세액이 걸린 민원은 sql_query 를 먼저, reg_search는 설명에 필요한 조문을 위해 1회만 부른다.
    검색 결과가 빈약해도 같은 툴을 다시 부르지 말고(쿼리 재작성은 툴 안에서 한다) 찾은 것만으로 답한다. 응답 시간 제한이 30초다.
 4. 필요한 정보가 모이면 툴 호출 없이 최종 답변을 쓴다. {final_format}
 민원 유형: {category} (분류 확신도 {confidence}). 보통 필요한 툴: {tools}."""
@@ -97,7 +95,6 @@ async def run(inquiry: str, judgment: Judgment, llm: LLMClient, ctx: registry.To
     format_errors = 0
     called: set[str] = set()
     last_obs: dict[str, str] = {}
-    nudged = False
 
     for step_no in range(MAX_STEPS):
         t0 = time.perf_counter()
@@ -113,18 +110,8 @@ async def run(inquiry: str, judgment: Judgment, llm: LLMClient, ctx: registry.To
         lat = int((time.perf_counter() - t0) * 1000)
 
         if reply.final:
-            # 계획 강제 (F03-4 확장, SCRUM-45): Judge 가 필요하다고 한 툴을 빼먹고 끝내면 1회 되묻는다.
-            # 10/29 A100 qwen2.5:7b 홀드아웃: tax_calc 를 29건 중 28건 건너뜀(sql_query→reg_search→최종). 숫자는 코드가 독립 계산하므로 답은 맞지만
-            # 상담원 메모에 계산 근거가 빠진다. 큰 모델은 스스로 다 부르므로 영향 없음.
-            # 되묻는 대상은 계산 툴(tax_calc)만 — 상담원 메모의 숫자 근거가 걸린 툴. reg_search 생략은 조립기가 근거 줄을 비워 두는 것으로 드러난다
-            missing = [t for t in judgment.required_tools if t == "tax_calc" and t not in called] if ENFORCE_PLAN else []
-            if missing and not nudged:
-                nudged = True
-                res.steps.append(Step(step_no, reply.text, None, None, f"계획 미이행: {missing}", lat, reply.in_tokens, reply.out_tokens, error_code="E-PLAN-NUDGE"))
-                history.append(Message(role="assistant", content=reply.text or ""))
-                history.append(Message(role="user", content=f"아직 {', '.join(missing)} 을(를) 호출하지 않았다. 조회는 이미 끝났으니 다시 조회하지 말고, "
-                                                             f"지금 {missing[0]} 을(를) 인자 없이 호출해라: {{\"name\": \"{missing[0]}\", \"arguments\": {{}}}}. 그 결과를 반영한 뒤 최종 답변을 써라."))
-                continue
+            # (10/29) 한때 tax_calc 를 빼먹으면 되묻는 '계획 강제'가 있었다 — 로컬 7B 가 되묻기를 "다시 조회"로 읽어 E-LOOP 11/30. 결정 A 로 tax_calc 자체를
+            # 에이전트 툴에서 빼고 계산 요약을 sql_query 응답에 넣으면서 되묻기는 제거했다.
             res.steps.append(Step(step_no, reply.text, None, None, None, lat, reply.in_tokens, reply.out_tokens))
             res.final = reply.text
             return res
@@ -141,15 +128,14 @@ async def run(inquiry: str, judgment: Judgment, llm: LLMClient, ctx: registry.To
         call = reply.tool_call
         sig = _sig(call.name, call.args)
         seen[sig] = seen.get(sig, 0) + 1
-        if seen[sig] == 2 and nudged and sig in last_obs:
-            # 되묻기 직후의 같은 호출 반복 — 작은 모델은 "tax_calc 를 불러라"를 "다시 조회하라"로 읽는다 (10/29 A100: E-LOOP 11/30).
-            # 재실행하지 않고 직전 결과를 돌려주며 한 번 더 안내한다. 3회째부터 E-LOOP.
+        if seen[sig] == 2 and sig in last_obs:
+            # 같은 호출 반복 1회째: 재실행하지 않고 직전 결과를 돌려주며 안내한다 (작은 모델이 자주 한다). 3회째부터 E-LOOP.
             res.steps.append(Step(step_no, reply.text, call.name, call.args, "(중복 호출 — 직전 결과 재사용)", lat, reply.in_tokens, reply.out_tokens, error_code="E-DUP-CALL"))
             history.append(Message(role="assistant", content=json.dumps(call.args, ensure_ascii=False), tool_call_id=call.id, name=call.name))
             history.append(Message(role="tool", content=last_obs[sig], tool_call_id=call.id, name=call.name))
             history.append(Message(role="user", content=f"{call.name} 은(는) 이미 같은 결과다. 다른 툴을 호출하거나 최종 답변을 써라."))
             continue
-        if seen[sig] >= (3 if nudged else 2):
+        if seen[sig] >= 3:
             res.steps.append(Step(step_no, reply.text, call.name, call.args, None, lat, error_code="E-LOOP"))
             res.aborted = "E-LOOP"
             return res

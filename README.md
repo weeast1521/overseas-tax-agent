@@ -27,7 +27,7 @@
 | `app/importers/` | 미래에셋·나무 CSV 매퍼, T+2 결제일 보정, 환율 부착, 중복 제거. 실제 헤더 확인 전 |
 | `app/agent/react.py` | ReAct 루프. MAX_STEPS 8, E-LOOP, E-TOOL-FAIL, E-TOOL-ORDER, E-LLM-FORMAT |
 | `app/llm/`, `app/judge/` | `LLMClient`·`Judge` Protocol. Claude/Ollama, Rule/Claude 구현체. 환경변수로 교체 |
-| `app/tools/registry.py` | tax_calc 연결(요약 우선 응답). sql_query → Text-to-SQL, reg_search → 하이브리드 검색 |
+| `app/tools/registry.py` | 에이전트 툴은 `sql_query`·`reg_search` 둘. 세액은 코드가 먼저 계산해 sql_query 응답의 `tax_calc` 블록으로 — 에이전트가 계산 툴을 부를지 말지 선택하지 않는다 (10/29 결정 A: 로컬 7B 가 tax_calc 를 1/29 만 불렀고, 되묻기는 E-LOOP 11/30 을 냈다). `tax_calc`·`broker_method` 는 디버그 API 전용 |
 | `app/tools/sql_guard.py`, `sql_exec.py`, `sql_query.py` | F04 Text-to-SQL. 아래 "거래 조회 보안" 절 |
 | `app/repo.py` | 증권사별 방식 테이블, 계좌별 방식 결정 |
 | `app/main.py` | `POST /v1/inquiries`, `POST /v1/tools/tax_calc`, `/healthz` |

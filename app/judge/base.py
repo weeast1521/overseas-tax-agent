@@ -14,11 +14,13 @@ Category = Literal["TRANSFER_BASIS", "MULTI_BROKER", "TAX_BASIS", "OFFSET", "FX_
 
 # broker_method는 넣지 않는다 (SCRUM-19, 10/26): 산정 방식은 코드(resolve_methods)가 정해 계산·조립에 직접 넣으므로
 # 에이전트가 물어볼 필요가 없다. 여기 있으면 에이전트가 매번 먼저 불러 건당 3.3초를 썼다(홀드아웃 30건 중 24건).
+# tax_calc 도 빠졌다 (10/29 결정 A): 세액은 코드가 미리 계산해 sql_query 응답에 요약으로 붙는다. 에이전트의 tax_calc 호출은 같은 계산의 중복이었고
+# 로컬 7B 는 그 호출을 거의 건너뛰었다(A100 홀드아웃 1/29). LLM 에게 선택권을 줄 필요가 없는 것은 주지 않는다.
 DEFAULT_TOOLS: dict[str, list[str]] = {
-    "TRANSFER_BASIS": ["sql_query", "tax_calc", "reg_search"],  # 이체(대체입고) 취득가액
-    "MULTI_BROKER": ["sql_query", "tax_calc", "reg_search"],
-    "TAX_BASIS": ["sql_query", "tax_calc", "reg_search"],
-    "OFFSET": ["sql_query", "tax_calc", "reg_search"],
+    "TRANSFER_BASIS": ["sql_query", "reg_search"],  # 이체(대체입고) 취득가액
+    "MULTI_BROKER": ["sql_query", "reg_search"],
+    "TAX_BASIS": ["sql_query", "reg_search"],
+    "OFFSET": ["sql_query", "reg_search"],
     "FX_BASIS": ["sql_query", "reg_search"],  # 환율 기준일 설명이 중심. 숫자는 figures(직접 계산)로 나간다
     "FILING": ["reg_search"],  # 신고 절차·과세 대상 여부 — 규정 설명만, 계산 없음 (범위 결정 (a), 10/24)
     "OUT_OF_SCOPE": [],

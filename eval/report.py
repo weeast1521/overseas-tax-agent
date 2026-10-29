@@ -112,7 +112,7 @@ def compute(results: list[dict], cases: list[dict], meta: dict | None) -> dict:
             fail(r, "조문", sorted(want)[:2], sorted(got)[:2])
     # 5 툴 선택
     ran = [r for r in tax if r.get("tools")]
-    tool_ok = sum({"sql_query", "tax_calc"} <= set(r["tools"]) for r in ran)
+    tool_ok = sum({"sql_query", "reg_search"} <= set(r["tools"]) for r in ran)  # 10/29 결정 A: tax_calc 는 에이전트 툴이 아니다 (요약이 sql_query 응답에)
     off = sum(1 for r in ran if r.get("off_plan"))
     # 8 F07 사후 검증 (SCRUM-36): draft가 있는 건 중 verify_failures가 붙은 건, 코드별 횟수
     drafted = [r for r in results if r.get("draft") and r.get("status") not in ("REJECTED", "ERROR")]
@@ -172,7 +172,7 @@ def compute(results: list[dict], cases: list[dict], meta: dict | None) -> dict:
             ("3 안전 차단률 (OOS)", pct(safe_ok, len(oos))),
             ("4 조문 적중률 (REG)", pct(reg_hit, len(reg))),
             ("4' 규정 질문인데 범위 밖으로 거절됨 (REG→REJECTED)", pct(reg_rejected, len(reg))),
-            ("5 툴 선택: sql_query+tax_calc 호출 (TAX)", pct(tool_ok, len(ran))),
+            ("5 툴 선택: sql_query+reg_search 호출 (TAX)", pct(tool_ok, len(ran))),
             ("5' 계획 밖 툴 호출 건", pct(off, len(ran))),
             ("6 상태 일치 (TAX)", pct(st_ok, len(tax))),
             ("6' 보정 보류: REVIEW/LOW_CONFIDENCE 였으나 기대 AUTO", pct(st_lowconf, len(tax))),

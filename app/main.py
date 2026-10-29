@@ -207,6 +207,7 @@ async def handle_inquiry(body: InquiryRequest) -> tuple[InquiryResponse, react.A
     llm = _llm()
     ctx = registry.ToolContext(body.customer_id, body.tax_year, body.method_override)
     ctx.category = judgment.category
+    ctx.figures, ctx.calc_error = figures, calc_error  # sql_query 응답의 tax_calc 블록 (결정 A)
     # sql_query 의 SQL 생성용. 단순 SELECT 한 줄이라 Haiku 로 충분 — Opus 로 하면 호출당 10초 이상 걸려 E-TIMEOUT 이 19/30 (10/27 t2sql2)
     ctx.llm = _sub_llm(llm, "SQL_MODEL", "claude-haiku-5-5", max_tokens=400)
     # F01-6 동기 타임아웃 (SCRUM-19). 마감은 접수 시각 기준 — Judge 시간도 포함한다.

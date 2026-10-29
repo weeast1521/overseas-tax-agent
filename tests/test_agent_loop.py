@@ -72,66 +72,9 @@ def test_tool_internal_exception_becomes_observation(monkeypatch):
     assert obs["error"] == "E-TOOL-EXC" and "db down" in obs["message"]
 
 
-def test_final_without_tax_calc_is_nudged_once():
-    """계획 강제 (SCRUM-45): tax_calc 를 건너뛰고 끝내면 1회 되묻고, 그래도 안 부르면 그대로 끝낸다 (E-PLAN-NUDGE 스텝 1개)."""
-    import asyncio
-    from app.agent import react
-    from app.judge.rule_judge import RuleJudge
-    from app.tools import registry
 
-    class Skipper:
-        name = "ollama"
-
-        def __init__(self):
-            self.n = 0
-
-        async def complete(self, messages, tools):
-            from app.llm.base import Completion, ToolCall
-            self.n += 1
-            if self.n == 1:
-                return Completion(text=None, tool_call=ToolCall(id="1", name="sql_query", args={"intent": "전체"}))
-            if self.n == 2:
-                return Completion(text="메모: 계산 없이 끝")  # tax_calc 건너뜀 → 되묻기
-            if self.n == 3:
-                assert any("tax_calc" in m.content for m in messages if m.role == "user")
-                return Completion(text=None, tool_call=ToolCall(id="2", name="tax_calc", args={}))
-            return Completion(text="메모: 계산 반영")
-
-    j = asyncio.run(RuleJudge().classify("세금 얼마예요"))
-    res = asyncio.run(react.run("세금 얼마예요", j, Skipper(), registry.ToolContext(1042, 2025)))
-    assert res.final == "메모: 계산 반영" and [s.tool for s in res.steps] == ["sql_query", None, "tax_calc", None]
-    assert res.steps[1].error_code == "E-PLAN-NUDGE"
-
-
-def test_duplicate_call_after_nudge_reuses_result_instead_of_loop():
-    """되묻기 뒤 같은 sql_query 를 반복하면 E-LOOP 가 아니라 직전 결과 재사용(E-DUP-CALL) → 그 다음 tax_calc 호출이 가능하다 (10/29 A100: E-LOOP 11/30)."""
-    import asyncio
-    from app.agent import react
-    from app.judge.rule_judge import RuleJudge
-    from app.tools import registry
-    from app.llm.base import Completion, ToolCall
-
-    script = [
-        Completion(text=None, tool_call=ToolCall(id="1", name="sql_query", args={"intent": "전체"})),
-        Completion(text="끝"),                                                                # tax_calc 없이 → 되묻기
-        Completion(text=None, tool_call=ToolCall(id="2", name="sql_query", args={"intent": "전체"})),  # 같은 조회 반복 → 재사용
-        Completion(text=None, tool_call=ToolCall(id="3", name="tax_calc", args={})),
-        Completion(text="계산 반영"),
-    ]
-
-    class Scripted:
-        name = "ollama"
-
-        async def complete(self, messages, tools):
-            return script.pop(0)
-
-    j = asyncio.run(RuleJudge().classify("세금 얼마예요"))
-    res = asyncio.run(react.run("세금 얼마예요", j, Scripted(), registry.ToolContext(1042, 2025)))
-    assert res.final == "계산 반영" and res.aborted is None
-    assert [s.error_code for s in res.steps] == [None, "E-PLAN-NUDGE", "E-DUP-CALL", None, None]
-
-
-def test_triple_duplicate_after_nudge_is_still_E_LOOP():
+def test_duplicate_call_reuses_result_then_third_is_loop():
+    """같은 호출 반복 1회째는 재실행 없이 직전 결과 재사용(E-DUP-CALL), 3회째 E-LOOP (10/29)."""
     import asyncio
     from app.agent import react
     from app.judge.rule_judge import RuleJudge
@@ -139,7 +82,7 @@ def test_triple_duplicate_after_nudge_is_still_E_LOOP():
     from app.llm.base import Completion, ToolCall
 
     call = lambda i: Completion(text=None, tool_call=ToolCall(id=str(i), name="sql_query", args={"intent": "전체"}))  # noqa: E731
-    script = [call(1), Completion(text="끝"), call(2), call(3), call(4)]
+    script = [call(1), call(2), Completion(text="끝")]
 
     class Scripted:
         name = "ollama"
@@ -149,4 +92,25 @@ def test_triple_duplicate_after_nudge_is_still_E_LOOP():
 
     j = asyncio.run(RuleJudge().classify("세금 얼마예요"))
     res = asyncio.run(react.run("세금 얼마예요", j, Scripted(), registry.ToolContext(1042, 2025)))
-    assert res.aborted == "E-LOOP"
+    assert res.final == "끝" and [s.error_code for s in res.steps] == [None, "E-DUP-CALL", None]
+
+    script[:] = [call(1), call(2), call(3)]
+    res2 = asyncio.run(react.run("세금 얼마예요", j, Scripted(), registry.ToolContext(1042, 2025)))
+    assert res2.aborted == "E-LOOP"
+
+
+def test_sql_query_observation_carries_code_calculated_tax_summary():
+    """결정 A (10/29): 세액 요약은 sql_query 응답의 tax_calc 블록으로 — 에이전트 툴 목록에 tax_calc 가 없다."""
+    import asyncio
+    from app.tools import registry
+    from app import main
+
+    assert "tax_calc" not in registry.AGENT_TOOLS and [t.name for t in registry.specs()] == ["sql_query", "reg_search"]
+    ctx = registry.ToolContext(1042, 2025)
+    ctx.figures, ctx.calc_error = main.compute_figures(1042, 2025, {})
+    out = asyncio.run(registry.invoke("sql_query", {"intent": "전체 거래"}, ctx))
+    assert out["tax_calc"]["tax_krw"] == ctx.figures["tax_krw"] and out["tax_calc"]["by_account"][0]["account_id"]
+    assert list(out).index("tax_calc") < list(out).index("rows")  # 요약이 rows 보다 앞 (Observation 2,000자 잘림 대비)
+    ctx2 = registry.ToolContext(1042, 2025)  # figures 없음 → 숫자 말하지 말라는 표식
+    out2 = asyncio.run(registry.invoke("sql_query", {"intent": "전체 거래"}, ctx2))
+    assert out2["tax_calc"]["error"] == "E-CALC-NONE"

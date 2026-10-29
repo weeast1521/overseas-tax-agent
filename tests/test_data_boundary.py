@@ -183,5 +183,5 @@ def test_tool_observation_does_not_carry_whole_trade_table(monkeypatch):
     sql_exec.reset_executor()
     ctx = registry.ToolContext(2008, 2025)
     out = asyncio.run(registry.invoke("sql_query", {"intent": "전체 거래"}, ctx))
-    assert len(ctx.last_rows) > 10 and len(out["rows"]) == 10 and out["rows_shown"] == 10
+    assert len(ctx.last_rows) > 10 and len(out["rows"]) == 5 and out["rows_shown"] == 5
     assert len(json.dumps(out, ensure_ascii=False)) < 6000
