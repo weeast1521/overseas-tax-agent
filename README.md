@@ -73,6 +73,8 @@ python scripts/load_trade_db.py --src data/mine/trades.json   # 선택: 파일 D
 
 지문은 메모리에만 있고 파일·로그·응답에 쓰지 않는다. 테스트는 진짜 `data/mine` 을 읽지 않고 `tmp_path` 의 가짜 실데이터(`MINE_TRADES_FILE`)로 돈다.
 
+**폴백 금지** (`tests/test_no_fallback.py`): `LLM_PROVIDER=ollama` 에서 Ollama 가 죽으면 `FAILED/E-LLM` 으로 끝낸다 — 숫자·상태 문장은 코드로 나가고, Claude 로 넘어가지 않는다(anthropic 모듈을 '부르면 터지는' 가짜로 바꿔 두고 확인). CI(`.github/workflows/ci.yml`)는 경계·폴백 테스트를 별도 잡으로 먼저 돌리고, 키 없이 통과해야 한다.
+
 ## 내 데이터로 검증
 
 ```bash

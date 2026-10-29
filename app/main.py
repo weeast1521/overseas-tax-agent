@@ -140,7 +140,7 @@ def compute_figures(customer_id: int, tax_year: int, methods: dict[str, str]) ->
 def decide_status(gate: str, needs_confirmation: list[str], figures: dict | None,
                   agent_aborted: str | None, calc_error: str | None) -> tuple[str, str | None, str | None]:
     """(status, review_reason, error_code). 우선순위: FAILED > METHOD_UNCONFIRMED > TRANSFER_REVIEW > AGENT_ABORTED > LOW_CONFIDENCE > AUTO."""
-    if agent_aborted in ("E-LLM-FORMAT", "E-TOOL-FAIL", "E-TIMEOUT"):
+    if agent_aborted in ("E-LLM-FORMAT", "E-TOOL-FAIL", "E-TIMEOUT", "E-LLM"):  # E-LLM: 모델 호출 실패, 폴백 없음 (SCRUM-51)
         return "FAILED", None, agent_aborted
     if calc_error in ("E-CALC-FX",):
         return "FAILED", None, calc_error

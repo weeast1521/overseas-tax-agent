@@ -174,3 +174,14 @@ def test_mine_dir_is_gitignored_and_absent_from_repo_tracking():
     import subprocess
     tracked = subprocess.run(["git", "ls-files", "data/mine"], cwd=ROOT, capture_output=True, text=True).stdout.strip()
     assert tracked == "", f"git 에 실데이터가 추적됨: {tracked}"
+
+
+def test_tool_observation_does_not_carry_whole_trade_table(monkeypatch):
+    """합성 모드에서도 거래 원본 행이 LLM payload 에 통째로 들어가지 않는다 — sql_query Observation 은 10행까지, 전체는 tax_calc 로만."""
+    from app.tools import registry, sql_exec
+    monkeypatch.setenv("TRADES_FILE", str(ROOT / "data" / "synthetic" / "trades.json"))
+    sql_exec.reset_executor()
+    ctx = registry.ToolContext(2008, 2025)
+    out = asyncio.run(registry.invoke("sql_query", {"intent": "전체 거래"}, ctx))
+    assert len(ctx.last_rows) > 10 and len(out["rows"]) == 10 and out["rows_shown"] == 10
+    assert len(json.dumps(out, ensure_ascii=False)) < 6000

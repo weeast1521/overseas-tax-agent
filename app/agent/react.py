@@ -8,6 +8,7 @@ LLM은 다음 행동(툴 호출 또는 최종 답변)만 고른다. 숫자·사�
 """
 from __future__ import annotations
 
+import asyncio
 import hashlib
 import json
 import os
@@ -69,6 +70,7 @@ class AgentResult:
     final: str | None = None
     aborted: str | None = None
     steps: list[Step] = field(default_factory=list)
+    error_detail: str | None = None
 
 
 def _sig(name: str, args: dict) -> str:
@@ -94,7 +96,15 @@ async def run(inquiry: str, judgment: Judgment, llm: LLMClient, ctx: registry.To
 
     for step_no in range(MAX_STEPS):
         t0 = time.perf_counter()
-        reply: Completion = await llm.complete(history, tools)
+        try:
+            reply: Completion = await llm.complete(history, tools)
+        except asyncio.CancelledError:
+            raise
+        except Exception as e:  # LLM 호출 실패(로컬 Ollama 다운·API 오류). 다른 제공자로 폴백하지 않는다 — 폐쇄망 원칙 (SCRUM-51)
+            res.steps.append(Step(step_no, None, None, None, None, int((time.perf_counter() - t0) * 1000), error_code="E-LLM"))
+            res.aborted = "E-LLM"
+            res.error_detail = f"{type(e).__name__}: {str(e)[:120]}"
+            return res
         lat = int((time.perf_counter() - t0) * 1000)
 
         if reply.final:
