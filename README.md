@@ -51,7 +51,9 @@ make test
 | --- | --- | --- | --- |
 | 1 검사 | `sql_guard.validate` (sqlglot) | SELECT 한 문장만 · 허용 테이블 5개(trade/account/customer/fx_rate/settlement_daily) · DML/DDL/다중문/위험 함수 거부 · `customer_id = 숫자` 리터럴 거부 · LIMIT 500 강제 | `E-SQL-SCOPE` + 사유(MULTI_STATEMENT/PARSE/NOT_SELECT/WRITE_OR_DDL/FORBIDDEN_FUNC/TABLE_NOT_ALLOWED/NO_CUSTOMER_TABLE/CUSTOMER_LITERAL) |
 | 2 바인드 | `sql_guard.bind_customer` | 고객 열이 있는 모든 테이블을 `(SELECT * FROM t WHERE customer_id = :customer_id)` 로 감싼다. LLM 이 어떤 고객을 적든 세션 고객만 조회 | — |
-| 3 실행 | `sql_exec` | SQLite `mode=ro` + `PRAGMA query_only` (파서를 우회해도 DB가 거부) · 5초 초과 중단 · 500행 상한. PostgreSQL 은 읽기 전용 계정 `tax_ro`(`db/readonly_user.sql`, statement_timeout 5s) | `E-SQL-EXEC` |
+| 3 실행 | `sql_exec` | SQLite `mode=ro` + `PRAGMA query_only` (파서를 우회해도 DB가 거부) · 5초 초과 중단 · 500행 상한. PostgreSQL 은 읽기 전용 계정 `tax_ro`(`db/readonly_user.sql`, statement_timeout 5s), Oracle 은 `TAX_RO` + 동의어 + 프로파일(`db/trade_schema_oracle.sql`, `call_timeout`) | `E-SQL-EXEC` |
+
+**방언 (F04-6, SCRUM-28)**: `TRADE_DB_KIND=sqlite|pg|oracle` 이 sqlglot 방언을 정한다. 파싱·출력·행 상한(LIMIT ↔ `FETCH FIRST n ROWS ONLY`)·별칭(`AS` 생략)은 sqlglot 이 바꾸고, 의미가 다른 날짜 리터럴(`DATE '2025-01-01'`, `TO_CHAR(settle_date,'YYYY')`)만 Oracle 전용 few-shot·스키마 설명으로 따로 둔다. 템플릿은 postgres 로 쓰고 실행 방언으로 transpile. Oracle 패키지 함수(`DBMS_LOCK.SLEEP`, `UTL_HTTP` …)는 FORBIDDEN_FUNC. 테스트 15건 `tests/test_sql_oracle.py` — 실 컨테이너 검증은 SCRUM-48.
 
 거부되면 사유를 붙여 1회 재생성(F04-7), 그래도 거부면 `E-SQL-GEN`. 생성 경로는 `SQL_GEN=auto`: 표준 의도(전 거래 조회·종목 필터 — tax_calc 입력)는 템플릿(0ms·결정론), 집계·기간 조건이 섞인 의도만 LLM(Haiku, `SQL_MODEL`). 10/27 측정: Haiku 생성 3.6초가 30초 예산을 넘기는 결정타였고 에이전트 의도의 대부분이 표준형이었다(`scripts/show_latency.py`). 평가 구성(stub LLM)과 테스트는 `TEMPLATES`의 결정론 SQL을 쓴다. 테스트 19건 `tests/test_sql_guard.py` — 악의 8종 사유 코드 구분, 다른 고객 시도 → 세션 고객만, INSERT는 DB 단계 거부, 느린 쿼리 → 시간 초과.
 

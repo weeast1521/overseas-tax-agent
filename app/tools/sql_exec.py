@@ -146,10 +146,43 @@ class PgExecutor:
 _exec = None
 
 
+class OracleExecutor:
+    """S2 (SCRUM-48). python-oracledb thin 모드 — 클라이언트 설치 불필요. 읽기 전용 계정 TAX_RO(db/trade_schema_oracle.sql).
+    ORACLE_RO_DSN=host:port/service, ORACLE_RO_USER, ORACLE_RO_PASSWORD. call_timeout 으로 SQL_TIMEOUT_SEC 강제.
+    컨테이너 없이 작성했으므로 실 Oracle 검증은 SCRUM-48 에서."""
+
+    def __init__(self):
+        import oracledb  # noqa: F401
+        self.dsn = os.environ["ORACLE_RO_DSN"]
+        self.user = os.environ["ORACLE_RO_USER"]
+        self.password = os.environ["ORACLE_RO_PASSWORD"]
+        self.timeout = float(os.getenv("SQL_TIMEOUT_SEC", "5"))
+
+    def execute(self, sql: str, customer_id: int) -> dict:
+        import oracledb
+        t0 = time.perf_counter()
+        try:
+            with oracledb.connect(user=self.user, password=self.password, dsn=self.dsn) as conn:
+                conn.call_timeout = int(self.timeout * 1000)  # ms. 넘으면 DPY-4011 → E-SQL-EXEC
+                with conn.cursor() as cur:
+                    cur.execute("SET TRANSACTION READ ONLY")
+                    cur.execute(sql, customer_id=customer_id)  # Oracle 도 :customer_id 이름 바인드
+                    rows = cur.fetchmany(MAX_ROWS + 1)
+                    cols = [d[0].lower() for d in cur.description] if cur.description else []
+        except Exception as e:
+            raise SqlExecError(str(e)[:200]) from e
+        out = [dict(zip(cols, r)) for r in rows[:MAX_ROWS]]
+        return {"rows": out, "row_count": len(out), "truncated": len(rows) > MAX_ROWS, "columns": cols,
+                "elapsed_ms": int((time.perf_counter() - t0) * 1000)}
+
+
+_KINDS = {"sqlite": ("sqlite", SqliteExecutor), "pg": ("postgres", PgExecutor), "oracle": ("oracle", OracleExecutor)}
+
+
 def get_executor():
     global _exec
     if _exec is None:
-        _exec = PgExecutor() if os.getenv("TRADE_DB_KIND", "sqlite") == "pg" else SqliteExecutor()
+        _exec = _KINDS[os.getenv("TRADE_DB_KIND", "sqlite")][1]()
     return _exec
 
 
@@ -159,4 +192,5 @@ def reset_executor() -> None:
 
 
 def dialect() -> str:
-    return "postgres" if os.getenv("TRADE_DB_KIND", "sqlite") == "pg" else "sqlite"
+    """TRADE_DB_KIND → sqlglot 방언. sqlite | pg→postgres | oracle"""
+    return _KINDS[os.getenv("TRADE_DB_KIND", "sqlite")][0]

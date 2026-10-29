@@ -19,6 +19,10 @@ CUSTOMER_TABLES = {"trade", "account", "customer", "settlement_daily"}  # custom
 MAX_ROWS = 500
 PLACEHOLDER = ":customer_id"
 _FORBIDDEN_FUNCS = {"pg_sleep", "pg_read_file", "load_extension", "readfile", "writefile", "dblink", "copy", "lo_import", "lo_export"}
+# Oracle 패키지 함수 (DBMS_LOCK.SLEEP 처럼 패키지.함수 꼴) — 지연·파일·네트워크·스케줄러
+_FORBIDDEN_PACKAGES = {"dbms_lock", "dbms_pipe", "dbms_scheduler", "dbms_java", "dbms_xmlgen", "dbms_ldap", "dbms_sql",
+                       "utl_http", "utl_file", "utl_inaddr", "utl_tcp", "utl_smtp", "utl_mail"}
+DIALECTS = ("sqlite", "postgres", "oracle")  # F04-6: 방언은 sqlglot 이 파싱·출력 둘 다 맡는다 (LIMIT ↔ FETCH FIRST, AS 생략 등)
 
 
 class SqlScopeError(Exception):
@@ -45,7 +49,9 @@ def _parse(sql: str, dialect: str) -> exp.Expression:
 
 
 def validate(sql: str, dialect: str = "postgres") -> GuardResult:
-    """구조 검사. 통과하면 LIMIT이 보장된 SQL과 참조 테이블을 돌려준다."""
+    """구조 검사. 통과하면 행 상한이 보장된 SQL과 참조 테이블을 돌려준다. dialect 는 파싱·출력 둘 다에 쓴다."""
+    if dialect not in DIALECTS:
+        raise SqlScopeError("DIALECT", dialect)
     sql = sql.strip().rstrip(";").strip()
     if not sql:
         raise SqlScopeError("EMPTY")
@@ -69,6 +75,8 @@ def validate(sql: str, dialect: str = "postgres") -> GuardResult:
             raise SqlScopeError("FORBIDDEN_FUNC", node.name)
         if isinstance(node, exp.Func) and node.sql_name().lower() in _FORBIDDEN_FUNCS:
             raise SqlScopeError("FORBIDDEN_FUNC", node.sql_name())
+        if isinstance(node, exp.Dot) and isinstance(node.expression, exp.Func) and node.this.name.lower() in _FORBIDDEN_PACKAGES:
+            raise SqlScopeError("FORBIDDEN_FUNC", f"{node.this.name}.{node.expression.name}")
     # 3) 테이블 허용 목록 (CTE 이름은 테이블이 아님)
     ctes = {c.alias_or_name.lower() for c in tree.find_all(exp.CTE)}
     tables = {t.name.lower() for t in tree.find_all(exp.Table) if t.name and t.name.lower() not in ctes}
@@ -82,21 +90,19 @@ def validate(sql: str, dialect: str = "postgres") -> GuardResult:
         cols = [c for c in eq.find_all(exp.Column) if c.name.lower() == "customer_id"]
         if cols and any(isinstance(x, exp.Literal) for x in eq.find_all(exp.Literal)):
             raise SqlScopeError("CUSTOMER_LITERAL", eq.sql(dialect=dialect)[:80])
-    # 5) LIMIT 보장
+    # 5) 행 상한 보장 — LIMIT(sqlite/postgres) 또는 FETCH FIRST n ROWS ONLY(oracle). sqlglot 이 방언에 맞게 써 준다
     limit_added = False
     outer = tree
-    if isinstance(outer, exp.Select) and outer.args.get("limit") is None:
-        outer = outer.limit(MAX_ROWS)
-        limit_added = True
-    elif isinstance(outer, exp.Union) and outer.args.get("limit") is None:
+    lim = outer.args.get("limit")
+    if lim is None:
         outer = outer.limit(MAX_ROWS)
         limit_added = True
     else:
-        lim = outer.args.get("limit")
+        node = lim.args.get("count") if isinstance(lim, exp.Fetch) else lim.expression  # Oracle FETCH 는 count, LIMIT 은 expression
         try:
-            n = int(lim.expression.name)
-            if n > MAX_ROWS:
-                outer.set("limit", exp.Limit(expression=exp.Literal.number(MAX_ROWS)))
+            if int(node.name) > MAX_ROWS:
+                outer.set("limit", None)
+                outer = outer.limit(MAX_ROWS)
                 limit_added = True
         except Exception:
             pass
@@ -121,3 +127,8 @@ def bind_customer(sql: str, dialect: str = "postgres") -> GuardResult:
     if PLACEHOLDER not in out:
         out = re.sub(r"customer_id\s*=\s*'?:customer_id'?", f"customer_id = {PLACEHOLDER}", out)
     return GuardResult(sql=out, tables=g.tables, limit_added=g.limit_added, customer_filter_injected=injected)
+
+
+def transpile(sql: str, read: str, write: str) -> str:
+    """방언 변환 (F04-6). 템플릿·few-shot 은 postgres 로 쓰고 Oracle 로는 여기서 바꾼다. 날짜 리터럴처럼 의미가 다른 건 Oracle 전용 예시로 따로 둔다."""
+    return sqlglot.transpile(sql, read=read, write=write)[0]

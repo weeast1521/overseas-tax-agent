@@ -10,3 +10,4 @@ numpy>=1.26
 # RAG_STORE=pg 또는 TRADE_DB_KIND=pg 일 때만 (선택)
 # psycopg[binary]>=3.2
 # pgvector>=0.3
+# oracledb>=3.0        # TRADE_DB_KIND=oracle (SCRUM-28·48)

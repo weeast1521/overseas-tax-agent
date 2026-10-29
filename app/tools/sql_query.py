@@ -26,13 +26,26 @@ SCHEMA_DOC = """거래 DB 스키마 (읽기 전용, 고객 1명 범위):
 규칙:
 1. SELECT 한 문장만. INSERT/UPDATE/DELETE/DDL 금지. 위 다섯 테이블만.
 2. 고객 필터는 반드시 `customer_id = :customer_id` (플레이스홀더). 숫자 고객 ID를 직접 쓰지 않는다. 시스템이 세션 고객을 바인드한다.
-3. 과세연도 필터는 settle_date 기준 (예: settle_date BETWEEN '2025-01-01' AND '2025-12-31').
+3. 과세연도 필터는 settle_date 기준. {date_rule}
 4. 종목은 ticker = 'TSLA' 처럼 대문자. 결과는 500행 이내.
 5. **단순하게.** 이 조회 결과는 그대로 tax_calc 에 들어가 lot 매칭·환율·손익 계산이 거기서 된다. 그러니 trade 행을 가져오는 SELECT 한 줄로 끝낸다:
    `SELECT *` 또는 `SELECT t.*, f.usd_krw`. UNION / CASE / 집계·GROUP BY / 서브쿼리 / 구간 라벨 열은 쓰지 않는다 (집계는 의도가 명시적으로 집계일 때만).
    이체(TRANSFER) 행, 다른 연도의 매수 행도 tax_calc 가 필요로 하므로 매도만 고르거나 연도로 자르지 말고, 의도가 특정 종목이면 ticker 만 좁힌다.
    300자 이내.
-6. SQL만 출력한다. 설명·코드블록 없이."""
+6. SQL만 출력한다. 설명·코드블록 없이. 방언: {dialect_rule}"""
+
+# 방언별 차이 — 문법은 sqlglot 이 바꿔 주지만(LIMIT↔FETCH FIRST, AS 생략) 날짜 리터럴은 의미가 달라 예시를 따로 둔다 (F04-6)
+DIALECT_RULES = {
+    "sqlite": ("예: settle_date BETWEEN '2025-01-01' AND '2025-12-31' (날짜는 ISO 문자열)", "SQLite. LIMIT n."),
+    "postgres": ("예: settle_date BETWEEN '2025-01-01' AND '2025-12-31'", "PostgreSQL. LIMIT n."),
+    "oracle": ("예: settle_date BETWEEN DATE '2025-01-01' AND DATE '2025-12-31' (DATE 리터럴). 연도 추출은 TO_CHAR(settle_date, 'YYYY'). 문자열과 DATE 를 직접 비교하지 않는다",
+               "Oracle. 행 제한은 FETCH FIRST n ROWS ONLY (LIMIT 없음). 테이블 별칭에 AS 를 쓰지 않는다. DUAL 은 쓰지 않는다."),
+}
+
+
+def schema_doc(dialect: str) -> str:
+    date_rule, dialect_rule = DIALECT_RULES.get(dialect, DIALECT_RULES["postgres"])
+    return SCHEMA_DOC.replace("{date_rule}", date_rule).replace("{dialect_rule}", dialect_rule)
 
 FEWSHOT: list[tuple[str, str]] = [
     ("고객의 전체 거래 내역",
@@ -59,7 +72,26 @@ FEWSHOT: list[tuple[str, str]] = [
      "SELECT * FROM trade WHERE customer_id = :customer_id AND broker_code = 'NAMUH' ORDER BY settle_date"),
 ]
 
-# LLM 없이도 도는 결정론 템플릿 (stub 구성·폴백). intent 키워드로 고른다.
+# Oracle 전용 few-shot: 날짜 리터럴·연도 추출만 다르고 나머지는 postgres 예시를 transpile 한다
+_ORACLE_OVERRIDES = {
+    "2025년 결제분 거래":
+        "SELECT * FROM trade WHERE customer_id = :customer_id AND settle_date BETWEEN DATE '2025-01-01' AND DATE '2025-12-31' ORDER BY settle_date",
+    "고객의 2025년 테슬라 매도와 결제일 환율":
+        "SELECT t.*, f.usd_krw FROM trade t JOIN fx_rate f ON f.rate_date = t.settle_date "
+        "WHERE t.customer_id = :customer_id AND t.ticker = 'TSLA' AND t.side = 'SELL' AND t.settle_date BETWEEN DATE '2025-01-01' AND DATE '2025-12-31' ORDER BY t.settle_date",
+    "연도별 매도 건수":
+        "SELECT TO_CHAR(settle_date, 'YYYY') AS yr, COUNT(*) AS sells FROM trade WHERE customer_id = :customer_id AND side = 'SELL' GROUP BY TO_CHAR(settle_date, 'YYYY')",
+}
+
+
+def fewshot(dialect: str) -> list[tuple[str, str]]:
+    """방언별 (의도, SQL). postgres/sqlite 는 원본, oracle 은 날짜 예시만 바꾸고 나머지는 transpile."""
+    if dialect != "oracle":
+        return FEWSHOT
+    return [(i, _ORACLE_OVERRIDES.get(i) or sql_guard.transpile(q, "postgres", "oracle")) for i, q in FEWSHOT]
+
+
+# LLM 없이도 도는 결정론 템플릿 (stub 구성·폴백). intent 키워드로 고른다. postgres 로 쓰고 실행 방언으로 transpile.
 _SHOT = dict(FEWSHOT)
 TEMPLATES: list[tuple[str, str]] = [
     (r"환율|FX|달러", "SELECT t.*, f.usd_krw FROM trade t LEFT JOIN fx_rate f ON f.rate_date = t.settle_date WHERE t.customer_id = :customer_id ORDER BY t.settle_date"),
@@ -87,7 +119,7 @@ class SqlGenError(Exception):
     code = "E-SQL-GEN"
 
 
-def template_sql(intent: str, tickers: list[str] | None, tax_year: int | None) -> str:
+def template_sql(intent: str, tickers: list[str] | None, tax_year: int | None, dialect: str = "postgres") -> str:
     sql = next(s for pat, s in TEMPLATES if re.search(pat, intent or "", re.I))
     extra = []
     if tickers:
@@ -97,7 +129,7 @@ def template_sql(intent: str, tickers: list[str] | None, tax_year: int | None) -
         m = re.search(r"\s(ORDER BY|GROUP BY)\s", sql)
         cond = " AND " + " AND ".join(extra)
         sql = (sql[: m.start()] + cond + sql[m.start():]) if m else sql + cond
-    return sql
+    return sql_guard.transpile(sql, "postgres", dialect) if dialect == "oracle" else sql
 
 
 # SQL_GEN: auto(기본) — 표준 의도(전 거래 조회, 종목 필터)는 템플릿(0ms·결정론), 집계·기간·조건이 섞인 의도만 LLM | always — 항상 LLM | never — 항상 템플릿
@@ -117,17 +149,17 @@ def _strip(text: str) -> str:
 
 
 async def generate_sql(llm: LLMClient | None, intent: str, tickers: list[str] | None, tax_year: int | None,
-                       reject_reason: str | None = None) -> tuple[str, str]:
+                       reject_reason: str | None = None, dialect: str = "postgres") -> tuple[str, str]:
     """(sql, how) — how: llm | llm-retry | template. LLM이 없거나 빈 답이면 템플릿."""
     if llm is None or getattr(llm, "name", "") not in ("claude", "ollama"):  # 실제 LLM 제공자만. 대본·가짜 LLM은 템플릿
-        return template_sql(intent, tickers, tax_year), "template"
+        return template_sql(intent, tickers, tax_year, dialect), "template"
     mode = os.getenv("SQL_GEN", "auto")
     if mode == "never" or (mode == "auto" and reject_reason is None and is_standard_intent(intent)):
-        return template_sql(intent, tickers, tax_year), "template"
-    shots = "\n".join(f"의도: {i}\nSQL: {s}" for i, s in FEWSHOT)  # 시스템 프롬프트는 매 호출 동일 → 프롬프트 캐시 대상
+        return template_sql(intent, tickers, tax_year, dialect), "template"
+    shots = "\n".join(f"의도: {i}\nSQL: {s}" for i, s in fewshot(dialect))  # 시스템 프롬프트는 매 호출 동일 → 프롬프트 캐시 대상
     hint = f"\n(과세연도 {tax_year})" if tax_year else ""
     hint += f"\n(종목: {', '.join(tickers)})" if tickers else ""
-    msgs = [Message(role="system", content=SCHEMA_DOC + "\n\n예시:\n" + shots),
+    msgs = [Message(role="system", content=schema_doc(dialect) + "\n\n예시:\n" + shots),
             Message(role="user", content=f"의도: {intent}{hint}" + (f"\n\n이전 SQL은 거부됨 — 사유: {reject_reason}. 규칙을 지켜 다시 작성." if reject_reason else "") + "\nSQL:")]
     try:
         rep = await llm.complete(msgs, [])
@@ -144,14 +176,14 @@ async def run_sql_query(llm: LLMClient | None, intent: str, tickers: list[str] |
     d = sql_exec.dialect()
     attempts: list[dict] = []
     reason = None
-    rec = {"ts": time.strftime("%Y-%m-%dT%H:%M:%S"), "intent": intent, "tickers": tickers, "model": getattr(llm, "model", getattr(llm, "name", None)), "attempts": attempts}
+    rec = {"ts": time.strftime("%Y-%m-%dT%H:%M:%S"), "dialect": d, "intent": intent, "tickers": tickers, "model": getattr(llm, "model", getattr(llm, "name", None)), "attempts": attempts}
     for attempt in range(2):  # 거부 시 1회 재생성 (F04-7)
         t0 = time.perf_counter()
         try:
-            sql, how = await generate_sql(llm, intent, tickers, tax_year, reject_reason=reason)
+            sql, how = await generate_sql(llm, intent, tickers, tax_year, reject_reason=reason, dialect=d)
         except SqlGenError as e:
             attempts.append({"how": "gen", "error": str(e)})
-            sql, how = template_sql(intent, tickers, tax_year), "template"  # 생성 실패는 템플릿으로 — 숫자 조회는 멈추면 안 된다
+            sql, how = template_sql(intent, tickers, tax_year, d), "template"  # 생성 실패는 템플릿으로 — 숫자 조회는 멈추면 안 된다
         gen_ms = int((time.perf_counter() - t0) * 1000)
         try:
             g = sql_guard.bind_customer(sql, d)
