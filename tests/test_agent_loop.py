@@ -70,3 +70,34 @@ def test_tool_internal_exception_becomes_observation(monkeypatch):
     monkeypatch.setitem(registry.TOOLS, "reg_search", boom)
     obs = asyncio.run(registry.invoke("reg_search", {"query": "x"}, registry.ToolContext(1023, 2025)))
     assert obs["error"] == "E-TOOL-EXC" and "db down" in obs["message"]
+
+
+def test_final_without_tax_calc_is_nudged_once():
+    """계획 강제 (SCRUM-45): tax_calc 를 건너뛰고 끝내면 1회 되묻고, 그래도 안 부르면 그대로 끝낸다 (E-PLAN-NUDGE 스텝 1개)."""
+    import asyncio
+    from app.agent import react
+    from app.judge.rule_judge import RuleJudge
+    from app.tools import registry
+
+    class Skipper:
+        name = "ollama"
+
+        def __init__(self):
+            self.n = 0
+
+        async def complete(self, messages, tools):
+            from app.llm.base import Completion, ToolCall
+            self.n += 1
+            if self.n == 1:
+                return Completion(text=None, tool_call=ToolCall(id="1", name="sql_query", args={"intent": "전체"}))
+            if self.n == 2:
+                return Completion(text="메모: 계산 없이 끝")  # tax_calc 건너뜀 → 되묻기
+            if self.n == 3:
+                assert any("tax_calc" in m.content for m in messages if m.role == "user")
+                return Completion(text=None, tool_call=ToolCall(id="2", name="tax_calc", args={}))
+            return Completion(text="메모: 계산 반영")
+
+    j = asyncio.run(RuleJudge().classify("세금 얼마예요"))
+    res = asyncio.run(react.run("세금 얼마예요", j, Skipper(), registry.ToolContext(1042, 2025)))
+    assert res.final == "메모: 계산 반영" and [s.tool for s in res.steps] == ["sql_query", None, "tax_calc", None]
+    assert res.steps[1].error_code == "E-PLAN-NUDGE"

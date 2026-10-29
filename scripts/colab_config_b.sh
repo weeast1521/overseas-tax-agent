@@ -45,9 +45,11 @@ step "5/6 코퍼스 색인 (git 에 있는 법령·시행령 조각만 — 국�
 python scripts/index_corpus.py 2>&1 | tail -3
 
 step "6/6 평가 ($MODELS, $ONLY, 타임아웃 ${TIMEOUT}s)"
+warm() { curl -s localhost:11434/api/chat -d "{\"model\":\"$1\",\"messages\":[{\"role\":\"user\",\"content\":\"hi\"}],\"stream\":false,\"options\":{\"num_ctx\":16384,\"num_predict\":1}}" >/dev/null; }  # 콜드 로딩을 첫 케이스가 떠안지 않게
 GPU=$(nvidia-smi --query-gpu=name --format=csv,noheader 2>/dev/null | head -1 | tr ' ' '_' | tr -cd '[:alnum:]_' || echo gpu)
 for m in "${MS[@]}"; do
   TAG="colab_${GPU}_$(echo "$m" | tr ':/' '__')_t${TIMEOUT}"
+  warm "$m"
   OLLAMA_MODEL="$m" LOCAL_JUDGE_MODEL="$m" python -m eval.run --config B --tag "$TAG" --only "$ONLY" --timeout "$TIMEOUT"
   python -m eval.report "results/B_${TAG}.jsonl" | head -40 || true
 done

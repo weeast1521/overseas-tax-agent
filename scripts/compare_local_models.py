@@ -31,10 +31,24 @@ def have_model(name: str) -> bool:
     return any(line.split()[0] == name or line.split()[0] == name + ":latest" for line in out.splitlines()[1:] if line.strip())
 
 
+def warm_up(model: str) -> None:
+    """콜드 로딩(수십 초)을 첫 케이스가 떠안지 않게. num_ctx 는 에이전트와 같게."""
+    import json as _j
+    import urllib.request
+    host = os.getenv("OLLAMA_HOST", "http://localhost:11434").rstrip("/")
+    body = _j.dumps({"model": model, "messages": [{"role": "user", "content": "hi"}], "stream": False,
+                     "options": {"num_ctx": int(os.getenv("OLLAMA_NUM_CTX", "16384")), "num_predict": 1}}).encode()
+    try:
+        urllib.request.urlopen(urllib.request.Request(f"{host}/api/chat", data=body, headers={"Content-Type": "application/json"}), timeout=180).read()
+    except Exception as e:
+        print(f"(워밍업 실패 — 계속: {e})")
+
+
 def run_model(model: str, only: str, out_dir: str, cases: str, timeout: float | None, suffix: str) -> Path:
     tag = "local_" + model.replace(":", "_").replace("/", "_") + suffix
     env = {**os.environ, "OLLAMA_MODEL": model, "LOCAL_JUDGE_MODEL": model}
     env.pop("ANTHROPIC_API_KEY", None)  # 구성 B 는 키가 있어도 쓰지 않는다 — 아예 빼고 돈다
+    warm_up(model)
     cmd = [sys.executable, "-m", "eval.run", "--config", "B", "--tag", tag, "--only", only, "--cases", cases, "--out-dir", out_dir]
     if timeout is not None:
         cmd += ["--timeout", str(timeout)]

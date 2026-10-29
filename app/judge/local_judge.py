@@ -51,7 +51,8 @@ class LocalJudge:
         sys_text = LOCAL_SYSTEM + ("\n\n직전 응답이 형식을 벗어났다. JSON 한 개만, category 는 목록 중 하나로." if retry else "")
         return {
             "model": self.model, "stream": False, "format": JSON_SCHEMA,  # Ollama 구조화 출력 — 스키마에 맞는 JSON 만 생성
-            "options": {"temperature": temperature, "num_predict": 120},
+            # num_ctx 는 에이전트(OllamaClient)와 같게 — 다르면 Ollama 가 같은 모델을 두 설정으로 번갈아 다시 로드한다 (10/29 A100: Judge 평균 8초의 원인)
+            "options": {"temperature": temperature, "num_predict": 120, "num_ctx": int(os.getenv("OLLAMA_NUM_CTX", "16384"))},
             "messages": [{"role": "system", "content": sys_text}, {"role": "user", "content": text}],
         }
 

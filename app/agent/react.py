@@ -25,6 +25,8 @@ MAX_STEPS = 8
 #   notes (기본) = 상담원용 짧은 메모. 고객 문장·숫자는 조립기(F07)가 코드로 만든다 — 에이전트가 숫자를 다시 쓸 이유가 없다.
 #                 SCRUM-19: json 모드는 최종 답에 figures를 통째로 다시 써서 출력 토큰이 많고 30초를 자주 넘겼다.
 #   json  = 조립기 이전의 기준 형식 (before 비교용) / prose = 프롬프트만으로 고객용 문장 (절제 실험용)
+ENFORCE_PLAN = os.getenv("AGENT_ENFORCE_PLAN", "on") == "on"  # 계획된 툴을 빼먹고 끝내면 1회 되묻기
+
 FINAL_FORMATS = {
     "notes": """최종 답변은 상담원용 메모다. 한국어 3줄 이내, 숫자·금액·JSON·고객용 문장은 쓰지 않는다(시스템이 계산 결과로 고객 안내문을 조립한다).
    쓸 것: 민원의 핵심 쟁점 한 줄, 확인한 사실(어느 증권사·이체 여부·손익통산 여부 등) 한 줄, 상담원이 고객에게 확인할 점 한 줄.""",
@@ -93,6 +95,8 @@ async def run(inquiry: str, judgment: Judgment, llm: LLMClient, ctx: registry.To
     seen: dict[str, int] = {}
     fails: dict[str, int] = {}
     format_errors = 0
+    called: set[str] = set()
+    nudged = False
 
     for step_no in range(MAX_STEPS):
         t0 = time.perf_counter()
@@ -108,6 +112,17 @@ async def run(inquiry: str, judgment: Judgment, llm: LLMClient, ctx: registry.To
         lat = int((time.perf_counter() - t0) * 1000)
 
         if reply.final:
+            # 계획 강제 (F03-4 확장, SCRUM-45): Judge 가 필요하다고 한 툴을 빼먹고 끝내면 1회 되묻는다.
+            # 10/29 A100 qwen2.5:7b 홀드아웃: tax_calc 를 29건 중 28건 건너뜀(sql_query→reg_search→최종). 숫자는 코드가 독립 계산하므로 답은 맞지만
+            # 상담원 메모에 계산 근거가 빠진다. 큰 모델은 스스로 다 부르므로 영향 없음.
+            # 되묻는 대상은 계산 툴(tax_calc)만 — 상담원 메모의 숫자 근거가 걸린 툴. reg_search 생략은 조립기가 근거 줄을 비워 두는 것으로 드러난다
+            missing = [t for t in judgment.required_tools if t == "tax_calc" and t not in called] if ENFORCE_PLAN else []
+            if missing and not nudged:
+                nudged = True
+                res.steps.append(Step(step_no, reply.text, None, None, f"계획 미이행: {missing}", lat, reply.in_tokens, reply.out_tokens, error_code="E-PLAN-NUDGE"))
+                history.append(Message(role="assistant", content=reply.text or ""))
+                history.append(Message(role="user", content=f"아직 {', '.join(missing)} 을(를) 호출하지 않았다. 지금 호출해서 결과를 반영한 뒤 최종 답변을 써라."))
+                continue
             res.steps.append(Step(step_no, reply.text, None, None, None, lat, reply.in_tokens, reply.out_tokens))
             res.final = reply.text
             return res
@@ -141,6 +156,7 @@ async def run(inquiry: str, judgment: Judgment, llm: LLMClient, ctx: registry.To
             res.aborted = "E-TOOL-FAIL"
             return res
 
+        called.add(call.name)
         history.append(Message(role="assistant", content=json.dumps(call.args, ensure_ascii=False), tool_call_id=call.id, name=call.name))
         history.append(Message(role="tool", content=obs_text, tool_call_id=call.id, name=call.name))
 
