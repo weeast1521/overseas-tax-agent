@@ -200,6 +200,8 @@ def main_cli() -> int:
         from app.llm.claude_client import assert_synthetic_data
         assert_synthetic_data()
     os.environ.setdefault("TRACE_DB", str(Path(args.out_dir) / f"trace_{args.config}_{args.tag}.db"))
+    if not args.resume and Path(os.environ["TRACE_DB"]).exists():  # 같은 태그 재실행 시 이전 trace 가 섞여 지연 평균이 왜곡된다 (10/29 A100)
+        Path(os.environ["TRACE_DB"]).unlink()
     os.environ.setdefault("SQL_LOG", str(Path(args.out_dir) / f"sql_{args.config}_{args.tag}.jsonl"))  # 생성 SQL 전문 (scripts/show_sql.py)
 
     cases = load_cases(Path(args.cases))

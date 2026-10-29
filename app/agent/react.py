@@ -96,6 +96,7 @@ async def run(inquiry: str, judgment: Judgment, llm: LLMClient, ctx: registry.To
     fails: dict[str, int] = {}
     format_errors = 0
     called: set[str] = set()
+    last_obs: dict[str, str] = {}
     nudged = False
 
     for step_no in range(MAX_STEPS):
@@ -121,7 +122,8 @@ async def run(inquiry: str, judgment: Judgment, llm: LLMClient, ctx: registry.To
                 nudged = True
                 res.steps.append(Step(step_no, reply.text, None, None, f"계획 미이행: {missing}", lat, reply.in_tokens, reply.out_tokens, error_code="E-PLAN-NUDGE"))
                 history.append(Message(role="assistant", content=reply.text or ""))
-                history.append(Message(role="user", content=f"아직 {', '.join(missing)} 을(를) 호출하지 않았다. 지금 호출해서 결과를 반영한 뒤 최종 답변을 써라."))
+                history.append(Message(role="user", content=f"아직 {', '.join(missing)} 을(를) 호출하지 않았다. 조회는 이미 끝났으니 다시 조회하지 말고, "
+                                                             f"지금 {missing[0]} 을(를) 인자 없이 호출해라: {{\"name\": \"{missing[0]}\", \"arguments\": {{}}}}. 그 결과를 반영한 뒤 최종 답변을 써라."))
                 continue
             res.steps.append(Step(step_no, reply.text, None, None, None, lat, reply.in_tokens, reply.out_tokens))
             res.final = reply.text
@@ -139,7 +141,15 @@ async def run(inquiry: str, judgment: Judgment, llm: LLMClient, ctx: registry.To
         call = reply.tool_call
         sig = _sig(call.name, call.args)
         seen[sig] = seen.get(sig, 0) + 1
-        if seen[sig] >= 2:
+        if seen[sig] == 2 and nudged and sig in last_obs:
+            # 되묻기 직후의 같은 호출 반복 — 작은 모델은 "tax_calc 를 불러라"를 "다시 조회하라"로 읽는다 (10/29 A100: E-LOOP 11/30).
+            # 재실행하지 않고 직전 결과를 돌려주며 한 번 더 안내한다. 3회째부터 E-LOOP.
+            res.steps.append(Step(step_no, reply.text, call.name, call.args, "(중복 호출 — 직전 결과 재사용)", lat, reply.in_tokens, reply.out_tokens, error_code="E-DUP-CALL"))
+            history.append(Message(role="assistant", content=json.dumps(call.args, ensure_ascii=False), tool_call_id=call.id, name=call.name))
+            history.append(Message(role="tool", content=last_obs[sig], tool_call_id=call.id, name=call.name))
+            history.append(Message(role="user", content=f"{call.name} 은(는) 이미 같은 결과다. 다른 툴을 호출하거나 최종 답변을 써라."))
+            continue
+        if seen[sig] >= (3 if nudged else 2):
             res.steps.append(Step(step_no, reply.text, call.name, call.args, None, lat, error_code="E-LOOP"))
             res.aborted = "E-LOOP"
             return res
@@ -157,6 +167,7 @@ async def run(inquiry: str, judgment: Judgment, llm: LLMClient, ctx: registry.To
             return res
 
         called.add(call.name)
+        last_obs[sig] = obs_text
         history.append(Message(role="assistant", content=json.dumps(call.args, ensure_ascii=False), tool_call_id=call.id, name=call.name))
         history.append(Message(role="tool", content=obs_text, tool_call_id=call.id, name=call.name))
 

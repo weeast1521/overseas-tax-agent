@@ -101,3 +101,52 @@ def test_final_without_tax_calc_is_nudged_once():
     res = asyncio.run(react.run("세금 얼마예요", j, Skipper(), registry.ToolContext(1042, 2025)))
     assert res.final == "메모: 계산 반영" and [s.tool for s in res.steps] == ["sql_query", None, "tax_calc", None]
     assert res.steps[1].error_code == "E-PLAN-NUDGE"
+
+
+def test_duplicate_call_after_nudge_reuses_result_instead_of_loop():
+    """되묻기 뒤 같은 sql_query 를 반복하면 E-LOOP 가 아니라 직전 결과 재사용(E-DUP-CALL) → 그 다음 tax_calc 호출이 가능하다 (10/29 A100: E-LOOP 11/30)."""
+    import asyncio
+    from app.agent import react
+    from app.judge.rule_judge import RuleJudge
+    from app.tools import registry
+    from app.llm.base import Completion, ToolCall
+
+    script = [
+        Completion(text=None, tool_call=ToolCall(id="1", name="sql_query", args={"intent": "전체"})),
+        Completion(text="끝"),                                                                # tax_calc 없이 → 되묻기
+        Completion(text=None, tool_call=ToolCall(id="2", name="sql_query", args={"intent": "전체"})),  # 같은 조회 반복 → 재사용
+        Completion(text=None, tool_call=ToolCall(id="3", name="tax_calc", args={})),
+        Completion(text="계산 반영"),
+    ]
+
+    class Scripted:
+        name = "ollama"
+
+        async def complete(self, messages, tools):
+            return script.pop(0)
+
+    j = asyncio.run(RuleJudge().classify("세금 얼마예요"))
+    res = asyncio.run(react.run("세금 얼마예요", j, Scripted(), registry.ToolContext(1042, 2025)))
+    assert res.final == "계산 반영" and res.aborted is None
+    assert [s.error_code for s in res.steps] == [None, "E-PLAN-NUDGE", "E-DUP-CALL", None, None]
+
+
+def test_triple_duplicate_after_nudge_is_still_E_LOOP():
+    import asyncio
+    from app.agent import react
+    from app.judge.rule_judge import RuleJudge
+    from app.tools import registry
+    from app.llm.base import Completion, ToolCall
+
+    call = lambda i: Completion(text=None, tool_call=ToolCall(id=str(i), name="sql_query", args={"intent": "전체"}))  # noqa: E731
+    script = [call(1), Completion(text="끝"), call(2), call(3), call(4)]
+
+    class Scripted:
+        name = "ollama"
+
+        async def complete(self, messages, tools):
+            return script.pop(0)
+
+    j = asyncio.run(RuleJudge().classify("세금 얼마예요"))
+    res = asyncio.run(react.run("세금 얼마예요", j, Scripted(), registry.ToolContext(1042, 2025)))
+    assert res.aborted == "E-LOOP"
