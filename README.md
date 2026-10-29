@@ -61,6 +61,23 @@ make test
 python scripts/load_trade_db.py --src data/mine/trades.json   # 선택: 파일 DB(읽기 전용). 없으면 TRADES_FILE 로 메모리 DB
 ```
 
+## 폐쇄망 구성 B (SCRUM-49)
+
+환경변수만 바꿔 같은 코드가 외부 API 없이 돈다: `LLM_PROVIDER=ollama JUDGE_IMPL=local EMBEDDER=ollama`.
+
+| 자리 | 구성 A (개발·상한선) | 구성 B (폐쇄망) |
+| --- | --- | --- |
+| 에이전트 | Claude Opus (`ClaudeClient`) | Ollama (`OllamaClient`) — 툴 호출 형식을 어기면 본문 JSON 에서 복원, `num_ctx` 16k |
+| Judge | Claude Haiku (`ClaudeJudge`, tool_use 강제) | `LocalJudge` — 같은 유형 정의, Ollama JSON 스키마 출력. confidence 는 `LOCAL_JUDGE_SAMPLES` 반복 샘플링 일치 비율로 근사 가능 |
+| 임베딩 | Ollama bge-m3 | 동일 |
+| 실패 | — | 폴백 없음: Ollama 다운 → `FAILED/E-LLM`, Judge 실패 → `E-JUDGE` (`tests/test_no_fallback.py`) |
+
+모델 비교: `python scripts/compare_local_models.py` (후보 × `eval/local_smoke.txt` 13건, 표 출력). K8s 배치는 `k8s/ollama.yaml` (internal 네임스페이스, 모델 볼륨).
+
+### 모델 비교표 (SCRUM-49)
+
+_실행 후 채움 — final 도달 / 분류 정확 / 숫자 정확 / 평균 스텝 / 시간 / 실패 코드._
+
 ## 데이터 경계 (NF, SCRUM-51)
 
 실제 거래 데이터(`data/mine/`)는 어떤 경로로도 Anthropic API 로 나가지 않는다. 말이 아니라 `pytest` 가 매번 증명한다 (`tests/test_data_boundary.py`, 18건).

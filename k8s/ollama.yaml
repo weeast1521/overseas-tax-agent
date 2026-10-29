@@ -1,0 +1,46 @@
+# 폐쇄망 internal 네임스페이스의 Ollama (SCRUM-49). egress 는 SCRUM-50 NetworkPolicy 로 전부 차단 — 모델은 미리 볼륨에 넣어 둔다.
+# 적용: kubectl apply -f k8s/ollama.yaml && kubectl -n internal exec deploy/ollama -- ollama pull qwen2.5:7b   (망 열린 준비 단계에서만)
+apiVersion: v1
+kind: Namespace
+metadata: { name: internal }
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata: { name: ollama-models, namespace: internal }
+spec:
+  accessModes: [ReadWriteOnce]
+  resources: { requests: { storage: 30Gi } }   # qwen2.5:7b 4.7G + bge-m3 1.2G + 후보 2개
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata: { name: ollama, namespace: internal, labels: { app: ollama } }
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: ollama } }
+  template:
+    metadata: { labels: { app: ollama } }
+    spec:
+      containers:
+        - name: ollama
+          image: ollama/ollama:0.6.8
+          ports: [{ containerPort: 11434 }]
+          env:
+            - { name: OLLAMA_HOST, value: "0.0.0.0:11434" }
+            - { name: OLLAMA_KEEP_ALIVE, value: "24h" }       # 매 요청 모델 재로딩 방지 (30초 예산)
+            - { name: OLLAMA_NUM_PARALLEL, value: "2" }
+          volumeMounts: [{ name: models, mountPath: /root/.ollama }]
+          resources:
+            requests: { cpu: "4", memory: "12Gi" }
+            limits: { memory: "20Gi" }
+          readinessProbe: { httpGet: { path: /api/tags, port: 11434 }, periodSeconds: 10 }
+      volumes:
+        - name: models
+          persistentVolumeClaim: { claimName: ollama-models }
+---
+apiVersion: v1
+kind: Service
+metadata: { name: ollama, namespace: internal }
+spec:
+  selector: { app: ollama }
+  ports: [{ port: 11434, targetPort: 11434 }]
+# 앱 쪽 설정: OLLAMA_HOST=http://ollama.internal.svc:11434, OLLAMA_URL(임베딩) 동일, LLM_PROVIDER=ollama, JUDGE_IMPL=local

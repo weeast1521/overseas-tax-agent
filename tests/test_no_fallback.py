@@ -88,3 +88,18 @@ def test_llm_exception_is_recorded_as_step_not_crash():
     j = asyncio.run(RuleJudge().classify("세금 얼마예요"))
     res = asyncio.run(react.run("세금 얼마예요", j, llm, registry.ToolContext(1042, 2025)))
     assert res.aborted == "E-LLM" and llm.calls == 1 and res.steps[-1].error_code == "E-LLM"
+
+
+def test_local_judge_failure_is_E_JUDGE_without_claude(anthropic_forbidden, monkeypatch):
+    """JUDGE_IMPL=local 에서 Ollama 가 죽으면 REVIEW/AGENT_ABORTED + E-JUDGE. Claude Judge 로 넘어가지 않는다 (F02-4)."""
+    async def post(self, *a, **k):
+        raise httpx.ConnectError("Connection refused")
+    monkeypatch.setattr(httpx.AsyncClient, "post", post)
+    monkeypatch.setenv("JUDGE_IMPL", "local")
+    monkeypatch.setenv("LLM_PROVIDER", "ollama")
+    monkeypatch.setenv("TRADES_FILE", str(repo.DATA / "samples" / "trades.json"))
+    monkeypatch.setattr(main, "_judge", lambda: main.get_judge())
+    monkeypatch.setattr(main, "_llm", lambda: llm_base.get_client())
+    resp, agent = asyncio.run(main.handle_inquiry(InquiryRequest(customer_id=1042, tax_year=2025, text="세금 얼마예요")))
+    assert resp.status == "REVIEW" and resp.review_reason == "AGENT_ABORTED" and resp.error_code == "E-JUDGE"
+    assert agent is None and anthropic_forbidden == []

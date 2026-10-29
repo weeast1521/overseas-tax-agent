@@ -35,7 +35,8 @@ PRICE_PER_M = {"claude-opus-5-5": (4.0, 20.0), "claude-sonnet-5-5": (2.0, 10.0),
 
 CONFIGS = {
     "A": {"JUDGE_IMPL": "claude", "LLM_PROVIDER": "claude"},
-    "B": {"JUDGE_IMPL": "rule", "LLM_PROVIDER": "ollama"},
+    "B": {"JUDGE_IMPL": "local", "LLM_PROVIDER": "ollama"},  # 폐쇄망: 로컬 Judge + 로컬 LLM (SCRUM-49)
+    "B-rule": {"JUDGE_IMPL": "rule", "LLM_PROVIDER": "ollama"},  # Judge 변수 제거하고 에이전트만 볼 때
     "stub": {"JUDGE_IMPL": "rule", "LLM_PROVIDER": "stub"},
 }
 
@@ -229,7 +230,7 @@ def main_cli() -> int:
         "cases_hash": file_hash([Path(args.cases)]), "n_cases": len(cases),
         "corpus_version": file_hash(repo.corpus_files()), "corpus_files": [str(p.relative_to(ROOT)) for p in repo.corpus_files()],
         "trades_file": os.environ["TRADES_FILE"], "trace_db": os.environ["TRACE_DB"],
-        "judge_impl": os.environ["JUDGE_IMPL"], "judge_model": os.getenv("JUDGE_MODEL"),
+        "judge_impl": os.environ["JUDGE_IMPL"], "judge_model": os.getenv("JUDGE_MODEL") if os.environ["JUDGE_IMPL"] == "claude" else (os.getenv("LOCAL_JUDGE_MODEL") or os.getenv("OLLAMA_MODEL") if os.environ["JUDGE_IMPL"] == "local" else "rule"),
         "llm_provider": os.environ["LLM_PROVIDER"], "llm_model": os.getenv("CLAUDE_MODEL") if os.environ["LLM_PROVIDER"] == "claude" else os.getenv("OLLAMA_MODEL"),
         "temperature": "n/a (SDK 2.x — 재현성은 2회 실행 diff로 측정)",
         "final_format": args.final_format, "sync_timeout_sec": float(os.getenv("SYNC_TIMEOUT_SEC", "30")), "review_threshold": _judge_base.REVIEW_THRESHOLD, "auto_threshold": _judge_base.AUTO_THRESHOLD,  # 실제 적용 값 (환경변수가 아니라 코드가 읽은 값)

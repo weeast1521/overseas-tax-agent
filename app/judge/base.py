@@ -58,4 +58,7 @@ def get_judge() -> Judge:
     if impl == "rule":
         from app.judge.rule_judge import RuleJudge
         return RuleJudge()
+    if impl == "local":  # 폐쇄망 (SCRUM-49). anthropic 을 import 하지 않는다
+        from app.judge.local_judge import LocalJudge
+        return LocalJudge()
     raise ValueError(f"unknown JUDGE_IMPL={impl}")
