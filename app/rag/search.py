@@ -145,8 +145,8 @@ def llm_rewrite(query: str) -> str | None:
             with urllib.request.urlopen(req, timeout=20) as r:  # noqa: S310
                 text = json.loads(r.read())["response"]
         else:
-            from anthropic import Anthropic
-            msg = Anthropic().messages.create(model=os.getenv("REWRITE_MODEL", "claude-haiku-5-5"), max_tokens=80,
+            from app import egress
+            msg = egress.anthropic("rewrite").messages.create(model=os.getenv("REWRITE_MODEL", "claude-haiku-5-5"), max_tokens=80,
                                               messages=[{"role": "user", "content": prompt}])
             text = "".join(b.text for b in msg.content if b.type == "text")
         line = text.strip().splitlines()[0].strip() if text.strip() else ""

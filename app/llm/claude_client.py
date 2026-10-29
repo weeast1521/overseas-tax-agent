@@ -1,41 +1,27 @@
 """Claude API 구현체 (개발·검증 구간, 구성 A).
 
 - anthropic SDK 2.x는 temperature 인자를 받지 않는다. 재현성은 평가 러너에서 같은 입력 2회 실행으로 측정한다(F10).
-- 데이터 경계(NF): TRADES_FILE이 data/mine/ 아래면 이 클라이언트를 만들 수 없다. 실데이터는 퍼블릭 API로 나가지 않는다.
-  (임시 방어선. 정식 자동 검증은 SCRUM-51)
+- 데이터 경계(NF, SCRUM-51): 클라이언트는 app/egress 로만 만든다 — 구성 거부 + 송신 전 실데이터 검사. 실데이터는 퍼블릭 API로 나가지 않는다.
 """
 from __future__ import annotations
 
 import json
 import os
-from pathlib import Path
 
-from anthropic import AsyncAnthropic
-
+from app import egress
+from app.egress import DataBoundaryError, assert_synthetic_data  # noqa: F401  (기존 import 경로 유지)
 from app.llm.base import Completion, Message, ToolCall, ToolSpec
 
 DEFAULT_MODEL = "claude-opus-5-5"
-
-
-class DataBoundaryError(RuntimeError):
-    code = "E-DATA-BOUNDARY"
-
-
-def assert_synthetic_data() -> None:
-    src = os.getenv("TRADES_FILE", "")
-    parts = Path(src).parts if src else ()
-    if "mine" in parts:
-        raise DataBoundaryError(f"TRADES_FILE={src} 은 실데이터. Claude API 구성에서는 data/samples 또는 합성 데이터만 쓴다")
 
 
 class ClaudeClient:
     name = "claude"
 
     def __init__(self, model: str | None = None, max_tokens: int | None = None):
-        assert_synthetic_data()
         self.model = model or os.getenv("CLAUDE_MODEL", DEFAULT_MODEL)
         self.max_tokens = max_tokens or int(os.getenv("CLAUDE_MAX_TOKENS", "1500"))
-        self.client = AsyncAnthropic()  # ANTHROPIC_API_KEY
+        self.client = egress.async_anthropic("agent")  # ANTHROPIC_API_KEY. 경계 검사 포함
 
     @staticmethod
     def to_anthropic(messages: list[Message], tools: list[ToolSpec]) -> dict:

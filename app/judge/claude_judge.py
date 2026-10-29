@@ -81,8 +81,8 @@ class ClaudeJudge:
     def __init__(self, model: str | None = None, client: Any = None):
         self.model = model or os.getenv("JUDGE_MODEL") or "claude-haiku-5-5"  # 분류는 가벼운 모델. 에이전트(CLAUDE_MODEL)와 분리
         if client is None:
-            from anthropic import AsyncAnthropic
-            client = AsyncAnthropic()  # ANTHROPIC_API_KEY
+            from app import egress
+            client = egress.async_anthropic("judge")  # ANTHROPIC_API_KEY. 경계 검사 포함 (SCRUM-51)
         self.client = client
         self.last_usage = {"calls": 0, "in_tokens": 0, "out_tokens": 0}
         self.force_tool = True  # 일부 모델(sonnet-5-5)은 tool_choice=tool을 거부 → 400 받으면 끄고 재요청

@@ -61,6 +61,18 @@ make test
 python scripts/load_trade_db.py --src data/mine/trades.json   # 선택: 파일 DB(읽기 전용). 없으면 TRADES_FILE 로 메모리 DB
 ```
 
+## 데이터 경계 (NF, SCRUM-51)
+
+실제 거래 데이터(`data/mine/`)는 어떤 경로로도 Anthropic API 로 나가지 않는다. 말이 아니라 `pytest` 가 매번 증명한다 (`tests/test_data_boundary.py`, 18건).
+
+| 겹 | 모듈 | 하는 일 |
+| --- | --- | --- |
+| 1 구성 거부 | `egress.assert_synthetic_data` | `TRADES_FILE` 이 `data/mine/` 아래면 Claude 클라이언트(에이전트·Judge·재작성) 생성 자체가 `E-DATA-BOUNDARY` |
+| 2 송신 검사 | `egress.check_outbound` | 나가는 payload(system·messages·tools)를 보내기 전에 훑는다. 이 기계에 `data/mine/trades.json` 이 있으면 거기서 뽑은 계좌·거래 ID 와 (종목, 수량, 단가) 조합을 지문으로, 없어도 주민번호·실계좌번호 꼴은 막는다. 걸리면 전송하지 않고 사유만 남긴다(값은 안 남김) |
+| 3 단일 출구 | `egress.async_anthropic / anthropic` | `app/` 안에서 anthropic 클라이언트는 이 모듈로만 만든다. 테스트가 소스를 훑어 `Anthropic(` 직접 호출이 생기면 실패 |
+
+지문은 메모리에만 있고 파일·로그·응답에 쓰지 않는다. 테스트는 진짜 `data/mine` 을 읽지 않고 `tmp_path` 의 가짜 실데이터(`MINE_TRADES_FILE`)로 돈다.
+
 ## 내 데이터로 검증
 
 ```bash
