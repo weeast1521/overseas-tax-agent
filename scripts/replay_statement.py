@@ -40,6 +40,7 @@ def main() -> None:
     for side, label in (("sell", "양도가액"), ("buy", "취득가액")):
         r = fx[side]
         print(f"1) {label}: 가장 잘 맞는 규칙 '{r['rule']}' → ±1원 안 {r['match']}/{fx['rows']}줄 · 합계 차이 {r['sum_diff_krw']:+,}원 · 줄 최대 차이 {r['max_abs_diff_krw']:,}원")
+        print(f"   ±1원 밖 줄 중 '화면 단가 표시 자릿수'로 설명되는 줄 포함 → {r['explained_by_display']}/{fx['rows']}줄")
         print("   다른 규칙: " + " / ".join(f"{o['rule']} {o['match']}줄({o['sum_diff_krw']:+,})" for o in r["others"]))
 
     # 2)·3) 계산기 재생

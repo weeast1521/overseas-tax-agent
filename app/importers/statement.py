@@ -177,8 +177,12 @@ def fx_recompute(lots: list[StatementLot], tol: int = 1) -> dict:
         scored = []
         for rule, f in rules.items():
             ds = [f(l.qty, getattr(l, usd), getattr(l, fx)) - getattr(l, krw) for l in lots]
+            # 화면 단가의 표시 자릿수로 설명되는 차이: 수량 × 환율 × (표시 마지막 자리의 절반) + 1원
+            bound = [l.qty * getattr(l, fx) * (Decimal(1).scaleb(getattr(l, usd).as_tuple().exponent) / 2) + tol
+                     for l in lots]
             scored.append({"rule": rule, "match": sum(abs(d) <= tol for d in ds), "sum_diff_krw": int(sum(ds)),
-                           "max_abs_diff_krw": int(max(abs(d) for d in ds))})
+                           "max_abs_diff_krw": int(max(abs(d) for d in ds)),
+                           "explained_by_display": sum(abs(d) <= b for d, b in zip(ds, bound))})
         scored.sort(key=lambda r: (-r["match"], abs(r["sum_diff_krw"])))
         out[side] = scored[0] | {"others": scored[1:]}
     return out
