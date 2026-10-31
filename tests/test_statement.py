@@ -36,3 +36,29 @@ def test_method_signature_flags_avg_when_acq_dates_go_backwards(tmp_path):
         csv.writer(f).writerows([hdr, a1, a3])
     m = statement.method_signature(statement.load(str(p)))
     assert m["securities_fifo_violated"] == 1 and m["guess"] == "AVG"
+
+
+FIX_USD = Path(__file__).parent / "fixtures_statement_usd.csv"
+
+
+def test_extended_statement_has_usd_and_fx_and_ignores_account_number():
+    lots = statement.load(str(FIX_USD))
+    assert statement.has_usd(lots) and lots[0].ticker == "AAAA" and lots[0].isin == "US0000000001"
+    assert not any("000-0000" in str(v) for l in lots for v in vars(l).values())
+
+
+def test_fx_recompute_matches_qty_times_usd_times_rate():
+    fx = statement.fx_recompute(statement.load(str(FIX_USD)))
+    assert fx["sell"]["match"] == 4 and fx["buy"]["match"] == 4 and fx["sell"]["sum_diff_krw"] == 0
+
+
+def test_replay_through_calculator_reproduces_statement_gain_and_lots():
+    from app.tools.tax_calc import CalcRequest, calculate
+    lots = statement.load(str(FIX_USD))
+    res = calculate(CalcRequest(customer_id=1, tax_year=2025, trades=statement.to_trades(lots),
+                                account_methods={"MIRAE-001": "FIFO"}))
+    assert res.total_gain_krw == statement.totals(lots)["gain_krw"]
+    used = {(s.ticker, s.settle_date): sorted((u.buy_date, u.qty) for u in s.lots_used)
+            for a in res.by_account for s in a.sales}
+    from datetime import date
+    assert [d for d, _ in used[("AAAA", date(2025, 9, 1))]] == [date(2025, 7, 10), date(2025, 7, 20)]
