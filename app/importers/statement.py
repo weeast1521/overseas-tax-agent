@@ -158,25 +158,29 @@ def has_usd(lots: list[StatementLot]) -> bool:
 
 
 def fx_recompute(lots: list[StatementLot], tol: int = 1) -> dict:
-    """줄마다 수량×달러단가×환율 을 원 단위로 다시 계산해 명세서 원화와 비교한다 (건수·합계 차이만).
+    """줄마다 달러×환율 을 원 단위로 다시 계산해 명세서 원화와 비교한다 (건수·합계 차이만).
 
-    증권사가 '단가×환율 후 곱하기'인지 '금액 후 환율'인지, 반올림/절사인지에 따라 ±1원이 나므로 tol 로 흡수한다.
+    증권사마다 원화 환산 순서와 끝수 처리가 다르다. 네 가지 규칙을 다 대 보고 가장 많이 맞는 것을 고른다:
+      금액 반올림 = round(수량×단가×환율) / 금액 절사 / 주당 반올림 = round(단가×환율)×수량 / 주당 절사
+    맞는 줄이 100% 가 안 되면 화면의 달러 단가가 이미 반올림된 평균 체결가라서다 (원래 단가는 소수점이 더 길다).
     """
     from decimal import ROUND_DOWN, ROUND_HALF_UP
+    one = Decimal(1)
+    rules = {
+        "금액 반올림": lambda q, px, fx: (q * px * fx).quantize(one, rounding=ROUND_HALF_UP),
+        "금액 절사": lambda q, px, fx: (q * px * fx).quantize(one, rounding=ROUND_DOWN),
+        "주당 반올림": lambda q, px, fx: (px * fx).quantize(one, rounding=ROUND_HALF_UP) * q,
+        "주당 절사": lambda q, px, fx: (px * fx).quantize(one, rounding=ROUND_DOWN) * q,
+    }
     out = {"rows": len(lots)}
     for side, usd, fx, krw in (("sell", "sell_usd", "fx_sell", "proceeds_krw"), ("buy", "buy_usd", "fx_buy", "cost_krw")):
-        best = None
-        for rule, rnd in (("반올림", ROUND_HALF_UP), ("절사", ROUND_DOWN)):
-            ok = 0
-            diff = Decimal(0)
-            for l in lots:
-                calc = (l.qty * getattr(l, usd) * getattr(l, fx)).quantize(Decimal(1), rounding=rnd)
-                d = calc - getattr(l, krw)
-                diff += d
-                ok += abs(d) <= tol
-            if best is None or ok > best[1]:
-                best = (rule, ok, int(diff))
-        out[side] = {"rule": best[0], "match": best[1], "sum_diff_krw": best[2]}
+        scored = []
+        for rule, f in rules.items():
+            ds = [f(l.qty, getattr(l, usd), getattr(l, fx)) - getattr(l, krw) for l in lots]
+            scored.append({"rule": rule, "match": sum(abs(d) <= tol for d in ds), "sum_diff_krw": int(sum(ds)),
+                           "max_abs_diff_krw": int(max(abs(d) for d in ds))})
+        scored.sort(key=lambda r: (-r["match"], abs(r["sum_diff_krw"])))
+        out[side] = scored[0] | {"others": scored[1:]}
     return out
 
 

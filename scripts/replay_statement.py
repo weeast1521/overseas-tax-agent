@@ -39,7 +39,8 @@ def main() -> None:
     fx = statement.fx_recompute(lots)
     for side, label in (("sell", "양도가액"), ("buy", "취득가액")):
         r = fx[side]
-        print(f"1) {label}: 수량×달러단가×환율({r['rule']}) 이 ±1원 안에서 맞는 줄 {r['match']}/{fx['rows']}  · 합계 차이 {r['sum_diff_krw']:+,}원")
+        print(f"1) {label}: 가장 잘 맞는 규칙 '{r['rule']}' → ±1원 안 {r['match']}/{fx['rows']}줄 · 합계 차이 {r['sum_diff_krw']:+,}원 · 줄 최대 차이 {r['max_abs_diff_krw']:,}원")
+        print("   다른 규칙: " + " / ".join(f"{o['rule']} {o['match']}줄({o['sum_diff_krw']:+,})" for o in r["others"]))
 
     # 2)·3) 계산기 재생
     trades = statement.to_trades(lots)
