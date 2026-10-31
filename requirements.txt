@@ -6,6 +6,7 @@ httpx>=0.27
 pytest>=8
 sqlglot>=25
 pypdf>=4
+pdfplumber>=0.11  # scripts/pdf_to_csv.py (명세서 PDF → CSV, 맥에서만)
 numpy>=1.26
 # RAG_STORE=pg 또는 TRADE_DB_KIND=pg 일 때만 (선택)
 # psycopg[binary]>=3.2
