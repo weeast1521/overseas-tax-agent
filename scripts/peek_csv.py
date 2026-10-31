@@ -55,8 +55,10 @@ def main() -> None:
             out = mod.load(a.path)
             sides = sorted({t.side for t in out})
             print(f"현재 매퍼로 읽기 성공: {len(out)}건, 구분 {sides}, 결제일 없는 건 {sum(1 for t in out if t.settle_date is None)}")
-        except Exception as e:  # 어떤 열이 없는지만 — 값은 오류 메시지에 들어가지 않게 잘라서
-            print(f"현재 매퍼로 읽기 실패: {type(e).__name__}: {mask(str(e))[:200]}")
+        except Exception as e:
+            msg = str(e)
+            # '컬럼 없음' 오류는 후보 이름과 머리글만 담는다 → 그대로. 그 밖의 오류(날짜·숫자 파싱)는 값이 섞일 수 있어 가린다
+            print(f"현재 매퍼로 읽기 실패: {type(e).__name__}: {msg[:300] if msg.startswith('컬럼 없음') else mask(msg)[:200]}")
 
 
 if __name__ == "__main__":
