@@ -58,6 +58,7 @@ def main() -> None:
     with pdfplumber.open(a.pdf) as pdf:
         pages = len(pdf.pages)
         for page in pdf.pages:
+            page = page.dedupe_chars(tolerance=1)  # 굵은 글씨를 겹쳐 찍은 PDF: '양양도도' → '양도'
             for tbl in page.extract_tables():
                 rows = [[clean(c) for c in r] for r in tbl if r]
                 h = find_header(rows, a.header)
@@ -78,10 +79,16 @@ def main() -> None:
     if header is None:
         print(f"페이지 {pages} — '{a.header}' 머리글이 있는 표를 못 찾았습니다. 표 대신 글자로 된 PDF 일 수 있습니다.")
         with pdfplumber.open(a.pdf) as pdf:
-            t = (pdf.pages[0].extract_text() or "").splitlines()
-        print("첫 페이지 줄 모양(가림):")
-        for line in t[:15]:
-            print("  ", mask(line)[:120])
+            for n, pg in enumerate(pdf.pages, 1):
+                pg = pg.dedupe_chars(tolerance=1)
+                text = pg.extract_text() or ""
+                hit = a.header in text.replace(" ", "")
+                print(f"\n[{n}쪽] 표 {len(pg.extract_tables())}개 · '{a.header}' 글자 {'있음' if hit else '없음'}")
+                if hit:
+                    lines = text.splitlines()
+                    i = next(k for k, l in enumerate(lines) if a.header in l.replace(' ', ''))
+                    for l in lines[max(0, i - 2):i + 4]:  # 머리글 근처: 한글 머리글은 그대로, 값 줄은 가림
+                        print("   ", l[:150] if not re.search(r"\d{2,}", l) else mask(l)[:150])
         sys.exit(2)
     out = Path(a.out or Path(a.pdf).with_suffix(".csv"))
     with out.open("w", encoding="utf-8-sig", newline="") as f:
